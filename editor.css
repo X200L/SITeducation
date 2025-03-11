@@ -1,0 +1,461 @@
+/* Обновленные переменные для редактора */
+[data-theme="dark"] {
+    --editor-bg: #1e1e1e;
+    --editor-text: #d4d4d4;
+    --editor-border: #3e3e42;
+    --editor-toolbar: #252526;
+    --editor-active: #37373d;
+    --editor-hover: #2d2d2d;
+    --editor-gutter: #333333;
+    --editor-line-numbers: #858585;
+}
+
+[data-theme="light"] {
+    --editor-bg: #ffffff;
+    --editor-text: #1e1e1e;
+    --editor-border: #e0e0e0;
+    --editor-toolbar: #f3f3f3;
+    --editor-active: #e8e8e8;
+    --editor-hover: #f0f0f0;
+    --editor-gutter: #f5f5f5;
+    --editor-line-numbers: #999999;
+}
+
+.editor-container {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+}
+
+.editor-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--card-bg);
+}
+
+.title-input {
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+.editor-tools {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tool-button {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tool-button:hover {
+    background: var(--hover-color);
+    border-color: var(--accent-color);
+}
+
+.editor-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    height: calc(100vh - 400px);
+    min-height: 400px;
+}
+
+.editor-column, .preview-column {
+    position: relative;
+}
+
+.editor-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+    background: var(--card-bg);
+    color: var(--text-color);
+    font-size: 0.8rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#markdown-editor {
+    width: 100%;
+    height: 100%;
+    padding: 3rem 1rem 1rem 3.5rem;
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: none;
+    border-right: 1px solid var(--border-color);
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    resize: none;
+}
+
+#markdown-editor::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2.5rem;
+    background: var(--card-bg);
+    border-right: 1px solid var(--border-color);
+}
+
+#preview {
+    height: 100%;
+    padding: 3rem 1rem 1rem;
+    background: var(--bg-color);
+    color: var(--text-color);
+    overflow-y: auto;
+    font-size: 0.9rem;
+}
+
+.editor-footer {
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+    background: var(--card-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.editor-footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+}
+
+.email-input input {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    width: 300px;
+}
+
+.editor-footer-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.draft-button {
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.draft-button:hover {
+    background: var(--hover-color);
+    border-color: var(--accent-color);
+}
+
+.tags-input {
+    flex: 1;
+    margin-right: 1rem;
+}
+
+#tag-input {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    width: 200px;
+}
+
+#tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.tag {
+    background: var(--accent-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tag-remove {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.tag-remove:hover {
+    opacity: 1;
+}
+
+.publish-button {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.publish-button:hover {
+    background: var(--link-color);
+}
+
+/* Стили для подсветки синтаксиса */
+.editor-wrapper pre {
+    background: var(--hover-color) !important;
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.editor-wrapper code {
+    font-family: 'Consolas', 'Courier New', monospace;
+    color: var(--text-color);
+}
+
+/* Стили для подсветки синтаксиса */
+[data-theme="light"] .editor-wrapper .token.keyword { color: #0000ff; }
+[data-theme="light"] .editor-wrapper .token.string { color: #a31515; }
+[data-theme="light"] .editor-wrapper .token.comment { color: #008000; }
+[data-theme="light"] .editor-wrapper .token.function { color: #795E26; }
+[data-theme="light"] .editor-wrapper .token.number { color: #098658; }
+[data-theme="light"] .editor-wrapper .token.operator { color: #000000; }
+
+[data-theme="dark"] .editor-wrapper .token.keyword { color: #569cd6; }
+[data-theme="dark"] .editor-wrapper .token.string { color: #ce9178; }
+[data-theme="dark"] .editor-wrapper .token.comment { color: #6a9955; }
+[data-theme="dark"] .editor-wrapper .token.function { color: #dcdcaa; }
+[data-theme="dark"] .editor-wrapper .token.number { color: #b5cea8; }
+[data-theme="dark"] .editor-wrapper .token.operator { color: #d4d4d4; }
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .editor-container {
+        margin: 1rem;
+        border-radius: 4px;
+    }
+
+    .editor-header {
+        padding: 0.8rem;
+    }
+
+    .title-input {
+        font-size: 1.2rem;
+        padding: 0.6rem;
+    }
+
+    .editor-tools {
+        gap: 0.3rem;
+    }
+
+    .tool-button {
+        padding: 0.4rem;
+    }
+
+    .editor-wrapper {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .editor-column, .preview-column {
+        height: 300px;
+    }
+
+    .editor-label {
+        padding: 0.4rem;
+    }
+
+    #markdown-editor, #preview {
+        padding: 2.5rem 0.8rem 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .editor-footer {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0.8rem;
+    }
+
+    .editor-footer-left {
+        width: 100%;
+    }
+
+    .email-input input {
+        width: 100%;
+    }
+
+    .editor-footer-buttons {
+        width: 100%;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .draft-button, .publish-button {
+        width: 100%;
+        padding: 0.8rem;
+        justify-content: center;
+    }
+
+    .tags-input {
+        width: 100%;
+    }
+
+    #tag-input {
+        width: 100%;
+    }
+
+    .tag {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .editor-tools {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.3rem;
+    }
+
+    .tool-button {
+        width: 100%;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Добавим поддержку темной темы для редактора */
+[data-theme="dark"] #markdown-editor {
+    background: var(--editor-bg);
+    color: var(--editor-text);
+    border-color: var(--editor-border);
+}
+
+[data-theme="dark"] #preview {
+    background: var(--editor-bg);
+    color: var(--editor-text);
+    border-color: var(--editor-border);
+}
+
+[data-theme="dark"] .title-input {
+    background: var(--editor-bg);
+    color: var(--editor-text);
+    border-color: var(--editor-border);
+}
+
+/* Стили для подсветки синтаксиса */
+.editor-wrapper .token.keyword { color: #569cd6; }
+.editor-wrapper .token.string { color: #ce9178; }
+.editor-wrapper .token.comment { color: #6a9955; }
+.editor-wrapper .token.function { color: #dcdcaa; }
+.editor-wrapper .token.number { color: #b5cea8; }
+.editor-wrapper .token.operator { color: #d4d4d4; }
+
+/* Заменим старые стили для темной темы на новые */
+[data-theme="dark"] .editor-container {
+    background: var(--editor-toolbar);
+}
+
+[data-theme="dark"] .title-input {
+    background: var(--editor-bg);
+    color: var(--editor-text);
+    border-color: var(--editor-border);
+}
+
+[data-theme="dark"] #markdown-editor {
+    background: var(--editor-bg);
+    color: var(--editor-text);
+    border-color: var(--editor-border);
+}
+
+[data-theme="dark"] #preview {
+    background: var(--editor-bg);
+    color: var(--editor-text);
+    border-color: var(--editor-border);
+}
+
+[data-theme="dark"] .tool-button {
+    background: var(--editor-bg);
+    color: var(--editor-text);
+    border-color: var(--editor-border);
+}
+
+[data-theme="dark"] .tool-button:hover {
+    background: var(--editor-hover);
+    border-color: var(--accent-color);
+}
+
+[data-theme="dark"] #tag-input {
+    background: var(--editor-bg);
+    color: var(--editor-text);
+    border-color: var(--editor-border);
+}
+
+[data-theme="dark"] .editor-label {
+    background: var(--editor-toolbar);
+    color: var(--editor-text);
+    border-color: var(--editor-border);
+}
+
+[data-theme="dark"] .editor-footer {
+    background: var(--editor-toolbar);
+    border-color: var(--editor-border);
+}
+
+[data-theme="dark"] .tag {
+    background: var(--accent-color);
+    color: white;
+}
+
+/* Обновим стили для подсветки синтаксиса в темной теме */
+[data-theme="dark"] .editor-wrapper pre {
+    background: var(--editor-bg) !important;
+}
+
+[data-theme="dark"] .editor-wrapper code {
+    color: var(--editor-text);
+}
+
+[data-theme="dark"] .editor-wrapper .token.keyword { color: #569cd6; }
+[data-theme="dark"] .editor-wrapper .token.string { color: #ce9178; }
+[data-theme="dark"] .editor-wrapper .token.comment { color: #6a9955; }
+[data-theme="dark"] .editor-wrapper .token.function { color: #dcdcaa; }
+[data-theme="dark"] .editor-wrapper .token.number { color: #b5cea8; }
+[data-theme="dark"] .editor-wrapper .token.operator { color: #d4d4d4; } 

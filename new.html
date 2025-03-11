@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#007acc">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Написать статью - S.I.T Education</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="editor.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prismjs/1.29.0/themes/prism-tomorrow.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="theme.js"></script>
+</head>
+<body class="editor-page">
+    <canvas id="particles"></canvas>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-microchip"></i>
+                S.I.T Education
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="new.html" class="active">Написать статью</a>
+                <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="editor-container">
+                <div class="editor-header">
+                    <input type="text" id="article-title" placeholder="Заголовок статьи" class="title-input">
+                    <div class="editor-tools">
+                        <button class="tool-button" title="Жирный текст" onclick="insertMarkdown('**', '**')">
+                            <i class="fas fa-bold"></i>
+                        </button>
+                        <button class="tool-button" title="Курсив" onclick="insertMarkdown('*', '*')">
+                            <i class="fas fa-italic"></i>
+                        </button>
+                        <button class="tool-button" title="Заголовок" onclick="insertMarkdown('## ', '')">
+                            <i class="fas fa-heading"></i>
+                        </button>
+                        <button class="tool-button" title="Ссылка" onclick="insertMarkdown('[', '](url)')">
+                            <i class="fas fa-link"></i>
+                        </button>
+                        <button class="tool-button" title="Код" onclick="insertMarkdown('```\n', '\n```')">
+                            <i class="fas fa-code"></i>
+                        </button>
+                        <button class="tool-button" title="Список" onclick="insertMarkdown('- ', '')">
+                            <i class="fas fa-list-ul"></i>
+                        </button>
+                        <button class="tool-button" title="Изображение" onclick="insertMarkdown('![alt text](', ')')">
+                            <i class="fas fa-image"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="editor-wrapper">
+                    <div class="editor-column">
+                        <div class="editor-label">Markdown</div>
+                        <textarea id="markdown-editor" placeholder="Напишите вашу статью используя Markdown..."></textarea>
+                    </div>
+                    <div class="preview-column">
+                        <div class="editor-label">Предпросмотр</div>
+                        <div id="preview"></div>
+                    </div>
+                </div>
+                <div class="editor-footer">
+                    <div class="editor-footer-left">
+                        <div class="tags-input">
+                            <input type="text" id="tag-input" placeholder="Добавить тег...">
+                            <div id="tags-container"></div>
+                        </div>
+                        <div class="email-input">
+                            <input type="email" id="email-input" placeholder="Ваш email для сохранения черновика">
+                        </div>
+                    </div>
+                    <div class="editor-footer-buttons">
+                        <button id="draft-button" class="draft-button">
+                            <i class="fas fa-save"></i>
+                            Сохранить черновик
+                        </button>
+                        <button id="publish" class="publish-button">
+                            <i class="fas fa-paper-plane"></i>
+                            Опубликовать
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prismjs/1.29.0/prism.min.js"></script>
+    <script src="editor.js"></script>
+</body>
+</html> 
