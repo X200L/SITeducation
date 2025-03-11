@@ -1,0 +1,447 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Consolas', 'Courier New', monospace;
+    line-height: 1.6;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s;
+}
+
+header {
+    background: var(--sidebar-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo i {
+    color: var(--accent-color);
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    font-size: 0.9rem;
+}
+
+.nav-links a:hover {
+    background: var(--hover-color);
+}
+
+.nav-links a.active {
+    background: var(--active-tab);
+    color: var(--text-color);
+    font-weight: normal;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.articles {
+    display: grid;
+    gap: 2rem;
+}
+
+.article-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.article-card:hover {
+    background: var(--hover-color);
+    border-color: var(--accent-color);
+}
+
+.article-title {
+    color: var(--link-color);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.article-preview {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.article-meta {
+    color: #858585;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Добавим стили для темной темы */
+[data-theme="dark"] {
+    --bg-color: #1e1e1e;
+    --text-color: #d4d4d4;
+    --card-bg: #252526;
+    --border-color: #3e3e42;
+    --hover-color: #2d2d2d;
+    --accent-color: #0e639c;
+    --sidebar-color: #333333;
+    --active-tab: #1e1e1e;
+    --tab-color: #2d2d2d;
+    --link-color: #4ec9b0;
+    --hero-gradient: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+    --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="light"] {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --card-bg: #ffffff;
+    --border-color: #e0e0e0;
+    --hover-color: #f8f9fa;
+    --accent-color: #007acc;
+    --sidebar-color: #f8f9fa;
+    --active-tab: #ffffff;
+    --tab-color: #ececec;
+    --link-color: #007acc;
+    --hero-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для полной статьи */
+.full-article {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 2rem;
+}
+
+.full-article h1 {
+    color: var(--link-color);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.article-content {
+    font-size: 0.95rem;
+}
+
+.article-content pre {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.article-content code {
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+/* Кнопка темы */
+.theme-toggle {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 3px;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+    background: var(--hover-color);
+    border-color: var(--accent-color);
+}
+
+/* Кнопка "Назад" */
+.back-button {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+    transition: background 0.2s ease;
+}
+
+.back-button:hover {
+    background: var(--link-color);
+}
+
+/* Обновленные стили для главной страницы */
+.hero-section {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(
+        to bottom,
+        var(--bg-color) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    padding: 4rem 0;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 2rem;
+}
+
+.hero-decoration {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-top: 2rem;
+}
+
+.hero-decoration i {
+    margin: 0 1rem;
+    opacity: 0.8;
+}
+
+/* Обновленные стили для кнопок */
+.main-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: -3rem auto 0;
+    padding: 0 1rem;
+    position: relative;
+}
+
+.main-button {
+    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    box-shadow: var(--card-shadow);
+}
+
+[data-theme="dark"] .main-button {
+    background: rgba(37, 37, 37, 0.7);
+}
+
+.button-content {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.button-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-right: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.button-text h2 {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.button-text p {
+    color: var(--text-color);
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+.main-button:hover {
+    transform: translateY(-5px);
+    background: var(--card-bg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.main-button:hover .button-icon {
+    transform: scale(1.1);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    /* Навигация */
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 0.8rem;
+        width: 100%;
+    }
+
+    /* Главная страница */
+    .hero-section {
+        padding: 2rem 0;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+        padding: 0 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+
+    .hero-decoration {
+        font-size: 1.5rem;
+    }
+
+    .hero-decoration i {
+        margin: 0 0.5rem;
+    }
+
+    .main-buttons {
+        margin-top: 1rem;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .button-content {
+        padding: 1.5rem;
+    }
+
+    .button-icon {
+        font-size: 2rem;
+        margin-right: 1rem;
+    }
+
+    .button-text h2 {
+        font-size: 1.2rem;
+    }
+
+    /* Статьи */
+    .article-card {
+        padding: 1rem;
+    }
+
+    .article-title {
+        font-size: 1.1rem;
+    }
+
+    .full-article {
+        padding: 1rem;
+    }
+
+    .full-article h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .button-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .button-icon {
+        margin-right: 0;
+    }
+}
+
+/* Добавим стили для canvas */
+#particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Обновим стили для контейнеров, чтобы они были поверх canvas */
+.hero-section {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(
+        to bottom,
+        var(--bg-color) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Обновим стили для кнопок */
+.main-button {
+    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .main-button {
+    background: rgba(37, 37, 37, 0.7);
+}
+
+.main-button:hover {
+    transform: translateY(-5px);
+    background: var(--card-bg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+} 
