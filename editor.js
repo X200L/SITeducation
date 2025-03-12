@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const draftButton = document.getElementById('draft-button');
     const emailInput = document.getElementById('email-input');
 
-    // Инициализация EmailJS
-    emailjs.init("YOUR_USER_ID"); // Замените на ваш User ID из EmailJS
+    // Инициализация EmailJS с публичным ключом
+    emailjs.init("YOUR_PUBLIC_KEY"); // Замените на ваш публичный ключ
 
     // Функция для обновления предпросмотра
     function updatePreview() {
@@ -64,31 +64,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Функция для отправки черновика
     async function sendDraft(draftData) {
         try {
-            const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    service_id: 'YOUR_SERVICE_ID', // Замените на ваш ID сервиса EmailJS
-                    template_id: 'YOUR_TEMPLATE_ID', // Замените на ваш ID шаблона
-                    user_id: 'YOUR_USER_ID', // Замените на ваш User ID
-                    template_params: {
-                        to_email: draftData.email,
-                        title: draftData.title,
-                        content: draftData.content,
-                        tags: draftData.tags.join(', ')
-                    }
-                })
-            });
+            const subject = encodeURIComponent(`Черновик статьи: ${draftData.title}`);
+            const body = encodeURIComponent(`
+Заголовок: ${draftData.title}
 
-            if (response.ok) {
-                alert('Черновик успешно отправлен на вашу почту!');
-            } else {
-                throw new Error('Ошибка при отправке');
-            }
+Теги: ${draftData.tags.join(', ')}
+
+Содержание:
+${draftData.content}
+            `);
+
+            window.location.href = `mailto:${draftData.email}?subject=${subject}&body=${body}`;
         } catch (error) {
-            alert('Произошла ошибка при отправке черновика: ' + error.message);
+            console.error('Ошибка:', error);
+            alert('Произошла ошибка: ' + error.message);
         }
     }
 
@@ -124,28 +113,25 @@ document.addEventListener('DOMContentLoaded', () => {
         sendDraft(draftData);
     });
 
-    // Функция для отправки статьи на почту команды
+    // Функция для отправки статьи на модерацию
     async function sendArticle(articleData) {
         try {
-            const response = await emailjs.send(
-                "YOUR_SERVICE_ID", // Замените на ваш Service ID
-                "YOUR_TEMPLATE_ID", // Замените на ваш Template ID
-                {
-                    to_email: "frogeesoft.team@gmail.com",
-                    title: articleData.title,
-                    content: articleData.content,
-                    tags: articleData.tags.join(', '),
-                    author_email: articleData.authorEmail || 'Не указан'
-                }
-            );
+            const subject = encodeURIComponent(`Новая статья: ${articleData.title}`);
+            const body = encodeURIComponent(`
+От: ${articleData.authorEmail || 'Аноним'}
 
-            if (response.status === 200) {
-                alert('Статья успешно отправлена на рассмотрение!');
-            } else {
-                throw new Error('Ошибка при отправке');
-            }
+Заголовок: ${articleData.title}
+
+Теги: ${articleData.tags.join(', ')}
+
+Содержание:
+${articleData.content}
+            `);
+
+            window.location.href = `mailto:frogeesoft.team@gmail.com?subject=${subject}&body=${body}`;
         } catch (error) {
-            alert('Произошла ошибка при отправке статьи: ' + error.message);
+            console.error('Ошибка:', error);
+            alert('Произошла ошибка: ' + error.message);
         }
     }
 
