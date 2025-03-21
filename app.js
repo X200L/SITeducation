@@ -46,7 +46,8 @@ const articlesInfo = [
 async function loadArticleContent(fileName) {
     try {
         // Use an absolute path to fetch the articles
-        const response = await fetch(`articles/${fileName}`);
+        const baseUrl = document.querySelector('base').getAttribute('href');
+        const response = await fetch(`${baseUrl}articles/${fileName}`);
         if (!response.ok) {
             throw new Error(`Статья не найдена (статус: ${response.status})`);
         }
