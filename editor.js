@@ -15,7 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function updatePreview() {
         const markdownText = editor.value;
         preview.innerHTML = marked.parse(markdownText);
-        Prism.highlightAll(); // Подсветка синтаксиса
+        setTimeout(() => {
+            Prism.highlightAll();
+        }, 0);
     }
 
     // Обработчик ввода в редакторе
@@ -65,14 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function sendDraft(draftData) {
         try {
             const subject = encodeURIComponent(`Черновик статьи: ${draftData.title}`);
-            const body = encodeURIComponent(`
-Заголовок: ${draftData.title}
-
-Теги: ${draftData.tags.join(', ')}
-
-Содержание:
-${draftData.content}
-            `);
+            const body = encodeURIComponent(`Заголовок: ${draftData.title}\nТеги: ${draftData.tags.join(', ')}\n\nСодержание:\n${draftData.content}`);
 
             window.location.href = `mailto:${draftData.email}?subject=${subject}&body=${body}`;
         } catch (error) {
@@ -117,16 +112,7 @@ ${draftData.content}
     async function sendArticle(articleData) {
         try {
             const subject = encodeURIComponent(`Новая статья: ${articleData.title}`);
-            const body = encodeURIComponent(`
-От: ${articleData.authorEmail || 'Аноним'}
-
-Заголовок: ${articleData.title}
-
-Теги: ${articleData.tags.join(', ')}
-
-Содержание:
-${articleData.content}
-            `);
+            const body = encodeURIComponent(`От: ${articleData.authorEmail || 'Аноним'}\nЗаголовок: ${articleData.title}\nТеги: ${articleData.tags.join(', ')}\n\nСодержание:\n${articleData.content}`);
 
             window.location.href = `mailto:frogeesoft.team@gmail.com?subject=${subject}&body=${body}`;
         } catch (error) {

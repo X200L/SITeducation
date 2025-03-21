@@ -291,17 +291,21 @@
         height: auto;
     }
 
-    .editor-column, .preview-column {
-        height: 300px;
+    .editor-column,
+    .preview-column {
+        height: auto; /* Автоматическая высота */
     }
 
     .editor-label {
         padding: 0.4rem;
     }
 
-    #markdown-editor, #preview {
+    #markdown-editor,
+    #preview {
         padding: 2.5rem 0.8rem 0.8rem;
         font-size: 0.85rem;
+        height: auto; /* Автоматическая высота */
+        min-height: 200px; /* Минимальная высота для удобства редактирования */
     }
 
     .editor-footer {
