@@ -36,25 +36,25 @@
                 <div class="editor-header">
                     <input type="text" id="article-title" placeholder="Заголовок статьи" class="title-input">
                     <div class="editor-tools">
-                        <button class="tool-button" title="Жирный текст" onclick="insertMarkdown('**', '**')">
+                        <button class="tool-button" title="Жирный текст" aria-label="Жирный текст" onclick="insertMarkdown('**', '**')">
                             <i class="fas fa-bold"></i>
                         </button>
-                        <button class="tool-button" title="Курсив" onclick="insertMarkdown('*', '*')">
+                        <button class="tool-button" title="Курсив" aria-label="Курсив" onclick="insertMarkdown('*', '*')">
                             <i class="fas fa-italic"></i>
                         </button>
-                        <button class="tool-button" title="Заголовок" onclick="insertMarkdown('## ', '')">
+                        <button class="tool-button" title="Заголовок" aria-label="Заголовок" onclick="insertMarkdown('## ', '')">
                             <i class="fas fa-heading"></i>
                         </button>
-                        <button class="tool-button" title="Ссылка" onclick="insertMarkdown('[', '](url)')">
+                        <button class="tool-button" title="Ссылка" aria-label="Ссылка" onclick="insertMarkdown('[', '](url)')">
                             <i class="fas fa-link"></i>
                         </button>
-                        <button class="tool-button" title="Код" onclick="insertMarkdown('```\n', '\n```')">
+                        <button class="tool-button" title="Код" aria-label="Код" onclick="insertMarkdown('```\n', '\n```')">
                             <i class="fas fa-code"></i>
                         </button>
-                        <button class="tool-button" title="Список" onclick="insertMarkdown('- ', '')">
+                        <button class="tool-button" title="Список" aria-label="Список" onclick="insertMarkdown('- ', '')">
                             <i class="fas fa-list-ul"></i>
                         </button>
-                        <button class="tool-button" title="Изображение" onclick="insertMarkdown('![alt text](', ')')">
+                        <button class="tool-button" title="Изображение" aria-label="Изображение" onclick="insertMarkdown('![alt text](', ')')">
                             <i class="fas fa-image"></i>
                         </button>
                     </div>
