@@ -7,51 +7,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const tags = new Set();
     const draftButton = document.getElementById('draft-button');
     const emailInput = document.getElementById('email-input');
-
-    // Инициализация EmailJS с публичным ключом
-    emailjs.init("YOUR_PUBLIC_KEY"); // Замените на ваш публичный ключ
+    const articleTitleInput = document.getElementById('article-title');
 
     // Функция для обновления предпросмотра
     function updatePreview() {
-        const markdownText = editor.value;
-        preview.innerHTML = marked.parse(markdownText);
-        setTimeout(() => {
+        if (editor && preview) {
+            const markdownText = editor.value;
+            const html = marked.parse(markdownText);
+            preview.innerHTML = html;
             Prism.highlightAll();
-        }, 0);
+        }
     }
 
     // Обработчик ввода в редакторе
     editor.addEventListener('input', updatePreview);
 
     // Функция для вставки Markdown разметки
-    window.insertMarkdown = function(prefix, suffix) {
-        const start = editor.selectionStart;
-        const end = editor.selectionEnd;
-        const text = editor.value;
-        const selection = text.substring(start, end);
-        
-        const newText = text.substring(0, start) + prefix + selection + suffix + text.substring(end);
-        editor.value = newText;
-        
-        editor.focus();
-        editor.selectionStart = start + prefix.length;
-        editor.selectionEnd = end + prefix.length;
-        
-        updatePreview();
+    window.insertMarkdown = function(start, end) {
+        const textarea = document.getElementById('markdown-editor');
+        if (textarea) {
+            const startPos = textarea.selectionStart;
+            const endPos = textarea.selectionEnd;
+            const selectedText = textarea.value.substring(startPos, endPos);
+            const newText = start + selectedText + end;
+            textarea.value = textarea.value.substring(0, startPos) + newText + textarea.value.substring(endPos, textarea.value.length);
+            textarea.focus();
+            textarea.selectionStart = startPos + start.length;
+            textarea.selectionEnd = startPos + start.length + selectedText.length;
+            updatePreview();
+        }
     };
 
     // Обработка тегов
     tagInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && tagInput.value.trim()) {
-            const tag = tagInput.value.trim();
-            if (!tags.has(tag)) {
-                tags.add(tag);
-                const tagElement = document.createElement('span');
-                tagElement.className = 'tag';
-                tagElement.innerHTML = `
-                    ${tag}
-                    <span class="tag-remove" onclick="this.parentElement.remove()">×</span>
-                `;
+        if (e.key === 'Enter' && tagInput.value.trim() !== '') {
+            e.preventDefault();
+            const tagText = tagInput.value.trim();
+            if (!tags.has(tagText)) {
+                tags.add(tagText);
+                const tagElement = document.createElement('div');
+                tagElement.classList.add('tag');
+                tagElement.textContent = tagText;
                 tagsContainer.appendChild(tagElement);
                 tagInput.value = '';
             }
@@ -67,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function sendDraft(draftData) {
         try {
             const subject = encodeURIComponent(`Черновик статьи: ${draftData.title}`);
-            const body = encodeURIComponent(`Заголовок: ${draftData.title}\nТеги: ${draftData.tags.join(', ')}\n\nСодержание:\n${draftData.content}`);
+            const body = encodeURIComponent(`Заголовок: ${draftData.title}\nТеги: ${Array.from(draftData.tags).join(', ')}\n\nСодержание:\n${draftData.content}`);
 
             window.location.href = `mailto:${draftData.email}?subject=${subject}&body=${body}`;
         } catch (error) {
@@ -79,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Обработчик нажатия на кнопку сохранения черновика
     draftButton.addEventListener('click', () => {
         const email = emailInput.value.trim();
-        const title = document.getElementById('article-title').value.trim();
+        const title = articleTitleInput.value.trim();
         const content = editor.value.trim();
         const currentTags = Array.from(tags);
 
@@ -112,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function sendArticle(articleData) {
         try {
             const subject = encodeURIComponent(`Новая статья: ${articleData.title}`);
-            const body = encodeURIComponent(`От: ${articleData.authorEmail || 'Аноним'}\nЗаголовок: ${articleData.title}\nТеги: ${articleData.tags.join(', ')}\n\nСодержание:\n${articleData.content}`);
+            const body = encodeURIComponent(`От: ${articleData.authorEmail || 'Аноним'}\nЗаголовок: ${articleData.title}\nТеги: ${Array.from(articleData.tags).join(', ')}\n\nСодержание:\n${articleData.content}`);
 
             window.location.href = `mailto:frogeesoft.team@gmail.com?subject=${subject}&body=${body}`;
         } catch (error) {
@@ -123,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Обновленный обработчик публикации
     publishButton.addEventListener('click', () => {
-        const title = document.getElementById('article-title').value.trim();
+        const title = articleTitleInput.value.trim();
         const content = editor.value.trim();
         const currentTags = Array.from(tags);
         const authorEmail = emailInput.value.trim();
