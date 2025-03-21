@@ -45,7 +45,8 @@ const articlesInfo = [
 // Функция для загрузки содержимого статьи
 async function loadArticleContent(fileName) {
     try {
-        const response = await fetch(`/articles/${fileName}`);
+        // Use an absolute path to fetch the articles
+        const response = await fetch(`${window.location.origin}/articles/${fileName}`);
         if (!response.ok) {
             throw new Error(`Статья не найдена (статус: ${response.status})`);
         }

@@ -705,4 +705,38 @@ body:not(.articles-page) {
     --border-color: #2d3748;
     --tag-bg: #2d3748;
     --tag-text: #e2e8f0;
+}
+
+/* Стили для страницы статей */
+.articles-page {
+    background: var(--bg-color);
+    min-height: 100vh;
+}
+
+/* Добавим стили для footer */
+footer {
+    background: var(--sidebar-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid var(--border-color);
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--link-color);
 } 
