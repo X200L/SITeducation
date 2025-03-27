@@ -1,5 +1,5 @@
 // Информация о статьях
-const articlesInfo = [
+ const articlesInfo = [
     {
         id: 1,
         file: 'articles/vscode-plugins.md',
@@ -39,6 +39,26 @@ const articlesInfo = [
         likes: 0,
         tags: ['JavaScript', 'Web', 'Туториал'],
         preview: 'Пошаговый туториал по созданию веб-приложения для заметок с использованием современных технологий.'
+    },
+    {
+        id: 5,
+        file: 'git-basics.md',
+        title: 'Системы контроля версий',
+        author: 'S.I.T Education',
+        date: '2025-03-27',
+        likes: 0,
+        tags: ['Продуктивность', 'Туториал', 'Git'],
+        preview: 'Основы систем контроля версий Git и их использование в разработке.'
+    },
+    {
+        id: 6,
+        file: 'responsive-design-ru.md',
+        title: 'Адаптивный дизайн',
+        author: 'S.I.T Education',
+        date: '2025-03-27',
+        likes: 0,
+        tags: ['Дизайн', 'Туториал', 'Web'],
+        preview: 'Основы адаптивной верстки и создания отзывчивых веб-сайтов.'
     }
 ];
 
