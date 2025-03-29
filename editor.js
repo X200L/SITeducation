@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const draftButton = document.getElementById('draft-button');
     const emailInput = document.getElementById('email-input');
     const articleTitleInput = document.getElementById('article-title');
+    const downloadButton = document.getElementById('download-button');
 
     // Функция для обновления предпросмотра
     function updatePreview() {
@@ -138,6 +139,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Отправляем статью на почту команды
         sendArticle(articleData);
+    });
+
+    // Функция для скачивания статьи
+    function downloadArticle(filename, text) {
+        const element = document.createElement('a');
+        element.setAttribute('href', 'data:text/markdown;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+    }
+
+    // Обработчик нажатия на кнопку скачивания
+    downloadButton.addEventListener('click', () => {
+        const title = articleTitleInput.value.trim();
+        const content = editor.value.trim();
+        const tagsArray = Array.from(tags);
+        const filename = title.replace(/[^a-z0-9]+/gi, '-').toLowerCase() + '.md';
+
+        let markdownContent = `# ${title}\n\n`;
+        markdownContent += `**Теги:** ${tagsArray.join(', ')}\n\n`;
+        markdownContent += content;
+
+        downloadArticle(filename, markdownContent);
     });
 
     // Добавим пример текста в редактор

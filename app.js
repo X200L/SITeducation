@@ -87,21 +87,52 @@ async function showFullArticle(articleId) {
     
     articlesContainer.innerHTML = `
         <div class="full-article">
-            <h1>${article.title}</h1>
-            <div class="article-meta">
-                <span>${article.author}</span>
-                <span>${article.date}</span>
-                <span>❤️ ${article.likes}</span>
+            <div class="article-header">
+                <h1>${article.title}</h1>
+                <div class="article-meta">
+                    <span><i class="fas fa-user"></i> ${article.author}</span>
+                    <span><i class="fas fa-calendar"></i> ${article.date}</span>
+                    <span><i class="fas fa-heart"></i> ${article.likes}</span>
+                </div>
+                <div class="tags">
+                    ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
             </div>
             <div class="article-content">
                 ${marked.parse(content)}
             </div>
-            <button onclick="showArticlesList()" class="back-button">← Назад к списку</button>
+            <div class="article-actions">
+                <button onclick="showArticlesList()" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Назад к списку
+                </button>
+                <button onclick="shareArticle(${article.id})" class="share-button">
+                    <i class="fas fa-share-alt"></i> Поделиться
+                </button>
+            </div>
         </div>
     `;
 
+    // Обработка изображений для адаптивности
+    document.querySelectorAll('.article-content img').forEach(img => {
+        img.classList.add('responsive-img');
+        // Оборачиваем изображение в контейнер для лучшего контроля
+        const wrapper = document.createElement('div');
+        wrapper.className = 'img-wrapper';
+        img.parentNode.insertBefore(wrapper, img);
+        wrapper.appendChild(img);
+    });
+
+    // Обработка таблиц для адаптивности
+    document.querySelectorAll('.article-content table').forEach(table => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'table-wrapper';
+        table.parentNode.insertBefore(wrapper, table);
+        wrapper.appendChild(table);
+    });
+
     // Подсветка синтаксиса для кода
     document.querySelectorAll('pre code').forEach((block) => {
+        block.classList.add('responsive-code');
         Prism.highlightElement(block);
     });
 }
@@ -216,17 +247,19 @@ function renderFilteredArticles(articles) {
 
     articlesContainer.innerHTML = articles.map(article => `
         <div class="article-card" onclick="showFullArticle(${article.id})">
-            <h2 class="article-title">${article.title}</h2>
-            <div class="article-preview">
-                <p>${article.preview}</p>
-            </div>
-            <div class="tags">
-                ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-            </div>
-            <div class="article-meta">
-                <span>${article.author}</span>
-                <span>${article.date}</span>
-                <span>❤️ ${article.likes}</span>
+            <div class="article-card-content">
+                <h2 class="article-title">${article.title}</h2>
+                <div class="article-preview">
+                    <p>${article.preview}</p>
+                </div>
+                <div class="tags">
+                    ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+                <div class="article-meta">
+                    <span><i class="fas fa-user"></i> ${article.author}</span>
+                    <span><i class="fas fa-calendar"></i> ${article.date}</span>
+                    <span><i class="fas fa-heart"></i> ${article.likes}</span>
+                </div>
             </div>
         </div>
     `).join('');
@@ -258,6 +291,22 @@ function debounce(func, wait) {
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
+}
+
+// Функция для отправки ссылки на статью
+async function shareArticle(articleId) {
+    const article = articlesInfo.find(a => a.id === articleId);
+    if (!article) return;
+
+    const articleUrl = `${window.location.origin}/articles.html?article=${articleId}`;
+
+    try {
+        await navigator.clipboard.writeText(articleUrl);
+        alert('Ссылка скопирована в буфер обмена!');
+    } catch (err) {
+        console.error('Не удалось скопировать ссылку: ', err);
+        alert('Не удалось скопировать ссылку. Пожалуйста, попробуйте вручную: ' + articleUrl);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', initializePage); 
