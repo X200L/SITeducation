@@ -2,7 +2,7 @@
  const articlesInfo = [
     {
         id: 1,
-        file: 'articles/vscode-plugins.md',
+        file: 'vscode-plugins.md',
         title: 'VS Code: Полезные плагины и симуляторы',
         author: 'S.I.T Education',
         date: '2024-03-20',
@@ -12,7 +12,7 @@
     },
     {
         id: 2,
-        file: 'articles/obsidian-guide.md',
+        file: 'obsidian-guide.md',
         title: 'Obsidian: Твой личный центр знаний',
         author: 'S.I.T Education',
         date: '2024-03-24',
@@ -22,7 +22,7 @@
     },
     {
         id: 3,
-        file: 'articles/arduino-sensors.md',
+        file: 'arduino-sensors.md',
         title: 'Работа с сенсорами Arduino',
         author: 'S.I.T Education',
         date: '2024-03-25',
@@ -32,7 +32,7 @@
     },
     {
         id: 4,
-        file: 'articles/notes-app-tutorial.md',
+        file: 'notes-app-tutorial.md',
         title: 'Создаем приложение для заметок',
         author: 'S.I.T Education',
         date: '2024-03-26',
@@ -62,79 +62,129 @@
     }
 ];
 
-// Функция загрузки содержимого статьи
+// Функция для загрузки содержимого статьи
 async function loadArticleContent(fileName) {
     try {
-        const response = await fetch(fileName);
+        // Use an absolute path to fetch the articles
+        const response = await fetch(`../articles/${fileName}`);
         if (!response.ok) {
             throw new Error(`Статья не найдена (статус: ${response.status})`);
         }
         return await response.text();
     } catch (error) {
         console.error('Ошибка загрузки статьи:', error);
-        return `# Ошибка загрузки статьи\n\nК сожалению, не удалось загрузить статью. Пожалуйста, попробуйте позже.\n\n**Техническая информация:** ${error.message}`;
+        return `# Ошибка загрузки статьи\n\nК сожалению, не удалось загрузить статью. Пожалуйста, попробуйте позже.\n\nТехническая информация: ${error.message}`;
     }
 }
 
-// Функция отображения полной статьи
+// Функция для отображения полной статьи
 async function showFullArticle(articleId) {
     const article = articlesInfo.find(a => a.id === articleId);
     if (!article) return;
 
     const content = await loadArticleContent(article.file);
     const articlesContainer = document.querySelector('.articles');
-
+    
     articlesContainer.innerHTML = `
         <div class="full-article">
-            <h1>${article.title}</h1>
-            <div class="article-meta">
-                <span>${article.author}</span>
-                <span>${article.date}</span>
-                <span>❤️ ${article.likes}</span>
-            </div>
-            <div class="article-content">
-                ${marked.parse(content)}
-            </div>
-            <button onclick="showArticlesList()" class="back-button">← Назад к списку</button>
-        </div>
-    `;
-}
-
-// Функция возврата к списку статей
-function showArticlesList() {
-    renderArticles();
-}
-
-// Функция рендеринга списка статей
-function renderArticles() {
-    const articlesContainer = document.querySelector('.articles');
-    if (!articlesContainer) return;
-    
-    articlesContainer.innerHTML = '<div class="loading">Загрузка статей...</div>';
-    
-    setTimeout(() => {
-        articlesContainer.innerHTML = articlesInfo.map(article => `
-            <div class="article-card" onclick="showFullArticle(${article.id})">
-                <h2 class="article-title">${article.title}</h2>
-                <div class="article-preview">
-                    <p>${article.preview}</p>
+            <div class="article-header">
+                <h1>${article.title}</h1>
+                <div class="article-meta">
+                    <span><i class="fas fa-user"></i> ${article.author}</span>
+                    <span><i class="fas fa-calendar"></i> ${article.date}</span>
+                    <span><i class="fas fa-heart"></i> ${article.likes}</span>
                 </div>
                 <div class="tags">
                     ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                 </div>
-                <div class="article-meta">
-                    <span>${article.author}</span>
-                    <span>${article.date}</span>
-                    <span>❤️ ${article.likes}</span>
-                </div>
             </div>
-        `).join('');
-    }, 500);
+            <div class="article-content">
+                ${marked.parse(content)}
+            </div>
+            <div class="article-actions">
+                <button onclick="showArticlesList()" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Назад к списку
+                </button>
+                <button onclick="shareArticle(${article.id})" class="share-button">
+                    <i class="fas fa-share-alt"></i> Поделиться
+                </button>
+            </div>
+        </div>
+    `;
+
+    // Обработка изображений для адаптивности
+    document.querySelectorAll('.article-content img').forEach(img => {
+        img.classList.add('responsive-img');
+        // Оборачиваем изображение в контейнер для лучшего контроля
+        const wrapper = document.createElement('div');
+        wrapper.className = 'img-wrapper';
+        img.parentNode.insertBefore(wrapper, img);
+        wrapper.appendChild(img);
+    });
+
+    // Обработка таблиц для адаптивности
+    document.querySelectorAll('.article-content table').forEach(table => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'table-wrapper';
+        table.parentNode.insertBefore(wrapper, table);
+        wrapper.appendChild(table);
+    });
+
+    // Подсветка синтаксиса для кода
+    document.querySelectorAll('pre code').forEach((block) => {
+        block.classList.add('responsive-code');
+        Prism.highlightElement(block);
+    });
 }
 
-// Функция поиска статей
+// Функция для возврата к списку статей
+function showArticlesList() {
+    const articlesContainer = document.querySelector('.articles');
+    articlesContainer.innerHTML = '';
+    renderArticles();
+}
+
+// Функция для рендеринга списка статей
+async function renderArticles() {
+    const articlesContainer = document.querySelector('.articles');
+    articlesContainer.innerHTML = '<div class="loading">Загрузка статей...</div>';
+
+    try {
+        for (const article of articlesInfo) {
+            const articleHtml = `
+                <div class="article-card" onclick="showFullArticle(${article.id})">
+                    <h2 class="article-title">${article.title}</h2>
+                    <div class="article-preview">
+                        <p>${article.preview}</p>
+                    </div>
+                    <div class="tags">
+                        ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                    <div class="article-meta">
+                        <span>${article.author}</span>
+                        <span>${article.date}</span>
+                        <span>❤️ ${article.likes}</span>
+                    </div>
+                </div>
+            `;
+            articlesContainer.innerHTML += articleHtml;
+        }
+    } catch (error) {
+        articlesContainer.innerHTML = `
+            <div class="error-message">
+                <h2>Ошибка загрузки статей</h2>
+                <p>${error.message}</p>
+                <button onclick="renderArticles()">Попробовать снова</button>
+            </div>
+        `;
+    }
+}
+
+// Функция для поиска статей
 function searchArticles(query) {
-    if (!query) return articlesInfo;
+    if (!query) {
+        return articlesInfo;
+    }
     
     query = query.toLowerCase();
     return articlesInfo.filter(article => {
@@ -145,18 +195,16 @@ function searchArticles(query) {
     });
 }
 
-// Функция отображения уникальных тегов
+// Функция для отображения уникальных тегов
 function renderTagFilters() {
     const filterContainer = document.querySelector('.filter-tags');
-    if (!filterContainer) return;
-    
     const uniqueTags = [...new Set(articlesInfo.flatMap(article => article.tags))];
-
+    
     filterContainer.innerHTML = uniqueTags.map(tag => `
         <span class="tag filter-tag" data-tag="${tag}">${tag}</span>
     `).join('');
 
-    // Добавляем обработчики кликов
+    // Добавляем обработчики для тегов
     document.querySelectorAll('.filter-tag').forEach(tag => {
         tag.addEventListener('click', (e) => {
             e.target.classList.toggle('active');
@@ -167,13 +215,13 @@ function renderTagFilters() {
 
 // Функция обновления результатов поиска
 function updateSearch() {
-    const searchQuery = document.getElementById('searchInput')?.value || "";
+    const searchQuery = document.getElementById('searchInput').value;
     const activeFilters = Array.from(document.querySelectorAll('.filter-tag.active'))
         .map(tag => tag.dataset.tag);
     
     let filteredArticles = searchArticles(searchQuery);
 
-    // Фильтрация по тегам
+    // Применяем фильтрацию по тегам
     if (activeFilters.length > 0) {
         filteredArticles = filteredArticles.filter(article =>
             activeFilters.every(filter => article.tags.includes(filter))
@@ -183,12 +231,10 @@ function updateSearch() {
     renderFilteredArticles(filteredArticles);
 }
 
-// Функция отображения отфильтрованных статей
+// Функция для отображения отфильтрованных статей
 function renderFilteredArticles(articles) {
     const articlesContainer = document.querySelector('.articles');
     
-    if (!articlesContainer) return;
-
     if (articles.length === 0) {
         articlesContainer.innerHTML = `
             <div class="no-results">
@@ -201,24 +247,66 @@ function renderFilteredArticles(articles) {
 
     articlesContainer.innerHTML = articles.map(article => `
         <div class="article-card" onclick="showFullArticle(${article.id})">
-            <h2 class="article-title">${article.title}</h2>
-            <div class="article-preview">
-                <p>${article.preview}</p>
-            </div>
-            <div class="tags">
-                ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-            </div>
-            <div class="article-meta">
-                <span>${article.author}</span>
-                <span>${article.date}</span>
-                <span>❤️ ${article.likes}</span>
+            <div class="article-card-content">
+                <h2 class="article-title">${article.title}</h2>
+                <div class="article-preview">
+                    <p>${article.preview}</p>
+                </div>
+                <div class="tags">
+                    ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+                <div class="article-meta">
+                    <span><i class="fas fa-user"></i> ${article.author}</span>
+                    <span><i class="fas fa-calendar"></i> ${article.date}</span>
+                    <span><i class="fas fa-heart"></i> ${article.likes}</span>
+                </div>
             </div>
         </div>
     `).join('');
 }
 
-// Инициализация страницы
-document.addEventListener('DOMContentLoaded', () => {
-    renderTagFilters();
-    renderArticles();
-});
+// Обновляем функцию инициализации
+function initializePage() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    if (window.location.pathname.includes('articles.html')) {
+        renderTagFilters();
+        renderArticles();
+
+        // Добавляем обработчик поиска
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', debounce(updateSearch, 300));
+    }
+}
+
+// Утилита для debounce
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Функция для отправки ссылки на статью
+async function shareArticle(articleId) {
+    const article = articlesInfo.find(a => a.id === articleId);
+    if (!article) return;
+
+    const articleUrl = `${window.location.origin}/articles.html?article=${articleId}`;
+
+    try {
+        await navigator.clipboard.writeText(articleUrl);
+        alert('Ссылка скопирована в буфер обмена!');
+    } catch (err) {
+        console.error('Не удалось скопировать ссылку: ', err);
+        alert('Не удалось скопировать ссылку. Пожалуйста, попробуйте вручную: ' + articleUrl);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', initializePage); 
