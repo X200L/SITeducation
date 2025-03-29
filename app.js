@@ -5,7 +5,7 @@
         file: 'vscode-plugins.md',
         title: 'VS Code: Полезные плагины и симуляторы',
         author: 'S.I.T Education',
-        date: '2024-03-20',
+        date: '2025-03-20',
         likes: 0,
         tags: ['VS Code', 'Разработка', 'Инструменты'],
         preview: 'Подборка самых полезных плагинов для VS Code и обзор симуляторов для тестирования кода.'
@@ -15,7 +15,7 @@
         file: 'obsidian-guide.md',
         title: 'Obsidian: Твой личный центр знаний',
         author: 'S.I.T Education',
-        date: '2024-03-24',
+        date: '2025-03-24',
         likes: 0,
         tags: ['Obsidian', 'Продуктивность', 'Markdown'],
         preview: 'Полное руководство по Obsidian: плагины, Markdown, методы организации заметок и продвинутые техники.'
@@ -25,7 +25,7 @@
         file: 'arduino-sensors.md',
         title: 'Работа с сенсорами Arduino',
         author: 'S.I.T Education',
-        date: '2024-03-25',
+        date: '2025-03-25',
         likes: 0,
         tags: ['Arduino', 'Электроника', 'DIY'],
         preview: 'Практическое руководство по подключению и программированию различных сенсоров для Arduino.'
@@ -35,7 +35,7 @@
         file: 'notes-app-tutorial.md',
         title: 'Создаем приложение для заметок',
         author: 'S.I.T Education',
-        date: '2024-03-26',
+        date: '2025-03-26',
         likes: 0,
         tags: ['JavaScript', 'Web', 'Туториал'],
         preview: 'Пошаговый туториал по созданию веб-приложения для заметок с использованием современных технологий.'
