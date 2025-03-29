@@ -58,7 +58,7 @@ nav {
 
 .container {
     max-width: 1200px;
-    margin: 2rem auto;
+    margin: 0 auto 2rem;
     padding: 0 1rem;
     position: relative;
     z-index: 1;
@@ -206,9 +206,10 @@ nav {
         var(--bg-color) 0%,
         rgba(255, 255, 255, 0) 100%
     );
-    padding: 2rem 0;
+    padding: 3rem 0;
     text-align: center;
     border-bottom: 1px solid var(--border-color);
+    margin-bottom: 3rem;
 }
 
 .hero-section h1 {
@@ -228,7 +229,7 @@ nav {
 .hero-decoration {
     font-size: 2rem;
     color: var(--accent-color);
-    margin-top: 2rem;
+    margin: 2rem 0;
 }
 
 .hero-decoration i {
@@ -242,7 +243,7 @@ nav {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     max-width: 1200px;
-    margin: -3rem auto 0;
+    margin: 0 auto;
     padding: 0 1rem;
     position: relative;
 }
@@ -324,6 +325,7 @@ nav {
     /* Главная страница */
     .hero-section {
         padding: 2rem 0;
+        margin-bottom: 2rem;
     }
 
     .hero-section h1 {
@@ -345,10 +347,8 @@ nav {
     }
 
     .main-buttons {
-        margin-top: 1rem;
-        grid-template-columns: 1fr;
         gap: 1rem;
-        padding: 1rem;
+        padding: 0.5rem;
     }
 
     .button-content {
@@ -720,10 +720,9 @@ footer {
     text-align: center;
     padding: 20px 0;
     border-top: 1px solid var(--border-color);
-    position: fixed;
-    z-index: 10;
-    bottom: 0;
+    position: relative;
     width: 100%;
+    margin-top: 2rem;
 }
 
 footer p {
@@ -739,4 +738,314 @@ footer a {
 
 footer a:hover {
     color: var(--link-color);
+}
+
+/* Team Page Styles */
+.team-title {
+    text-align: center;
+    margin: 2rem 0 1rem;
+    font-size: 2.5rem;
+    color: var(--text-primary);
+}
+
+.team-description {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.team-member {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+}
+
+.member-photo {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover .member-photo img {
+    transform: scale(1.05);
+}
+
+.member-info {
+    padding: 1.5rem;
+}
+
+.member-info h2 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+}
+
+.member-role {
+    color: var(--accent-color);
+    font-weight: 500;
+    margin: 0.5rem 0;
+}
+
+.member-bio {
+    color: var(--text-secondary);
+    margin: 1rem 0;
+    line-height: 1.6;
+}
+
+.member-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.social-link:hover {
+    background: var(--accent-color-dark);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .team-title {
+        font-size: 2rem;
+    }
+    
+    .member-photo {
+        height: 250px;
+    }
+}
+
+/* Projects Page Styles */
+.projects-page {
+    background: var(--bg-color);
+    min-height: 100vh;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    color: white;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.project-status.completed {
+    background: #28a745;
+}
+
+.project-status.in-progress {
+    background: #ffc107;
+}
+
+.project-status.active {
+    background: #007bff;
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-content h2 {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.project-description {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tech-tag {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.project-link:hover {
+    background: var(--link-color);
+}
+
+/* Responsive adjustments for projects page */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .project-content {
+        padding: 1rem;
+    }
+
+    .project-content h2 {
+        font-size: 1.3rem;
+    }
+
+    .project-links {
+        flex-direction: column;
+    }
+
+    .project-link {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .project-card {
+        margin-bottom: 1rem;
+    }
+
+    main {
+        padding-bottom: 1rem;
+    }
+}
+
+/* Добавляем отступ для основного контента */
+main {
+    min-height: calc(100vh - 180px);
+    padding-bottom: 2rem;
+}
+
+/* Стили для блока "О нас" */
+.about-us {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--card-shadow);
+}
+
+.about-us h2 {
+    color: var(--heading-color);
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.about-us p {
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Адаптивность для блока "О нас" */
+@media (max-width: 768px) {
+    .about-us {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .about-us h2 {
+        font-size: 1.5rem;
+    }
+
+    .about-us p {
+        font-size: 0.9rem;
+    }
 } 

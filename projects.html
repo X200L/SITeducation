@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#007acc">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Проекты - S.I.T Education</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="theme.js"></script>
+</head>
+<body class="projects-page">
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-microchip"></i>
+                S.I.T Education
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="articles.html">Статьи</a>
+                <a href="projects.html" class="active">Проекты</a>
+                <a href="team.html">Команда</a>
+                <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="hero-section">
+            <h1>Наши проекты</h1>
+            <p class="hero-subtitle">Исследования, разработки и достижения команды S.I.T Education</p>
+        </div>
+
+        <div class="container">
+            <div class="projects-grid">
+                <!-- Проект 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="projectImages/mainPBDA.png" alt="PBDA">
+                        <div class="project-status completed">
+                            <i class="fas fa-check-circle"></i> Завершён
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h2>PBDA</h2>
+                        <p class="project-description">
+                            PBDA
+                            PBDA - Preliminary Big Data Analysis
+                            Программа на питоне с графическим интерфейсом, предназначенная для быстрого предварительного анализа больших данных
+                            </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">python</span>
+                            <span class="tech-tag">bigdata</span>
+                            <span class="tech-tag">dataanalysis</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/ArduRadioKot/PBDA" class="project-link">
+                                <i class="fas fa-code-branch"></i> GitHub
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Проект 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/projectImages/mainAsmos.png" alt="Smart Home">
+                        <div class="project-status in-progress">
+                            <i class="fas fa-clock"></i> В разработке
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h2>AsmOS</h2>
+                        <p class="project-description">
+                            Assembly OS
+                            Эмулятор ассемблера x86 intel для микроконтроллеров, умеет читать программы с СД карты и исполнять их
+                         </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">assembly</span>
+                            <span class="tech-tag">x86 </span>
+                            <span class="tech-tag">Arduino</span>
+                            <span class="tech-tag">esp32</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/GigaProgramm/AsmOS" class="project-link">
+                                <i class="fas fa-code-branch"></i> GitHub
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-tasks"></i> Задачи
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Проект 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/projectImages/mainEduc.png" alt="Education Platform">
+                        <div class="project-status in-progress">
+                            <i class="fas fa-clock"></i> В разработке
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h2>S.I.T Educatiom</h2>
+                        <p class="project-description">
+                            Веб-платформа команды S.I.T с курсами, статьями, проектами и информацией о команде
+                            
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Frontend</span>
+                            <span class="tech-tag">js</span>
+                            <span class="tech-tag">web</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/X200L/SITeducation" class="project-link">
+                                <i class="fas fa-code-branch"></i> GitHub
+                            </a>
+                            <a href="https://x200l.github.io/SITeducation/" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Демо
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 4-->
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="INGT" alt="INGT">
+                        <div class="project-status completed">
+                            <i class="fas fa-check-circle"></i> Завершён
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h2>PBDA</h2>
+                        <p class="project-description">
+                            ingT
+                            Программа на питоне с графическим интерфейсом, предназначена для распознавания эмоций, потности лица, ЧСС и индекса подозрительности человека. Работает под управлением 2 нейросетей обуяеных на основе датасета FER2013 и собственного датасета 
+                            </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">python</span>
+                            <span class="tech-tag">bigdata</span>
+                            <span class="tech-tag">AI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/ArduRadioKot/ingT" class="project-link">
+                                <i class="fas fa-code-branch"></i> GitHub
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/projectImages/mainFGSD.png" alt="Education Platform">
+                        <div class="project-status active">
+                            <i class="fas fa-star"></i> Активный
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h2>FGsDrones</h2>
+                        <p class="project-description">
+                            FrogeeSoft Drones
+                            Проект FGsDrones предназначен для сборки и программирования дронов. Основным инструментом является язык программирования FGD (упрощенная версия FroggeeScript). Это простой полётный контроллер, который можно программировать на этом скриптовом языке, а также управлять вручную. Он работает на базе ESP32.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Arduino</span>
+                            <span class="tech-tag">drones</span>
+                            <span class="tech-tag">esp32</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/ArduRadioKot/FgSdrones" class="project-link">
+                                <i class="fas fa-code-branch"></i> GitHub
+                            </a>
+                            <a href="arduradiokot.github.io/FgSdrones/" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> website
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Все права защищены.</p>
+        <p>
+            Свяжитесь с нами: <a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a> |
+            <a href="https://github.com/X200L/SITeducation" target="_blank">website source</a>
+        </p>
+    </footer>
+</body>
+</html> 

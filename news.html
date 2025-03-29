@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#007acc">
+    <title>Новости S.I.T Education</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="theme.js"></script>
+</head>
+<body class="news-page">
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-microchip"></i>
+                S.I.T Education
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="news.html" class="active">Новости</a>
+                <a href="articles.html">Статьи</a>
+                <a href="team.html">Команда</a>
+                <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="news-title">Новости проекта</h1>
+            <div class="news-filters">
+                <input type="text" id="searchNews" class="search-input" placeholder="Поиск новостей...">
+                <div class="filter-tags" id="newsCategories">
+                    <button class="filter-tag active" data-category="all">Все</button>
+                    <button class="filter-tag" data-category="updates">Обновления</button>
+                    <button class="filter-tag" data-category="events">События</button>
+                    <button class="filter-tag" data-category="releases">Релизы</button>
+                </div>
+            </div>
+            
+            <div id="newsList" class="news-grid">
+                <!-- Новости будут загружаться сюда динамически -->
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    Загрузка новостей...
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Все права защищены.</p>
+        <p>
+            Свяжитесь с нами: <a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a> |
+            <a href="https://github.com/X200L/SITeducation" target="_blank">website source</a>
+        </p>
+    </footer>
+
+    <script>
+        class NewsManager {
+            constructor() {
+                this.newsContainer = document.getElementById('newsList');
+                this.searchInput = document.getElementById('searchNews');
+                this.categoryButtons = document.querySelectorAll('.filter-tag');
+                this.currentCategory = 'all';
+                this.newsItems = [];
+
+                this.init();
+            }
+
+            async init() {
+                await this.loadNews();
+                this.setupEventListeners();
+            }
+
+            async loadNews() {
+                try {
+                    const response = await fetch('news/index.json');
+                    const newsIndex = await response.json();
+                    this.newsItems = newsIndex;
+                    this.renderNews(this.newsItems);
+                } catch (error) {
+                    console.error('Ошибка загрузки новостей:', error);
+                    this.showError();
+                }
+            }
+
+            setupEventListeners() {
+                this.searchInput.addEventListener('input', () => this.filterNews());
+                
+                this.categoryButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        this.categoryButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        this.currentCategory = button.dataset.category;
+                        this.filterNews();
+                    });
+                });
+            }
+
+            filterNews() {
+                const searchQuery = this.searchInput.value.toLowerCase();
+                const filteredNews = this.newsItems.filter(news => {
+                    const matchesSearch = news.title.toLowerCase().includes(searchQuery) ||
+                                        news.preview.toLowerCase().includes(searchQuery);
+                    const matchesCategory = this.currentCategory === 'all' || 
+                                          news.category === this.currentCategory;
+                    return matchesSearch && matchesCategory;
+                });
+
+                this.renderNews(filteredNews);
+            }
+
+            async loadNewsContent(filename) {
+                try {
+                    const response = await fetch(`news/${filename}`);
+                    const content = await response.text();
+                    return marked.parse(content);
+                } catch (error) {
+                    console.error('Ошибка загрузки содержимого новости:', error);
+                    return 'Ошибка загрузки содержимого';
+                }
+            }
+
+            renderNews(newsItems) {
+                if (newsItems.length === 0) {
+                    this.newsContainer.innerHTML = `
+                        <div class="no-results">
+                            <h2>Новости не найдены</h2>
+                            <p>Попробуйте изменить параметры поиска</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                this.newsContainer.innerHTML = newsItems.map(news => `
+                    <article class="news-card" data-category="${news.category}">
+                        <div class="news-image">
+                            <img src="${news.image}" alt="${news.title}">
+                        </div>
+                        <div class="news-content">
+                            <h2 class="news-title">${news.title}</h2>
+                            <p class="news-preview">${news.preview}</p>
+                            <div class="news-meta">
+                                <span class="news-date">
+                                    <i class="far fa-calendar"></i>
+                                    ${new Date(news.date).toLocaleDateString('ru-RU')}
+                                </span>
+                                <span class="news-category">
+                                    <i class="fas fa-tag"></i>
+                                    ${news.category}
+                                </span>
+                            </div>
+                            <button class="read-more" onclick="newsManager.showFullNews('${news.filename}')">
+                                Читать далее
+                            </button>
+                        </div>
+                    </article>
+                `).join('');
+            }
+
+            async showFullNews(filename) {
+                const content = await this.loadNewsContent(filename);
+                const modal = document.createElement('div');
+                modal.className = 'news-modal';
+                modal.innerHTML = `
+                    <div class="news-modal-content">
+                        <button class="close-modal" onclick="this.parentElement.parentElement.remove()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <div class="news-full-content">
+                            ${content}
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            }
+
+            showError() {
+                this.newsContainer.innerHTML = `
+                    <div class="error-message">
+                        <h2>Ошибка загрузки новостей</h2>
+                        <p>Пожалуйста, попробуйте позже</p>
+                        <button onclick="newsManager.loadNews()">Повторить попытку</button>
+                    </div>
+                `;
+            }
+        }
+
+        // Инициализация при загрузке страницы
+        let newsManager;
+        document.addEventListener('DOMContentLoaded', () => {
+            newsManager = new NewsManager();
+        });
+    </script>
+
+    <style>
+        /* Стили для страницы новостей */
+        .news-page {
+            padding-bottom: 60px;
+        }
+
+        .news-title {
+            text-align: center;
+            margin: 2rem 0;
+            color: var(--text-color);
+        }
+
+        .news-filters {
+            margin-bottom: 2rem;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-content h2 {
+            margin: 0 0 1rem;
+            color: var(--text-color);
+            font-size: 1.25rem;
+        }
+
+        .news-preview {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .read-more:hover {
+            background: var(--link-color);
+        }
+
+        /* Модальное окно для полной новости */
+        .news-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .news-modal-content {
+            background: var(--card-bg);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .news-modal-content {
+                width: 95%;
+                padding: 1rem;
+            }
+        }
+    </style>
+</body>
+</html> 

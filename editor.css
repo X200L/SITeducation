@@ -346,6 +346,12 @@
         font-size: 0.8rem;
         padding: 0.3rem 0.6rem;
     }
+
+    .download-button {
+        width: 100%;
+        padding: 0.8rem;
+        justify-content: center;
+    }
 }
 
 /* Для очень маленьких экранов */
@@ -462,4 +468,35 @@
 [data-theme="dark"] .editor-wrapper .token.comment { color: #6a9955; }
 [data-theme="dark"] .editor-wrapper .token.function { color: #dcdcaa; }
 [data-theme="dark"] .editor-wrapper .token.number { color: #b5cea8; }
-[data-theme="dark"] .editor-wrapper .token.operator { color: #d4d4d4; } 
+[data-theme="dark"] .editor-wrapper .token.operator { color: #d4d4d4; }
+
+/* Добавим стили для кнопки скачивания */
+.download-button {
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.download-button:hover {
+    background: var(--hover-color);
+    border-color: var(--accent-color);
+}
+
+/* Стили для информации о публикации */
+.publish-info {
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--text-color);
+}
+
+.publish-info a {
+    color: var(--accent-color);
+} 
