@@ -8,19 +8,19 @@
         "image": "news/update2903.png"
     },
     {
-        "filename": "new_js_article.md",
-        "title": "Полное руководство по JavaScript для начинающих",
-        "preview": "Изучите JavaScript с нуля и создавайте интерактивные веб-приложения.",
-        "date": "2024-01-01",
-        "category": "tutorials",
-        "image": "news/javascript_tutorial.png"
-    },
+        "filename": "update-202530.md",
+        "title": "Масштабное обновление контента",
+        "preview": "Добавлено 14 статей, теперь у вас есть 14 причин посетить наш сайт).",
+        "date": "2024-03-30",
+        "category": "updates",
+        "image": "news/update30032.png"
+    }, 
     {
-        "filename": "new_calc_article.md",
-        "title": "Создаем продвинутый веб-калькулятор",
-        "preview": "Создайте свой собственный веб-калькулятор с помощью HTML, CSS и JavaScript.",
-        "date": "2024-01-01",
-        "category": "tutorials",
-        "image": "news/calculator_tutorial.png"
+        "filename": "projects-20250330.md",
+        "title": "Добавлены наши проекты на сайт",
+        "preview": "Мы добавили на сайт наши проекты с описанием и ссылками на исходники",
+        "date": "2024-03-31",
+        "category": "updates",
+        "image": "news/Update3003.png"
     }
 ] 
