@@ -351,8 +351,12 @@ function renderFilteredArticles(articles) {
 // Функция для загрузки новостей
 async function loadLatestNews() {
     try {
-        // Use a relative path to fetch the articles
-        const response = await fetch('news/index.json');
+        // Определяем, находимся ли мы на GitHub Pages
+        const isGitHubPages = window.location.hostname.includes('github.io');
+        // Формируем правильный путь в зависимости от окружения
+        const basePath = isGitHubPages ? '/SITeducation' : '';
+        const response = await fetch(`${basePath}/index.json`);
+        
         if (!response.ok) {
             throw new Error(`Ошибка загрузки новостей (статус: ${response.status})`);
         }
@@ -361,7 +365,15 @@ async function loadLatestNews() {
     } catch (error) {
         console.error('Ошибка загрузки новостей:', error);
         const newsContainer = document.querySelector('.news-container');
-        newsContainer.innerHTML = `<p>Ошибка загрузки новостей: ${error.message}</p>`;
+        newsContainer.innerHTML = `
+            <div class="news-error">
+                <i class="fas fa-newspaper"></i>
+                <p>Новости загружаются...</p>
+                <button onclick="loadLatestNews()" class="retry-button">
+                    Попробовать снова
+                </button>
+            </div>
+        `;
     }
 }
 
