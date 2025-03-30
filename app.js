@@ -348,7 +348,8 @@ async function shareArticle(articleId) {
     const article = articlesInfo.find(a => a.id === articleId);
     if (!article) return;
 
-    const articleUrl = `${window.location.origin}/articles.html?article=${articleId}`;
+    // Construct the article URL using a relative path
+    const articleUrl = `articles.html?article=${articleId}`;
 
     try {
         await navigator.clipboard.writeText(articleUrl);
