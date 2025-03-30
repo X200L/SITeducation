@@ -245,18 +245,14 @@
 
     <script src="app.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            initializePage(); // Вызываем функцию инициализации
+        // Get the article ID from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleId = urlParams.get('article');
 
-            // Get the article ID from the URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const articleId = urlParams.get('article');
-
-            // If an article ID is present, show the full article
-            if (articleId) {
-                showFullArticle(parseInt(articleId));
-            }
-        });
+        // If an article ID is present, show the full article
+        if (articleId) {
+            showFullArticle(parseInt(articleId));
+        }
     </script>
 </body>
 </html> 
