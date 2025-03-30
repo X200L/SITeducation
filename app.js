@@ -178,7 +178,7 @@ async function showFullArticle(articleId) {
                     ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                 </div>
             </div>
-            <div class="article-content">
+            <div class="article-content markdown-body">
                 ${marked.parse(content)}
             </div>
             <div class="article-actions">
@@ -195,7 +195,6 @@ async function showFullArticle(articleId) {
     // Обработка изображений для адаптивности
     document.querySelectorAll('.article-content img').forEach(img => {
         img.classList.add('responsive-img');
-        // Оборачиваем изображение в контейнер для лучшего контроля
         const wrapper = document.createElement('div');
         wrapper.className = 'img-wrapper';
         img.parentNode.insertBefore(wrapper, img);
@@ -210,9 +209,13 @@ async function showFullArticle(articleId) {
         wrapper.appendChild(table);
     });
 
-    // Подсветка синтаксиса для кода
-    document.querySelectorAll('pre code').forEach((block) => {
+    // Обработка блоков кода для адаптивности
+    document.querySelectorAll('.article-content pre code').forEach((block) => {
         block.classList.add('responsive-code');
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-wrapper';
+        block.parentNode.parentNode.insertBefore(wrapper, block.parentNode);
+        wrapper.appendChild(block.parentNode);
         Prism.highlightElement(block);
     });
 }
@@ -348,6 +351,7 @@ function renderFilteredArticles(articles) {
 // Функция для загрузки новостей
 async function loadLatestNews() {
     try {
+        // Use a relative path to fetch the articles
         const response = await fetch('news/index.json');
         if (!response.ok) {
             throw new Error(`Ошибка загрузки новостей (статус: ${response.status})`);

@@ -139,7 +139,9 @@ nav {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 4px;
-    padding: 2rem;
+    padding: 1rem;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .full-article h1 {
@@ -374,7 +376,7 @@ nav {
     }
 
     .full-article {
-        padding: 1rem;
+        padding: 0.5rem;
     }
 
     .full-article h1 {
@@ -400,6 +402,19 @@ nav {
 
     .button-icon {
         margin-right: 0;
+    }
+
+    .full-article {
+        padding: 0.3rem;
+    }
+
+    .article-content.markdown-body {
+        font-size: 13px;
+    }
+
+    .article-content.markdown-body pre {
+        margin: 0.5rem -0.3rem;
+        border-radius: 0;
     }
 }
 
@@ -1047,5 +1062,98 @@ main {
 
     .about-us p {
         font-size: 0.9rem;
+    }
+}
+
+.article-content.markdown-body {
+    font-size: 16px;
+    line-height: 1.6;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+.article-content.markdown-body * {
+    max-width: 100%;
+}
+
+.article-content.markdown-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+}
+
+.article-content.markdown-body pre {
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 1rem;
+    background: var(--code-bg);
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+.article-content.markdown-body code {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.9em;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    background: var(--code-bg);
+}
+
+.article-content.markdown-body pre code {
+    padding: 0;
+    font-size: 0.9em;
+    white-space: pre;
+    word-break: normal;
+    word-wrap: normal;
+}
+
+.code-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 1rem 0;
+    background: var(--code-bg);
+    border-radius: 4px;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    .full-article {
+        padding: 0.5rem;
+    }
+
+    .article-content.markdown-body {
+        font-size: 14px;
+    }
+
+    .article-content.markdown-body h1 {
+        font-size: 1.8em;
+    }
+
+    .article-content.markdown-body h2 {
+        font-size: 1.5em;
+    }
+
+    .article-content.markdown-body h3 {
+        font-size: 1.3em;
+    }
+
+    .article-content.markdown-body pre code {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .full-article {
+        padding: 0.3rem;
+    }
+
+    .article-content.markdown-body {
+        font-size: 13px;
+    }
+
+    .article-content.markdown-body pre {
+        margin: 0.5rem -0.3rem;
+        border-radius: 0;
     }
 } 
