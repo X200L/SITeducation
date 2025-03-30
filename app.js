@@ -109,6 +109,36 @@
         likes: 0,
         tags: ['JavaScript', 'Web', 'Туториал'],
         preview: 'Создание простого веб-приложения To-do лист с двумя версиями: простой и продвинутой.'
+    },
+    {
+        id: 12,
+        file: 'new_js_article.md',
+        title: 'Полное руководство по JavaScript для начинающих',
+        author: 'S.I.T Education',
+        date: '2025-03-30',
+        likes: 0,
+        tags: ['JavaScript', 'Туториал', 'Web'],
+        preview: 'Изучите JavaScript с нуля и создавайте интерактивные веб-приложения.'
+    },
+    {
+        id: 13,
+        file: 'new_calc_article.md',
+        title: 'Создаем продвинутый веб-калькулятор',
+        author: 'S.I.T Education',
+        date: '2024-03-30',
+        likes: 0,
+        tags: ['HTML', 'CSS', 'JavaScript', 'Web', 'Туториал'],
+        preview: 'Создайте свой собственный веб-калькулятор с помощью HTML, CSS и JavaScript.'
+    }, 
+    {
+        id: 14,
+        file: 'arduino-autopilot.md',
+        title: 'Создаем систему автополива на Ардуино',
+        author: 'S.I.T Education',
+        date: '2025-03-30',
+        likes: 0,
+        tags: ['Электроника', 'Arduino', 'DIY', 'Туториал'],
+        preview: 'Создайте свой собственный веб-калькулятор с помощью HTML, CSS и JavaScript.'
     }
 ];
 
