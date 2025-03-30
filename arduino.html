@@ -12,200 +12,314 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="theme.js"></script>
     <style>
-        :root {
-            --primary: #2ecc71;
-            --secondary: #3498db;
-            --background: #f8f9fa;
-            --text: #2c3e50;
-            --card-bg: #ffffff;
-            --border: #dee2e6;
-        }
+/* arduino.css */
 
-        .dark-theme {
-            --background: #1a1a1a;
-            --text: #e9ecef;
-            --card-bg: #2d2d2d;
-            --border: #495057;
-        }
+/* Цветовые переменные */
+:root {
+    --primary: #2ecc71;
+    --secondary: #3498db;
+    --background: #f8f9fa;
+    --text: #2c3e50;
+    --card-bg: #ffffff;
+    --border: #dee2e6;
+    --heading-color: #1a202c;
+    --primary-color: #0078d4;
+    --tag-bg: #e5e7eb;
+    --tag-text: #4b5563;
+}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', sans-serif;
-            transition: background 0.3s, color 0.3s;
-        }
+.dark-theme {
+    --background: #1a1a1a;
+    --text: #e9ecef;
+    --card-bg: #2d2d2d;
+    --border: #495057;
+    --heading-color: #f8fafc;
+}
 
-        body {
-            background: var(--background);
-            color: var(--text);
-            padding: 20px;
-        }
+/* Общие стили */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    transition: background 0.3s, color 0.3s;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding: 20px;
+}
 
-        /* Навигация */
-        .navbar {
-            background: var(--card-bg);
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            position: relative;
-        }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 1rem;
-            list-style: none;
-            overflow-x: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary) var(--background);
-        }
+/* Навигация */
+.navbar {
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: relative;
+}
 
-        .nav-links::-webkit-scrollbar {
-            height: 8px;
-        }
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) var(--background);
+}
 
-        .nav-links::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 4px;
-        }
+.nav-links::-webkit-scrollbar {
+    height: 8px;
+}
 
-        .nav-links::-webkit-scrollbar-track {
-            background: var(--background);
-        }
+.nav-links::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 4px;
+}
 
-        .nav-link {
-            cursor: pointer;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            white-space: nowrap;
-        }
+.nav-links::-webkit-scrollbar-track {
+    background: var(--background);
+}
 
-        .nav-link.active {
-            background: var(--primary);
-            color: white;
-        }
+.nav-link {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    white-space: nowrap;
+    color: var(--text-color);
+    text-decoration: none;
+}
 
-        .next-lesson-btn {
-            background: var(--secondary);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-top: 1rem;
-            display: block;
-            width: 100%;
-            text-align: center;
-        }
+.nav-link.active {
+    background: var(--primary);
+    color: white;
+}
 
-        .next-lesson-btn:hover {
-            opacity: 0.9;
-        }
+.next-lesson-btn {
+    background: var(--secondary);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
 
-        /* Урок */
-        .lesson {
-            display: none;
-            margin-bottom: 3rem;
-        }
+.next-lesson-btn:hover {
+    opacity: 0.9;
+}
 
-        .lesson.active {
-            display: block;
-        }
+/* Урок */
+.lesson {
+    display: none;
+    margin-bottom: 3rem;
+}
 
-        .section {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            margin-bottom: 1.5rem;
-        }
+.lesson.active {
+    display: block;
+}
 
-        .code-example {
-            background: var(--background);
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            font-family: 'Courier New', monospace;
-            white-space: pre-wrap;
-        }
+.section {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+}
 
-        .quiz-question {
-            margin-bottom: 1rem;
-        }
+.code-example {
+    background: var(--background);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    font-family: 'Courier New', monospace;
+    white-space: pre-wrap;
+}
 
-        .quiz-question label {
-            display: block;
-            margin: 0.5rem 0;
-        }
+.quiz-question {
+    margin-bottom: 1rem;
+}
 
-        .practice-area textarea {
-            width: 100%;
-            height: 150px;
-            padding: 1rem;
-            border: 2px solid var(--primary);
-            border-radius: 8px;
-            background: var(--background);
-            color: var(--text);
-            margin: 1rem 0;
-        }
+.quiz-question label {
+    display: block;
+    margin: 0.5rem 0;
+    color: var(--text-color);
+}
 
-        button {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
+.practice-area textarea {
+    width: 100%;
+    height: 150px;
+    padding: 1rem;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    background: var(--background);
+    color: var(--text);
+    margin: 1rem 0;
+}
 
-        button:hover {
-            opacity: 0.9;
-        }
+button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+}
 
-        /* Темная тема */
-        .theme-toggle {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            padding: 1rem;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            cursor: pointer;
-        }
+button:hover {
+    opacity: 0.9;
+}
 
-        .header {
-            text-align: center;
-            padding: 40px 0;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border-radius: 15px;
-            margin-bottom: 30px;
-        }
+/* Темная тема */
+.theme-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 1rem;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+}
 
-        /* Мобильная версия */
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 0.5rem;
-            }
+.header {
+    text-align: center;
+    padding: 40px 0;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
 
-            .nav-link {
-                font-size: 0.9rem;
-            }
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 0.5rem;
+    }
 
-            .theme-toggle {
-                bottom: 1rem;
-                right: 1rem;
-            }
-        }
+    .nav-link {
+        font-size: 0.9rem;
+    }
+
+    .theme-toggle {
+        bottom: 1rem;
+        right: 1rem;
+    }
+}
+
+/* Quiz styles */
+.quiz-question label {
+    color: var(--text-color);
+}
+
+/* Practice area styles */
+.practice-area textarea {
+    background: var(--background);
+    color: var(--text);
+    border-color: var(--primary);
+}
+
+/* Header styles */
+.header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--heading-color);
+}
+
+.header p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+/* General body styles */
+body {
+    font-family: 'Consolas', 'Courier New', monospace;
+    line-height: 1.6;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Navigation styles */
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    font-size: 0.9rem;
+}
+
+.nav-links a:hover {
+    background: var(--hover-color);
+}
+
+.nav-links a.active {
+    background: var(--primary-color);
+    color: var(--text-color);
+    font-weight: normal;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 3px;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+    background: var(--hover-color);
+    border-color: var(--primary-color);
+}
+
+/* Code example styles */
+.code-example {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.code-example pre {
+    white-space: pre-wrap;
+    font-family: 'Consolas', 'Courier New', monospace;
+    color: var(--text-color);
+}
+
+/* Tag styles */
+.tag {
+    padding: 6px 12px;
+    border-radius: 16px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 13px;
+    transition: all 0.2s ease;
+} 
     </style>
 </head>
 <body>
