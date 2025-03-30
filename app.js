@@ -345,6 +345,34 @@ function renderFilteredArticles(articles) {
     `).join('');
 }
 
+// Функция для загрузки новостей
+async function loadLatestNews() {
+    try {
+        const response = await fetch('news/index.json');
+        if (!response.ok) {
+            throw new Error(`Ошибка загрузки новостей (статус: ${response.status})`);
+        }
+        const news = await response.json();
+        displayLatestNews(news.slice(0, 3)); // Отображаем 3 последние новости
+    } catch (error) {
+        console.error('Ошибка загрузки новостей:', error);
+        const newsContainer = document.querySelector('.news-container');
+        newsContainer.innerHTML = `<p>Ошибка загрузки новостей: ${error.message}</p>`;
+    }
+}
+
+// Функция для отображения новостей
+function displayLatestNews(news) {
+    const newsContainer = document.querySelector('.news-container');
+    newsContainer.innerHTML = news.map(item => `
+        <div class="news-item">
+            <h3>${item.title}</h3>
+            <p>${item.preview}</p>
+            <a href="news.html">Подробнее</a>
+        </div>
+    `).join('');
+}
+
 // Обновляем функцию инициализации
 function initializePage() {
     const savedTheme = localStorage.getItem('theme') || 'light';
@@ -357,6 +385,11 @@ function initializePage() {
         // Добавляем обработчик поиска
         const searchInput = document.getElementById('searchInput');
         searchInput.addEventListener('input', debounce(updateSearch, 300));
+    }
+    
+    // Загружаем последние новости на главной странице
+    if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+        loadLatestNews();
     }
 }
 
@@ -390,5 +423,5 @@ async function shareArticle(articleId) {
         alert('Не удалось скопировать ссылку. Пожалуйста, попробуйте вручную: ' + articleUrl);
     }
 }
- 
+
 document.addEventListener('DOMContentLoaded', initializePage); 
