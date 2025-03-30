@@ -6,6 +6,21 @@
         "date": "2025-03-29",
         "category": "updates",
         "image": "news/update2903.png"
+    },
+    {
+        "filename": "new_js_article.md",
+        "title": "Полное руководство по JavaScript для начинающих",
+        "preview": "Изучите JavaScript с нуля и создавайте интерактивные веб-приложения.",
+        "date": "2024-01-01",
+        "category": "tutorials",
+        "image": "news/javascript_tutorial.png"
+    },
+    {
+        "filename": "new_calc_article.md",
+        "title": "Создаем продвинутый веб-калькулятор",
+        "preview": "Создайте свой собственный веб-калькулятор с помощью HTML, CSS и JavaScript.",
+        "date": "2024-01-01",
+        "category": "tutorials",
+        "image": "news/calculator_tutorial.png"
     }
-
 ] 

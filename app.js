@@ -360,5 +360,5 @@ async function shareArticle(articleId) {
         alert('Не удалось скопировать ссылку. Пожалуйста, попробуйте вручную: ' + articleUrl);
     }
 }
-
+ 
 document.addEventListener('DOMContentLoaded', initializePage); 
