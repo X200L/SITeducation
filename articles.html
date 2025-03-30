@@ -72,6 +72,8 @@
         .article-content {
             font-size: clamp(0.9rem, 3vw, 1.1rem);
             line-height: 1.8;
+            max-width: 100%;
+            overflow-x: auto;
         }
 
         .article-content h1,
@@ -212,6 +214,69 @@
 
         [data-theme="dark"] .responsive-code {
             background: var(--code-bg);
+        }
+
+        /* Стили для блока последних новостей */
+        .latest-news {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--card-bg); /* Используем переменную для фона карточки */
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .latest-news h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--heading-color); /* Используем переменную для цвета заголовка */
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .news-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background: var(--bg-color); /* Используем переменную для фона элемента */
+            transition: background 0.3s ease;
+        }
+
+        .news-item:hover {
+            background: var(--secondary-bg); /* Используем переменную для фона при наведении */
+        }
+
+        .news-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-color); /* Используем переменную для цвета текста */
+        }
+
+        .news-item p {
+            color: var(--secondary-text-color); /* Используем переменную для цвета второстепенного текста */
+            line-height: 1.6;
+        }
+
+        .view-all-news {
+            display: block;
+            text-align: right;
+            margin-top: 1rem;
+            color: var(--link-color); /* Используем переменную для цвета ссылок */
+            transition: color 0.3s ease;
+        }
+
+        .view-all-news:hover {
+            color: var(--accent-color); /* Используем переменную для цвета ссылок при наведении */
+        }
+
+        /* Стили для ссылок */
+        a {
+            color: var(--link-color); /* Задаем цвет ссылок из переменной */
+            text-decoration: none; /* Убираем подчеркивание */
+            transition: color 0.3s ease; /* Плавный переход цвета */
+        }
+
+        a:hover {
+            color: var(--accent-color); /* Меняем цвет при наведении */
         }
     </style>
 </head>
