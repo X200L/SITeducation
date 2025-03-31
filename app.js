@@ -352,10 +352,8 @@ function renderFilteredArticles(articles) {
 async function loadLatestNews() {
     try {
         // Определяем, находимся ли мы на GitHub Pages
-        const isGitHubPages = window.location.hostname.includes('github.io');
-        // Формируем правильный путь в зависимости от окружения
-       
-        const response = await fetch(`../news/index.json`);
+    
+        const response = await fetch(`./news/index.json`);
         
         if (!response.ok) {
             throw new Error(`Ошибка загрузки новостей (статус: ${response.status})`);
