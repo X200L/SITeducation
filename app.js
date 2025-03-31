@@ -348,56 +348,16 @@ function renderFilteredArticles(articles) {
     `).join('');
 }
 
-// Функция для загрузки новостей
-async function loadLatestNews() {
-    try {
-        // Определяем, находимся ли мы на GitHub Pages
-    
-        const response = await fetch(`./news/index.json`);
-        
-        if (!response.ok) {
-            throw new Error(`Ошибка загрузки новостей (статус: ${response.status})`);
-        }
-        const news = await response.json();
-        displayLatestNews(news.slice(0, 3)); // Отображаем 3 последние новости
-    } catch (error) {
-        console.error('Ошибка загрузки новостей:', error);
-        const newsContainer = document.querySelector('.news-container');
-        newsContainer.innerHTML = `
-            <div class="news-error">
-                <i class="fas fa-newspaper"></i>
-                <p>Новости загружаются...</p>
-                <button onclick="loadLatestNews()" class="retry-button">
-                    Попробовать снова
-                </button>
-            </div>
-        `;
-    }
-}
-
-// Функция для отображения новостей
-function displayLatestNews(news) {
-    const newsContainer = document.querySelector('.news-container');
-    newsContainer.innerHTML = news.map(item => `
-        <div class="news-item">
-            <div class="news-image">
-                <img src="${item.image}" 
-                     alt="${item.title}"
-                     onerror="this.src='./images/default-news.png'; this.onerror=null;">
-            </div>
-            <div class="news-content">
-                <h3>${item.title}</h3>
-                <p>${item.preview}</p>
-                <a href="news.html">Подробнее <span class="arrow">→</span></a>
-            </div>
-        </div>
-    `).join('');
-}
-
 // Обновляем функцию инициализации
 function initializePage() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    // Проверяем, есть ли на странице контейнер для новостей
+    const newsContainer = document.querySelector('.news-container');
+    if (newsContainer) {
+        loadLatestNews();
+    }
     
     if (window.location.pathname.includes('articles.html')) {
         renderTagFilters();
@@ -405,12 +365,9 @@ function initializePage() {
 
         // Добавляем обработчик поиска
         const searchInput = document.getElementById('searchInput');
-        searchInput.addEventListener('input', debounce(updateSearch, 300));
-    }
-    
-    // Загружаем последние новости на главной странице
-    if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-        loadLatestNews();
+        if (searchInput) {
+            searchInput.addEventListener('input', debounce(updateSearch, 300));
+        }
     }
 }
 
@@ -443,6 +400,66 @@ async function shareArticle(articleId) {
         console.error('Не удалось скопировать ссылку: ', err);
         alert('Не удалось скопировать ссылку. Пожалуйста, попробуйте вручную: ' + articleUrl);
     }
+}
+
+// Функция для загрузки новостей
+async function loadLatestNews() {
+    try {
+        // Определяем, находимся ли мы на GitHub Pages
+        const isGitHubPages = window.location.hostname.includes('github.io');
+        const basePath = isGitHubPages ? '/SITeducation' : '';
+        
+        const response = await fetch(`${basePath}/news/index.json`);
+        
+        if (!response.ok) {
+            throw new Error(`Ошибка загрузки новостей (статус: ${response.status})`);
+        }
+        const news = await response.json();
+        displayLatestNews(news.slice(0, 3), basePath);
+    } catch (error) {
+        console.error('Ошибка загрузки новостей:', error);
+        const newsContainer = document.querySelector('.news-container');
+        if (newsContainer) {
+            newsContainer.innerHTML = `
+                <div class="news-error">
+                    <i class="fas fa-newspaper"></i>
+                    <p>Не удалось загрузить новости</p>
+                    <button onclick="loadLatestNews()" class="retry-button">
+                        Попробовать снова
+                    </button>
+                </div>
+            `;
+        }
+    }
+}
+
+// Функция для отображения новостей
+function displayLatestNews(news, basePath = '') {
+    const newsContainer = document.querySelector('.news-container');
+    const defaultImage = `${basePath}/images/default-news.png`;
+    
+    newsContainer.innerHTML = news.map(item => {
+        // Формируем правильный путь к изображению
+        const imagePath = item.image.startsWith('./') ? 
+            `${basePath}${item.image.slice(1)}` : // Если путь начинается с ./
+            `${basePath}/${item.image}`; // Если путь не начинается с ./
+
+        return `
+            <div class="news-item">
+                <div class="news-image">
+                    <img src="${imagePath}" 
+                         alt="${item.title}"
+                         onerror="this.src='${defaultImage}'; this.onerror=null;"
+                         loading="lazy">
+                </div>
+                <div class="news-content">
+                    <h3>${item.title}</h3>
+                    <p>${item.preview}</p>
+                    <a href="${basePath}/news.html">Подробнее <span class="arrow">→</span></a>
+                </div>
+            </div>
+        `;
+    }).join('');
 }
 
 document.addEventListener('DOMContentLoaded', initializePage); 
