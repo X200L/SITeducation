@@ -355,7 +355,7 @@ async function loadLatestNews() {
         const isGitHubPages = window.location.hostname.includes('github.io');
         // Формируем правильный путь в зависимости от окружения
         const basePath = isGitHubPages ? '/SITeducation' : '';
-        const response = await fetch(`${basePath}/index.json`);
+        const response = await fetch(`${basePath}/news/index.json`);
         
         if (!response.ok) {
             throw new Error(`Ошибка загрузки новостей (статус: ${response.status})`);
