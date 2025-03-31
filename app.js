@@ -355,7 +355,7 @@ async function loadLatestNews() {
         const isGitHubPages = window.location.hostname.includes('github.io');
         // Формируем правильный путь в зависимости от окружения
        
-        const response = await fetch(`news/index.json`);
+        const response = await fetch(`../news/index.json`);
         
         if (!response.ok) {
             throw new Error(`Ошибка загрузки новостей (статус: ${response.status})`);
@@ -382,9 +382,16 @@ function displayLatestNews(news) {
     const newsContainer = document.querySelector('.news-container');
     newsContainer.innerHTML = news.map(item => `
         <div class="news-item">
-            <h3>${item.title}</h3>
-            <p>${item.preview}</p>
-            <a href="news.html">Подробнее</a>
+            <div class="news-image">
+                <img src="${item.image}" 
+                     alt="${item.title}"
+                     onerror="this.src='./images/default-news.png'; this.onerror=null;">
+            </div>
+            <div class="news-content">
+                <h3>${item.title}</h3>
+                <p>${item.preview}</p>
+                <a href="news.html">Подробнее <span class="arrow">→</span></a>
+            </div>
         </div>
     `).join('');
 }
