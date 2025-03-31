@@ -139,6 +139,16 @@
         likes: 0,
         tags: ['Электроника', 'Arduino', 'DIY', 'Туториал'],
         preview: 'Создайте свой собственный веб-калькулятор с помощью HTML, CSS и JavaScript.'
+    },
+    {
+        id: 15,
+        file: 'dal.md',
+        title: 'Ультразвуковая рулетка на Arduino',
+        author: 'S.I.T Education',
+        date: '2025-04-01',
+        likes: 0,
+        tags: ['Arduino', 'Электроника', 'DIY'],
+        preview: 'Создаем ультразвуковую рулетку на Arduino с использованием ультразвукового датчика и LCD-дисплея.'
     }
 ];
 
