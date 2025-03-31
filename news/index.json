@@ -13,7 +13,7 @@
         "preview": "Добавлено 14 статей, теперь у вас есть 14 причин посетить наш сайт).",
         "date": "2024-03-30",
         "category": "updates",
-        "image": "./images/update30032.png"
+        "image": "./images/Update30032.png"
     }, 
     {
         "filename": "projects-20250330.md",
@@ -21,6 +21,6 @@
         "preview": "Мы добавили на сайт наши проекты с описанием и ссылками на исходники",
         "date": "2024-03-31",
         "category": "updates",
-        "image": "./images/Update3003.png"
+        "image": "./images/update3003.png"
     }
 ] 
