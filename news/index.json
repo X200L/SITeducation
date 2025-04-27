@@ -22,5 +22,14 @@
         "date": "2024-03-31",
         "category": "updates",
         "image": "./images/update3003.png"
+    },
+    {
+        "filename": "new-2705.md",
+        "title": "Хакатон Dano в Санкт-Петербурге",
+        "preview": "Вот и подошел к концу прекрасный хакатон в Санкт-Петербурге",
+        "date": "2024-04-07",
+        "category": "events",
+        "image": "./images/danospb.jpeg"
+    
     }
 ] 
