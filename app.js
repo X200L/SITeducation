@@ -149,6 +149,16 @@
         likes: 0,
         tags: ['Arduino', 'Электроника', 'DIY'],
         preview: 'Создаем ультразвуковую рулетку на Arduino с использованием ультразвукового датчика и LCD-дисплея.'
+    },
+    {
+        id: 16,
+        file: 'pages.md',
+        title: 'Публикуем свой сайт на Github Pages',
+        author: 'S.I.T Education',
+        date: '2025-05-15',
+        likes: 0,
+        tags: ['Web', 'Туториал', 'HTML'],
+        preview: 'Пишем свой сайт и бесплатно публикуем на сервисе github pages'
     }
 ];
 
