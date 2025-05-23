@@ -1438,4 +1438,190 @@ main {
     .news-content {
         padding: 1rem;
     }
+}
+
+/* Social Media Block Styles */
+.social-media {
+    background: var(--card-bg);
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    margin: 2rem 0;
+}
+
+.social-media h2 {
+    color: var(--heading-color);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.social-media h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.social-links .social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 2rem;
+    background: var(--bg-color);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    min-width: 160px;
+}
+
+.social-links .social-link:hover {
+    transform: translateY(-5px);
+    background: var(--accent-color);
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.social-links .social-link i {
+    font-size: 1.5rem;
+}
+
+.social-links .social-link span {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Responsive styles for social media block */
+@media (max-width: 768px) {
+    .social-media {
+        padding: 2rem 1rem;
+    }
+
+    .social-media h2 {
+        font-size: 1.5rem;
+    }
+
+    .social-links {
+        gap: 1rem;
+    }
+
+    .social-links .social-link {
+        padding: 0.8rem 1.5rem;
+        min-width: 140px;
+    }
+
+    .social-links .social-link i {
+        font-size: 1.3rem;
+    }
+
+    .social-links .social-link span {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-media {
+        padding: 1.5rem 0.5rem;
+    }
+
+    .social-media h2 {
+        font-size: 1.3rem;
+    }
+
+    .social-links {
+        gap: 0.8rem;
+    }
+
+    .social-links .social-link {
+        padding: 0.7rem 1.2rem;
+        min-width: 120px;
+    }
+
+    .social-links .social-link i {
+        font-size: 1.2rem;
+    }
+
+    .social-links .social-link span {
+        font-size: 0.85rem;
+    }
+}
+
+/* Стили для метаданных новости */
+.news-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.news-date {
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.news-date i {
+    color: var(--accent-color);
+}
+
+/* Обновляем стили для ссылки "Подробнее" */
+.news-meta a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.news-meta a:hover {
+    color: var(--link-color);
+}
+
+.news-meta a .arrow {
+    transition: transform 0.3s ease;
+}
+
+.news-meta a:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* Адаптивность для метаданных новости */
+@media (max-width: 480px) {
+    .news-meta {
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: flex-start;
+    }
+
+    .news-date {
+        font-size: 0.85rem;
+    }
+
+    .news-meta a {
+        font-size: 0.85rem;
+    }
 } 

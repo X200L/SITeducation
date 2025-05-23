@@ -435,7 +435,16 @@ async function loadLatestNews() {
             throw new Error(`Ошибка загрузки новостей (статус: ${response.status})`);
         }
         const news = await response.json();
-        displayLatestNews(news.slice(0, 3), basePath);
+        
+        // Сортируем новости по дате (от новых к старым)
+        const sortedNews = news.sort((a, b) => {
+            const dateA = new Date(a.date);
+            const dateB = new Date(b.date);
+            return dateB - dateA;
+        });
+
+        // Отображаем только 3 последние новости
+        displayLatestNews(sortedNews.slice(0, 3), basePath);
     } catch (error) {
         console.error('Ошибка загрузки новостей:', error);
         const newsContainer = document.querySelector('.news-container');
@@ -464,6 +473,14 @@ function displayLatestNews(news, basePath = '') {
             `${basePath}${item.image.slice(1)}` : // Если путь начинается с ./
             `${basePath}/${item.image}`; // Если путь не начинается с ./
 
+        // Форматируем дату для отображения
+        const newsDate = new Date(item.date);
+        const formattedDate = newsDate.toLocaleDateString('ru-RU', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
         return `
             <div class="news-item">
                 <div class="news-image">
@@ -475,7 +492,10 @@ function displayLatestNews(news, basePath = '') {
                 <div class="news-content">
                     <h3>${item.title}</h3>
                     <p>${item.preview}</p>
-                    <a href="${basePath}/news.html">Подробнее <span class="arrow">→</span></a>
+                    <div class="news-meta">
+                        <span class="news-date"><i class="fas fa-calendar"></i> ${formattedDate}</span>
+                        <a href="${basePath}/news.html">Подробнее <span class="arrow">→</span></a>
+                    </div>
                 </div>
             </div>
         `;
