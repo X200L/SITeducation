@@ -27,9 +27,18 @@
         "filename": "new-2705.md",
         "title": "Хакатон Dano в Санкт-Петербурге",
         "preview": "Вот и подошел к концу прекрасный хакатон в Санкт-Петербурге",
-        "date": "2024-04-07",
+        "date": "2025-04-07",
         "category": "events",
         "image": "./images/danospb.jpeg"
+    
+    },
+    {
+        "filename": "new-2305.md",
+        "title": "Хакатон Сопка_jam",
+        "preview": "Скоро будет старт интересного хакатона, мы готовим забавный проект",
+        "date": "2025-05-23",
+        "category": "events",
+        "image": "./images/sopka.png"
     
     }
 ] 
