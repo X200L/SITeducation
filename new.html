@@ -34,67 +34,114 @@
         <div class="container">
             <div class="editor-container">
                 <div class="editor-header">
-                    <input type="text" id="article-title" placeholder="Заголовок статьи" class="title-input">
+                    <div class="title-section">
+                        <input type="text" id="article-title" placeholder="Заголовок статьи" class="title-input">
+                        <div class="title-actions">
+                            <button class="tool-button" title="Сохранить черновик" onclick="saveDraft()">
+                                <i class="fas fa-save"></i>
+                            </button>
+                            <button class="tool-button" title="Загрузить черновик" onclick="loadDraft()">
+                                <i class="fas fa-upload"></i>
+                            </button>
+                        </div>
+                    </div>
                     <div class="editor-tools">
-                        <button class="tool-button" title="Жирный текст" aria-label="Жирный текст" onclick="insertMarkdown('**', '**')">
-                            <i class="fas fa-bold"></i>
-                        </button>
-                        <button class="tool-button" title="Курсив" aria-label="Курсив" onclick="insertMarkdown('*', '*')">
-                            <i class="fas fa-italic"></i>
-                        </button>
-                        <button class="tool-button" title="Заголовок" aria-label="Заголовок" onclick="insertMarkdown('## ', '')">
-                            <i class="fas fa-heading"></i>
-                        </button>
-                        <button class="tool-button" title="Ссылка" aria-label="Ссылка" onclick="insertMarkdown('[', '](url)')">
-                            <i class="fas fa-link"></i>
-                        </button>
-                        <button class="tool-button" title="Код" aria-label="Код" onclick="insertMarkdown('```\n', '\n```')">
-                            <i class="fas fa-code"></i>
-                        </button>
-                        <button class="tool-button" title="Список" aria-label="Список" onclick="insertMarkdown('- ', '')">
-                            <i class="fas fa-list-ul"></i>
-                        </button>
-                        <button class="tool-button" title="Изображение" aria-label="Изображение" onclick="insertMarkdown('![alt text](', ')')">
-                            <i class="fas fa-image"></i>
-                        </button>
+                        <div class="tool-group">
+                            <button class="tool-button" title="Жирный текст" onclick="insertMarkdown('**', '**')">
+                                <i class="fas fa-bold"></i>
+                            </button>
+                            <button class="tool-button" title="Курсив" onclick="insertMarkdown('*', '*')">
+                                <i class="fas fa-italic"></i>
+                            </button>
+                            <button class="tool-button" title="Зачеркнутый текст" onclick="insertMarkdown('~~', '~~')">
+                                <i class="fas fa-strikethrough"></i>
+                            </button>
+                        </div>
+                        <div class="tool-group">
+                            <button class="tool-button" title="Заголовок 1" onclick="insertMarkdown('# ', '')">
+                                <i class="fas fa-heading"></i>1
+                            </button>
+                            <button class="tool-button" title="Заголовок 2" onclick="insertMarkdown('## ', '')">
+                                <i class="fas fa-heading"></i>2
+                            </button>
+                            <button class="tool-button" title="Заголовок 3" onclick="insertMarkdown('### ', '')">
+                                <i class="fas fa-heading"></i>3
+                            </button>
+                        </div>
+                        <div class="tool-group">
+                            <button class="tool-button" title="Ссылка" onclick="insertMarkdown('[', '](url)')">
+                                <i class="fas fa-link"></i>
+                            </button>
+                            <button class="tool-button" title="Изображение" onclick="insertMarkdown('![alt text](', ')')">
+                                <i class="fas fa-image"></i>
+                            </button>
+                        </div>
+                        <div class="tool-group">
+                            <button class="tool-button" title="Код" onclick="insertMarkdown('```\n', '\n```')">
+                                <i class="fas fa-code"></i>
+                            </button>
+                            <button class="tool-button" title="Цитата" onclick="insertMarkdown('> ', '')">
+                                <i class="fas fa-quote-right"></i>
+                            </button>
+                        </div>
+                        <div class="tool-group">
+                            <button class="tool-button" title="Маркированный список" onclick="insertMarkdown('- ', '')">
+                                <i class="fas fa-list-ul"></i>
+                            </button>
+                            <button class="tool-button" title="Нумерованный список" onclick="insertMarkdown('1. ', '')">
+                                <i class="fas fa-list-ol"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="editor-wrapper">
                     <div class="editor-column">
-                        <div class="editor-label">Markdown</div>
+                        <div class="editor-label">
+                            <i class="fas fa-edit"></i>
+                            Markdown
+                        </div>
                         <textarea id="markdown-editor" placeholder="Напишите вашу статью используя Markdown..."></textarea>
                     </div>
                     <div class="preview-column">
-                        <div class="editor-label">Предпросмотр</div>
-                        <div id="preview"></div>
+                        <div class="editor-label">
+                            <i class="fas fa-eye"></i>
+                            Предпросмотр
+                        </div>
+                        <div id="preview" class="preview-content"></div>
                     </div>
                 </div>
                 <div class="editor-footer">
                     <div class="editor-footer-left">
-                        <div class="tags-input">
-                            <input type="text" id="tag-input" placeholder="Добавить тег...">
-                            <div id="tags-container"></div>
+                        <div class="tags-section">
+                            <div class="tags-input">
+                                <input type="text" id="tag-input" placeholder="Добавить тег...">
+                                <button class="add-tag-button" onclick="addTag()">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <div id="tags-container" class="tags-list"></div>
                         </div>
-                        <div class="email-input">
+                        <div class="email-section">
                             <input type="email" id="email-input" placeholder="Ваш email для сохранения черновика">
                         </div>
                     </div>
                     <div class="editor-footer-buttons">
-                        <button id="draft-button" class="draft-button">
+                        <button id="draft-button" class="action-button draft-button">
                             <i class="fas fa-save"></i>
                             Сохранить черновик
                         </button>
-                        <button id="download-button" class="download-button">
+                        <button id="download-button" class="action-button download-button">
                             <i class="fas fa-download"></i>
                             Скачать статью
                         </button>
-                        <button id="publish" class="publish-button">
+                        <button id="publish" class="action-button publish-button">
                             <i class="fas fa-paper-plane"></i>
                             Опубликовать
                         </button>
                     </div>
                 </div>
                 <div class="publish-info">
+                    <i class="fas fa-info-circle"></i>
                     <p>Для публикации статьи отправьте скачанный файл на <a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a></p>
                 </div>
             </div>
