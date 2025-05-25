@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин - S.I.T Education</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="theme.js"></script>
+    <style>
+        .shop-page {
+            background: var(--bg-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .coming-soon {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .coming-soon h1 {
+            font-size: 2.5rem;
+            color: var(--heading-color);
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon p {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .smiley {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .coming-soon h1 {
+                font-size: 2rem;
+            }
+
+            .coming-soon p {
+                font-size: 1.1rem;
+            }
+
+            .smiley {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .coming-soon h1 {
+                font-size: 1.8rem;
+            }
+
+            .coming-soon p {
+                font-size: 1rem;
+            }
+
+            .smiley {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body class="shop-page">
+    <canvas id="particles"></canvas>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-microchip"></i>
+                S.I.T Education
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="articles.html">Статьи</a>
+                <a href="news.html">Новости</a>
+                <a href="projects.html">Проекты</a>
+                <a href="team.html">Команда</a>
+                <a href="new.html">Написать статью</a>
+                <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="coming-soon">
+            <div class="smiley">😊</div>
+            <h1>Скоро открытие!</h1>
+            <p>Наш магазин находится в разработке. Скоро здесь появятся  книги, электроника и мерч.</p>
+        </div>
+    </main>
+
+    <div class="social-media">
+        <h2>Мы в социальных сетях</h2>
+        <div class="social-links">
+            <a href="https://t.me/SIT_team" target="_blank" class="social-link">
+                <i class="fab fa-telegram"></i>
+                <span>Telegram</span>
+            </a>
+            <a href="https://github.com/X200L/SITeducation" target="_blank" class="social-link">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+            </a>
+            <a href="mailto:frogeesoft.team@gmail.com" class="social-link">
+                <i class="fas fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Все права защищены.</p>
+        <p>
+            Свяжитесь с нами: <a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a> |
+            <a href="https://github.com/X200L/SITeducation" target="_blank">website source</a> |
+            <a href="https://github.com/ArduRadioKot" target="_blank">Author GitHub</a> |
+            <a href="https://t.me/SIT_team" target="_blank">Telegramm</a>
+        </p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="particles.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ParticleNetwork();
+        });
+    </script>
+</body>
+</html> 

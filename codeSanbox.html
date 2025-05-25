@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Онлайн редактор - S.I.T Education</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="theme.js"></script>
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <!-- CodeMirror Themes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/material.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/nord.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/ayu-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/tomorrow-night-bright.min.css">
+    <style>
+        body {
+            font-family: 'Consolas', 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+            background: var(--bg-color);
+            color: var(--text-color);
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 180px);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        .header {
+            padding: 1rem;
+            background: var(--sidebar-color);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .language-selector, .theme-selector {
+            background: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 8px;
+            border-radius: 4px;
+            font-family: inherit;
+            margin-right: 10px;
+        }
+
+        .language-selector:focus, .theme-selector:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        
+        button {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: var(--link-color);
+            transform: translateY(-2px);
+        }
+        
+        button.run {
+            background: #28a745;
+        }
+        
+        button.run:hover {
+            background: #218838;
+        }
+        
+        button.stop {
+            background: #dc3545;
+        }
+        
+        button.stop:hover {
+            background: #c82333;
+        }
+        
+        .editor-container {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .CodeMirror {
+            flex: 1;
+            height: 100% !important;
+            font-size: 14px;
+            font-family: 'Consolas', 'Courier New', monospace;
+        }
+        
+        .output-container {
+            height: 30%;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+        
+        .output-title {
+            margin-bottom: 10px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            color: var(--accent-color);
+        }
+        
+        #output {
+            white-space: pre-wrap;
+            font-family: 'Consolas', 'Courier New', monospace;
+            margin: 0;
+            color: var(--text-color);
+        }
+        
+        .error {
+            color: #dc3545;
+        }
+        
+        .success {
+            color: #28a745;
+        }
+        
+        .status {
+            font-weight: normal;
+            font-size: 0.8em;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        /* Стили для скроллбара */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-color);
+        }
+
+        /* Стили для модального окна ввода */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            min-width: 300px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .modal-header {
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .modal-input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        .modal-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .modal-button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .modal-button.submit {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .modal-button.submit:hover {
+            background: var(--link-color);
+        }
+
+        .modal-button.cancel {
+            background: #dc3545;
+            color: white;
+        }
+
+        .modal-button.cancel:hover {
+            background: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particles"></canvas>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-microchip"></i>
+                S.I.T Education
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="articles.html">Статьи</a>
+                <a href="news.html">Новости</a>
+                <a href="projects.html">Проекты</a>
+                <a href="team.html">Команда</a>
+                <a href="new.html">Написать статью</a>
+                <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="header">
+            <div class="title">Онлайн редактор кода</div>
+            <div class="controls">
+                <select id="language-selector" class="language-selector">
+                    <option value="python">Python</option>
+                    <option value="cpp">C++</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="processing">Processing</option>
+                    <option value="java">Java</option>
+                </select>
+                <select id="theme-selector" class="theme-selector">
+                    <option value="dracula">Dracula</option>
+                    <option value="monokai">Monokai</option>
+                    <option value="material">Material</option>
+                    <option value="nord">Nord</option>
+                    <option value="ayu-dark">Ayu Dark</option>
+                    <option value="tomorrow-night-bright">Tomorrow Night Bright</option>
+                </select>
+                <button id="download-btn">Скачать</button>
+                <button id="stop-btn" class="stop" disabled>Стоп</button>
+                <button id="run-btn" class="run">Запустить</button>
+            </div>
+        </div>
+        
+        <div class="editor-container">
+            <textarea id="editor">// Выберите язык программирования из списка выше
+// и начните писать код!</textarea>
+        </div>
+        
+        <div class="output-container">
+            <div class="output-title">
+                <span>Вывод:</span>
+                <span id="status" class="status">Готов</span>
+            </div>
+            <pre id="output"></pre>
+        </div>
+    </div>
+
+    <div class="social-media">
+        <h2>Мы в социальных сетях</h2>
+        <div class="social-links">
+            <a href="https://t.me/SIT_team" target="_blank" class="social-link">
+                <i class="fab fa-telegram"></i>
+                <span>Telegram</span>
+            </a>
+            <a href="https://github.com/X200L/SITeducation" target="_blank" class="social-link">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+            </a>
+            <a href="mailto:frogeesoft.team@gmail.com" class="social-link">
+                <i class="fas fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Все права защищены.</p>
+        <p>
+            Свяжитесь с нами: <a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a> |
+            <a href="https://github.com/X200L/SITeducation" target="_blank">website source</a> |
+            <a href="https://github.com/ArduRadioKot" target="_blank">Author GitHub</a> |
+            <a href="https://t.me/SIT_team" target="_blank">Telegramm</a>
+        </p>
+    </footer>
+
+    <!-- Модальное окно для ввода -->
+    <div id="input-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">Требуется ввод</div>
+            <input type="text" id="modal-input" class="modal-input" placeholder="Введите значение...">
+            <div class="modal-buttons">
+                <button class="modal-button cancel" id="modal-cancel">Отмена</button>
+                <button class="modal-button submit" id="modal-submit">Подтвердить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CodeMirror JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/processing/processing.min.js"></script>
+    
+    <script src="app.js"></script>
+    <script src="particles.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ParticleNetwork();
+        });
+    </script>
+    
+    <!-- Подключаем Pyodide для выполнения Python кода в браузере -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const editorElement = document.getElementById('editor');
+            const runBtn = document.getElementById('run-btn');
+            const stopBtn = document.getElementById('stop-btn');
+            const downloadBtn = document.getElementById('download-btn');
+            const outputElement = document.getElementById('output');
+            const statusElement = document.getElementById('status');
+            const languageSelector = document.getElementById('language-selector');
+            const themeSelector = document.getElementById('theme-selector');
+            
+            let executionTimeout;
+            let pyodideWorker;
+            
+            // Инициализация CodeMirror
+            const editor = CodeMirror.fromTextArea(editorElement, {
+                mode: 'python',
+                theme: 'dracula',
+                lineNumbers: true,
+                indentUnit: 4,
+                tabSize: 4,
+                indentWithTabs: false,
+                lineWrapping: true,
+                matchBrackets: true,
+                autoCloseBrackets: true,
+                extraKeys: {
+                    "Tab": function(cm) {
+                        if (cm.somethingSelected()) {
+                            cm.indentSelection("add");
+                        } else {
+                            cm.replaceSelection("    ", "end");
+                        }
+                    }
+                }
+            });
+
+            // Шаблоны кода для разных языков
+            const codeTemplates = {
+                python: `# Python code
+def greet(name):
+    return f"Hello, {name}!"
+
+print(greet("World"))`,
+                cpp: `// C++ code
+#include <iostream>
+
+int main() {
+    std::cout << "Hello, World!" << std::endl;
+    return 0;
+}`,
+                javascript: `// JavaScript code
+function greet(name) {
+    return \`Hello, \${name}!\`;
+}
+
+console.log(greet("World"));`,
+                processing: `// Processing code
+void setup() {
+    size(400, 400);
+    background(0);
+}
+
+void draw() {
+    fill(255);
+    text("Hello, World!", 150, 200);
+}`,
+                java: `// Java code
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(greet("World"));
+    }
+    
+    public static String greet(String name) {
+        return "Hello, " + name + "!";
+    }
+}`
+            };
+
+            // Обработчик изменения языка
+            languageSelector.addEventListener('change', function() {
+                const language = this.value;
+                let mode;
+                
+                switch(language) {
+                    case 'python':
+                        mode = 'python';
+                        break;
+                    case 'cpp':
+                        mode = 'text/x-c++src';
+                        break;
+                    case 'javascript':
+                        mode = 'javascript';
+                        break;
+                    case 'processing':
+                        mode = 'text/x-processing';
+                        break;
+                    case 'java':
+                        mode = 'text/x-java';
+                        break;
+                }
+                
+                editor.setOption('mode', mode);
+                editor.setValue(codeTemplates[language]);
+                localStorage.setItem('selectedLanguage', language);
+            });
+
+            // Загружаем сохраненный язык
+            const savedLanguage = languageSelector.value;
+            editor.setValue(codeTemplates[savedLanguage]);
+            
+            // Сохраняем код в localStorage при изменении
+            editor.on('change', function() {
+                localStorage.setItem('code_' + languageSelector.value, editor.getValue());
+            });
+            
+            // Загружаем сохраненный код для текущего языка
+            const savedCode = localStorage.getItem('code_' + languageSelector.value);
+            if (savedCode) {
+                editor.setValue(savedCode);
+            }
+            
+            // Обработчик изменения темы
+            themeSelector.addEventListener('change', function() {
+                editor.setOption('theme', this.value);
+                localStorage.setItem('selectedTheme', this.value);
+            });
+
+            // Загружаем сохраненную тему
+            const savedTheme = localStorage.getItem('selectedTheme');
+            if (savedTheme) {
+                themeSelector.value = savedTheme;
+                editor.setOption('theme', savedTheme);
+            }
+            
+            // Обработчик кнопки Run
+            runBtn.addEventListener('click', runCode);
+            
+            // Обработчик кнопки Stop
+            stopBtn.addEventListener('click', stopExecution);
+            
+            // Обработчик кнопки Download
+            downloadBtn.addEventListener('click', downloadCode);
+            
+            // Добавляем переменные для модального окна
+            const modal = document.getElementById('input-modal');
+            const modalInput = document.getElementById('modal-input');
+            const modalSubmit = document.getElementById('modal-submit');
+            const modalCancel = document.getElementById('modal-cancel');
+            let inputPromiseResolve = null;
+
+            // Функция для показа модального окна ввода
+            function showInputModal(prompt) {
+                return new Promise((resolve) => {
+                    inputPromiseResolve = resolve;
+                    modal.querySelector('.modal-header').textContent = prompt || 'Input Required';
+                    modalInput.value = '';
+                    modal.style.display = 'block';
+                    modalInput.focus();
+
+                    const handleSubmit = () => {
+                        const value = modalInput.value;
+                        modal.style.display = 'none';
+                        modalInput.removeEventListener('keypress', handleKeyPress);
+                        modalSubmit.removeEventListener('click', handleSubmit);
+                        modalCancel.removeEventListener('click', handleCancel);
+                        resolve(value);
+                    };
+
+                    const handleCancel = () => {
+                        modal.style.display = 'none';
+                        modalInput.removeEventListener('keypress', handleKeyPress);
+                        modalSubmit.removeEventListener('click', handleSubmit);
+                        modalCancel.removeEventListener('click', handleCancel);
+                        resolve(null);
+                    };
+
+                    const handleKeyPress = (e) => {
+                        if (e.key === 'Enter') {
+                            handleSubmit();
+                        }
+                    };
+
+                    modalInput.addEventListener('keypress', handleKeyPress);
+                    modalSubmit.addEventListener('click', handleSubmit);
+                    modalCancel.addEventListener('click', handleCancel);
+                });
+            }
+
+            // Запуск кода
+            async function runCode() {
+                const language = languageSelector.value;
+                outputElement.textContent = "";
+                outputElement.className = "";
+                statusElement.textContent = "Initializing...";
+                
+                runBtn.disabled = true;
+                stopBtn.disabled = false;
+                
+                try {
+                    switch(language) {
+                        case 'python':
+                            await runPythonCode();
+                            break;
+                        case 'javascript':
+                            runJavaScriptCode();
+                            break;
+                        case 'cpp':
+                        case 'java':
+                            outputElement.textContent = `${language.toUpperCase()} execution is not supported in the browser. Please use a local compiler.`;
+                            outputElement.className = "error";
+                            break;
+                        case 'processing':
+                            outputElement.textContent = "Processing execution requires the Processing IDE. Please download your code and run it there.";
+                            outputElement.className = "error";
+                            break;
+                    }
+                } catch (error) {
+                    outputElement.textContent = error.toString();
+                    outputElement.className = "error";
+                    statusElement.textContent = "Error";
+                } finally {
+                    runBtn.disabled = false;
+                    stopBtn.disabled = true;
+                }
+            }
+
+            // Запуск Python кода
+            async function runPythonCode() {
+                try {
+                    if (!window.pyodide) {
+                        statusElement.textContent = "Loading Pyodide...";
+                        window.pyodide = await loadPyodide({
+                            indexURL: "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/"
+                        });
+                        await pyodide.loadPackage("micropip");
+                    }
+                    
+                    statusElement.textContent = "Running...";
+                    
+                    executionTimeout = setTimeout(() => {
+                        stopExecution();
+                        outputElement.textContent += "\n\nError: Execution timed out (5 seconds)";
+                        outputElement.className = "error";
+                        statusElement.textContent = "Timed out";
+                    }, 5000);
+
+                    // Настраиваем перехват вывода
+                    let output = "";
+                    pyodide.setStdout({
+                        write: function(text) {
+                            output += text;
+                            outputElement.textContent = output;
+                        }
+                    });
+
+                    pyodide.setStderr({
+                        write: function(text) {
+                            output += text;
+                            outputElement.textContent = output;
+                            outputElement.className = "error";
+                        }
+                    });
+
+                    // Добавляем глобальную функцию print для Python
+                    pyodide.globals.set("print", function(...args) {
+                        const text = args.map(arg => String(arg)).join(" ") + "\n";
+                        output += text;
+                        outputElement.textContent = output;
+                    });
+
+                    // Добавляем глобальную функцию input для Python
+                    pyodide.globals.set("input", function(prompt) {
+                        return new Promise((resolve) => {
+                            showInputModal(prompt).then(result => {
+                                if (result === null) {
+                                    throw new Error("Input cancelled");
+                                }
+                                resolve(result);
+                            });
+                        });
+                    });
+
+                    // Подготавливаем код для выполнения
+                    const code = editor.getValue();
+                    const wrappedCode = `
+import asyncio
+import sys
+from pyodide.ffi import create_proxy
+
+async def main():
+    try:
+        # Создаем асинхронную версию input
+        async def async_input(prompt):
+            return await create_proxy(input)(prompt)
+        
+        # Заменяем стандартный input на асинхронный
+        input = async_input
+        
+        # Выполняем пользовательский код
+${code.split('\n').map(line => '        ' + line).join('\n')}
+    except Exception as e:
+        print(f"Error: {str(e)}", file=sys.stderr)
+
+# Запускаем асинхронный код
+asyncio.ensure_future(main())
+`;
+                    
+                    // Выполняем код
+                    await pyodide.runPythonAsync(wrappedCode);
+                    
+                    clearTimeout(executionTimeout);
+                    outputElement.className = "success";
+                    statusElement.textContent = "Finished";
+                } catch (error) {
+                    clearTimeout(executionTimeout);
+                    outputElement.textContent = error.toString();
+                    outputElement.className = "error";
+                    statusElement.textContent = "Error";
+                }
+            }
+
+            // Запуск JavaScript кода
+            function runJavaScriptCode() {
+                try {
+                    statusElement.textContent = "Running...";
+                    
+                    // Сохраняем оригинальный console.log
+                    const originalConsoleLog = console.log;
+                    
+                    // Переопределяем console.log для вывода в наш output
+                    console.log = function() {
+                        const args = Array.from(arguments);
+                        outputElement.textContent += args.join(' ') + '\n';
+                    };
+                    
+                    // Выполняем код
+                    const result = eval(editor.getValue());
+                    
+                    // Восстанавливаем оригинальный console.log
+                    console.log = originalConsoleLog;
+                    
+                    if (result !== undefined) {
+                        outputElement.textContent += result;
+                    }
+                    
+                    outputElement.className = "success";
+                    statusElement.textContent = "Finished";
+                } catch (error) {
+                    throw error;
+                }
+            }
+            
+            // Остановка выполнения
+            function stopExecution() {
+                if (pyodideWorker) {
+                    pyodideWorker.terminate();
+                    pyodideWorker = null;
+                }
+                
+                clearTimeout(executionTimeout);
+                outputElement.textContent += "\n\nExecution stopped by user";
+                outputElement.className = "error";
+                statusElement.textContent = "Stopped";
+                runBtn.disabled = false;
+                stopBtn.disabled = true;
+            }
+            
+            // Скачивание кода как файла
+            function downloadCode() {
+                const language = languageSelector.value;
+                const code = editor.getValue();
+                let fileExtension;
+                
+                switch(language) {
+                    case 'python':
+                        fileExtension = 'py';
+                        break;
+                    case 'cpp':
+                        fileExtension = 'cpp';
+                        break;
+                    case 'javascript':
+                        fileExtension = 'js';
+                        break;
+                    case 'processing':
+                        fileExtension = 'pde';
+                        break;
+                    case 'java':
+                        fileExtension = 'java';
+                        break;
+                }
+                
+                const blob = new Blob([code], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `Main.${fileExtension}`;
+                a.click();
+                
+                URL.revokeObjectURL(url);
+            }
+        });
+    </script>
+</body>
+</html>
