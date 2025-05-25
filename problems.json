@@ -1,0 +1,185 @@
+{
+    "problems": [
+        {
+            "id": 1,
+            "title": "Сумма двух чисел",
+            "difficulty": "easy",
+            "acceptance": "52.3%",
+            "description": "<p>Дан массив целых чисел <code>nums</code> и целое число <code>target</code>, верните <em>индексы двух чисел таких, что их сумма равна <code>target</code></em>.</p><p>Можно предположить, что каждый входной набор данных имеет <strong>ровно одно решение</strong>, и нельзя использовать один и тот же элемент дважды.</p><p>Ответ можно вернуть в любом порядке.</p><h3>Пример 1:</h3><pre>Вход: nums = [2,7,11,15], target = 9\nВыход: [0,1]\nПояснение: Потому что nums[0] + nums[1] == 9, возвращаем [0, 1].</pre><h3>Пример 2:</h3><pre>Вход: nums = [3,2,4], target = 6\nВыход: [1,2]</pre><h3>Пример 3:</h3><pre>Вход: nums = [3,3], target = 6\nВыход: [0,1]</pre><h3>Ограничения:</h3><ul><li><code>2 <= nums.length <= 10<sup>4</sup></code></li><li><code>-10<sup>9</sup> <= nums[i] <= 10<sup>9</sup></code></li><li><code>-10<sup>9</sup> <= target <= 10<sup>9</sup></code></li><li><strong>Существует только один правильный ответ.</strong></li></ul>",
+            "defaultCode": {
+                "javascript": "function twoSum(nums, target) {\n    // Ваш код здесь\n    \n};",
+                "python": "def twoSum(nums, target):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": [[2,7,11,15], 9],
+                    "output": [0,1]
+                },
+                {
+                    "input": [[3,2,4], 6],
+                    "output": [1,2]
+                },
+                {
+                    "input": [[3,3], 6],
+                    "output": [0,1]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Сложение двух чисел",
+            "difficulty": "medium",
+            "acceptance": "37.1%",
+            "description": "<p>Даны два <strong>непустых</strong> связных списка, представляющих два неотрицательных целых числа. Цифры хранятся в <strong>обратном порядке</strong>, и каждый узел содержит одну цифру. Сложите два числа и верните сумму в виде связного списка.</p><p>Можно предположить, что числа не содержат ведущих нулей, кроме самого числа 0.</p><h3>Пример 1:</h3><pre>Вход: l1 = [2,4,3], l2 = [5,6,4]\nВыход: [7,0,8]\nПояснение: 342 + 465 = 807.</pre>",
+            "defaultCode": {
+                "javascript": "function addTwoNumbers(l1, l2) {\n    // Ваш код здесь\n    \n};",
+                "python": "def addTwoNumbers(l1, l2):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": [[2,4,3], [5,6,4]],
+                    "output": [7,0,8]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Самая длинная подстрока без повторяющихся символов",
+            "difficulty": "medium",
+            "acceptance": "33.5%",
+            "description": "<p>Дана строка <code>s</code>, найдите длину <strong>самой длинной подстроки</strong> без повторяющихся символов.</p><h3>Пример 1:</h3><pre>Вход: s = \"abcabcbb\"\nВыход: 3\nПояснение: Ответ \"abc\" с длиной 3.</pre>",
+            "defaultCode": {
+                "javascript": "function lengthOfLongestSubstring(s) {\n    // Ваш код здесь\n    \n};",
+                "python": "def lengthOfLongestSubstring(s):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": ["abcabcbb"],
+                    "output": 3
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Медиана двух отсортированных массивов",
+            "difficulty": "hard",
+            "acceptance": "32.5%",
+            "description": "<p>Даны два отсортированных массива <code>nums1</code> и <code>nums2</code> размеров <code>m</code> и <code>n</code> соответственно, верните <strong>медиану</strong> двух отсортированных массивов.</p><p>Общая сложность времени выполнения должна быть <code>O(log (m+n))</code>.</p>",
+            "defaultCode": {
+                "javascript": "function findMedianSortedArrays(nums1, nums2) {\n    // Ваш код здесь\n    \n};",
+                "python": "def findMedianSortedArrays(nums1, nums2):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": [[1,3], [2]],
+                    "output": 2.0
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "title": "Сложение двух чисел",
+            "difficulty": "easy",
+            "acceptance": "85.2%",
+            "description": "<p>Напишите функцию, которая принимает два числа и возвращает их сумму.</p><h3>Пример 1:</h3><pre>Вход: a = 5, b = 3\nВыход: 8</pre><h3>Пример 2:</h3><pre>Вход: a = -1, b = 1\nВыход: 0</pre>",
+            "defaultCode": {
+                "javascript": "function addNumbers(a, b) {\n    // Ваш код здесь\n    \n};",
+                "python": "def addNumbers(a, b):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": [5, 3],
+                    "output": 8
+                },
+                {
+                    "input": [-1, 1],
+                    "output": 0
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "title": "Умножение двух чисел",
+            "difficulty": "easy",
+            "acceptance": "90.1%",
+            "description": "<p>Напишите функцию, которая принимает два числа и возвращает их произведение.</p><h3>Пример 1:</h3><pre>Вход: a = 4, b = 3\nВыход: 12</pre><h3>Пример 2:</h3><pre>Вход: a = -2, b = 3\nВыход: -6</pre>",
+            "defaultCode": {
+                "javascript": "function multiplyNumbers(a, b) {\n    // Ваш код здесь\n    \n};",
+                "python": "def multiplyNumbers(a, b):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": [4, 3],
+                    "output": 12
+                },
+                {
+                    "input": [-2, 3],
+                    "output": -6
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "title": "Деление двух чисел",
+            "difficulty": "easy",
+            "acceptance": "88.5%",
+            "description": "<p>Напишите функцию, которая принимает два числа и возвращает результат деления первого на второе.</p><h3>Пример 1:</h3><pre>Вход: a = 10, b = 2\nВыход: 5</pre><h3>Пример 2:</h3><pre>Вход: a = 7, b = 2\nВыход: 3.5</pre>",
+            "defaultCode": {
+                "javascript": "function divideNumbers(a, b) {\n    // Ваш код здесь\n    \n};",
+                "python": "def divideNumbers(a, b):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": [10, 2],
+                    "output": 5
+                },
+                {
+                    "input": [7, 2],
+                    "output": 3.5
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "title": "Остаток от деления",
+            "difficulty": "easy",
+            "acceptance": "92.3%",
+            "description": "<p>Напишите функцию, которая принимает два числа и возвращает остаток от деления первого на второе.</p><h3>Пример 1:</h3><pre>Вход: a = 10, b = 3\nВыход: 1</pre><h3>Пример 2:</h3><pre>Вход: a = 7, b = 2\nВыход: 1</pre>",
+            "defaultCode": {
+                "javascript": "function getRemainder(a, b) {\n    // Ваш код здесь\n    \n};",
+                "python": "def getRemainder(a, b):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": [10, 3],
+                    "output": 1
+                },
+                {
+                    "input": [7, 2],
+                    "output": 1
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "title": "Среднее арифметическое",
+            "difficulty": "easy",
+            "acceptance": "95.7%",
+            "description": "<p>Напишите функцию, которая принимает два числа и возвращает их среднее арифметическое.</p><h3>Пример 1:</h3><pre>Вход: a = 4, b = 6\nВыход: 5</pre><h3>Пример 2:</h3><pre>Вход: a = 3, b = 7\nВыход: 5</pre>",
+            "defaultCode": {
+                "javascript": "function getAverage(a, b) {\n    // Ваш код здесь\n    \n};",
+                "python": "def getAverage(a, b):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": [4, 6],
+                    "output": 5
+                },
+                {
+                    "input": [3, 7],
+                    "output": 5
+                }
+            ]
+        }
+    ]
+} 

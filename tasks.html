@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodePractice - Programming Challenges</title>
+    <link rel="stylesheet" href="tstyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-microchip"></i>
+                S.I.T Education
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Главная</a>
+                <a href="articles.html">Статьи</a>
+                <a href="news.html">Новости</a>
+                <a href="projects.html">Проекты</a>
+                <a href="team.html">Команда</a>
+                <a href="new.html">Написать статью</a>
+                <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        
+
+        <div class="content">
+            <div class="problems-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Difficulty</th>
+                            <th>Acceptance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="problems-table">
+                        <!-- Problems will be loaded here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="problem-view" style="display: none;">
+                <div class="problem-header">
+                    <h2 id="problem-title">Two Sum</h2>
+                    <span class="difficulty easy" id="problem-difficulty">Easy</span>
+                    <button id="back-to-list" class="btn">Back to Problems</button>
+                </div>
+
+                <div class="problem-description" id="problem-description">
+                    <!-- Problem description will be loaded here -->
+                </div>
+
+                <div class="code-editor">
+                    <select id="language-select">
+                        <option value="javascript">JavaScript</option>
+                        <option value="python">Python</option>
+                    </select>
+                    <div class="editor" id="editor"></div>
+                    <button id="run-code" class="btn run-btn">Run Code</button>
+                    <button id="submit-code" class="btn submit-btn">Submit</button>
+                </div>
+
+                <div class="test-cases">
+                    <h3>Test Cases</h3>
+                    <div id="test-case-results">
+                        <!-- Test results will be shown here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="social-media">
+        <h2>Мы в социальных сетях</h2>
+        <div class="social-links">
+            <a href="https://t.me/SIT_team" target="_blank" class="social-link">
+                <i class="fab fa-telegram"></i>
+                <span>Telegram</span>
+            </a>
+            <a href="https://github.com/X200L/SITeducation" target="_blank" class="social-link">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+            </a>
+            <a href="mailto:frogeesoft.team@gmail.com" class="social-link">
+                <i class="fas fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Все права защищены.</p>
+        <p>
+            Свяжитесь с нами: <a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a> |
+            <a href="https://github.com/X200L/SITeducation" target="_blank">website source</a> |
+            <a href="https://github.com/ArduRadioKot" target="_blank">Author GitHub</a> |
+            <a href="https://t.me/SIT_team" target="_blank">Telegramm</a>
+        </p>
+    </footer>
+
+    <script src="tscript.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+    <script>
+        // Initialize ACE editor
+        document.addEventListener('DOMContentLoaded', function() {
+            const editor = ace.edit("editor");
+            editor.setTheme("ace/theme/monokai");
+            editor.session.setMode("ace/mode/javascript");
+            editor.setOptions({
+                fontSize: "14px",
+                enableBasicAutocompletion: true,
+                enableLiveAutocompletion: true
+            });
+            window.codeEditor = editor;
+        });
+
+        // Theme toggle function
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+        }
+    </script>
+</body>
+</html>
