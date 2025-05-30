@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #007acc;
+    --primary-color: #0078d4;
     --secondary-color: #f1f3f4;
     --success-color: #34a853;
     --error-color: #ea4335;
@@ -7,10 +7,10 @@
     --easy-color: #00b8a3;
     --medium-color: #ffc01e;
     --hard-color: #ff375f;
-    --border-color: #dadce0;
-    --text-color: #202124;
-    --text-secondary: #5f6368;
-    --bg-color: #ffffff;
+    --border-color: #e2e8f0;
+    --text-color: #2c3e50;
+    --text-secondary: #64748b;
+    --bg-color: #f8f9fa;
     --sidebar-color: #f8f9fa;
     --hover-color: #f5f5f5;
     --accent-color: #007acc;
@@ -18,20 +18,28 @@
     --link-color: #007acc;
     --card-bg: #ffffff;
     --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --heading-color: #1a202c;
+    --tag-bg: #e5e7eb;
+    --tag-text: #4b5563;
 }
 
 [data-theme="dark"] {
-    --bg-color: #1e1e1e;
-    --text-color: #d4d4d4;
-    --card-bg: #252526;
-    --border-color: #3e3e42;
-    --hover-color: #2d2d2d;
-    --accent-color: #0e639c;
-    --sidebar-color: #333333;
-    --active-tab: #1e1e1e;
-    --tab-color: #2d2d2d;
+    --bg-color: #0f172a;
+    --text-color: #e2e8f0;
+    --card-bg: #1a202c;
+    --border-color: #2d3748;
+    --hover-color: #2d3748;
+    --accent-color: #3b82f6;
+    --sidebar-color: #1a202c;
+    --active-tab: #1a202c;
+    --tab-color: #2d3748;
     --link-color: #4ec9b0;
     --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    --heading-color: #f8fafc;
+    --text-secondary: #94a3b8;
+    --tag-bg: #2d3748;
+    --tag-text: #e2e8f0;
+    --secondary-color: #1e293b;
 }
 
 * {
@@ -245,17 +253,38 @@ main {
 }
 
 .problem-description pre {
-    background-color: #f6f8fa;
+    background-color: var(--bg-color);
     padding: 16px;
     border-radius: 6px;
     overflow-x: auto;
     margin: 10px 0;
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .problem-description pre {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    border-color: #3e3e42;
 }
 
 .problem-description p {
     margin-bottom: 15px;
+}
+
+.problem-description code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: var(--bg-color);
+    padding: 2px 4px;
+    border-radius: 3px;
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .problem-description code {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    border-color: #3e3e42;
 }
 
 .code-editor {
