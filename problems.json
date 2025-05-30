@@ -180,6 +180,274 @@
                     "output": 5
                 }
             ]
+        },
+        {
+            "id": 10,
+            "title": "Проверка палиндрома",
+            "difficulty": "easy",
+            "acceptance": "89.5%",
+            "description": "<p>Напишите функцию, которая проверяет, является ли строка палиндромом. Палиндром - это строка, которая читается одинаково слева направо и справа налево, игнорируя регистр и небуквенные символы.</p><h3>Пример 1:</h3><pre>Вход: s = \"A man, a plan, a canal: Panama\"\nВыход: true\nПояснение: \"amanaplanacanalpanama\" - палиндром.</pre><h3>Пример 2:</h3><pre>Вход: s = \"race a car\"\nВыход: false\nПояснение: \"raceacar\" не является палиндромом.</pre>",
+            "defaultCode": {
+                "javascript": "function isPalindrome(s) {\n    // Ваш код здесь\n    \n};",
+                "python": "def isPalindrome(s):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": ["A man, a plan, a canal: Panama"],
+                    "output": true
+                },
+                {
+                    "input": ["race a car"],
+                    "output": false
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "title": "Поиск в отсортированном массиве",
+            "difficulty": "medium",
+            "acceptance": "45.2%",
+            "description": "<p>Дан отсортированный массив целых чисел <code>nums</code> и целевое значение <code>target</code>, верните индекс, если целевое значение найдено. Если нет, верните индекс, где оно должно быть вставлено.</p><h3>Пример 1:</h3><pre>Вход: nums = [1,3,5,6], target = 5\nВыход: 2</pre><h3>Пример 2:</h3><pre>Вход: nums = [1,3,5,6], target = 2\nВыход: 1</pre>",
+            "defaultCode": {
+                "javascript": "function searchInsert(nums, target) {\n    // Ваш код здесь\n    \n};",
+                "python": "def searchInsert(nums, target):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": [[1,3,5,6], 5],
+                    "output": 2
+                },
+                {
+                    "input": [[1,3,5,6], 2],
+                    "output": 1
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "title": "Проверка валидности скобок",
+            "difficulty": "easy",
+            "acceptance": "78.3%",
+            "description": "<p>Дана строка <code>s</code>, содержащая только символы '(', ')', '{', '}', '[' и ']', определите, является ли строка валидной.</p><p>Строка является валидной, если:</p><ul><li>Открывающие скобки должны быть закрыты скобками того же типа.</li><li>Открывающие скобки должны быть закрыты в правильном порядке.</li></ul><h3>Пример 1:</h3><pre>Вход: s = \"()\"\nВыход: true</pre><h3>Пример 2:</h3><pre>Вход: s = \"([)]\"\nВыход: false</pre>",
+            "defaultCode": {
+                "javascript": "function isValid(s) {\n    // Ваш код здесь\n    \n};",
+                "python": "def isValid(s):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": ["()"],
+                    "output": true
+                },
+                {
+                    "input": ["([)]"],
+                    "output": false
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "title": "Удаление дубликатов из отсортированного массива",
+            "difficulty": "easy",
+            "acceptance": "82.1%",
+            "description": "<p>Дан отсортированный массив <code>nums</code>, удалите дубликаты на месте так, чтобы каждый элемент появлялся только один раз. Относительный порядок элементов должен остаться прежним.</p><h3>Пример 1:</h3><pre>Вход: nums = [1,1,2]\nВыход: 2, nums = [1,2,_]\nПояснение: Ваша функция должна вернуть k = 2, при этом первые два элемента nums равны 1 и 2 соответственно.</pre>",
+            "defaultCode": {
+                "javascript": "function removeDuplicates(nums) {\n    // Ваш код здесь\n    \n};",
+                "python": "def removeDuplicates(nums):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": [[1,1,2]],
+                    "output": 2
+                },
+                {
+                    "input": [[0,0,1,1,1,2,2,3,3,4]],
+                    "output": 5
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "title": "Поиск пикового элемента",
+            "difficulty": "medium",
+            "acceptance": "48.7%",
+            "description": "<p>Пиковый элемент - это элемент, который строго больше своих соседей. Дан массив <code>nums</code>, найдите пиковый элемент и верните его индекс.</p><h3>Пример 1:</h3><pre>Вход: nums = [1,2,3,1]\nВыход: 2\nПояснение: 3 - это пиковый элемент, и его индекс равен 2.</pre>",
+            "defaultCode": {
+                "javascript": "function findPeakElement(nums) {\n    // Ваш код здесь\n    \n};",
+                "python": "def findPeakElement(nums):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": [[1,2,3,1]],
+                    "output": 2
+                },
+                {
+                    "input": [[1,2,1,3,5,6,4]],
+                    "output": 5
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "title": "Проверка совершенного числа",
+            "difficulty": "easy",
+            "acceptance": "91.2%",
+            "description": "<p>Совершенное число - это положительное целое число, равное сумме всех его положительных делителей, кроме самого числа. Напишите функцию, которая проверяет, является ли число совершенным.</p><h3>Пример 1:</h3><pre>Вход: num = 28\nВыход: true\nПояснение: 28 = 1 + 2 + 4 + 7 + 14</pre><h3>Пример 2:</h3><pre>Вход: num = 7\nВыход: false</pre>",
+            "defaultCode": {
+                "javascript": "function checkPerfectNumber(num) {\n    // Ваш код здесь\n    \n};",
+                "python": "def checkPerfectNumber(num):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": [28],
+                    "output": true
+                },
+                {
+                    "input": [7],
+                    "output": false
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "title": "Поиск пропущенного числа",
+            "difficulty": "easy",
+            "acceptance": "85.6%",
+            "description": "<p>Дан массив <code>nums</code>, содержащий n различных чисел в диапазоне [0, n], верните единственное число в диапазоне, которое отсутствует в массиве.</p><h3>Пример 1:</h3><pre>Вход: nums = [3,0,1]\nВыход: 2\nПояснение: n = 3, так как в массиве 3 числа, все числа находятся в диапазоне [0,3]. 2 - это пропущенное число.</pre>",
+            "defaultCode": {
+                "javascript": "function missingNumber(nums) {\n    // Ваш код здесь\n    \n};",
+                "python": "def missingNumber(nums):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": [[3,0,1]],
+                    "output": 2
+                },
+                {
+                    "input": [[0,1]],
+                    "output": 2
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "title": "Проверка степени двойки",
+            "difficulty": "easy",
+            "acceptance": "94.3%",
+            "description": "<p>Напишите функцию, которая определяет, является ли данное целое число степенью двойки.</p><h3>Пример 1:</h3><pre>Вход: n = 1\nВыход: true\nПояснение: 2^0 = 1</pre><h3>Пример 2:</h3><pre>Вход: n = 16\nВыход: true\nПояснение: 2^4 = 16</pre>",
+            "defaultCode": {
+                "javascript": "function isPowerOfTwo(n) {\n    // Ваш код здесь\n    \n};",
+                "python": "def isPowerOfTwo(n):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": [1],
+                    "output": true
+                },
+                {
+                    "input": [16],
+                    "output": true
+                },
+                {
+                    "input": [3],
+                    "output": false
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "title": "Поиск наибольшего общего делителя",
+            "difficulty": "easy",
+            "acceptance": "88.9%",
+            "description": "<p>Напишите функцию, которая находит наибольший общий делитель (НОД) двух положительных целых чисел.</p><h3>Пример 1:</h3><pre>Вход: a = 12, b = 18\nВыход: 6\nПояснение: 12 = 2 × 2 × 3, 18 = 2 × 3 × 3, НОД = 2 × 3 = 6</pre>",
+            "defaultCode": {
+                "javascript": "function gcd(a, b) {\n    // Ваш код здесь\n    \n};",
+                "python": "def gcd(a, b):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": [12, 18],
+                    "output": 6
+                },
+                {
+                    "input": [7, 13],
+                    "output": 1
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "title": "Проверка простого числа",
+            "difficulty": "easy",
+            "acceptance": "86.7%",
+            "description": "<p>Напишите функцию, которая определяет, является ли данное число простым. Простое число - это натуральное число больше 1, которое делится без остатка только на 1 и на само себя.</p><h3>Пример 1:</h3><pre>Вход: n = 2\nВыход: true\nПояснение: 2 делится только на 1 и 2.</pre><h3>Пример 2:</h3><pre>Вход: n = 4\nВыход: false\nПояснение: 4 делится на 1, 2 и 4.</pre>",
+            "defaultCode": {
+                "javascript": "function isPrime(n) {\n    // Ваш код здесь\n    \n};",
+                "python": "def isPrime(n):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": [2],
+                    "output": true
+                },
+                {
+                    "input": [4],
+                    "output": false
+                },
+                {
+                    "input": [17],
+                    "output": true
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "title": "Поиск среднего арифметического",
+            "difficulty": "easy",
+            "acceptance": "92.1%",
+            "description": "<p>Напишите функцию, которая находит среднее арифметическое элементов массива. Среднее арифметическое - это сумма всех элементов, деленная на их количество.</p><h3>Пример 1:</h3><pre>Вход: nums = [1, 2, 3, 4, 5]\nВыход: 3.0\nПояснение: (1 + 2 + 3 + 4 + 5) / 5 = 3.0</pre><h3>Пример 2:</h3><pre>Вход: nums = [10, 20, 30]\nВыход: 20.0\nПояснение: (10 + 20 + 30) / 3 = 20.0</pre>",
+            "defaultCode": {
+                "javascript": "function findMean(nums) {\n    // Ваш код здесь\n    \n};",
+                "python": "def findMean(nums):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": [[1, 2, 3, 4, 5]],
+                    "output": 3.0
+                },
+                {
+                    "input": [[10, 20, 30]],
+                    "output": 20.0
+                },
+                {
+                    "input": [[-5, 0, 5]],
+                    "output": 0.0
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "title": "Поиск медианы",
+            "difficulty": "medium",
+            "acceptance": "65.4%",
+            "description": "<p>Напишите функцию, которая находит медиану массива чисел. Медиана - это среднее значение в отсортированном массиве. Если количество элементов четное, медиана - это среднее арифметическое двух средних элементов.</p><h3>Пример 1:</h3><pre>Вход: nums = [1, 3, 2, 4, 5]\nВыход: 3.0\nПояснение: После сортировки [1, 2, 3, 4, 5], медиана = 3</pre><h3>Пример 2:</h3><pre>Вход: nums = [1, 2, 3, 4]\nВыход: 2.5\nПояснение: После сортировки [1, 2, 3, 4], медиана = (2 + 3) / 2 = 2.5</pre>",
+            "defaultCode": {
+                "javascript": "function findMedian(nums) {\n    // Ваш код здесь\n    \n};",
+                "python": "def findMedian(nums):\n    # Ваш код здесь\n    pass"
+            },
+            "testCases": [
+                {
+                    "input": [[1, 3, 2, 4, 5]],
+                    "output": 3.0
+                },
+                {
+                    "input": [[1, 2, 3, 4]],
+                    "output": 2.5
+                },
+                {
+                    "input": [[7, 3, 1, 4, 6, 2, 5]],
+                    "output": 4.0
+                }
+            ]
         }
     ]
 } 
