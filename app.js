@@ -179,6 +179,16 @@
         likes: 0,
         tags: [ 'Туториал', 'Программирование'],
         preview: 'Как использовать Processing для создания интерактивных проектов'
+    },
+    {
+        id: 19,
+        file: 'scoltechday.md',
+        title: 'День Сколтеха в Центральном Университете. Как это было?',
+        author: 'ArduRadioKot',
+        date: '2025-05-30',
+        likes: 0,
+        tags: [ 'Мероприятие', 'Разработка', 'Программирование'],
+        preview: 'Мини статья о том, как я попал на День Сколтеха в Центральном Университете и что там было.'
     }
 ];
 
@@ -273,7 +283,12 @@ async function renderArticles() {
     articlesContainer.innerHTML = '<div class="loading">Загрузка статей...</div>';
 
     try {
-        for (const article of articlesInfo) {
+        // Sort articles by date in descending order (newest first)
+        const sortedArticles = [...articlesInfo].sort((a, b) => {
+            return new Date(b.date) - new Date(a.date);
+        });
+
+        for (const article of sortedArticles) {
             const articleHtml = `
                 <div class="article-card" onclick="showFullArticle(${article.id})">
                     <h2 class="article-title">${article.title}</h2>
