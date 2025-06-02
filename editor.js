@@ -1,3 +1,35 @@
+// Глобальная функция для скачивания статьи
+function downloadArticle() {
+    try {
+        const editor = document.getElementById('markdown-editor');
+        const articleTitleInput = document.getElementById('article-title');
+        
+        if (!editor || !articleTitleInput) {
+            throw new Error('Не удалось найти необходимые элементы на странице');
+        }
+
+        const title = articleTitleInput.value.trim() || 'untitled-article';
+        const content = editor.value.trim();
+        const filename = `${title.replace(/[^a-z0-9]+/gi, '-').toLowerCase()}.md`;
+
+        let markdownContent = `# ${title}\n\n`;
+        markdownContent += content;
+
+        const blob = new Blob([markdownContent], { type: 'text/markdown;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    } catch (error) {
+        console.error('Ошибка при скачивании:', error);
+        alert('Произошла ошибка при скачивании файла: ' + error.message);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const editor = document.getElementById('markdown-editor');
     const preview = document.getElementById('preview');
@@ -8,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const draftButton = document.getElementById('draft-button');
     const emailInput = document.getElementById('email-input');
     const articleTitleInput = document.getElementById('article-title');
-    const downloadButton = document.getElementById('download-button');
 
     // Функция для обновления предпросмотра
     function updatePreview() {
@@ -21,7 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Обработчик ввода в редакторе
-    editor.addEventListener('input', updatePreview);
+    editor.addEventListener('input', () => {
+        updatePreview();
+        // Сохраняем содержимое редактора в localStorage
+        localStorage.setItem('editorContent', editor.value);
+    });
 
     // Функция для вставки Markdown разметки
     window.insertMarkdown = function(start, end) {
@@ -36,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             textarea.selectionStart = startPos + start.length;
             textarea.selectionEnd = startPos + start.length + selectedText.length;
             updatePreview();
+            localStorage.setItem('editorContent', textarea.value);
         }
     };
 
@@ -141,36 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
         sendArticle(articleData);
     });
 
-    // Функция для скачивания статьи
-    function downloadArticle(filename, text) {
-        const element = document.createElement('a');
-        element.setAttribute('href', 'data:text/markdown;charset=utf-8,' + encodeURIComponent(text));
-        element.setAttribute('download', filename);
-
-        element.style.display = 'none';
-        document.body.appendChild(element);
-
-        element.click();
-
-        document.body.removeChild(element);
-    }
-
-    // Обработчик нажатия на кнопку скачивания
-    downloadButton.addEventListener('click', () => {
-        const title = articleTitleInput.value.trim();
-        const content = editor.value.trim();
-        const tagsArray = Array.from(tags);
-        const filename = title.replace(/[^a-z0-9]+/gi, '-').toLowerCase() + '.md';
-
-        let markdownContent = `# ${title}\n\n`;
-        markdownContent += `**Теги:** ${tagsArray.join(', ')}\n\n`;
-        markdownContent += content;
-
-        downloadArticle(filename, markdownContent);
-    });
-
-    // Добавим пример текста в редактор
-    editor.value = `# Добро пожаловать в редактор
+    // Пример текста
+    const exampleText = `# Добро пожаловать в редактор
 
 Это простой пример Markdown разметки.
 
@@ -184,5 +192,14 @@ document.addEventListener('DOMContentLoaded', () => {
 console.log("Hello, World!");
 \`\`\`
 `;
+
+    // Загружаем сохраненное содержимое или используем пример
+    const savedContent = localStorage.getItem('editorContent');
+    if (savedContent) {
+        editor.value = savedContent;
+    } else {
+        editor.value = exampleText;
+        localStorage.setItem('editorContent', exampleText);
+    }
     updatePreview();
 }); 
