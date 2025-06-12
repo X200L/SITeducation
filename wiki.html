@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="theme-color" content="#007acc">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>База знаний - S.I.T Education</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="theme.js"></script>
+</head>
+<body class="wiki-page">
+    <canvas id="particles"></canvas>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-microchip"></i>
+                S.I.T Education
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="articles.html">Статьи</a>
+                <a href="news.html">Новости</a>
+                <a href="projects.html">Проекты</a>
+                <a href="hackatons.html">Хакатоны</a>
+                <a href="team.html">Команда</a>
+                <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="wiki-title">База знаний</h1>
+            
+            <div class="wiki-search">
+                <input type="text" id="wikiSearch" class="search-input" placeholder="Поиск по базе знаний...">
+            </div>
+
+            <div class="wiki-layout">
+                <aside class="wiki-sidebar">
+                    <div class="wiki-categories">
+                        <h3>Категории</h3>
+                        <ul id="categoryList">
+                            <!-- Категории будут добавлены динамически -->
+                        </ul>
+                    </div>
+                </aside>
+
+                <div class="wiki-content">
+                    <div id="wikiList" class="wiki-grid">
+                        <div class="loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            Загрузка базы знаний...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="social-media">
+        <h2>Мы в социальных сетях</h2>
+        <div class="social-links">
+            <a href="https://t.me/SIT_team" target="_blank" class="social-link">
+                <i class="fab fa-telegram"></i>
+                <span>Telegram</span>
+            </a>
+            <a href="https://github.com/X200L/SITeducation" target="_blank" class="social-link">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+            </a>
+            <a href="mailto:frogeesoft.team@gmail.com" class="social-link">
+                <i class="fas fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Все права защищены.</p>
+        <p>
+            Свяжитесь с нами: <a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a> |
+            <a href="https://github.com/X200L/SITeducation" target="_blank">website source</a> |
+            <a href="https://github.com/ArduRadioKot" target="_blank">Author GitHub</a> |
+            <a href="https://t.me/SIT_team" target="_blank">Telegramm</a>
+        </p>
+    </footer>
+
+    <script src="wiki.js"></script>
+</body>
+</html> 

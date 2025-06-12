@@ -2287,6 +2287,7 @@ main {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    padding: 1rem;
 }
 
 .hackathon-modal-content {
@@ -2298,6 +2299,7 @@ main {
     border-radius: 12px;
     padding: 2rem;
     position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .close-modal {
@@ -2307,43 +2309,467 @@ main {
     background: none;
     border: none;
     color: var(--text-color);
-    font-size: 1.5rem;
     cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    transition: color 0.2s ease;
+    z-index: 1;
 }
 
-/* Responsive styles for hackathon page */
-@media (max-width: 768px) {
-    .hackathons-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
+.close-modal:hover {
+    color: var(--accent-color);
+}
 
-    .hackathon-modal-content {
-        width: 95%;
+.wiki-full-content {
+    margin-top: 1rem;
+}
+
+/* Wiki Page Styles */
+.wiki-page {
+    background: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+}
+
+.wiki-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.wiki-sidebar {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+.wiki-search {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.wiki-search input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    padding-left: 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--input-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.wiki-search i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--secondary-text);
+}
+
+.wiki-categories h3 {
+    margin-bottom: 1rem;
+    color: var(--heading-color);
+    font-size: 1.2rem;
+}
+
+.wiki-categories ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filter-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    background: none;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 8px;
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+.filter-tag:hover {
+    background: var(--hover-bg);
+}
+
+.filter-tag.active {
+    background: var(--accent-color);
+    color: white;
+}
+
+.wiki-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.wiki-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    border: 1px solid var(--border-color);
+    height: 100%;
+}
+
+.wiki-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.wiki-card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.wiki-card .wiki-title {
+    font-size: 1.25rem;
+    margin: 0 0 1rem 0;
+    color: var(--heading-color);
+}
+
+.wiki-description {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.wiki-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.wiki-tags .tag {
+    display: inline-block;
+    background: var(--accent-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+}
+
+.wiki-tags .tag:hover {
+    background: var(--accent-hover);
+}
+
+.wiki-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: auto;
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+}
+
+.wiki-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.wiki-meta i {
+    font-size: 1rem;
+}
+
+.read-more {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    font-weight: 500;
+    text-align: center;
+}
+
+.read-more:hover {
+    background: var(--accent-hover);
+}
+
+/* Wiki Modal Styles */
+.wiki-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.wiki-modal-content {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 800px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    transition: color 0.2s ease;
+    z-index: 1;
+}
+
+.close-modal:hover {
+    color: var(--accent-color);
+}
+
+.wiki-full-content {
+    margin-top: 1rem;
+}
+
+/* Markdown Content Styles */
+.markdown-body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--heading-color);
+}
+
+.markdown-body h1 {
+    font-size: 2em;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.3em;
+}
+
+.markdown-body h2 {
+    font-size: 1.5em;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.3em;
+}
+
+.markdown-body p {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.markdown-body code {
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    background-color: var(--code-bg);
+    border-radius: 3px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+.markdown-body pre {
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: var(--code-bg);
+    border-radius: 3px;
+    margin-bottom: 16px;
+}
+
+.markdown-body pre code {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    word-break: normal;
+    white-space: pre;
+    background: transparent;
+    border: 0;
+}
+
+.markdown-body blockquote {
+    padding: 0 1em;
+    color: var(--secondary-text);
+    border-left: 0.25em solid var(--border-color);
+    margin: 0 0 16px 0;
+}
+
+.markdown-body table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    margin-bottom: 16px;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+    padding: 6px 13px;
+    border: 1px solid var(--border-color);
+}
+
+.markdown-body table tr {
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+}
+
+.markdown-body table tr:nth-child(2n) {
+    background-color: var(--code-bg);
+}
+
+/* Responsive Elements */
+.img-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.responsive-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.table-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.code-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.responsive-code {
+    white-space: pre;
+    word-wrap: normal;
+}
+
+/* Loading and Error States */
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--secondary-text);
+}
+
+.error-message {
+    text-align: center;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    margin: 1rem 0;
+}
+
+.error-message h2 {
+    color: var(--error-color);
+    margin-bottom: 1rem;
+}
+
+.error-message button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.error-message button:hover {
+    background: var(--accent-hover);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .wiki-layout {
+        grid-template-columns: 1fr;
         padding: 1rem;
     }
 
-    .hackathon-meta {
-        flex-direction: column;
-        gap: 0.5rem;
+    .wiki-sidebar {
+        position: static;
+        margin-bottom: 1rem;
+    }
+
+    .wiki-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wiki-modal-content {
+        padding: 1rem;
+        width: 95%;
+    }
+
+    .markdown-body {
+        font-size: 0.9rem;
+    }
+
+    .wiki-meta {
+        font-size: 0.8rem;
     }
 }
 
 @media (max-width: 480px) {
-    .hackathon-content {
+    .wiki-card-content {
         padding: 1rem;
     }
 
-    .hackathon-content h2 {
+    .wiki-card .wiki-title {
         font-size: 1.1rem;
     }
 
-    .hackathon-preview {
+    .wiki-description {
         font-size: 0.9rem;
     }
 
-    .hackathon-meta,
-    .hackathon-details {
+    .wiki-meta {
         font-size: 0.8rem;
+    }
+
+    .read-more {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
     }
 } 
