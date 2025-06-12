@@ -314,9 +314,38 @@
         // Get the article ID from the URL
         const urlParams = new URLSearchParams(window.location.search);
         const articleId = urlParams.get('article');
+        const isRandom = urlParams.get('random') === 'true';
 
+        // Function to load and display a random article
+        async function loadRandomArticle() {
+            try {
+                if (articlesInfo && articlesInfo.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * articlesInfo.length);
+                    const randomArticle = articlesInfo[randomIndex];
+                    // Show the random article directly
+                    showFullArticle(randomArticle.id);
+                } else {
+                    throw new Error('No articles available');
+                }
+            } catch (error) {
+                console.error('Error loading random article:', error);
+                const articlesContainer = document.querySelector('.articles');
+                articlesContainer.innerHTML = `
+                    <div class="error-message">
+                        <h2>Ошибка загрузки случайной статьи</h2>
+                        <p>${error.message}</p>
+                        <button onclick="loadRandomArticle()">Попробовать снова</button>
+                    </div>
+                `;
+            }
+        }
+
+        // If random parameter is present, load a random article
+        if (isRandom) {
+            loadRandomArticle();
+        }
         // If an article ID is present, show the full article
-        if (articleId) {
+        else if (articleId) {
             showFullArticle(parseInt(articleId));
         }
     </script>
