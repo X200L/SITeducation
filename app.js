@@ -1,5 +1,14 @@
 // Информация о статьях
 
+// Настройка marked для поддержки подсветки синтаксиса
+marked.setOptions({
+    highlight: function(code, lang) {
+        if (Prism.languages[lang]) {
+            return Prism.highlight(code, Prism.languages[lang], lang);
+        }
+        return code;
+    }
+});
 
 // Функция для загрузки статей из JSON файла
 async function loadArticles() {
@@ -83,14 +92,19 @@ async function showFullArticle(articleId) {
         wrapper.appendChild(table);
     });
 
-    // Обработка блоков кода для адаптивности
+    // Обработка блоков кода для адаптивности и подсветки синтаксиса
     document.querySelectorAll('.article-content pre code').forEach((block) => {
         block.classList.add('responsive-code');
         const wrapper = document.createElement('div');
         wrapper.className = 'code-wrapper';
         block.parentNode.parentNode.insertBefore(wrapper, block.parentNode);
         wrapper.appendChild(block.parentNode);
-        Prism.highlightElement(block);
+        
+        // Определяем язык программирования из класса
+        const lang = block.className.replace('language-', '');
+        if (Prism.languages[lang]) {
+            Prism.highlightElement(block);
+        }
     });
 }
 

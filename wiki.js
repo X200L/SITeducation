@@ -1,3 +1,13 @@
+// Настройка marked для поддержки подсветки синтаксиса
+marked.setOptions({
+    highlight: function(code, lang) {
+        if (Prism.languages[lang]) {
+            return Prism.highlight(code, Prism.languages[lang], lang);
+        }
+        return code;
+    }
+});
+
 class WikiManager {
     constructor() {
         this.wikiContainer = document.getElementById('wikiList');
@@ -162,13 +172,19 @@ class WikiManager {
             wrapper.appendChild(table);
         });
 
-        // Добавляем обработку блоков кода
+        // Добавляем обработку блоков кода для адаптивности и подсветки синтаксиса
         modal.querySelectorAll('pre code').forEach((block) => {
             block.classList.add('responsive-code');
             const wrapper = document.createElement('div');
             wrapper.className = 'code-wrapper';
             block.parentNode.parentNode.insertBefore(wrapper, block.parentNode);
             wrapper.appendChild(block.parentNode);
+            
+            // Определяем язык программирования из класса
+            const lang = block.className.replace('language-', '');
+            if (Prism.languages[lang]) {
+                Prism.highlightElement(block);
+            }
         });
     }
 

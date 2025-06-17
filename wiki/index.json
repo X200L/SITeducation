@@ -9,13 +9,12 @@
             "author": "SIT Education"
         },
         {
-            "id": "arduino-basics",
+            "id": "Arduino",
             "title": "Arduino для начинающих",
             "description": "Введение в программирование Arduino и основы электроники",
             "category": "electronics",
             "tags": ["Arduino", "Электроника", "Программирование"],
             "author": "SIT Education"
-           
         },
         {
             "id": "react-basics",
@@ -26,7 +25,7 @@
             "author": "SIT Education"
         },
         {
-            "id": "git-basics",
+            "id": "Git",
             "title": "Git: Основные команды",
             "description": "Базовые команды Git для управления версиями",
             "category": "tools",
@@ -97,6 +96,14 @@
             "category": "programming",
             "tags": ["C", "programming", "basics", "tutorial"],
             "author": "SIT Education"
+        },
+        {
+            "id": "alg",
+            "title": "Базовые алгоритмы",
+            "description": "Список базовых алгоритмов в примерах",
+            "tags":["python", "Algorithms"],
+            "category": "programming",
+            "author":"SIT Education"
         }
     ]
 }

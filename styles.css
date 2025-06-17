@@ -1514,12 +1514,13 @@ main {
 
 /* Обновленные стили для контента статьи */
 .article-content.markdown-body {
-    font-size: 14px;
+    font-family: 'Consolas', 'Courier New', monospace;
     line-height: 1.6;
-    word-wrap: break-word;
-    max-width: 100%;
-    overflow-x: hidden;
-    padding: 0 0.5rem;
+    color: var(--text-color);
+    padding: 20px;
+    background: var(--bg-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .article-content.markdown-body h1 {
@@ -1586,8 +1587,8 @@ main {
     }
 
     .article-content.markdown-body {
-        font-size: 13px;
-        padding: 0 0.3rem;
+        font-family: 'Consolas', 'Courier New', monospace;
+        padding: 15px;
     }
 
     .article-content.markdown-body pre {
@@ -1612,8 +1613,8 @@ main {
     }
 
     .article-content.markdown-body {
-        font-size: 12px;
-        padding: 0 0.2rem;
+        font-family: 'Consolas', 'Courier New', monospace;
+        padding: 10px;
     }
 
     .article-content.markdown-body pre {
@@ -3782,5 +3783,107 @@ main {
     .btn {
         padding: 0.6rem 1rem;
         font-size: 0.8rem;
+    }
+}
+
+/* Стили для подсветки синтаксиса */
+.article-content.markdown-body pre,
+.wiki-full-content pre {
+    background: #2d2d2d;
+    border-radius: 6px;
+    padding: 1em;
+    margin: 1em 0;
+    overflow-x: auto;
+}
+
+.article-content.markdown-body code,
+.wiki-full-content code {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+/* Стили для темной темы */
+[data-theme="dark"] .article-content.markdown-body pre,
+[data-theme="dark"] .wiki-full-content pre {
+    background: #1e1e1e;
+}
+
+/* Стили для разных языков программирования */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: #6a737d;
+}
+
+.token.punctuation {
+    color: #d4d4d4;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+    color: #b5cea8;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin {
+    color: #ce9178;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #d4d4d4;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #569cd6;
+}
+
+.token.function {
+    color: #dcdcaa;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #d16969;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+
+.token.italic {
+    font-style: italic;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .article-content.markdown-body pre,
+    .wiki-full-content pre {
+        font-size: 0.85em;
+        padding: 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .article-content.markdown-body pre,
+    .wiki-full-content pre {
+        font-size: 0.8em;
+        padding: 0.6em;
     }
 }
