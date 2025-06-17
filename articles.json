@@ -2,48 +2,193 @@
     "articles": [
         {
             "id": 1,
-            "file": "articles/1.md",
-            "title": "Введение в JavaScript",
-            "author": "Александр Воробьев",
-            "date": "2024-03-20",
-            "likes": 42,
-            "tags": ["JavaScript", "Программирование", "Основы"]
+            "file": "vscode-plugins.md",
+            "title": "VS Code: Полезные плагины и симуляторы",
+            "author": "S.I.T Education",
+            "date": "2025-03-20",
+            "likes": 0,
+            "tags": ["Разработка", "Инструменты"],
+            "preview": "Подборка самых полезных плагинов для VS Code и обзор симуляторов для тестирования кода."
         },
         {
             "id": 2,
-            "file": "articles/2.md",
-            "title": "Основы HTML и CSS",
-            "author": "Александр Воробьев",
-            "date": "2024-03-19",
-            "likes": 38,
-            "tags": ["HTML", "CSS", "Веб-разработка"]
+            "file": "obsidian-guide.md",
+            "title": "Obsidian: Твой личный центр знаний",
+            "author": "S.I.T Education",
+            "date": "2025-03-24",
+            "likes": 0,
+            "tags": ["Продуктивность"],
+            "preview": "Полное руководство по Obsidian: плагины, Markdown, методы организации заметок и продвинутые техники."
         },
         {
             "id": 3,
-            "file": "articles/3.md",
-            "title": "Работа с DOM в JavaScript",
-            "author": "Александр Воробьев",
-            "date": "2024-03-18",
-            "likes": 35,
-            "tags": ["JavaScript", "DOM", "Веб-разработка"]
+            "file": "arduino-sensors.md",
+            "title": "Работа с сенсорами Arduino",
+            "author": "S.I.T Education",
+            "date": "2025-03-25",
+            "likes": 0,
+            "tags": ["Arduino", "Электроника", "DIY"],
+            "preview": "Практическое руководство по подключению и программированию различных сенсоров для Arduino."
         },
         {
             "id": 4,
-            "file": "articles/4.md",
-            "title": "Асинхронное программирование в JavaScript",
-            "author": "Александр Воробьев",
-            "date": "2024-03-17",
-            "likes": 45,
-            "tags": ["JavaScript", "Асинхронность", "Promise"]
+            "file": "notes-app-tutorial.md",
+            "title": "Создаем приложение для заметок",
+            "author": "ArduRadioKot",
+            "date": "2025-03-26",
+            "likes": 0,
+            "tags": ["JavaScript", "Web", "Туториал"],
+            "preview": "Пошаговый туториал по созданию веб-приложения для заметок с использованием современных технологий."
         },
         {
             "id": 5,
-            "file": "articles/5.md",
-            "title": "Современный CSS: Flexbox и Grid",
-            "author": "Александр Воробьев",
-            "date": "2024-03-16",
-            "likes": 40,
-            "tags": ["CSS", "Flexbox", "Grid", "Вёрстка"]
+            "file": "git-basics.md",
+            "title": "Системы контроля версий",
+            "author": "S.I.T Education",
+            "date": "2025-03-27",
+            "likes": 0,
+            "tags": ["Туториал", "Git"],
+            "preview": "Основы систем контроля версий Git и их использование в разработке."
+        },
+        {
+            "id": 6,
+            "file": "responsive-design-ru.md",
+            "title": "Адаптивный дизайн",
+            "author": "S.I.T Education",
+            "date": "2025-03-27",
+            "likes": 0,
+            "tags": ["Дизайн", "Web"],
+            "preview": "Основы адаптивной верстки и создания отзывчивых веб-сайтов."
+        },
+        {
+            "id": 7,
+            "file": "http.md",
+            "title": "Как работает HTTP: Простыми словами",
+            "author": "S.I.T Education",
+            "date": "2025-03-28",
+            "likes": 0,
+            "tags": ["Web", "HTTP"],
+            "preview": "Объяснение протокола HTTP простым и понятным языком."
+        },
+        {
+            "id": 8,
+            "file": "ardudino.md",
+            "title": "Делаем игру \"Динозаврик\" на Arduino",
+            "author": "ArduRadioKot",
+            "date": "2025-03-29",
+            "likes": 0,
+            "tags": ["Arduino", "Игра", "DIY"],
+            "preview": "Создание простой игры \"Динозаврик\" на Arduino с использованием LCD1602 и одной кнопки."
+        },
+        {
+            "id": 9,
+            "file": "GTK - C.md",
+            "title": "Разработка GUI на C с использованием GTK",
+            "author": "GigaProgramm",
+            "date": "2025-03-30",
+            "likes": 0,
+            "tags": ["C", "GTK", "GUI"],
+            "preview": "Краткое руководство по разработке графических интерфейсов на C с использованием библиотеки GTK."
+        },
+        {
+            "id": 10,
+            "file": "C.md",
+            "title": "Язык программирования C: Краткий справочник",
+            "author": "GigaProgramm",
+            "date": "2025-03-30",
+            "likes": 0,
+            "tags": ["C", "Программирование"],
+            "preview": "Краткий справочник по языку программирования C, основанный на ключевых концепциях и примерах."
+        },
+        {
+            "id": 11,
+            "file": "todoprogramm.md",
+            "title": "To-do лист, делаем простое веб приложение",
+            "author": "ArduRadioKot",
+            "date": "2025-03-30",
+            "likes": 0,
+            "tags": ["JavaScript", "Web", "Туториал"],
+            "preview": "Создание простого веб-приложения To-do лист с двумя версиями: простой и продвинутой."
+        },
+        {
+            "id": 12,
+            "file": "new_js_article.md",
+            "title": "Полное руководство по JavaScript для начинающих",
+            "author": "ArduRadioKot",
+            "date": "2025-03-30",
+            "likes": 0,
+            "tags": ["JavaScript", "Туториал", "Web"],
+            "preview": "Изучите JavaScript с нуля и создавайте интерактивные веб-приложения."
+        },
+        {
+            "id": 13,
+            "file": "new_calc_article.md",
+            "title": "Создаем продвинутый веб-калькулятор",
+            "author": "S.I.T Education",
+            "date": "2024-03-30",
+            "likes": 0,
+            "tags": ["HTML", "CSS", "JavaScript", "Web", "Туториал"],
+            "preview": "Создайте свой собственный веб-калькулятор с помощью HTML, CSS и JavaScript."
+        },
+        {
+            "id": 14,
+            "file": "arduino-autopilot.md",
+            "title": "Создаем систему автополива на Ардуино",
+            "author": "ArduRadioKot",
+            "date": "2025-03-30",
+            "likes": 0,
+            "tags": ["Электроника", "Arduino", "DIY", "Туториал"],
+            "preview": "Создайте свой собственный веб-калькулятор с помощью HTML, CSS и JavaScript."
+        },
+        {
+            "id": 15,
+            "file": "dal.md",
+            "title": "Ультразвуковая рулетка на Arduino",
+            "author": "ArduRadioKot",
+            "date": "2025-04-01",
+            "likes": 0,
+            "tags": ["Arduino", "Электроника", "DIY"],
+            "preview": "Создаем ультразвуковую рулетку на Arduino с использованием ультразвукового датчика и LCD-дисплея."
+        },
+        {
+            "id": 16,
+            "file": "pages.md",
+            "title": "Публикуем свой сайт на Github Pages",
+            "author": "ArduRadioKot",
+            "date": "2025-05-15",
+            "likes": 0,
+            "tags": ["Web", "Туториал", "HTML"],
+            "preview": "Пишем свой сайт и бесплатно публикуем на сервисе github pages"
+        },
+        {
+            "id": 17,
+            "file": "HowWorkIT.md",
+            "title": "Как выбрать IT-профессию и не потеряться в выборе?",
+            "author": "Ecapist",
+            "date": "2025-05-25",
+            "likes": 0,
+            "tags": ["Web", "Туториал", "Продуктивность"],
+            "preview": "Узнайте, как, избежать типичных ошибок и выбрать направление, которое вас вдохновит."
+        },
+        {
+            "id": 18,
+            "file": "Processing.md",
+            "title": "Processing?",
+            "author": "ArduRadioKot",
+            "date": "2025-05-26",
+            "likes": 0,
+            "tags": ["Туториал", "Программирование"],
+            "preview": "Как использовать Processing для создания интерактивных проектов"
+        },
+        {
+            "id": 19,
+            "file": "scoltechday.md",
+            "title": "День Сколтеха в Центральном Университете. Как это было?",
+            "author": "ArduRadioKot",
+            "date": "2025-05-30",
+            "likes": 0,
+            "tags": ["Мероприятие", "Разработка", "Программирование"],
+            "preview": "Мини статья о том, как я попал на День Сколтеха в Центральном Университете и что там было."
         }
     ]
 } 

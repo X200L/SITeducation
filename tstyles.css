@@ -287,87 +287,185 @@ main {
     border-color: #3e3e42;
 }
 
+/* Стили редактора кода */
 .code-editor {
-    margin-bottom: 30px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
+    margin: 1.5rem 0;
+    border: 1px solid #44475a;
+    border-radius: 12px;
     overflow: hidden;
+    background: #282a36;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
 #language-select {
-    padding: 8px 12px;
+    padding: 0.8rem 1rem;
     border: none;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid #44475a;
     width: 100%;
-    background-color: var(--secondary-color);
-    font-family: inherit;
+    background-color: #282a36;
+    font-family: 'Consolas', 'Courier New', monospace;
+    color: #f8f8f2;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#language-select:hover {
+    background-color: #44475a;
+}
+
+#language-select:focus {
+    outline: none;
+    border-color: #bd93f9;
+}
+
+#language-select option {
+    background-color: #282a36;
+    color: #f8f8f2;
 }
 
 #editor {
-    height: 300px;
+    height: 400px;
     width: 100%;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
+/* Стили для тестовых случаев */
 .test-cases {
-    margin-top: 20px;
+    margin-top: 1.5rem;
 }
 
 .test-case {
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    background-color: var(--secondary-color);
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    background-color: #282a36;
+    border: 1px solid #44475a;
+    transition: all 0.3s ease;
+}
+
+.test-case:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .test-case h4 {
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
+    color: #f8f8f2;
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 .test-case pre {
-    background-color: rgba(0,0,0,0.05);
-    padding: 10px;
-    border-radius: 4px;
-    margin: 5px 0;
-    font-family: 'Courier New', Courier, monospace;
+    background-color: #1e1f29;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #f8f8f2;
+    border: 1px solid #44475a;
+    overflow-x: auto;
 }
 
 .test-case.passed {
-    border-left: 4px solid var(--success-color);
+    border-left: 4px solid #50fa7b;
 }
 
 .test-case.failed {
-    border-left: 4px solid var(--error-color);
+    border-left: 4px solid #ff5555;
 }
 
+/* Стили для кнопок */
 .btn {
-    padding: 8px 16px;
+    padding: 0.8rem 1.5rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     font-family: inherit;
     font-weight: 500;
+    font-size: 0.9rem;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .btn.run-btn {
-    background-color: var(--primary-color);
-    color: white;
-    margin-right: 10px;
+    background-color: #bd93f9;
+    color: #282a36;
+    margin-right: 1rem;
 }
 
 .btn.submit-btn {
-    background-color: var(--success-color);
-    color: white;
+    background-color: #50fa7b;
+    color: #282a36;
 }
 
 .btn:hover {
-    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
 }
 
 #back-to-list {
     margin-left: auto;
-    background-color: var(--secondary-color);
-    color: var(--text-color);
+    background-color: #44475a;
+    color: #f8f8f2;
+    border: 1px solid #6272a4;
+}
+
+#back-to-list:hover {
+    background-color: #6272a4;
+    border-color: #bd93f9;
+}
+
+/* Медиа-запросы для редактора кода */
+@media (max-width: 768px) {
+    .code-editor {
+        margin: 1rem 0;
+        border-radius: 8px;
+    }
+
+    #editor {
+        height: 300px;
+    }
+
+    .test-case {
+        padding: 1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #editor {
+        height: 250px;
+    }
+
+    .test-case {
+        padding: 0.8rem;
+    }
+
+    .test-case pre {
+        padding: 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -585,4 +683,116 @@ footer a {
 
 footer a:hover {
     color: var(--link-color);
+}
+
+/* Стили для кнопок действий задачи */
+.problem-actions {
+    display: flex;
+    gap: 1rem;
+    margin-left: auto;
+}
+
+.solution-btn {
+    background-color: #6272a4;
+    color: #f8f8f2;
+    border: 1px solid #bd93f9;
+}
+
+.solution-btn:hover {
+    background-color: #bd93f9;
+    border-color: #6272a4;
+}
+
+/* Стили для просмотра решения */
+.solution-view {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background-color: #282a36;
+    border: 1px solid #44475a;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.solution-view h3 {
+    color: #f8f8f2;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.solution-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.solution-tab {
+    padding: 0.5rem 1rem;
+    background-color: #44475a;
+    color: #f8f8f2;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.solution-tab:hover {
+    background-color: #6272a4;
+}
+
+.solution-tab.active {
+    background-color: #bd93f9;
+    color: #282a36;
+}
+
+.solution-code {
+    background-color: #1e1f29;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #44475a;
+    overflow-x: auto;
+}
+
+.solution-code pre {
+    margin: 0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #f8f8f2;
+}
+
+/* Медиа-запросы для решения */
+@media (max-width: 768px) {
+    .problem-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .solution-view {
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+
+    .solution-tabs {
+        flex-wrap: wrap;
+    }
+
+    .solution-tab {
+        flex: 1;
+        min-width: 120px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .solution-view {
+        padding: 0.8rem;
+    }
+
+    .solution-code {
+        padding: 0.8rem;
+    }
+
+    .solution-code pre {
+        font-size: 0.85rem;
+    }
 }

@@ -51,11 +51,25 @@
                 <div class="problem-header">
                     <h2 id="problem-title">Two Sum</h2>
                     <span class="difficulty easy" id="problem-difficulty">Easy</span>
-                    <button id="back-to-list" class="btn">Back to Problems</button>
+                    <div class="problem-actions">
+                        <button id="show-solution" class="btn solution-btn">Решение</button>
+                        <button id="back-to-list" class="btn">Back to Problems</button>
+                    </div>
                 </div>
 
                 <div class="problem-description" id="problem-description">
                     <!-- Problem description will be loaded here -->
+                </div>
+
+                <div class="solution-view" style="display: none;">
+                    <h3>Решение</h3>
+                    <div class="solution-tabs">
+                        <button class="solution-tab active" data-lang="python">Python</button>
+                        <button class="solution-tab" data-lang="javascript">JavaScript</button>
+                    </div>
+                    <div class="solution-code">
+                        <pre id="solution-code"></pre>
+                    </div>
                 </div>
 
                 <div class="code-editor">
@@ -108,18 +122,36 @@
 
     <script src="tscript.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+    <!-- Подключаем Pyodide для выполнения Python кода в браузере -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
     <script>
         // Initialize ACE editor
         document.addEventListener('DOMContentLoaded', function() {
             const editor = ace.edit("editor");
-            editor.setTheme("ace/theme/monokai");
+            editor.setTheme("ace/theme/dracula");
             editor.session.setMode("ace/mode/javascript");
             editor.setOptions({
                 fontSize: "14px",
                 enableBasicAutocompletion: true,
-                enableLiveAutocompletion: true
+                enableLiveAutocompletion: true,
+                showPrintMargin: false,
+                showGutter: true,
+                highlightActiveLine: true,
+                cursorStyle: "smooth",
+                scrollPastEnd: 0.5
             });
             window.codeEditor = editor;
+
+            // Инициализация Pyodide
+            async function initPyodide() {
+                if (!window.pyodide) {
+                    window.pyodide = await loadPyodide({
+                        indexURL: "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/"
+                    });
+                    await pyodide.loadPackage("micropip");
+                }
+            }
+            initPyodide();
         });
     </script>
 </body>

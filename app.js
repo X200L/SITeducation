@@ -1,201 +1,24 @@
 // Информация о статьях
- const articlesInfo = [
-    {
-        id: 1,
-        file: 'vscode-plugins.md',
-        title: 'VS Code: Полезные плагины и симуляторы',
-        author: 'S.I.T Education',
-        date: '2025-03-20',
-        likes: 0,
-        tags: ['Разработка', 'Инструменты'],
-        preview: 'Подборка самых полезных плагинов для VS Code и обзор симуляторов для тестирования кода.'
-    },
-    {
-        id: 2,
-        file: 'obsidian-guide.md',
-        title: 'Obsidian: Твой личный центр знаний',
-        author: 'S.I.T Education',
-        date: '2025-03-24',
-        likes: 0,
-        tags: ['Продуктивность'],
-        preview: 'Полное руководство по Obsidian: плагины, Markdown, методы организации заметок и продвинутые техники.'
-    },
-    {
-        id: 3,
-        file: 'arduino-sensors.md',
-        title: 'Работа с сенсорами Arduino',
-        author: 'S.I.T Education',
-        date: '2025-03-25',
-        likes: 0,
-        tags: ['Arduino', 'Электроника', 'DIY'],
-        preview: 'Практическое руководство по подключению и программированию различных сенсоров для Arduino.'
-    },
-    {
-        id: 4,
-        file: 'notes-app-tutorial.md',
-        title: 'Создаем приложение для заметок',
-        author: 'ArduRadioKot',
-        date: '2025-03-26',
-        likes: 0,
-        tags: ['JavaScript', 'Web', 'Туториал'],
-        preview: 'Пошаговый туториал по созданию веб-приложения для заметок с использованием современных технологий.'
-    },
-    {
-        id: 5,
-        file: 'git-basics.md',
-        title: 'Системы контроля версий',
-        author: 'S.I.T Education',
-        date: '2025-03-27',
-        likes: 0,
-        tags: ['Туториал', 'Git'],
-        preview: 'Основы систем контроля версий Git и их использование в разработке.'
-    },
-    {
-        id: 6,
-        file: 'responsive-design-ru.md',
-        title: 'Адаптивный дизайн',
-        author: 'S.I.T Education',
-        date: '2025-03-27',
-        likes: 0,
-        tags: ['Дизайн', 'Web'],
-        preview: 'Основы адаптивной верстки и создания отзывчивых веб-сайтов.'
-    },
-    {
-        id: 7,
-        file: 'http.md',
-        title: 'Как работает HTTP: Простыми словами',
-        author: 'S.I.T Education',
-        date: '2025-03-28',
-        likes: 0,
-        tags: ['Web', 'HTTP'],
-        preview: 'Объяснение протокола HTTP простым и понятным языком.'
-    },
-    {
-        id: 8,
-        file: 'ardudino.md',
-        title: 'Делаем игру "Динозаврик" на Arduino',
-        author: 'ArduRadioKot',
-        date: '2025-03-29',
-        likes: 0,
-        tags: ['Arduino', 'Игра', 'DIY'],
-        preview: 'Создание простой игры "Динозаврик" на Arduino с использованием LCD1602 и одной кнопки.'
-    },
-    {
-        id: 9,
-        file: 'GTK - C.md',
-        title: 'Разработка GUI на C с использованием GTK',
-        author: 'GigaProgramm',
-        date: '2025-03-30',
-        likes: 0,
-        tags: ['C', 'GTK', 'GUI'],
-        preview: 'Краткое руководство по разработке графических интерфейсов на C с использованием библиотеки GTK.'
-    },
-    {
-        id: 10,
-        file: 'C.md',
-        title: 'Язык программирования C: Краткий справочник',
-        author: 'GigaProgramm',
-        date: '2025-03-30',
-        likes: 0,
-        tags: ['C', 'Программирование'],
-        preview: 'Краткий справочник по языку программирования C, основанный на ключевых концепциях и примерах.'
-    },
-    {
-        id: 11,
-        file: 'todoprogramm.md',
-        title: 'To-do лист, делаем простое веб приложение',
-        author: 'ArduRadioKot',
-        date: '2025-03-30',
-        likes: 0,
-        tags: ['JavaScript', 'Web', 'Туториал'],
-        preview: 'Создание простого веб-приложения To-do лист с двумя версиями: простой и продвинутой.'
-    },
-    {
-        id: 12,
-        file: 'new_js_article.md',
-        title: 'Полное руководство по JavaScript для начинающих',
-        author: 'ArduRadioKot',
-        date: '2025-03-30',
-        likes: 0,
-        tags: ['JavaScript', 'Туториал', 'Web'],
-        preview: 'Изучите JavaScript с нуля и создавайте интерактивные веб-приложения.'
-    },
-    {
-        id: 13,
-        file: 'new_calc_article.md',
-        title: 'Создаем продвинутый веб-калькулятор',
-        author: 'S.I.T Education',
-        date: '2024-03-30',
-        likes: 0,
-        tags: ['HTML', 'CSS', 'JavaScript', 'Web', 'Туториал'],
-        preview: 'Создайте свой собственный веб-калькулятор с помощью HTML, CSS и JavaScript.'
-    }, 
-    {
-        id: 14,
-        file: 'arduino-autopilot.md',
-        title: 'Создаем систему автополива на Ардуино',
-        author: 'ArduRadioKot',
-        date: '2025-03-30',
-        likes: 0,
-        tags: ['Электроника', 'Arduino', 'DIY', 'Туториал'],
-        preview: 'Создайте свой собственный веб-калькулятор с помощью HTML, CSS и JavaScript.'
-    },
-    {
-        id: 15,
-        file: 'dal.md',
-        title: 'Ультразвуковая рулетка на Arduino',
-        author: 'ArduRadioKot',
-        date: '2025-04-01',
-        likes: 0,
-        tags: ['Arduino', 'Электроника', 'DIY'],
-        preview: 'Создаем ультразвуковую рулетку на Arduino с использованием ультразвукового датчика и LCD-дисплея.'
-    },
-    {
-        id: 16,
-        file: 'pages.md',
-        title: 'Публикуем свой сайт на Github Pages',
-        author: 'ArduRadioKot',
-        date: '2025-05-15',
-        likes: 0,
-        tags: ['Web', 'Туториал', 'HTML'],
-        preview: 'Пишем свой сайт и бесплатно публикуем на сервисе github pages'
-    },
-    {
-        id: 17,
-        file: 'HowWorkIT.md',
-        title: 'Как выбрать IT-профессию и не потеряться в выборе?',
-        author: 'Ecapist',
-        date: '2025-05-25',
-        likes: 0,
-        tags: ['Web', 'Туториал', 'Продуктивность'],
-        preview: 'Узнайте, как, избежать типичных ошибок и выбрать направление, которое вас вдохновит.'
-    },
-    {
-        id: 18,
-        file: 'Processing.md',
-        title: 'Processing?',
-        author: 'ArduRadioKot',
-        date: '2025-05-26',
-        likes: 0,
-        tags: [ 'Туториал', 'Программирование'],
-        preview: 'Как использовать Processing для создания интерактивных проектов'
-    },
-    {
-        id: 19,
-        file: 'scoltechday.md',
-        title: 'День Сколтеха в Центральном Университете. Как это было?',
-        author: 'ArduRadioKot',
-        date: '2025-05-30',
-        likes: 0,
-        tags: [ 'Мероприятие', 'Разработка', 'Программирование'],
-        preview: 'Мини статья о том, как я попал на День Сколтеха в Центральном Университете и что там было.'
+
+
+// Функция для загрузки статей из JSON файла
+async function loadArticles() {
+    try {
+        const response = await fetch('articles.json');
+        if (!response.ok) {
+            throw new Error('Failed to load articles');
+        }
+        const data = await response.json();
+        return data.articles;
+    } catch (error) {
+        console.error('Error loading articles:', error);
+        return [];
     }
-];
+}
 
 // Функция для загрузки содержимого статьи
 async function loadArticleContent(fileName) {
     try {
-        // Use a relative path to fetch the articles
         const response = await fetch(`articles/${fileName}`);
         if (!response.ok) {
             throw new Error(`Статья не найдена (статус: ${response.status})`);
@@ -209,7 +32,8 @@ async function loadArticleContent(fileName) {
 
 // Функция для отображения полной статьи
 async function showFullArticle(articleId) {
-    const article = articlesInfo.find(a => a.id === articleId);
+    const articles = await loadArticles();
+    const article = articles.find(a => a.id === articleId);
     if (!article) return;
 
     const content = await loadArticleContent(article.file);
@@ -283,30 +107,28 @@ async function renderArticles() {
     articlesContainer.innerHTML = '<div class="loading">Загрузка статей...</div>';
 
     try {
+        const articles = await loadArticles();
         // Sort articles by date in descending order (newest first)
-        const sortedArticles = [...articlesInfo].sort((a, b) => {
+        const sortedArticles = [...articles].sort((a, b) => {
             return new Date(b.date) - new Date(a.date);
         });
 
-        for (const article of sortedArticles) {
-            const articleHtml = `
-                <div class="article-card" onclick="showFullArticle(${article.id})">
-                    <h2 class="article-title">${article.title}</h2>
-                    <div class="article-preview">
-                        <p>${article.preview}</p>
-                    </div>
-                    <div class="tags">
-                        ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                    </div>
-                    <div class="article-meta">
-                        <span>${article.author}</span>
-                        <span>${article.date}</span>
-                        <span>❤️ ${article.likes}</span>
-                    </div>
+        articlesContainer.innerHTML = sortedArticles.map(article => `
+            <div class="article-card" onclick="showFullArticle(${article.id})">
+                <h2 class="article-title">${article.title}</h2>
+                <div class="article-preview">
+                    <p>${article.preview}</p>
                 </div>
-            `;
-            articlesContainer.innerHTML += articleHtml;
-        }
+                <div class="tags">
+                    ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+                <div class="article-meta">
+                    <span>${article.author}</span>
+                    <span>${article.date}</span>
+                    <span>❤️ ${article.likes}</span>
+                </div>
+            </div>
+        `).join('');
     } catch (error) {
         articlesContainer.innerHTML = `
             <div class="error-message">
@@ -319,13 +141,14 @@ async function renderArticles() {
 }
 
 // Функция для поиска статей
-function searchArticles(query) {
+async function searchArticles(query) {
+    const articles = await loadArticles();
     if (!query) {
-        return articlesInfo;
+        return articles;
     }
     
     query = query.toLowerCase();
-    return articlesInfo.filter(article => {
+    return articles.filter(article => {
         const titleMatch = article.title.toLowerCase().includes(query);
         const tagsMatch = article.tags.some(tag => tag.toLowerCase().includes(query));
         const previewMatch = article.preview.toLowerCase().includes(query);
@@ -334,9 +157,10 @@ function searchArticles(query) {
 }
 
 // Функция для отображения уникальных тегов
-function renderTagFilters() {
+async function renderTagFilters() {
     const filterContainer = document.querySelector('.filter-tags');
-    const uniqueTags = [...new Set(articlesInfo.flatMap(article => article.tags))];
+    const articles = await loadArticles();
+    const uniqueTags = [...new Set(articles.flatMap(article => article.tags))];
     
     filterContainer.innerHTML = uniqueTags.map(tag => `
         <span class="tag filter-tag" data-tag="${tag}">${tag}</span>
@@ -352,12 +176,12 @@ function renderTagFilters() {
 }
 
 // Функция обновления результатов поиска
-function updateSearch() {
+async function updateSearch() {
     const searchQuery = document.getElementById('searchInput').value;
     const activeFilters = Array.from(document.querySelectorAll('.filter-tag.active'))
         .map(tag => tag.dataset.tag);
     
-    let filteredArticles = searchArticles(searchQuery);
+    let filteredArticles = await searchArticles(searchQuery);
 
     // Применяем фильтрацию по тегам
     if (activeFilters.length > 0) {
@@ -403,69 +227,10 @@ function renderFilteredArticles(articles) {
     `).join('');
 }
 
-// Загрузка статей из JSON файла
-async function loadArticles() {
-    try {
-        const response = await fetch('articles.json');
-        if (!response.ok) {
-            throw new Error('Failed to load articles');
-        }
-        const data = await response.json();
-        return data.articles;
-    } catch (error) {
-        console.error('Error loading articles:', error);
-        return [];
-    }
-}
-
-// Обновляем функцию инициализации
-async function initializePage() {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    
-    // Проверяем, есть ли на странице контейнер для новостей
-    const newsContainer = document.querySelector('.news-container');
-    if (newsContainer) {
-        loadLatestNews();
-    }
-    
-    if (window.location.pathname.includes('articles.html')) {
-        // Загружаем статьи
-        const articles = await loadArticles();
-        
-        // Проверяем наличие контейнера для тегов фильтрации
-        const filterContainer = document.querySelector('.filter-tags');
-        if (filterContainer) {
-            renderTagFilters(articles);
-        }
-        
-        // Отображаем статьи
-        renderArticles(articles);
-
-        // Добавляем обработчик поиска
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            searchInput.addEventListener('input', debounce(() => updateSearch(articles), 300));
-        }
-    }
-}
-
-// Утилита для debounce
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
 // Функция для отправки ссылки на статью
 async function shareArticle(articleId) {
-    const article = articlesInfo.find(a => a.id === articleId);
+    const articles = await loadArticles();
+    const article = articles.find(a => a.id === articleId);
     if (!article) return;
 
     // Construct the full article URL
@@ -559,6 +324,48 @@ function displayLatestNews(news, basePath = '') {
             </div>
         `;
     }).join('');
+}
+
+// Обновляем функцию инициализации
+async function initializePage() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    // Проверяем, есть ли на странице контейнер для новостей
+    const newsContainer = document.querySelector('.news-container');
+    if (newsContainer) {
+        loadLatestNews();
+    }
+    
+    if (window.location.pathname.includes('articles.html')) {
+        // Загружаем статьи
+        await renderArticles();
+        
+        // Проверяем наличие контейнера для тегов фильтрации
+        const filterContainer = document.querySelector('.filter-tags');
+        if (filterContainer) {
+            await renderTagFilters();
+        }
+
+        // Добавляем обработчик поиска
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('input', debounce(() => updateSearch(), 300));
+        }
+    }
+}
+
+// Утилита для debounce
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
 }
 
 document.addEventListener('DOMContentLoaded', initializePage); 

@@ -10,10 +10,15 @@ const runCodeBtn = document.getElementById('run-code');
 const submitCodeBtn = document.getElementById('submit-code');
 const languageSelect = document.getElementById('language-select');
 const testCaseResults = document.getElementById('test-case-results');
+const showSolutionBtn = document.getElementById('show-solution');
+const solutionView = document.querySelector('.solution-view');
+const solutionCode = document.getElementById('solution-code');
+const solutionTabs = document.querySelectorAll('.solution-tab');
 
 // Current state
 let currentProblem = null;
 let problems = [];
+let currentSolutionLang = 'python';
 
 // Initialize the app
 async function init() {
@@ -60,6 +65,10 @@ function showProblem(problem) {
     problemDifficulty.className = `difficulty ${problem.difficulty}`;
     problemDescription.innerHTML = problem.description;
     
+    // Reset solution view
+    solutionView.style.display = 'none';
+    showSolutionBtn.textContent = 'Решение';
+    
     // Set default code based on selected language
     updateCodeEditor();
     
@@ -85,7 +94,7 @@ function updateCodeEditor() {
 }
 
 // Run code against test cases
-function runCode() {
+async function runCode() {
     if (!currentProblem) return;
     
     testCaseResults.innerHTML = '';
@@ -93,37 +102,42 @@ function runCode() {
     const language = languageSelect.value;
     
     try {
-        currentProblem.testCases.forEach((testCase, index) => {
+        for (const testCase of currentProblem.testCases) {
             const resultDiv = document.createElement('div');
             resultDiv.className = 'test-case';
             
-            // Try to execute the code (this is a simplified approach)
-            // In a real app, you would use a more secure method like a sandbox
             try {
-                let userFunction;
+                let result;
                 
                 if (language === 'javascript') {
                     // Create a function from the code
-                    userFunction = new Function('return ' + code)();
+                    const userFunction = new Function('return ' + code)();
+                    result = userFunction(...testCase.input);
+                } else if (language === 'python') {
+                    // Execute Python code using Pyodide
+                    if (!window.pyodide) {
+                        throw new Error("Pyodide is not initialized yet. Please wait a moment and try again.");
+                    }
+
+                    // Wrap the code in a function to handle input parameters
+                    const wrappedCode = `
+def solution(*args):
+${code.split('\n').map(line => '    ' + line).join('\n')}
+
+result = solution(${testCase.input.map(arg => JSON.stringify(arg)).join(', ')})
+`;
+                    
+                    // Execute the code
+                    await window.pyodide.runPythonAsync(wrappedCode);
+                    result = window.pyodide.globals.get('result');
                 } else {
-                    // For demo purposes, we'll just show Python code without executing
-                    resultDiv.innerHTML = `
-                        <h4>Test Case ${index + 1}</h4>
-                        <p><strong>Input:</strong> ${JSON.stringify(testCase.input)}</p>
-                        <p><strong>Expected Output:</strong> ${JSON.stringify(testCase.output)}</p>
-                        <p><strong>Note:</strong> Python execution is not supported in this demo</p>
-                    `;
-                    resultDiv.classList.add('failed');
-                    testCaseResults.appendChild(resultDiv);
-                    return;
+                    throw new Error(`Language ${language} is not supported yet`);
                 }
                 
-                // Execute the function with test case input
-                const result = userFunction(...testCase.input);
                 const isCorrect = JSON.stringify(result) === JSON.stringify(testCase.output);
                 
                 resultDiv.innerHTML = `
-                    <h4>Test Case ${index + 1}</h4>
+                    <h4>Test Case</h4>
                     <p><strong>Input:</strong> ${JSON.stringify(testCase.input)}</p>
                     <p><strong>Expected Output:</strong> ${JSON.stringify(testCase.output)}</p>
                     <p><strong>Your Output:</strong> ${JSON.stringify(result)}</p>
@@ -136,7 +150,7 @@ function runCode() {
                 }
             } catch (error) {
                 resultDiv.innerHTML = `
-                    <h4>Test Case ${index + 1}</h4>
+                    <h4>Test Case</h4>
                     <p><strong>Input:</strong> ${JSON.stringify(testCase.input)}</p>
                     <p><strong>Error:</strong> ${error.message}</p>
                 `;
@@ -144,7 +158,7 @@ function runCode() {
             }
             
             testCaseResults.appendChild(resultDiv);
-        });
+        }
     } catch (error) {
         const errorDiv = document.createElement('div');
         errorDiv.className = 'test-case failed';
@@ -160,6 +174,39 @@ function submitCode() {
     alert('Submission complete! Check test case results.');
 }
 
+// Toggle solution view
+function toggleSolution() {
+    if (solutionView.style.display === 'none') {
+        solutionView.style.display = 'block';
+        showSolutionBtn.textContent = 'Скрыть решение';
+        updateSolutionCode();
+    } else {
+        solutionView.style.display = 'none';
+        showSolutionBtn.textContent = 'Решение';
+    }
+}
+
+// Update solution code based on selected language
+function updateSolutionCode() {
+    if (!currentProblem || !currentProblem.solutions) return;
+    
+    const solution = currentProblem.solutions[currentSolutionLang];
+    if (solution) {
+        solutionCode.textContent = solution;
+    } else {
+        solutionCode.textContent = 'Решение на этом языке пока недоступно';
+    }
+}
+
+// Switch solution language
+function switchSolutionLanguage(lang) {
+    currentSolutionLang = lang;
+    solutionTabs.forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.lang === lang);
+    });
+    updateSolutionCode();
+}
+
 // Setup event listeners
 function setupEventListeners() {
     backToListBtn.addEventListener('click', () => {
@@ -171,6 +218,14 @@ function setupEventListeners() {
     submitCodeBtn.addEventListener('click', submitCode);
     
     languageSelect.addEventListener('change', updateCodeEditor);
+    
+    showSolutionBtn.addEventListener('click', toggleSolution);
+    
+    solutionTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            switchSolutionLanguage(tab.dataset.lang);
+        });
+    });
 }
 
 // Initialize the app when DOM is loaded

@@ -4,29 +4,62 @@
             "id": 1,
             "title": "Сумма двух чисел",
             "difficulty": "easy",
-            "acceptance": "52.3%",
-            "description": "<p>Дан массив целых чисел <code>nums</code> и целое число <code>target</code>, верните <em>индексы двух чисел таких, что их сумма равна <code>target</code></em>.</p><p>Можно предположить, что каждый входной набор данных имеет <strong>ровно одно решение</strong>, и нельзя использовать один и тот же элемент дважды.</p><p>Ответ можно вернуть в любом порядке.</p><h3>Пример 1:</h3><pre>Вход: nums = [2,7,11,15], target = 9\nВыход: [0,1]\nПояснение: Потому что nums[0] + nums[1] == 9, возвращаем [0, 1].</pre><h3>Пример 2:</h3><pre>Вход: nums = [3,2,4], target = 6\nВыход: [1,2]</pre><h3>Пример 3:</h3><pre>Вход: nums = [3,3], target = 6\nВыход: [0,1]</pre><h3>Ограничения:</h3><ul><li><code>2 <= nums.length <= 10<sup>4</sup></code></li><li><code>-10<sup>9</sup> <= nums[i] <= 10<sup>9</sup></code></li><li><code>-10<sup>9</sup> <= target <= 10<sup>9</sup></code></li><li><strong>Существует только один правильный ответ.</strong></li></ul>",
+            "acceptance": "85%",
+            "description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice.",
             "defaultCode": {
-                "javascript": "function twoSum(nums, target) {\n    // Ваш код здесь\n    \n};",
-                "python": "def twoSum(nums, target):\n    # Ваш код здесь\n    pass"
+                "python": "def two_sum(nums, target):\n    # Write your code here\n    pass",
+                "javascript": "function twoSum(nums, target) {\n    // Write your code here\n}"
+            },
+            "solutions": {
+                "python": "def two_sum(nums, target):\n    num_dict = {}\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in num_dict:\n            return [num_dict[complement], i]\n        num_dict[num] = i\n    return []",
+                "javascript": "function twoSum(nums, target) {\n    const numMap = new Map();\n    for (let i = 0; i < nums.length; i++) {\n        const complement = target - nums[i];\n        if (numMap.has(complement)) {\n            return [numMap.get(complement), i];\n        }\n        numMap.set(nums[i], i);\n    }\n    return [];\n}"
             },
             "testCases": [
                 {
-                    "input": [[2,7,11,15], 9],
-                    "output": [0,1]
+                    "input": [[2, 7, 11, 15], 9],
+                    "output": [0, 1]
                 },
                 {
-                    "input": [[3,2,4], 6],
-                    "output": [1,2]
+                    "input": [[3, 2, 4], 6],
+                    "output": [1, 2]
                 },
                 {
-                    "input": [[3,3], 6],
-                    "output": [0,1]
+                    "input": [[3, 3], 6],
+                    "output": [0, 1]
                 }
             ]
         },
         {
             "id": 2,
+            "title": "Число-палиндром",
+            "difficulty": "easy",
+            "acceptance": "78%",
+            "description": "Given an integer x, return true if x is a palindrome, and false otherwise. An integer is a palindrome when it reads the same forward and backward.",
+            "defaultCode": {
+                "python": "def is_palindrome(x):\n    # Write your code here\n    pass",
+                "javascript": "function isPalindrome(x) {\n    // Write your code here\n}"
+            },
+            "solutions": {
+                "python": "def is_palindrome(x):\n    if x < 0:\n        return False\n    return str(x) == str(x)[::-1]",
+                "javascript": "function isPalindrome(x) {\n    if (x < 0) return false;\n    return x.toString() === x.toString().split('').reverse().join('');\n}"
+            },
+            "testCases": [
+                {
+                    "input": [121],
+                    "output": true
+                },
+                {
+                    "input": [-121],
+                    "output": false
+                },
+                {
+                    "input": [10],
+                    "output": false
+                }
+            ]
+        },
+        {
+            "id": 3,
             "title": "Сложение двух чисел",
             "difficulty": "medium",
             "acceptance": "37.1%",
@@ -34,6 +67,10 @@
             "defaultCode": {
                 "javascript": "function addTwoNumbers(l1, l2) {\n    // Ваш код здесь\n    \n};",
                 "python": "def addTwoNumbers(l1, l2):\n    # Ваш код здесь\n    pass"
+            },
+            "solutions": {
+                "python": "def addTwoNumbers(l1, l2):\n    dummy = ListNode(0)\n    current = dummy\n    carry = 0\n    \n    while l1 or l2 or carry:\n        x = l1.val if l1 else 0\n        y = l2.val if l2 else 0\n        \n        total = x + y + carry\n        carry = total // 10\n        \n        current.next = ListNode(total % 10)\n        current = current.next\n        \n        if l1: l1 = l1.next\n        if l2: l2 = l2.next\n    \n    return dummy.next",
+                "javascript": "function addTwoNumbers(l1, l2) {\n    let dummy = new ListNode(0);\n    let current = dummy;\n    let carry = 0;\n    \n    while (l1 || l2 || carry) {\n        let x = l1 ? l1.val : 0;\n        let y = l2 ? l2.val : 0;\n        \n        let sum = x + y + carry;\n        carry = Math.floor(sum / 10);\n        \n        current.next = new ListNode(sum % 10);\n        current = current.next;\n        \n        if (l1) l1 = l1.next;\n        if (l2) l2 = l2.next;\n    }\n    \n    return dummy.next;\n}"
             },
             "testCases": [
                 {
@@ -43,7 +80,7 @@
             ]
         },
         {
-            "id": 3,
+            "id": 4,
             "title": "Самая длинная подстрока без повторяющихся символов",
             "difficulty": "medium",
             "acceptance": "33.5%",
@@ -51,6 +88,10 @@
             "defaultCode": {
                 "javascript": "function lengthOfLongestSubstring(s) {\n    // Ваш код здесь\n    \n};",
                 "python": "def lengthOfLongestSubstring(s):\n    # Ваш код здесь\n    pass"
+            },
+            "solutions": {
+                "python": "def lengthOfLongestSubstring(s):\n    char_set = set()\n    max_length = 0\n    left = 0\n    \n    for right in range(len(s)):\n        while s[right] in char_set:\n            char_set.remove(s[left])\n            left += 1\n        char_set.add(s[right])\n        max_length = max(max_length, right - left + 1)\n    \n    return max_length",
+                "javascript": "function lengthOfLongestSubstring(s) {\n    const charSet = new Set();\n    let maxLength = 0;\n    let left = 0;\n    \n    for (let right = 0; right < s.length; right++) {\n        while (charSet.has(s[right])) {\n            charSet.delete(s[left]);\n            left++;\n        }\n        charSet.add(s[right]);\n        maxLength = Math.max(maxLength, right - left + 1);\n    }\n    \n    return maxLength;\n}"
             },
             "testCases": [
                 {
@@ -60,7 +101,7 @@
             ]
         },
         {
-            "id": 4,
+            "id": 5,
             "title": "Медиана двух отсортированных массивов",
             "difficulty": "hard",
             "acceptance": "32.5%",
@@ -68,6 +109,10 @@
             "defaultCode": {
                 "javascript": "function findMedianSortedArrays(nums1, nums2) {\n    // Ваш код здесь\n    \n};",
                 "python": "def findMedianSortedArrays(nums1, nums2):\n    # Ваш код здесь\n    pass"
+            },
+            "solutions": {
+                "python": "def findMedianSortedArrays(nums1, nums2):\n    if len(nums1) > len(nums2):\n        nums1, nums2 = nums2, nums1\n    \n    m, n = len(nums1), len(nums2)\n    left, right = 0, m\n    \n    while left <= right:\n        partitionX = (left + right) // 2\n        partitionY = (m + n + 1) // 2 - partitionX\n        \n        maxLeftX = float('-inf') if partitionX == 0 else nums1[partitionX - 1]\n        minRightX = float('inf') if partitionX == m else nums1[partitionX]\n        \n        maxLeftY = float('-inf') if partitionY == 0 else nums2[partitionY - 1]\n        minRightY = float('inf') if partitionY == n else nums2[partitionY]\n        \n        if maxLeftX <= minRightY and maxLeftY <= minRightX:\n            if (m + n) % 2 == 0:\n                return (max(maxLeftX, maxLeftY) + min(minRightX, minRightY)) / 2\n            return max(maxLeftX, maxLeftY)\n        elif maxLeftX > minRightY:\n            right = partitionX - 1\n        else:\n            left = partitionX + 1",
+                "javascript": "function findMedianSortedArrays(nums1, nums2) {\n    if (nums1.length > nums2.length) {\n        [nums1, nums2] = [nums2, nums1];\n    }\n    \n    const m = nums1.length;\n    const n = nums2.length;\n    let left = 0;\n    let right = m;\n    \n    while (left <= right) {\n        const partitionX = Math.floor((left + right) / 2);\n        const partitionY = Math.floor((m + n + 1) / 2) - partitionX;\n        \n        const maxLeftX = partitionX === 0 ? -Infinity : nums1[partitionX - 1];\n        const minRightX = partitionX === m ? Infinity : nums1[partitionX];\n        \n        const maxLeftY = partitionY === 0 ? -Infinity : nums2[partitionY - 1];\n        const minRightY = partitionY === n ? Infinity : nums2[partitionY];\n        \n        if (maxLeftX <= minRightY && maxLeftY <= minRightX) {\n            if ((m + n) % 2 === 0) {\n                return (Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY)) / 2;\n            }\n            return Math.max(maxLeftX, maxLeftY);\n        } else if (maxLeftX > minRightY) {\n            right = partitionX - 1;\n        } else {\n            left = partitionX + 1;\n        }\n    }\n}"
             },
             "testCases": [
                 {
@@ -77,379 +122,280 @@
             ]
         },
         {
-            "id": 5,
-            "title": "Сложение двух чисел",
-            "difficulty": "easy",
-            "acceptance": "85.2%",
-            "description": "<p>Напишите функцию, которая принимает два числа и возвращает их сумму.</p><h3>Пример 1:</h3><pre>Вход: a = 5, b = 3\nВыход: 8</pre><h3>Пример 2:</h3><pre>Вход: a = -1, b = 1\nВыход: 0</pre>",
-            "defaultCode": {
-                "javascript": "function addNumbers(a, b) {\n    // Ваш код здесь\n    \n};",
-                "python": "def addNumbers(a, b):\n    # Ваш код здесь\n    pass"
-            },
-            "testCases": [
-                {
-                    "input": [5, 3],
-                    "output": 8
-                },
-                {
-                    "input": [-1, 1],
-                    "output": 0
-                }
-            ]
-        },
-        {
             "id": 6,
-            "title": "Умножение двух чисел",
-            "difficulty": "easy",
-            "acceptance": "90.1%",
-            "description": "<p>Напишите функцию, которая принимает два числа и возвращает их произведение.</p><h3>Пример 1:</h3><pre>Вход: a = 4, b = 3\nВыход: 12</pre><h3>Пример 2:</h3><pre>Вход: a = -2, b = 3\nВыход: -6</pre>",
+            "title": "Зигзагообразное преобразование",
+            "difficulty": "medium",
+            "acceptance": "45.2%",
+            "description": "<p>Строка \"PAYPALISHIRING\" записывается зигзагообразно на заданное количество строк следующим образом:</p><pre>P   A   H   N\nA P L S I I G\nY   I   R</pre><p>Затем читайте построчно: \"PAHNAPLSIIGYIR\"</p><p>Напишите код, который принимает строку и выполняет преобразование:</p><pre>string convert(string s, int numRows);</pre>",
             "defaultCode": {
-                "javascript": "function multiplyNumbers(a, b) {\n    // Ваш код здесь\n    \n};",
-                "python": "def multiplyNumbers(a, b):\n    # Ваш код здесь\n    pass"
+                "javascript": "function convert(s, numRows) {\n    // Ваш код здесь\n    \n};",
+                "python": "def convert(s, numRows):\n    # Ваш код здесь\n    pass"
+            },
+            "solutions": {
+                "python": "def convert(s, numRows):\n    if numRows == 1 or numRows >= len(s):\n        return s\n    \n    rows = [''] * numRows\n    current_row = 0\n    going_down = False\n    \n    for char in s:\n        rows[current_row] += char\n        if current_row == 0 or current_row == numRows - 1:\n            going_down = not going_down\n        current_row += 1 if going_down else -1\n    \n    return ''.join(rows)",
+                "javascript": "function convert(s, numRows) {\n    if (numRows === 1 || numRows >= s.length) {\n        return s;\n    }\n    \n    const rows = new Array(numRows).fill('');\n    let currentRow = 0;\n    let goingDown = false;\n    \n    for (const char of s) {\n        rows[currentRow] += char;\n        if (currentRow === 0 || currentRow === numRows - 1) {\n            goingDown = !goingDown;\n        }\n        currentRow += goingDown ? 1 : -1;\n    }\n    \n    return rows.join('');\n}"
             },
             "testCases": [
                 {
-                    "input": [4, 3],
-                    "output": 12
+                    "input": ["PAYPALISHIRING", 3],
+                    "output": "PAHNAPLSIIGYIR"
                 },
                 {
-                    "input": [-2, 3],
-                    "output": -6
+                    "input": ["PAYPALISHIRING", 4],
+                    "output": "PINALSIGYAHRPI"
                 }
             ]
         },
         {
             "id": 7,
-            "title": "Деление двух чисел",
-            "difficulty": "easy",
-            "acceptance": "88.5%",
-            "description": "<p>Напишите функцию, которая принимает два числа и возвращает результат деления первого на второе.</p><h3>Пример 1:</h3><pre>Вход: a = 10, b = 2\nВыход: 5</pre><h3>Пример 2:</h3><pre>Вход: a = 7, b = 2\nВыход: 3.5</pre>",
+            "title": "Переворот целого числа",
+            "difficulty": "medium",
+            "acceptance": "27.5%",
+            "description": "<p>Дано 32-битное целое число со знаком <code>x</code>, верните <code>x</code> с перевернутыми цифрами. Если перевернутое <code>x</code> выходит за пределы диапазона 32-битных целых чисел со знаком <code>[-2^31, 2^31 - 1]</code>, верните 0.</p>",
             "defaultCode": {
-                "javascript": "function divideNumbers(a, b) {\n    // Ваш код здесь\n    \n};",
-                "python": "def divideNumbers(a, b):\n    # Ваш код здесь\n    pass"
+                "javascript": "function reverse(x) {\n    // Ваш код здесь\n    \n};",
+                "python": "def reverse(x):\n    # Ваш код здесь\n    pass"
+            },
+            "solutions": {
+                "python": "def reverse(x):\n    sign = -1 if x < 0 else 1\n    x = abs(x)\n    reversed_num = 0\n    \n    while x > 0:\n        digit = x % 10\n        reversed_num = reversed_num * 10 + digit\n        x //= 10\n    \n    result = sign * reversed_num\n    return result if -2**31 <= result <= 2**31 - 1 else 0",
+                "javascript": "function reverse(x) {\n    const sign = x < 0 ? -1 : 1;\n    x = Math.abs(x);\n    let reversed = 0;\n    \n    while (x > 0) {\n        const digit = x % 10;\n        reversed = reversed * 10 + digit;\n        x = Math.floor(x / 10);\n    }\n    \n    const result = sign * reversed;\n    return (result >= -Math.pow(2, 31) && result <= Math.pow(2, 31) - 1) ? result : 0;\n}"
             },
             "testCases": [
                 {
-                    "input": [10, 2],
-                    "output": 5
+                    "input": [123],
+                    "output": 321
                 },
                 {
-                    "input": [7, 2],
-                    "output": 3.5
+                    "input": [-123],
+                    "output": -321
+                },
+                {
+                    "input": [120],
+                    "output": 21
                 }
             ]
         },
         {
             "id": 8,
-            "title": "Остаток от деления",
-            "difficulty": "easy",
-            "acceptance": "92.3%",
-            "description": "<p>Напишите функцию, которая принимает два числа и возвращает остаток от деления первого на второе.</p><h3>Пример 1:</h3><pre>Вход: a = 10, b = 3\nВыход: 1</pre><h3>Пример 2:</h3><pre>Вход: a = 7, b = 2\nВыход: 1</pre>",
+            "title": "Преобразование строки в целое число",
+            "difficulty": "medium",
+            "acceptance": "16.6%",
+            "description": "<p>Реализуйте функцию <code>myAtoi(string s)</code>, которая преобразует строку в 32-битное целое число со знаком (аналогично функции atoi в C/C++).</p><p>Алгоритм для <code>myAtoi(string s)</code> следующий:</p><ol><li>Прочитайте и игнорируйте любые начальные пробелы.</li><li>Проверьте, является ли следующий символ (если он не в конце строки) '-' или '+'. Прочитайте этот символ, если он есть. Это определяет, будет ли окончательный результат отрицательным или положительным соответственно. Предполагайте, что результат положительный, если ни один из них не присутствует.</li><li>Прочитайте следующие символы до тех пор, пока не встретится следующий нецифровой символ или конец входных данных. Остальная часть строки игнорируется.</li><li>Преобразуйте эти цифры в целое число (например, \"123\" -> 123, \"0032\" -> 32). Если цифры не были прочитаны, то целое число равно 0. Измените знак при необходимости (из шага 2).</li><li>Если целое число выходит за пределы 32-битного целого числа со знаком [-2^31, 2^31 - 1], то зафиксируйте целое число так, чтобы оно оставалось в диапазоне. В частности, целые числа меньше -2^31 должны быть зафиксированы на -2^31, а целые числа больше 2^31 - 1 должны быть зафиксированы на 2^31 - 1.</li><li>Верните целое число как окончательный результат.</li></ol>",
             "defaultCode": {
-                "javascript": "function getRemainder(a, b) {\n    // Ваш код здесь\n    \n};",
-                "python": "def getRemainder(a, b):\n    # Ваш код здесь\n    pass"
+                "javascript": "function myAtoi(s) {\n    // Ваш код здесь\n    \n};",
+                "python": "def myAtoi(s):\n    # Ваш код здесь\n    pass"
+            },
+            "solutions": {
+                "python": "def myAtoi(s):\n    s = s.strip()\n    if not s:\n        return 0\n    \n    sign = -1 if s[0] == '-' else 1\n    if s[0] in ['-', '+']:\n        s = s[1:]\n    \n    result = 0\n    for char in s:\n        if not char.isdigit():\n            break\n        result = result * 10 + int(char)\n    \n    result = sign * result\n    return max(-2**31, min(2**31 - 1, result))",
+                "javascript": "function myAtoi(s) {\n    s = s.trim();\n    if (!s) return 0;\n    \n    let sign = s[0] === '-' ? -1 : 1;\n    if (s[0] === '-' || s[0] === '+') {\n        s = s.slice(1);\n    }\n    \n    let result = 0;\n    for (const char of s) {\n        if (!/\\d/.test(char)) break;\n        result = result * 10 + parseInt(char);\n    }\n    \n    result = sign * result;\n    return Math.max(-Math.pow(2, 31), Math.min(Math.pow(2, 31) - 1, result));\n}"
             },
             "testCases": [
                 {
-                    "input": [10, 3],
-                    "output": 1
+                    "input": ["42"],
+                    "output": 42
                 },
                 {
-                    "input": [7, 2],
-                    "output": 1
+                    "input": ["   -42"],
+                    "output": -42
+                },
+                {
+                    "input": ["4193 with words"],
+                    "output": 4193
                 }
             ]
         },
         {
             "id": 9,
-            "title": "Среднее арифметическое",
+            "title": "Число-палиндром",
             "difficulty": "easy",
-            "acceptance": "95.7%",
-            "description": "<p>Напишите функцию, которая принимает два числа и возвращает их среднее арифметическое.</p><h3>Пример 1:</h3><pre>Вход: a = 4, b = 6\nВыход: 5</pre><h3>Пример 2:</h3><pre>Вход: a = 3, b = 7\nВыход: 5</pre>",
+            "acceptance": "53.1%",
+            "description": "<p>Дано целое число <code>x</code>, верните <code>true</code>, если <code>x</code> является палиндромом, и <code>false</code> в противном случае.</p><p>Целое число является <strong>палиндромом</strong>, когда оно читается одинаково вперед и назад.</p><ul><li>Например, <code>121</code> является палиндромом, а <code>123</code> - нет.</li></ul>",
             "defaultCode": {
-                "javascript": "function getAverage(a, b) {\n    // Ваш код здесь\n    \n};",
-                "python": "def getAverage(a, b):\n    # Ваш код здесь\n    pass"
+                "javascript": "function isPalindrome(x) {\n    // Ваш код здесь\n    \n};",
+                "python": "def isPalindrome(x):\n    # Ваш код здесь\n    pass"
+            },
+            "solutions": {
+                "python": "def isPalindrome(x):\n    if x < 0:\n        return False\n    \n    original = x\n    reversed_num = 0\n    \n    while x > 0:\n        digit = x % 10\n        reversed_num = reversed_num * 10 + digit\n        x //= 10\n    \n    return original == reversed_num",
+                "javascript": "function isPalindrome(x) {\n    if (x < 0) return false;\n    \n    const original = x;\n    let reversed = 0;\n    \n    while (x > 0) {\n        const digit = x % 10;\n        reversed = reversed * 10 + digit;\n        x = Math.floor(x / 10);\n    }\n    \n    return original === reversed;\n}"
             },
             "testCases": [
                 {
-                    "input": [4, 6],
-                    "output": 5
-                },
-                {
-                    "input": [3, 7],
-                    "output": 5
-                }
-            ]
-        },
-        {
-            "id": 10,
-            "title": "Проверка палиндрома",
-            "difficulty": "easy",
-            "acceptance": "89.5%",
-            "description": "<p>Напишите функцию, которая проверяет, является ли строка палиндромом. Палиндром - это строка, которая читается одинаково слева направо и справа налево, игнорируя регистр и небуквенные символы.</p><h3>Пример 1:</h3><pre>Вход: s = \"A man, a plan, a canal: Panama\"\nВыход: true\nПояснение: \"amanaplanacanalpanama\" - палиндром.</pre><h3>Пример 2:</h3><pre>Вход: s = \"race a car\"\nВыход: false\nПояснение: \"raceacar\" не является палиндромом.</pre>",
-            "defaultCode": {
-                "javascript": "function isPalindrome(s) {\n    // Ваш код здесь\n    \n};",
-                "python": "def isPalindrome(s):\n    # Ваш код здесь\n    pass"
-            },
-            "testCases": [
-                {
-                    "input": ["A man, a plan, a canal: Panama"],
+                    "input": [121],
                     "output": true
                 },
                 {
-                    "input": ["race a car"],
+                    "input": [-121],
+                    "output": false
+                },
+                {
+                    "input": [10],
                     "output": false
                 }
             ]
         },
         {
-            "id": 11,
-            "title": "Поиск в отсортированном массиве",
-            "difficulty": "medium",
-            "acceptance": "45.2%",
-            "description": "<p>Дан отсортированный массив целых чисел <code>nums</code> и целевое значение <code>target</code>, верните индекс, если целевое значение найдено. Если нет, верните индекс, где оно должно быть вставлено.</p><h3>Пример 1:</h3><pre>Вход: nums = [1,3,5,6], target = 5\nВыход: 2</pre><h3>Пример 2:</h3><pre>Вход: nums = [1,3,5,6], target = 2\nВыход: 1</pre>",
+            "id": 10,
+            "title": "Сопоставление регулярных выражений",
+            "difficulty": "hard",
+            "acceptance": "28.1%",
+            "description": "<p>Учитывая входную строку <code>s</code> и шаблон <code>p</code>, реализуйте сопоставление регулярных выражений с поддержкой <code>'.'</code> и <code>'*'</code> где:</p><ul><li><code>'.'</code> Соответствует любому одиночному символу.</li><li><code>'*'</code> Соответствует нулю или более предшествующих элементов.</li></ul><p>Сопоставление должно охватывать <strong>всю</strong> входную строку (не частичную).</p>",
             "defaultCode": {
-                "javascript": "function searchInsert(nums, target) {\n    // Ваш код здесь\n    \n};",
-                "python": "def searchInsert(nums, target):\n    # Ваш код здесь\n    pass"
+                "javascript": "function isMatch(s, p) {\n    // Ваш код здесь\n    \n};",
+                "python": "def isMatch(s, p):\n    # Ваш код здесь\n    pass"
+            },
+            "solutions": {
+                "python": "def isMatch(s, p):\n    m, n = len(s), len(p)\n    dp = [[False] * (n + 1) for _ in range(m + 1)]\n    dp[0][0] = True\n    \n    for j in range(1, n + 1):\n        if p[j-1] == '*':\n            dp[0][j] = dp[0][j-2]\n    \n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if p[j-1] == '.' or p[j-1] == s[i-1]:\n                dp[i][j] = dp[i-1][j-1]\n            elif p[j-1] == '*':\n                dp[i][j] = dp[i][j-2]\n                if p[j-2] == '.' or p[j-2] == s[i-1]:\n                    dp[i][j] = dp[i][j] or dp[i-1][j]\n    \n    return dp[m][n]",
+                "javascript": "function isMatch(s, p) {\n    const m = s.length;\n    const n = p.length;\n    const dp = Array(m + 1).fill().map(() => Array(n + 1).fill(false));\n    dp[0][0] = true;\n    \n    for (let j = 1; j <= n; j++) {\n        if (p[j-1] === '*') {\n            dp[0][j] = dp[0][j-2];\n        }\n    }\n    \n    for (let i = 1; i <= m; i++) {\n        for (let j = 1; j <= n; j++) {\n            if (p[j-1] === '.' || p[j-1] === s[i-1]) {\n                dp[i][j] = dp[i-1][j-1];\n            } else if (p[j-1] === '*') {\n                dp[i][j] = dp[i][j-2];\n                if (p[j-2] === '.' || p[j-2] === s[i-1]) {\n                    dp[i][j] = dp[i][j] || dp[i-1][j];\n                }\n            }\n        }\n    }\n    \n    return dp[m][n];\n}"
             },
             "testCases": [
                 {
-                    "input": [[1,3,5,6], 5],
-                    "output": 2
+                    "input": ["aa", "a"],
+                    "output": false
                 },
                 {
-                    "input": [[1,3,5,6], 2],
+                    "input": ["aa", "a*"],
+                    "output": true
+                },
+                {
+                    "input": ["ab", ".*"],
+                    "output": true
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "title": "Контейнер с наибольшим количеством воды",
+            "difficulty": "medium",
+            "acceptance": "54.2%",
+            "description": "<p>Дано n неотрицательных целых чисел a1, a2, ..., an, где каждое представляет точку с координатами (i, ai). n вертикальных линий проведены так, что две конечные точки линии i находятся в точках (i, ai) и (i, 0). Найдите две линии, которые вместе с осью x образуют контейнер, содержащий наибольшее количество воды.</p><p>Обратите внимание, что вы не можете наклонять контейнер.</p>",
+            "defaultCode": {
+                "javascript": "function maxArea(height) {\n    // Ваш код здесь\n    \n};",
+                "python": "def maxArea(height):\n    # Ваш код здесь\n    pass"
+            },
+            "solutions": {
+                "python": "def maxArea(height):\n    left, right = 0, len(height) - 1\n    max_area = 0\n    \n    while left < right:\n        current_height = min(height[left], height[right])\n        current_width = right - left\n        current_area = current_height * current_width\n        max_area = max(max_area, current_area)\n        \n        if height[left] < height[right]:\n            left += 1\n        else:\n            right -= 1\n    \n    return max_area",
+                "javascript": "function maxArea(height) {\n    let left = 0;\n    let right = height.length - 1;\n    let maxArea = 0;\n    \n    while (left < right) {\n        const currentHeight = Math.min(height[left], height[right]);\n        const currentWidth = right - left;\n        const currentArea = currentHeight * currentWidth;\n        maxArea = Math.max(maxArea, currentArea);\n        \n        if (height[left] < height[right]) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    \n    return maxArea;\n}"
+            },
+            "testCases": [
+                {
+                    "input": [[1,8,6,2,5,4,8,3,7]],
+                    "output": 49
+                },
+                {
+                    "input": [[1,1]],
                     "output": 1
                 }
             ]
         },
         {
             "id": 12,
-            "title": "Проверка валидности скобок",
-            "difficulty": "easy",
-            "acceptance": "78.3%",
-            "description": "<p>Дана строка <code>s</code>, содержащая только символы '(', ')', '{', '}', '[' и ']', определите, является ли строка валидной.</p><p>Строка является валидной, если:</p><ul><li>Открывающие скобки должны быть закрыты скобками того же типа.</li><li>Открывающие скобки должны быть закрыты в правильном порядке.</li></ul><h3>Пример 1:</h3><pre>Вход: s = \"()\"\nВыход: true</pre><h3>Пример 2:</h3><pre>Вход: s = \"([)]\"\nВыход: false</pre>",
+            "title": "Преобразование целого числа в римское",
+            "difficulty": "medium",
+            "acceptance": "61.3%",
+            "description": "<p>Римские цифры представлены семью различными символами: I, V, X, L, C, D и M.</p><pre>Символ       Значение\nI             1\nV             5\nX             10\nL             50\nC             100\nD             500\nM             1000</pre><p>Например, 2 записывается как II римскими цифрами, просто два единицы сложены вместе. 12 записывается как XII, что просто X + II. Число 27 записывается как XXVII, что XX + V + II.</p><p>Римские цифры обычно пишутся слева направо от наибольшего к наименьшему. Однако цифра для четырех не является IIII. Вместо этого число четыре записывается как IV. Поскольку единица стоит перед пятеркой, мы вычитаем ее, делая четыре. Тот же принцип применим к числу девять, которое записывается как IX. Есть шесть случаев, когда используется вычитание:</p><ul><li>I можно поставить перед V (5) и X (10), чтобы сделать 4 и 9.</li><li>X можно поставить перед L (50) и C (100), чтобы сделать 40 и 90.</li><li>C можно поставить перед D (500) и M (1000), чтобы сделать 400 и 900.</li></ul><p>Дано целое число, преобразуйте его в римскую цифру.</p>",
             "defaultCode": {
-                "javascript": "function isValid(s) {\n    // Ваш код здесь\n    \n};",
-                "python": "def isValid(s):\n    # Ваш код здесь\n    pass"
+                "javascript": "function intToRoman(num) {\n    // Ваш код здесь\n    \n};",
+                "python": "def intToRoman(num):\n    # Ваш код здесь\n    pass"
+            },
+            "solutions": {
+                "python": "def intToRoman(num):\n    values = [\n        (1000, 'M'),\n        (900, 'CM'),\n        (500, 'D'),\n        (400, 'CD'),\n        (100, 'C'),\n        (90, 'XC'),\n        (50, 'L'),\n        (40, 'XL'),\n        (10, 'X'),\n        (9, 'IX'),\n        (5, 'V'),\n        (4, 'IV'),\n        (1, 'I')\n    ]\n    \n    result = ''\n    for value, symbol in values:\n        while num >= value:\n            result += symbol\n            num -= value\n    \n    return result",
+                "javascript": "function intToRoman(num) {\n    const values = [\n        [1000, 'M'],\n        [900, 'CM'],\n        [500, 'D'],\n        [400, 'CD'],\n        [100, 'C'],\n        [90, 'XC'],\n        [50, 'L'],\n        [40, 'XL'],\n        [10, 'X'],\n        [9, 'IX'],\n        [5, 'V'],\n        [4, 'IV'],\n        [1, 'I']\n    ];\n    \n    let result = '';\n    for (const [value, symbol] of values) {\n        while (num >= value) {\n            result += symbol;\n            num -= value;\n        }\n    }\n    \n    return result;\n}"
             },
             "testCases": [
                 {
-                    "input": ["()"],
-                    "output": true
+                    "input": [3],
+                    "output": "III"
                 },
                 {
-                    "input": ["([)]"],
-                    "output": false
+                    "input": [58],
+                    "output": "LVIII"
+                },
+                {
+                    "input": [1994],
+                    "output": "MCMXCIV"
                 }
             ]
         },
         {
             "id": 13,
-            "title": "Удаление дубликатов из отсортированного массива",
+            "title": "Преобразование римского числа в целое",
             "difficulty": "easy",
-            "acceptance": "82.1%",
-            "description": "<p>Дан отсортированный массив <code>nums</code>, удалите дубликаты на месте так, чтобы каждый элемент появлялся только один раз. Относительный порядок элементов должен остаться прежним.</p><h3>Пример 1:</h3><pre>Вход: nums = [1,1,2]\nВыход: 2, nums = [1,2,_]\nПояснение: Ваша функция должна вернуть k = 2, при этом первые два элемента nums равны 1 и 2 соответственно.</pre>",
+            "acceptance": "58.7%",
+            "description": "<p>Римские цифры представлены семью различными символами: I, V, X, L, C, D и M.</p><pre>Символ       Значение\nI             1\nV             5\nX             10\nL             50\nC             100\nD             500\nM             1000</pre><p>Например, 2 записывается как II римскими цифрами, просто два единицы сложены вместе. 12 записывается как XII, что просто X + II. Число 27 записывается как XXVII, что XX + V + II.</p><p>Римские цифры обычно пишутся слева направо от наибольшего к наименьшему. Однако цифра для четырех не является IIII. Вместо этого число четыре записывается как IV. Поскольку единица стоит перед пятеркой, мы вычитаем ее, делая четыре. Тот же принцип применим к числу девять, которое записывается как IX. Есть шесть случаев, когда используется вычитание:</p><ul><li>I можно поставить перед V (5) и X (10), чтобы сделать 4 и 9.</li><li>X можно поставить перед L (50) и C (100), чтобы сделать 40 и 90.</li><li>C можно поставить перед D (500) и M (1000), чтобы сделать 400 и 900.</li></ul><p>Дана римская цифра, преобразуйте ее в целое число.</p>",
             "defaultCode": {
-                "javascript": "function removeDuplicates(nums) {\n    // Ваш код здесь\n    \n};",
-                "python": "def removeDuplicates(nums):\n    # Ваш код здесь\n    pass"
+                "javascript": "function romanToInt(s) {\n    // Ваш код здесь\n    \n};",
+                "python": "def romanToInt(s):\n    # Ваш код здесь\n    pass"
+            },
+            "solutions": {
+                "python": "def romanToInt(s):\n    roman_values = {\n        'I': 1,\n        'V': 5,\n        'X': 10,\n        'L': 50,\n        'C': 100,\n        'D': 500,\n        'M': 1000\n    }\n    \n    total = 0\n    prev_value = 0\n    \n    for char in reversed(s):\n        current_value = roman_values[char]\n        if current_value >= prev_value:\n            total += current_value\n        else:\n            total -= current_value\n        prev_value = current_value\n    \n    return total",
+                "javascript": "function romanToInt(s) {\n    const romanValues = {\n        'I': 1,\n        'V': 5,\n        'X': 10,\n        'L': 50,\n        'C': 100,\n        'D': 500,\n        'M': 1000\n    };\n    \n    let total = 0;\n    let prevValue = 0;\n    \n    for (let i = s.length - 1; i >= 0; i--) {\n        const currentValue = romanValues[s[i]];\n        if (currentValue >= prevValue) {\n            total += currentValue;\n        } else {\n            total -= currentValue;\n        }\n        prevValue = currentValue;\n    }\n    \n    return total;\n}"
             },
             "testCases": [
                 {
-                    "input": [[1,1,2]],
-                    "output": 2
+                    "input": ["III"],
+                    "output": 3
                 },
                 {
-                    "input": [[0,0,1,1,1,2,2,3,3,4]],
-                    "output": 5
+                    "input": ["LVIII"],
+                    "output": 58
+                },
+                {
+                    "input": ["MCMXCIV"],
+                    "output": 1994
                 }
             ]
         },
         {
             "id": 14,
-            "title": "Поиск пикового элемента",
-            "difficulty": "medium",
-            "acceptance": "48.7%",
-            "description": "<p>Пиковый элемент - это элемент, который строго больше своих соседей. Дан массив <code>nums</code>, найдите пиковый элемент и верните его индекс.</p><h3>Пример 1:</h3><pre>Вход: nums = [1,2,3,1]\nВыход: 2\nПояснение: 3 - это пиковый элемент, и его индекс равен 2.</pre>",
+            "title": "Самый длинный общий префикс",
+            "difficulty": "easy",
+            "acceptance": "41.3%",
+            "description": "<p>Напишите функцию для поиска самой длинной общей префиксной строки среди массива строк.</p><p>Если общего префикса нет, верните пустую строку \"\".</p>",
             "defaultCode": {
-                "javascript": "function findPeakElement(nums) {\n    // Ваш код здесь\n    \n};",
-                "python": "def findPeakElement(nums):\n    # Ваш код здесь\n    pass"
+                "javascript": "function longestCommonPrefix(strs) {\n    // Ваш код здесь\n    \n};",
+                "python": "def longestCommonPrefix(strs):\n    # Ваш код здесь\n    pass"
+            },
+            "solutions": {
+                "python": "def longestCommonPrefix(strs):\n    if not strs:\n        return ''\n    \n    shortest = min(strs, key=len)\n    for i, char in enumerate(shortest):\n        for other in strs:\n            if other[i] != char:\n                return shortest[:i]\n    \n    return shortest",
+                "javascript": "function longestCommonPrefix(strs) {\n    if (!strs.length) return '';\n    \n    const shortest = strs.reduce((a, b) => a.length <= b.length ? a : b);\n    \n    for (let i = 0; i < shortest.length; i++) {\n        for (const str of strs) {\n            if (str[i] !== shortest[i]) {\n                return shortest.slice(0, i);\n            }\n        }\n    }\n    \n    return shortest;\n}"
             },
             "testCases": [
                 {
-                    "input": [[1,2,3,1]],
-                    "output": 2
+                    "input": [["flower","flow","flight"]],
+                    "output": "fl"
                 },
                 {
-                    "input": [[1,2,1,3,5,6,4]],
-                    "output": 5
+                    "input": [["dog","racecar","car"]],
+                    "output": ""
                 }
             ]
         },
         {
             "id": 15,
-            "title": "Проверка совершенного числа",
-            "difficulty": "easy",
-            "acceptance": "91.2%",
-            "description": "<p>Совершенное число - это положительное целое число, равное сумме всех его положительных делителей, кроме самого числа. Напишите функцию, которая проверяет, является ли число совершенным.</p><h3>Пример 1:</h3><pre>Вход: num = 28\nВыход: true\nПояснение: 28 = 1 + 2 + 4 + 7 + 14</pre><h3>Пример 2:</h3><pre>Вход: num = 7\nВыход: false</pre>",
-            "defaultCode": {
-                "javascript": "function checkPerfectNumber(num) {\n    // Ваш код здесь\n    \n};",
-                "python": "def checkPerfectNumber(num):\n    # Ваш код здесь\n    pass"
-            },
-            "testCases": [
-                {
-                    "input": [28],
-                    "output": true
-                },
-                {
-                    "input": [7],
-                    "output": false
-                }
-            ]
-        },
-        {
-            "id": 16,
-            "title": "Поиск пропущенного числа",
-            "difficulty": "easy",
-            "acceptance": "85.6%",
-            "description": "<p>Дан массив <code>nums</code>, содержащий n различных чисел в диапазоне [0, n], верните единственное число в диапазоне, которое отсутствует в массиве.</p><h3>Пример 1:</h3><pre>Вход: nums = [3,0,1]\nВыход: 2\nПояснение: n = 3, так как в массиве 3 числа, все числа находятся в диапазоне [0,3]. 2 - это пропущенное число.</pre>",
-            "defaultCode": {
-                "javascript": "function missingNumber(nums) {\n    // Ваш код здесь\n    \n};",
-                "python": "def missingNumber(nums):\n    # Ваш код здесь\n    pass"
-            },
-            "testCases": [
-                {
-                    "input": [[3,0,1]],
-                    "output": 2
-                },
-                {
-                    "input": [[0,1]],
-                    "output": 2
-                }
-            ]
-        },
-        {
-            "id": 17,
-            "title": "Проверка степени двойки",
-            "difficulty": "easy",
-            "acceptance": "94.3%",
-            "description": "<p>Напишите функцию, которая определяет, является ли данное целое число степенью двойки.</p><h3>Пример 1:</h3><pre>Вход: n = 1\nВыход: true\nПояснение: 2^0 = 1</pre><h3>Пример 2:</h3><pre>Вход: n = 16\nВыход: true\nПояснение: 2^4 = 16</pre>",
-            "defaultCode": {
-                "javascript": "function isPowerOfTwo(n) {\n    // Ваш код здесь\n    \n};",
-                "python": "def isPowerOfTwo(n):\n    # Ваш код здесь\n    pass"
-            },
-            "testCases": [
-                {
-                    "input": [1],
-                    "output": true
-                },
-                {
-                    "input": [16],
-                    "output": true
-                },
-                {
-                    "input": [3],
-                    "output": false
-                }
-            ]
-        },
-        {
-            "id": 18,
-            "title": "Поиск наибольшего общего делителя",
-            "difficulty": "easy",
-            "acceptance": "88.9%",
-            "description": "<p>Напишите функцию, которая находит наибольший общий делитель (НОД) двух положительных целых чисел.</p><h3>Пример 1:</h3><pre>Вход: a = 12, b = 18\nВыход: 6\nПояснение: 12 = 2 × 2 × 3, 18 = 2 × 3 × 3, НОД = 2 × 3 = 6</pre>",
-            "defaultCode": {
-                "javascript": "function gcd(a, b) {\n    // Ваш код здесь\n    \n};",
-                "python": "def gcd(a, b):\n    # Ваш код здесь\n    pass"
-            },
-            "testCases": [
-                {
-                    "input": [12, 18],
-                    "output": 6
-                },
-                {
-                    "input": [7, 13],
-                    "output": 1
-                }
-            ]
-        },
-        {
-            "id": 19,
-            "title": "Проверка простого числа",
-            "difficulty": "easy",
-            "acceptance": "86.7%",
-            "description": "<p>Напишите функцию, которая определяет, является ли данное число простым. Простое число - это натуральное число больше 1, которое делится без остатка только на 1 и на само себя.</p><h3>Пример 1:</h3><pre>Вход: n = 2\nВыход: true\nПояснение: 2 делится только на 1 и 2.</pre><h3>Пример 2:</h3><pre>Вход: n = 4\nВыход: false\nПояснение: 4 делится на 1, 2 и 4.</pre>",
-            "defaultCode": {
-                "javascript": "function isPrime(n) {\n    // Ваш код здесь\n    \n};",
-                "python": "def isPrime(n):\n    # Ваш код здесь\n    pass"
-            },
-            "testCases": [
-                {
-                    "input": [2],
-                    "output": true
-                },
-                {
-                    "input": [4],
-                    "output": false
-                },
-                {
-                    "input": [17],
-                    "output": true
-                }
-            ]
-        },
-        {
-            "id": 20,
-            "title": "Поиск среднего арифметического",
-            "difficulty": "easy",
-            "acceptance": "92.1%",
-            "description": "<p>Напишите функцию, которая находит среднее арифметическое элементов массива. Среднее арифметическое - это сумма всех элементов, деленная на их количество.</p><h3>Пример 1:</h3><pre>Вход: nums = [1, 2, 3, 4, 5]\nВыход: 3.0\nПояснение: (1 + 2 + 3 + 4 + 5) / 5 = 3.0</pre><h3>Пример 2:</h3><pre>Вход: nums = [10, 20, 30]\nВыход: 20.0\nПояснение: (10 + 20 + 30) / 3 = 20.0</pre>",
-            "defaultCode": {
-                "javascript": "function findMean(nums) {\n    // Ваш код здесь\n    \n};",
-                "python": "def findMean(nums):\n    # Ваш код здесь\n    pass"
-            },
-            "testCases": [
-                {
-                    "input": [[1, 2, 3, 4, 5]],
-                    "output": 3.0
-                },
-                {
-                    "input": [[10, 20, 30]],
-                    "output": 20.0
-                },
-                {
-                    "input": [[-5, 0, 5]],
-                    "output": 0.0
-                }
-            ]
-        },
-        {
-            "id": 21,
-            "title": "Поиск повторов",
+            "title": "Сумма трех чисел",
             "difficulty": "medium",
-            "acceptance": "65.4%",
-            "description": "<p>Дан несортированный массив чисел, найдите первое число которое повторяется в массиве. Если повторяющихся чисел нет, верните -1.</p>",
+            "acceptance": "32.8%",
+            "description": "<p>Дан целочисленный массив nums, верните все триплеты [nums[i], nums[j], nums[k]] такие, что i != j, i != k, и j != k, и nums[i] + nums[j] + nums[k] == 0.</p><p>Обратите внимание, что набор решений не должен содержать дублирующихся триплетов.</p>",
             "defaultCode": {
-                "javascript": "function findFirstRepeating(nums) {\n    // Ваш код здесь\n    \n};",
-                "python": "def findFirstRepeating(nums):\n    # Ваш код здесь\n    pass"
+                "javascript": "function threeSum(nums) {\n    // Ваш код здесь\n    \n};",
+                "python": "def threeSum(nums):\n    # Ваш код здесь\n    pass"
+            },
+            "solutions": {
+                "python": "def threeSum(nums):\n    nums.sort()\n    result = []\n    \n    for i in range(len(nums) - 2):\n        if i > 0 and nums[i] == nums[i-1]:\n            continue\n        \n        left, right = i + 1, len(nums) - 1\n        while left < right:\n            total = nums[i] + nums[left] + nums[right]\n            \n            if total < 0:\n                left += 1\n            elif total > 0:\n                right -= 1\n            else:\n                result.append([nums[i], nums[left], nums[right]])\n                \n                while left < right and nums[left] == nums[left + 1]:\n                    left += 1\n                while left < right and nums[right] == nums[right - 1]:\n                    right -= 1\n                \n                left += 1\n                right -= 1\n    \n    return result",
+                "javascript": "function threeSum(nums) {\n    nums.sort((a, b) => a - b);\n    const result = [];\n    \n    for (let i = 0; i < nums.length - 2; i++) {\n        if (i > 0 && nums[i] === nums[i-1]) continue;\n        \n        let left = i + 1;\n        let right = nums.length - 1;\n        \n        while (left < right) {\n            const sum = nums[i] + nums[left] + nums[right];\n            \n            if (sum < 0) {\n                left++;\n            } else if (sum > 0) {\n                right--;\n            } else {\n                result.push([nums[i], nums[left], nums[right]]);\n                \n                while (left < right && nums[left] === nums[left + 1]) left++;\n                while (left < right && nums[right] === nums[right - 1]) right--;\n                \n                left++;\n                right--;\n            }\n        }\n    }\n    \n    return result;\n}"
             },
             "testCases": [
                 {
-                    "input": [[1, 2, 3, 4, 3, 5]],
-                    "output": 3
+                    "input": [[-1,0,1,2,-1,-4]],
+                    "output": [[-1,-1,2],[-1,0,1]]
                 },
                 {
-                    "input": [[1, 2, 3, 4, 1]],
-                    "output": -1
+                    "input": [[]],
+                    "output": []
                 },
                 {
-                    "input": [[7, 3, 1, 4, 6, 2, 5, 3]],
-                    "output": 3
-                },
-                {
-                    "input": [[1, 1, 2, 2, 3, 3]],
-                    "output": 1
+                    "input": [[0]],
+                    "output": []
                 }
             ]
         }
