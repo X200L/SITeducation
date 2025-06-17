@@ -1,0 +1,49 @@
+{
+    "articles": [
+        {
+            "id": 1,
+            "file": "articles/1.md",
+            "title": "Введение в JavaScript",
+            "author": "Александр Воробьев",
+            "date": "2024-03-20",
+            "likes": 42,
+            "tags": ["JavaScript", "Программирование", "Основы"]
+        },
+        {
+            "id": 2,
+            "file": "articles/2.md",
+            "title": "Основы HTML и CSS",
+            "author": "Александр Воробьев",
+            "date": "2024-03-19",
+            "likes": 38,
+            "tags": ["HTML", "CSS", "Веб-разработка"]
+        },
+        {
+            "id": 3,
+            "file": "articles/3.md",
+            "title": "Работа с DOM в JavaScript",
+            "author": "Александр Воробьев",
+            "date": "2024-03-18",
+            "likes": 35,
+            "tags": ["JavaScript", "DOM", "Веб-разработка"]
+        },
+        {
+            "id": 4,
+            "file": "articles/4.md",
+            "title": "Асинхронное программирование в JavaScript",
+            "author": "Александр Воробьев",
+            "date": "2024-03-17",
+            "likes": 45,
+            "tags": ["JavaScript", "Асинхронность", "Promise"]
+        },
+        {
+            "id": 5,
+            "file": "articles/5.md",
+            "title": "Современный CSS: Flexbox и Grid",
+            "author": "Александр Воробьев",
+            "date": "2024-03-16",
+            "likes": 40,
+            "tags": ["CSS", "Flexbox", "Grid", "Вёрстка"]
+        }
+    ]
+} 

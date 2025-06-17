@@ -11,275 +11,6 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="theme.js"></script>
-    <style>
-        /* Адаптивные стили для статей */
-        .articles {
-            max-width: 100%;
-            padding: 1rem;
-        }
-
-        .article-card {
-            width: 100%;
-            margin-bottom: 1.5rem;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.2s ease;
-            cursor: pointer;
-        }
-
-        .article-card-content {
-            padding: 1.5rem;
-        }
-
-        .article-title {
-            font-size: clamp(1.2rem, 4vw, 1.8rem);
-            margin-bottom: 1rem;
-        }
-
-        .article-preview {
-            font-size: clamp(0.9rem, 3vw, 1rem);
-            line-height: 1.6;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1rem 0;
-        }
-
-        .tag {
-            font-size: clamp(0.7rem, 2.5vw, 0.9rem);
-            padding: 0.3em 0.8em;
-        }
-
-        .article-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
-        }
-
-        /* Стили для полной статьи */
-        .full-article {
-            max-width: 100%;
-            padding: 1rem;
-        }
-
-        .article-header {
-            margin-bottom: 2rem;
-        }
-
-        .article-content {
-            font-size: clamp(0.9rem, 3vw, 1.1rem);
-            line-height: 1.8;
-            max-width: 100%;
-            overflow-x: auto;
-        }
-
-        .article-content h1,
-        .article-content h2,
-        .article-content h3 {
-            font-size: clamp(1.2rem, 4vw, 2rem);
-            margin: 1.5em 0 0.8em;
-        }
-
-        .responsive-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .img-wrapper {
-            margin: 1.5rem 0;
-            text-align: center;
-        }
-
-        .table-wrapper {
-            width: 100%;
-            overflow-x: auto;
-            margin: 1.5rem 0;
-        }
-
-        .responsive-code {
-            max-width: 100%;
-            overflow-x: auto;
-            padding: 1rem;
-            font-size: clamp(0.8rem, 2.5vw, 1rem);
-        }
-
-        pre {
-            max-width: 100%;
-            overflow-x: auto;
-            background: var(--code-bg);
-            border-radius: 8px;
-            padding: 1rem;
-        }
-
-        .back-button {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            z-index: 100;
-        }
-
-        /* Добавим стили для кнопки "Поделиться" */
-        .share-button {
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            transition: background 0.3s ease;
-        }
-
-        .share-button:hover {
-            background: var(--link-color);
-        }
-
-        /* Стили для контейнера кнопок */
-        .article-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 2rem;
-        }
-
-        /* Медиа-запросы для разных размеров экрана */
-        @media (max-width: 768px) {
-            .articles {
-                padding: 0.5rem;
-            }
-
-            .article-card-content {
-                padding: 1rem;
-            }
-
-            .article-meta {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .back-button {
-                bottom: 1rem;
-                right: 1rem;
-                padding: 0.6rem 1rem;
-            }
-
-            .article-actions {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .back-button,
-            .share-button {
-                width: 100%;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .tags {
-                gap: 0.3rem;
-            }
-
-            .article-content {
-                padding: 0;
-            }
-
-            pre {
-                margin: 1rem -1rem;
-                border-radius: 0;
-            }
-        }
-
-        /* Улучшения для тёмной темы */
-        [data-theme="dark"] .article-card {
-            background: var(--card-bg);
-        }
-
-        [data-theme="dark"] .responsive-code {
-            background: var(--code-bg);
-        }
-
-        /* Стили для блока последних новостей */
-        .latest-news {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: var(--card-bg); /* Используем переменную для фона карточки */
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .latest-news h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--heading-color); /* Используем переменную для цвета заголовка */
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 0.5rem;
-        }
-
-        .news-item {
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            border-radius: 8px;
-            background: var(--bg-color); /* Используем переменную для фона элемента */
-            transition: background 0.3s ease;
-        }
-
-        .news-item:hover {
-            background: var(--secondary-bg); /* Используем переменную для фона при наведении */
-        }
-
-        .news-item h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-color); /* Используем переменную для цвета текста */
-        }
-
-        .news-item p {
-            color: var(--secondary-text-color); /* Используем переменную для цвета второстепенного текста */
-            line-height: 1.6;
-        }
-
-        .view-all-news {
-            display: block;
-            text-align: right;
-            margin-top: 1rem;
-            color: var(--link-color); /* Используем переменную для цвета ссылок */
-            transition: color 0.3s ease;
-        }
-
-        .view-all-news:hover {
-            color: var(--accent-color); /* Используем переменную для цвета ссылок при наведении */
-        }
-
-        /* Стили для ссылок */
-        a {
-            color: var(--link-color); /* Задаем цвет ссылок из переменной */
-            text-decoration: none; /* Убираем подчеркивание */
-            transition: color 0.3s ease; /* Плавный переход цвета */
-        }
-
-        a:hover {
-            color: var(--accent-color); /* Меняем цвет при наведении */
-        }
-    </style>
 </head>
 <body class="articles-page">
     <header>
@@ -300,9 +31,30 @@
     <main>
         <div class="container">
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Поиск по статьям..." class="search-input">
-                <div class="filter-tags"></div>
+                <div class="search-wrapper">
+                    <input type="text" id="searchInput" placeholder="Поиск по статьям..." class="search-input">
+                    <button id="tagsButton" class="tags-button">Теги</button>
+                </div>
+                <div id="selectedTags" class="selected-tags">
+                    <!-- Выбранные теги будут отображаться здесь -->
+                </div>
             </div>
+
+            <!-- Модальное окно для тегов -->
+            <div id="tagsModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Теги</h2>
+                        <span class="close-modal">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tags-list">
+                            <!-- Теги будут добавляться динамически -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="articles">
                 <!-- Статьи будут добавляться здесь динамически -->
             </div>
@@ -316,27 +68,115 @@
         const articleId = urlParams.get('article');
         const isRandom = urlParams.get('random') === 'true';
 
+        // Модальное окно для тегов
+        const modal = document.getElementById('tagsModal');
+        const tagsButton = document.getElementById('tagsButton');
+        const closeModal = document.querySelector('.close-modal');
+        const tagsList = document.querySelector('.tags-list');
+        const selectedTagsContainer = document.getElementById('selectedTags');
+        let activeTags = new Set();
+
+        // Функция для получения уникальных тегов
+        function getUniqueTags() {
+            const allTags = articlesInfo.flatMap(article => article.tags);
+            return [...new Set(allTags)].sort();
+        }
+
+        // Функция для отображения выбранных тегов
+        function renderSelectedTags() {
+            selectedTagsContainer.innerHTML = Array.from(activeTags).map(tag => `
+                <span class="selected-tag">
+                    ${tag}
+                    <button class="remove-tag" data-tag="${tag}">&times;</button>
+                </span>
+            `).join('');
+
+            // Добавляем обработчики для кнопок удаления тегов
+            document.querySelectorAll('.remove-tag').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const tag = e.target.dataset.tag;
+                    activeTags.delete(tag);
+                    renderSelectedTags();
+                    updateSearchWithTags(document.getElementById('searchInput').value, Array.from(activeTags));
+                    
+                    // Обновляем состояние тега в модальном окне
+                    const modalTag = document.querySelector(`.modal-tag[data-tag="${tag}"]`);
+                    if (modalTag) {
+                        modalTag.classList.remove('active');
+                    }
+                });
+            });
+        }
+
+        // Функция для отображения тегов в модальном окне
+        function renderTagsInModal() {
+            const uniqueTags = getUniqueTags();
+            tagsList.innerHTML = uniqueTags.map(tag => `
+                <span class="tag modal-tag ${activeTags.has(tag) ? 'active' : ''}" data-tag="${tag}">${tag}</span>
+            `).join('');
+
+            // Добавляем обработчики для тегов
+            document.querySelectorAll('.modal-tag').forEach(tag => {
+                tag.addEventListener('click', () => {
+                    const tagName = tag.dataset.tag;
+                    if (activeTags.has(tagName)) {
+                        activeTags.delete(tagName);
+                        tag.classList.remove('active');
+                    } else {
+                        activeTags.add(tagName);
+                        tag.classList.add('active');
+                    }
+                    
+                    renderSelectedTags();
+                    const searchInput = document.getElementById('searchInput');
+                    updateSearchWithTags(searchInput.value, Array.from(activeTags));
+                });
+            });
+        }
+
+        // Функция обновления поиска с учетом тегов
+        function updateSearchWithTags(query, activeTags) {
+            let filteredArticles = searchArticles(query);
+            
+            if (activeTags.length > 0) {
+                filteredArticles = filteredArticles.filter(article =>
+                    activeTags.every(tag => article.tags.includes(tag))
+                );
+            }
+
+            renderFilteredArticles(filteredArticles);
+        }
+
+        // Открытие модального окна
+        tagsButton.onclick = function() {
+            renderTagsInModal();
+            modal.style.display = "block";
+        }
+
+        // Закрытие модального окна
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
         // Function to load and display a random article
         async function loadRandomArticle() {
             try {
-                if (articlesInfo && articlesInfo.length > 0) {
-                    const randomIndex = Math.floor(Math.random() * articlesInfo.length);
-                    const randomArticle = articlesInfo[randomIndex];
+                const response = await fetch('articles/index.json');
+                const articles = await response.json();
+                if (articles.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * articles.length);
+                    const randomArticle = articles[randomIndex];
                     // Show the random article directly
                     showFullArticle(randomArticle.id);
-                } else {
-                    throw new Error('No articles available');
                 }
             } catch (error) {
                 console.error('Error loading random article:', error);
-                const articlesContainer = document.querySelector('.articles');
-                articlesContainer.innerHTML = `
-                    <div class="error-message">
-                        <h2>Ошибка загрузки случайной статьи</h2>
-                        <p>${error.message}</p>
-                        <button onclick="loadRandomArticle()">Попробовать снова</button>
-                    </div>
-                `;
             }
         }
 

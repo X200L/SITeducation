@@ -403,8 +403,23 @@ function renderFilteredArticles(articles) {
     `).join('');
 }
 
+// Загрузка статей из JSON файла
+async function loadArticles() {
+    try {
+        const response = await fetch('articles.json');
+        if (!response.ok) {
+            throw new Error('Failed to load articles');
+        }
+        const data = await response.json();
+        return data.articles;
+    } catch (error) {
+        console.error('Error loading articles:', error);
+        return [];
+    }
+}
+
 // Обновляем функцию инициализации
-function initializePage() {
+async function initializePage() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
     
@@ -415,13 +430,22 @@ function initializePage() {
     }
     
     if (window.location.pathname.includes('articles.html')) {
-        renderTagFilters();
-        renderArticles();
+        // Загружаем статьи
+        const articles = await loadArticles();
+        
+        // Проверяем наличие контейнера для тегов фильтрации
+        const filterContainer = document.querySelector('.filter-tags');
+        if (filterContainer) {
+            renderTagFilters(articles);
+        }
+        
+        // Отображаем статьи
+        renderArticles(articles);
 
         // Добавляем обработчик поиска
         const searchInput = document.getElementById('searchInput');
         if (searchInput) {
-            searchInput.addEventListener('input', debounce(updateSearch, 300));
+            searchInput.addEventListener('input', debounce(() => updateSearch(articles), 300));
         }
     }
 }

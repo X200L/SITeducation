@@ -2,12 +2,11 @@
     "items": [
         {
             "id": "javascript-basics",
-            "title": "Основы JavaScript",
-            "description": "Базовые концепции и синтаксис JavaScript для начинающих",
+            "title": "JavaScript: Краткий справочник",
+            "description": "Подробное руководство по основам JavaScript с примерами и пояснениями",
             "category": "programming",
-            "tags": ["JavaScript", "Web", "Основы"],
+            "tags": ["JavaScript", "Web", "programming", "basics", "tutorial"],
             "author": "SIT Education"
-        
         },
         {
             "id": "arduino-basics",
@@ -19,19 +18,11 @@
            
         },
         {
-            "id": "vscode-extensions",
-            "title": "VS Code: Полезные расширения",
-            "description": "Обзор лучших расширений для Visual Studio Code",
-            "category": "tools",
-            "tags": ["VS Code", "Инструменты", "Разработка"],
-            "author": "SIT Education"
-        },
-        {
-            "id": "react-components",
-            "title": "React: Основы компонентов",
-            "description": "Изучение компонентного подхода в React",
+            "id": "react-basics",
+            "title": "React: Краткий справочник",
+            "description": "Подробное руководство по основам React с примерами и пояснениями",
             "category": "frameworks",
-            "tags": ["React", "JavaScript", "Web"],
+            "tags": ["React", "JavaScript", "Web", "programming", "basics", "tutorial"],
             "author": "SIT Education"
         },
         {
@@ -72,7 +63,7 @@
             "title": "Веб-разработка",
             "description": "Основы создания веб-сайтов и веб-приложений",
             "category": "programming",
-            "tags": ["web", "html", "css", "javascript"],
+            "tags": ["web", "html", "css"],
             "author": "SIT Education"
         },
         {
@@ -84,14 +75,6 @@
             "author": "SIT Education"
         },
         {
-            "id": "cybersecurity",
-            "title": "Основы кибербезопасности",
-            "description": "Базовые принципы защиты информации и сетевой безопасности",
-            "category": "security",
-            "tags": ["security", "cybersecurity", "networking"],
-            "author": "SIT Education"
-        },
-        {
             "id": "mobile-development",
             "title": "Мобильная разработка",
             "description": "Создание приложений для iOS и Android",
@@ -100,27 +83,11 @@
             "author": "SIT Education"
         },
         {
-            "id": "cloud-computing",
-            "title": "Облачные технологии",
-            "description": "Работа с облачными платформами и сервисами",
-            "category": "cloud",
-            "tags": ["cloud", "aws", "azure", "gcp"],
-            "author": "SIT Education"
-        },
-        {
             "id": "ai-basics",
             "title": "Искусственный интеллект",
             "description": "Введение в искусственный интеллект и нейронные сети",
             "category": "ai",
             "tags": ["ai", "machine-learning", "neural-networks"],
-            "author": "SIT Education"
-        },
-        {
-            "id": "blockchain",
-            "title": "Блокчейн технологии",
-            "description": "Основы блокчейна и криптовалют",
-            "category": "blockchain",
-            "tags": ["blockchain", "crypto", "smart-contracts"],
             "author": "SIT Education"
         },
         {
