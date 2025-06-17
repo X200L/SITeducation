@@ -175,13 +175,19 @@
         // Function to load and display a random article
         async function loadRandomArticle() {
             try {
-                const response = await fetch('articles/index.json');
-                const articles = await response.json();
-                if (articles.length > 0) {
+                const response = await fetch('articles.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load articles');
+                }
+                const data = await response.json();
+                const articles = data.articles;
+                if (articles && articles.length > 0) {
                     const randomIndex = Math.floor(Math.random() * articles.length);
                     const randomArticle = articles[randomIndex];
                     // Show the random article directly
                     showFullArticle(randomArticle.id);
+                } else {
+                    console.error('No articles found');
                 }
             } catch (error) {
                 console.error('Error loading random article:', error);
