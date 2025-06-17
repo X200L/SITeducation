@@ -68,17 +68,9 @@
         {
             "id": "data-science",
             "title": "Введение в Data Science",
-            "description": "Основы анализа данных и машинного обучения",
+            "description": "Основы анализа данных",
             "category": "data",
             "tags": ["python", "data-science", "machine-learning"],
-            "author": "SIT Education"
-        },
-        {
-            "id": "mobile-development",
-            "title": "Мобильная разработка",
-            "description": "Создание приложений для iOS и Android",
-            "category": "programming",
-            "tags": ["mobile", "ios", "android", "swift", "kotlin"],
             "author": "SIT Education"
         },
         {
