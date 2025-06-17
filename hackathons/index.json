@@ -1,41 +1,13 @@
 [
     {
         "id": 1,
-        "title": "AI Hackathon 2025",
-        "preview": "Создайте инновационное решение с использованием искусственного интеллекта",
-        "date": "2025-05-15",
-        "category": "AI",
-        "image": "hackathons/ai-hackathon.jpg",
-        "filename": "example.md",
-        "prize": "100,000 ₽",
-        "duration": "48 часов",
-        "location": "Онлайн",
-        "registrationDeadline": "2025-05-10"
-    },
-    {
-        "id": 2,
-        "title": "Web Development Challenge",
-        "preview": "Разработайте современное веб-приложение с использованием последних технологий",
-        "date": "2025-06-20",
-        "category": "Web",
-        "image": "hackathons/web-hackathon.jpg",
-        "filename": "web-dev-challenge-2025.md",
-        "prize": "75,000 ₽",
-        "duration": "24 часа",
-        "location": "Москва",
-        "registrationDeadline": "2025-06-15"
-    },
-    {
-        "id": 3,
-        "title": "Mobile App Hackathon",
-        "preview": "Создайте мобильное приложение, которое изменит жизнь пользователей",
-        "date": "2025-07-10",
-        "category": "Mobile",
-        "image": "hackathons/mobile-hackathon.jpg",
-        "filename": "mobile-app-hackathon-2025.md",
-        "prize": "150,000 ₽",
-        "duration": "72 часа",
-        "location": "Санкт-Петербург",
-        "registrationDeadline": "2025-07-01"
+        "title": "Привет, Спутник!",
+        "preview": "Хочешь попробовать себя в роли инженера, работающего с настоящими спутниками? Хакатон «Привет, Спутник!» – это интересный вызов, который поможет раскрыть твой потенциал, получить реальный опыт и, возможно, вдохновит на карьеру в космической отрасли.",
+        "date": "1 июля — 10 сентября",
+        "category": "electronics",
+        "image": "hackathons/sputnik.png",
+        "filename": "sputnik.md",
+        "location": "Онлайн/Офлайн",
+        "registrationDeadline": "2025-06-01"
     }
 ] 

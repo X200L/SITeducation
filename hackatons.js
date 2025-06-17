@@ -93,14 +93,6 @@ class HackathonManager {
                             <i class="fas fa-tag"></i>
                             ${hackathon.category}
                         </span>
-                        <span class="hackathon-prize">
-                            <i class="fas fa-trophy"></i>
-                            ${hackathon.prize}
-                        </span>
-                        <span class="hackathon-duration">
-                            <i class="fas fa-clock"></i>
-                            ${hackathon.duration}
-                        </span>
                     </div>
                     <div class="hackathon-details">
                         <span class="hackathon-location">
