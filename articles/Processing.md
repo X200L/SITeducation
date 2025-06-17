@@ -90,7 +90,7 @@ void draw() {
 
 ## Пример 1: Создание простого приложения - Paint
 Я не буду томить большим количеством текста, но вот полный код, чуть ниже разберем его подробно.
-![../images/procpaint.png](../images/procpaint.png)
+![../images/procpaint.png](images/procpaint.png)
 ```java
 int brushColor = color(0); // Цвет кисти
 int brushSize = 5; // Размер кисти

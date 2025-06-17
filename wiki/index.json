@@ -1,0 +1,102 @@
+{
+    "items": [
+        {
+            "id": "javascript-basics",
+            "title": "JavaScript: Краткий справочник",
+            "description": "Подробное руководство по основам JavaScript с примерами и пояснениями",
+            "category": "programming",
+            "tags": ["JavaScript", "Web", "programming", "basics", "tutorial"],
+            "author": "SIT Education"
+        },
+        {
+            "id": "arduino-basics",
+            "title": "Arduino для начинающих",
+            "description": "Введение в программирование Arduino и основы электроники",
+            "category": "electronics",
+            "tags": ["Arduino", "Электроника", "Программирование"],
+            "author": "SIT Education"
+           
+        },
+        {
+            "id": "react-basics",
+            "title": "React: Краткий справочник",
+            "description": "Подробное руководство по основам React с примерами и пояснениями",
+            "category": "frameworks",
+            "tags": ["React", "JavaScript", "Web", "programming", "basics", "tutorial"],
+            "author": "SIT Education"
+        },
+        {
+            "id": "git-basics",
+            "title": "Git: Основные команды",
+            "description": "Базовые команды Git для управления версиями",
+            "category": "tools",
+            "tags": ["Git", "Версионный контроль", "Разработка"],
+            "author": "SIT Education"
+        },
+        {
+            "id": "python-basics",
+            "title": "Python: Начало работы",
+            "description": "Подробное руководство по основам Python для начинающих программистов",
+            "category": "programming",
+            "tags": ["python", "programming", "basics", "tutorial"],
+            "author": "SIT Education"
+        },
+        {
+            "id": "raspberry-pi-basics",
+            "title": "Raspberry Pi: Первые шаги",
+            "description": "Настройка и базовое использование Raspberry Pi",
+            "category": "electronics",
+            "tags": ["Raspberry Pi", "Электроника", "Linux"],
+            "author": "SIT Education"
+        
+        },
+        {
+            "id": "nodejs-intro",
+            "title": "Node.js: Введение",
+            "description": "Основы серверной разработки на Node.js",
+            "category": "frameworks",
+            "tags": ["Node.js", "JavaScript", "Backend"],
+            "author": "SIT Education"
+        },
+        {
+            "id": "web-development",
+            "title": "Веб-разработка",
+            "description": "Основы создания веб-сайтов и веб-приложений",
+            "category": "programming",
+            "tags": ["web", "html", "css"],
+            "author": "SIT Education"
+        },
+        {
+            "id": "data-science",
+            "title": "Введение в Data Science",
+            "description": "Основы анализа данных и машинного обучения",
+            "category": "data",
+            "tags": ["python", "data-science", "machine-learning"],
+            "author": "SIT Education"
+        },
+        {
+            "id": "mobile-development",
+            "title": "Мобильная разработка",
+            "description": "Создание приложений для iOS и Android",
+            "category": "programming",
+            "tags": ["mobile", "ios", "android", "swift", "kotlin"],
+            "author": "SIT Education"
+        },
+        {
+            "id": "ai-basics",
+            "title": "Искусственный интеллект",
+            "description": "Введение в искусственный интеллект и нейронные сети",
+            "category": "ai",
+            "tags": ["ai", "machine-learning", "neural-networks"],
+            "author": "SIT Education"
+        },
+        {
+            "id": "C",
+            "title": "Язык программирования C: Краткий справочник",
+            "description": "Подробное руководство по основам языка C с примерами и пояснениями",
+            "category": "programming",
+            "tags": ["C", "programming", "basics", "tutorial"],
+            "author": "SIT Education"
+        }
+    ]
+}

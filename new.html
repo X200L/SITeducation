@@ -34,6 +34,10 @@
         <div class="container">
             <div class="editor-container">
                 <div class="editor-header">
+                    <div class="publish-info">
+                        <i class="fas fa-info-circle"></i>
+                        <p>Для публикации статьи отправьте скачанный файл на <a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a></p>
+                    </div>
                     <div class="title-section">
                         <input type="text" id="article-title" placeholder="Заголовок статьи" class="title-input">
                         <div class="title-actions">
@@ -94,6 +98,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="editor-wrapper">
                     <div class="editor-column">
                         <div class="editor-label">
@@ -112,38 +117,19 @@
                 </div>
                 <div class="editor-footer">
                     <div class="editor-footer-left">
-                        <div class="tags-section">
-                            <div class="tags-input">
-                                <input type="text" id="tag-input" placeholder="Добавить тег...">
-                                <button class="add-tag-button" onclick="addTag()">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                            <div id="tags-container" class="tags-list"></div>
-                        </div>
-                        <div class="email-section">
-                            <input type="email" id="email-input" placeholder="Ваш email для сохранения черновика">
-                        </div>
+        
+                      
+                        
                     </div>
                     <div class="editor-footer-buttons">
-                        <button id="draft-button" class="action-button draft-button">
-                            <i class="fas fa-save"></i>
-                            Сохранить черновик
-                        </button>
-                        <button id="download-button" class="action-button download-button">
+                        <button id="download-button" class="action-button download-button" onclick="downloadArticle()">
                             <i class="fas fa-download"></i>
                             Скачать статью
                         </button>
-                        <button id="publish" class="action-button publish-button">
-                            <i class="fas fa-paper-plane"></i>
-                            Опубликовать
-                        </button>
+   
                     </div>
                 </div>
-                <div class="publish-info">
-                    <i class="fas fa-info-circle"></i>
-                    <p>Для публикации статьи отправьте скачанный файл на <a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a></p>
-                </div>
+               
             </div>
         </div>
     </main>
