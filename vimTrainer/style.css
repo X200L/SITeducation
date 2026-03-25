@@ -1,0 +1,343 @@
+/* VIM Trainer Styles - matching S.I.T Education design */
+
+.vim-page {
+    font-family: 'Consolas', 'Courier New', monospace;
+    line-height: 1.6;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s;
+    min-height: 100vh;
+}
+
+.vim-page #particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Main content wrapper */
+.vim-main {
+    position: relative;
+    z-index: 1;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.vim-container {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(5px);
+    margin-bottom: 2rem;
+}
+
+[data-theme="dark"] .vim-container {
+    background: rgba(37, 37, 37, 0.7);
+}
+
+/* Back button */
+.back-to-courses {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--link-color);
+    text-decoration: none;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.back-to-courses:hover {
+    color: var(--accent-color);
+}
+
+/* ASCII Logo */
+.ascii-logo {
+    line-height: 1.2;
+    font-size: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .ascii-logo {
+        font-size: 0.85rem;
+    }
+}
+
+/* Editor Container */
+#editor-container {
+    background: #1e1e1e !important;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Status Bar */
+#status-bar {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+}
+
+/* Level Indicator */
+#level-indicator {
+    font-weight: 600;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+/* Reset Button */
+#reset-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: 600;
+}
+
+#reset-btn:hover {
+    background: var(--link-color);
+}
+
+/* Level Selection Buttons */
+#level-selection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+#level-selection button {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 700;
+    font-size: 0.9rem;
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+#level-selection button:hover {
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+#level-selection button.bg-yellow-400 {
+    background: var(--accent-color) !important;
+    color: white;
+}
+
+/* Challenge Mode */
+#challenge-container {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+#challenge-container h3 {
+    color: var(--text-color);
+}
+
+/* Badge Section */
+#badge-section {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+#badge-section h3 {
+    color: var(--text-color);
+}
+
+.badge-card {
+    box-shadow: 0 6px 18px rgba(30, 64, 175, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.badge-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(30, 64, 175, 0.4);
+}
+
+/* Modal */
+.modal-content {
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+#modal-title,
+#modal-message {
+    color: var(--text-color);
+}
+
+#next-level-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    font-weight: 700;
+}
+
+#next-level-btn:hover {
+    background: var(--link-color);
+}
+
+/* Celebration */
+.celebration-text {
+    color: #facc15;
+}
+
+#celebration-restart {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    font-weight: 700;
+}
+
+#celebration-restart:hover {
+    background: var(--link-color);
+}
+
+/* Badge Toast */
+#badge-toast {
+    background: var(--accent-color);
+    color: white;
+    font-weight: 700;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Cheat Panel */
+#cheat-panel {
+    background: var(--card-bg);
+    border-left: 1px solid var(--border-color);
+}
+
+#cheat-search {
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+#cheat-search:focus {
+    border-color: var(--accent-color);
+}
+
+#cheat-close {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+}
+
+#cheat-close:hover {
+    background: var(--link-color);
+}
+
+/* Cheat Toggle Button */
+#cheat-toggle {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    font-weight: 700;
+}
+
+#cheat-toggle:hover {
+    background: var(--link-color);
+}
+
+/* Challenge Toggle */
+#challenge-toggle {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    font-weight: 700;
+}
+
+#challenge-toggle:hover {
+    background: var(--link-color);
+}
+
+/* Instructions */
+#instructions {
+    color: var(--text-color);
+    opacity: 0.8;
+    font-size: 1.1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .vim-main {
+        padding: 1rem 0.5rem;
+    }
+
+    .vim-container {
+        padding: 1rem;
+        border-radius: 12px;
+    }
+
+    #editor-container {
+        padding: 1rem;
+    }
+
+    .ascii-logo {
+        font-size: 0.4rem;
+    }
+
+    #level-selection button {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.8rem;
+    }
+
+    .back-to-courses {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .vim-container {
+        padding: 0.75rem;
+    }
+
+    #editor-container {
+        padding: 0.75rem;
+    }
+
+    .ascii-logo {
+        font-size: 0.3rem;
+    }
+
+    #instructions {
+        font-size: 0.9rem;
+    }
+
+    #level-selection {
+        gap: 0.25rem;
+    }
+
+    #level-selection button {
+        width: 1.75rem;
+        height: 1.75rem;
+        font-size: 0.75rem;
+    }
+}
