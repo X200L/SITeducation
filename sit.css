@@ -1445,7 +1445,16 @@ html[data-theme="dark"] .tile-art {
     outline: none;
 }
 
-.search-dialog-field kbd {
+.search-close {
+    cursor: pointer;
+    background: transparent;
+}
+
+.search-close .on-touch {
+    display: none;
+}
+
+.search-dialog-field .search-close {
     position: absolute;
     right: 18px;
     padding: 3px 8px;
@@ -2878,24 +2887,14 @@ body.legacy footer.site-footer {
         font-size: clamp(2.6rem, 12vw, 3.4rem);
     }
 
-    .brand-sep {
-        display: none;
-    }
 
-    .brand-edu {
-        font-size: 0.9rem;
-    }
 
     .footer-bottom {
         flex-direction: column;
     }
 }
 
-@media (max-width: 380px) {
-    .brand-edu {
-        display: none;
-    }
-}
+
 
 @media (prefers-reduced-motion: reduce) {
     *,
@@ -3349,22 +3348,25 @@ body.legacy footer.site-footer {
 
 .olymp-type {
     justify-self: start;
-    padding: 3px 10px;
-    border: 1px solid var(--line-strong);
+    padding: 2px 9px;
+    border: 1px solid var(--line);
     border-radius: 7px;
-    font-size: 0.74rem;
-    font-weight: 800;
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 700;
 }
 
+/* Тип различаем оттенком, а не заливкой: метки не должны спорить с названием */
 .olymp-type.is-rsosh {
-    border-color: var(--plus);
-    background: var(--plus);
-    color: #0a1a08;
+    border-color: color-mix(in srgb, var(--plus) 35%, transparent);
+    background: color-mix(in srgb, var(--plus) 12%, transparent);
+    color: color-mix(in srgb, var(--plus) 80%, var(--text));
 }
 
 .olymp-type.is-olymp {
-    border-color: var(--accent);
-    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+    color: color-mix(in srgb, var(--accent) 80%, var(--text));
 }
 
 .olymp-site {
@@ -3438,5 +3440,161 @@ body.legacy footer.site-footer {
 
     .direction-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+
+/* ==========================================================================
+   Мобильная версия: доводка
+   ========================================================================== */
+
+.brand-mark {
+    display: none;
+}
+
+@media (max-width: 820px) {
+    .search-close .on-desktop {
+        display: none;
+    }
+
+    .search-close .on-touch {
+        display: inline;
+    }
+
+    .search-dialog {
+        margin-top: 12px;
+        max-height: calc(100vh - 24px);
+    }
+
+    .search-results {
+        max-height: calc(100vh - 24px - 68px);
+    }
+
+    .search-bar kbd,
+    .vim-btn kbd {
+        display: none;
+    }
+
+    .search-bar input {
+        padding-right: 20px;
+    }
+
+    .markdown-body {
+        font-size: 1rem;
+    }
+
+    .markdown-body h1 { font-size: 1.6rem; }
+    .markdown-body h2 { font-size: 1.35rem; }
+    .markdown-body h3 { font-size: 1.15rem; }
+}
+
+@media (max-width: 560px) {
+    /* В шапке вместо надписи FrogeeSoft — только лягушка, чтобы влезло название платформы */
+    header.site-header .brand-logo-switch {
+        display: none;
+    }
+
+    header.site-header .brand-mark {
+        display: block;
+        width: auto;
+        height: 30px;
+    }
+
+    .brand {
+        gap: 10px;
+    }
+
+    .brand-sep {
+        height: 22px;
+    }
+
+    .brand-edu {
+        font-size: 0.95rem;
+    }
+
+    .header-actions {
+        gap: 6px;
+    }
+
+    .site-header .icon-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .menu-toggle span {
+        left: 11px;
+    }
+
+    .menu-toggle span:first-child { top: 15px; }
+    .menu-toggle span:last-child { top: 23px; }
+    .menu-toggle[aria-expanded="true"] span:first-child,
+    .menu-toggle[aria-expanded="true"] span:last-child { top: 19px; }
+
+    /* Hero: кольца перекрывали кнопку */
+    .hero-deco-rings {
+        display: none;
+    }
+
+    .hero-actions .button {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    /* Плитки статей компактнее */
+    .article-tile {
+        gap: 10px;
+        padding: 20px;
+    }
+
+    .article-tile h3 {
+        font-size: 1.08rem;
+    }
+
+    .article-tile p {
+        -webkit-line-clamp: 2;
+    }
+
+    .tile-foot {
+        min-height: 0;
+        align-items: center;
+    }
+
+    .tile-foot .round-arrow {
+        width: 40px;
+        height: 40px;
+    }
+
+    .tile-art {
+        height: 64px;
+        margin: 0 -20px -20px 0;
+    }
+
+    .article-list {
+        gap: 22px;
+    }
+
+    /* Темы: первые десять, остальные — по ссылке «Все темы» */
+    .topic-cloud .topic:nth-child(n + 11) {
+        display: none;
+    }
+
+    .topic {
+        padding: 9px 14px;
+        font-size: 0.92rem;
+    }
+
+    .section-card h2 {
+        font-size: 1.35rem;
+    }
+
+    /* Футер в одну колонку, ссылки в две */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .footer-col ul {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 16px;
     }
 }

@@ -553,3 +553,23 @@
         min-height: 200px;
     }
 }
+
+@media (max-width: 560px) {
+    .vim-toolbar {
+        gap: 6px;
+    }
+
+    .vim-btn {
+        min-height: 38px;
+        padding: 0 13px;
+        font-size: 0.86rem;
+    }
+
+    .vim-task {
+        font-size: 1rem;
+    }
+
+    .vim-editor {
+        font-size: 0.8rem;
+    }
+}

@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="images/brand/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="sit.css">
+    <link rel="stylesheet" href="sit.css?v=20261014">
     <script src="theme.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
@@ -24,6 +24,7 @@
     <div class="page-noise" aria-hidden="true"></div>
     <header class="site-header" data-header>
         <a class="brand" href="index.html" aria-label="S.I.T Education, на главную">
+            <img class="brand-mark" src="images/brand/frog.png" width="117" height="85" alt="">
             <span class="brand-logo-switch" aria-hidden="true">
                 <img class="brand-logo-dark" src="images/brand/logo-dark.png" width="309" height="85" alt="">
                 <img class="brand-logo-light" src="images/brand/logo-light.png" width="309" height="85" alt="">
@@ -73,8 +74,8 @@
         <label class="search-dialog-field">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
             <span class="visually-hidden">Что найти</span>
-            <input type="search" data-search-input placeholder="Статьи, справочники, разделы" autocomplete="off">
-            <kbd aria-hidden="true">Esc</kbd>
+            <input type="search" data-search-input placeholder="Поиск по сайту" autocomplete="off">
+            <button type="button" class="search-close" data-search-close aria-label="Закрыть поиск"><span class="on-desktop">Esc</span><span class="on-touch">Закрыть</span></button>
         </label>
         <div class="search-results" data-search-results></div>
     </dialog>
@@ -151,8 +152,8 @@
         </div>
     </footer>
 
-    <script src="sit.js"></script>
-    <script src="app.js"></script>
+    <script src="sit.js?v=20261014"></script>
+    <script src="app.js?v=20261014"></script>
     <script>
         sitLoadArticles().then((list) => {
             document.querySelectorAll('[data-article-count]').forEach((el) => { el.textContent = list.length; });

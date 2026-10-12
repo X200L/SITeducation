@@ -279,7 +279,7 @@ function sitOpenSearch() {
         }
     });
     dialog.addEventListener('click', (e) => {
-        if (e.target === dialog) dialog.close();
+        if (e.target === dialog || e.target.closest('[data-search-close]')) dialog.close();
         if (e.target.closest('.search-result')) dialog.close();
     });
 })();
