@@ -1,242 +1,243 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <meta name="theme-color" content="#007acc">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="S.I.T Education: статьи, справочники и курсы по программированию, Arduino и электронике от команды S.I.T / FrogeeSoft.">
+    <meta name="theme-color" content="#090c0a">
     <meta name="zen-verification" content="DqE8olAkbcOacSniVl4vNuh50MVu5W2I6ADSuOCYb7fIwqNGOrLckqK9QzKevfHO" />
-    <title>S.I.T Education</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>S.I.T Education | программирование и электроника</title>
+    <link rel="icon" type="image/png" href="images/brand/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="sit.css">
     <script src="theme.js"></script>
 </head>
 <body class="home-page">
-    <canvas id="particles"></canvas>
-    <header>
-        <nav>
-            <div class="logo">
-                <i class="fas fa-microchip"></i>
-                S.I.T Education
-            </div>
-            <div class="nav-links">
-                <a href="index.html" class="active">Главная</a>
+    <a class="skip-link" href="#main">Перейти к содержимому</a>
+    <div class="page-noise" aria-hidden="true"></div>
+    <header class="site-header" data-header>
+        <a class="brand" href="index.html" aria-label="S.I.T Education, на главную">
+            <span class="brand-logo-switch" aria-hidden="true">
+                <img class="brand-logo-dark" src="images/brand/logo-dark.png" width="309" height="85" alt="">
+                <img class="brand-logo-light" src="images/brand/logo-light.png" width="309" height="85" alt="">
+            </span>
+            <span class="brand-sep" aria-hidden="true"></span>
+            <span class="brand-edu">S.I.T Education</span>
+        </a>
+        <div class="header-end">
+            <nav class="site-nav" aria-label="Основная навигация">
                 <a href="articles.html">Статьи</a>
-                <a href="news.html">Новости</a>
-                <a href="projects.html">Проекты</a>
+                <a href="wiki.html">База знаний</a>
+                <a href="courses.html">Курсы</a>
+                <a href="olympiads.html">Олимпиады</a>
                 <a href="team.html">Команда</a>
-                <a href="new.html">Написать статью</a>
-                <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+                <button class="search-open" type="button" data-search-open aria-label="Поиск по сайту">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+                    <span>Поиск</span>
+                    <kbd aria-hidden="true">K</kbd>
+                </button>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-button search-mobile" type="button" data-search-open aria-label="Поиск по сайту">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+                </button>
+                <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Переключить тему">
+                    <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
+                    <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+                </button>
+                <button class="icon-button menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-label="Открыть меню" aria-controls="mobile-menu">
+                    <span></span><span></span>
+                </button>
             </div>
-        </nav>
+        </div>
     </header>
-
-    <main>
-        <div class="hero-section">
-            <h1>Добро пожаловать в мир технологий</h1>
-            <p class="hero-subtitle">Изучайте программирование, электронику и делитесь знаниями</p>
-            <div class="hero-decoration">
-                <i class="fas fa-code"></i>
-                <i class="fas fa-microchip"></i>
-                <i class="fas fa-robot"></i>
-            </div>
+    <nav class="mobile-menu" id="mobile-menu" data-mobile-menu aria-hidden="true" aria-label="Меню">
+        <a href="articles.html">Статьи</a>
+        <a href="wiki.html">База знаний</a>
+        <a href="courses.html">Курсы</a>
+        <a href="olympiads.html">Олимпиады</a>
+        <a href="team.html">Команда</a>
+        <div class="mobile-menu-minor">
+            <a href="projects.html">Проекты</a>
+            <a href="shop.html">Магазин</a>
         </div>
+    </nav>
+    <dialog class="search-dialog" data-search-dialog aria-label="Поиск по сайту">
+        <label class="search-dialog-field">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+            <span class="visually-hidden">Что найти</span>
+            <input type="search" data-search-input placeholder="Статьи, справочники, разделы" autocomplete="off">
+            <kbd aria-hidden="true">Esc</kbd>
+        </label>
+        <div class="search-results" data-search-results></div>
+    </dialog>
 
-        <div class="container">
-            <div class="about-us">
-                <h2>О нас</h2>
-                <p>
-                    Мы - команда S.I.T, так же мы называли себя naturalni_sahar, FrogeeSoft.
-                    Нашей команде уже 2 года, начала она своё существование с сентября 2023 года, из постоянного состава 2 человека, в лучшее время было 5 человек.
-                    Мы разрабатываем разнообразный софт, программы для микроконтроллеров, разнообразные инженерные решения.
-                    Участвовали в различных хакатонах и соревнованиях, часто брали места.
-                    Основной состав, да и вообще все участники, которые когда либо были в нашей команде, очень дружелюбные, крутые и креативные люди)
-                </p>
-            </div>
-
-            <div class="main-buttons">
-                <a href="articles.html" class="main-button">
-                    <div class="button-content">
-                        <div class="button-icon">
-                            <i class="fas fa-book-open"></i>
-                        </div>
-                        <div class="button-text">
-                            <h2>Статьи</h2>
-                            <p>Читайте и делитесь знаниями</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="news.html" class="main-button">
-                    <div class="button-content">
-                        <div class="button-icon">
-                            <i class="fas fa-newspaper"></i>
-                        </div>
-                        <div class="button-text">
-                            <h2>Новости</h2>
-                            <p>Актуальные события и обновления</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="projects.html" class="main-button">
-                    <div class="button-content">
-                        <div class="button-icon">
-                            <i class="fas fa-project-diagram"></i>
-                        </div>
-                        <div class="button-text">
-                            <h2>Проекты</h2>
-                            <p>Наши разработки и достижения</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="courses.html" class="main-button">
-                    <div class="button-content">
-                        <div class="button-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div class="button-text">
-                            <h2>Курсы</h2>
-                            <p>Обучающие программы по программированию и электронике</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="codeSanbox.html" class="main-button">
-                    <div class="button-content">
-                        <div class="button-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <div class="button-text">
-                            <h2>Онлайн редактор</h2>
-                            <p>Пишите и тестируйте код прямо в браузере</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="tasks.html" class="main-button">
-                    <div class="button-content">
-                        <div class="button-icon">
-                            <i class="fas fa-tasks"></i>
-                        </div>
-                        <div class="button-text">
-                            <h2>Задачи</h2>
-                            <p>Решайте задачи по программированию онлайн</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="shop.html" class="main-button">
-                    <div class="button-content">
-                        <div class="button-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <div class="button-text">
-                            <h2>Магазин</h2>
-                            <p>Приобретайте мерч и электронику</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="team.html" class="main-button">
-                    <div class="button-content">
-                        <div class="button-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="button-text">
-                            <h2>Участники SIT</h2>
-                            <p>Наша команда и сообщество</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="articles.html?random=true" class="main-button">
-                    <div class="button-content">
-                        <div class="button-icon">
-                            <i class="fas fa-random"></i>
-                        </div>
-                        <div class="button-text">
-                            <h2>Случайная статья</h2>
-                            <p>Откройте что-то новое</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="history.html" class="main-button">
-                    <div class="button-content">
-                        <div class="button-icon">
-                            <i class="fas fa-history"></i>
-                        </div>
-                        <div class="button-text">
-                            <h2>Наша история</h2>
-                            <p>Как всё начиналось</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="hackatons.html" class="main-button">
-                    <div class="button-content">
-                        <div class="button-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <div class="button-text">
-                            <h2>Хакатоны</h2>
-                            <p>Участвуйте в соревнованиях</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="wiki.html" class="main-button">
-                    <div class="button-content">
-                        <div class="button-icon">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <div class="button-text">
-                            <h2>База знаний</h2>
-                            <p>Справочник по технологиям и инструментам</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Блок последних новостей -->
-            <div class="latest-news">
-                <h2>Последние новости</h2>
-                <div class="news-container">
-                    <!-- Новости будут добавляться здесь динамически -->
+    <main id="main">
+        <section class="hero" aria-label="S.I.T Education">
+            <div class="hero-banner">
+                <span class="hero-deco hero-deco-circles" aria-hidden="true"></span>
+                <span class="hero-deco hero-deco-plus" aria-hidden="true"></span>
+                <span class="hero-deco hero-deco-rings" aria-hidden="true"></span>
+                <h1><span>S.I.T</span><span>Education</span></h1>
+                <p class="hero-tagline">Статьи про код и железо</p>
+                <p class="hero-text">Туториалы, разборы и справочники по программированию, Arduino и электронике от команды S.I.T / FrogeeSoft. Читайте с любого места, регистрация не нужна.</p>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="articles.html">Читать статьи</a>
+                    <button class="button button-secondary" type="button" data-search-open>Найти статью</button>
+                    <span class="hero-chevrons" aria-hidden="true"></span>
                 </div>
-                <a href="news.html" class="view-all-news">Все новости</a>
             </div>
-        </div>
+            <a class="section-card" href="wiki.html">
+                <img class="card-art" src="images/patterns/pattern-22.svg" alt="" loading="lazy">
+                <div class="section-card-foot">
+                    <div>
+                        <h2>База знаний</h2>
+                        <p>Короткие справочники по языкам и инструментам</p>
+                    </div>
+                    <span class="round-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                </div>
+            </a>
+            <a class="section-card courses-card" href="courses.html">
+                <div class="window blink-card" aria-hidden="true">
+                    <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><small>blink.ino</small></div>
+                    <div class="window-body">
+                        <pre class="blink-code"><code><span class="l"><span class="tk-k">void</span> <span class="tk-f">setup</span>() {</span><span class="l">  <span class="tk-f">pinMode</span>(<span class="tk-n">13</span>, OUTPUT);</span><span class="l">}</span><span class="l"> </span><span class="l"><span class="tk-k">void</span> <span class="tk-f">loop</span>() {</span><span class="l run-on">  <span class="tk-f">digitalWrite</span>(<span class="tk-n">13</span>, HIGH);</span><span class="l run-on">  <span class="tk-f">delay</span>(<span class="tk-n">1000</span>);</span><span class="l run-off">  <span class="tk-f">digitalWrite</span>(<span class="tk-n">13</span>, LOW);</span><span class="l run-off">  <span class="tk-f">delay</span>(<span class="tk-n">1000</span>);</span><span class="l">}</span></code></pre>
+                        <div class="blink-board" aria-hidden="true">
+                            <span class="board-pin"><span class="led"></span>pin 13</span>
+                            <span class="board-state">digitalWrite → <span class="states"><b class="state-on">HIGH</b><b class="state-off">LOW</b></span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-card-foot">
+                    <div>
+                        <h2>Курсы</h2>
+                        <p>Arduino, вёрстка и VIM с нуля</p>
+                    </div>
+                    <span class="round-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                </div>
+            </a>
+        </section>
+
+        <section class="block" aria-labelledby="latest-title">
+            <div class="section-heading">
+                <h2 id="latest-title">Новые статьи</h2>
+                <a href="articles.html">Все статьи</a>
+            </div>
+            <div class="article-list" data-latest-articles>
+                <div class="loading">Загружаем статьи…</div>
+            </div>
+        </section>
+
+        <section class="block" aria-labelledby="olymp-title">
+            <div class="section-heading">
+                <h2 id="olymp-title">Олимпиады и конкурсы</h2>
+                <a href="olympiads.html">Весь список</a>
+            </div>
+            <div class="direction-grid">
+                <a class="section-card" href="olympiads.html#robotics">
+                    <img class="card-art" src="images/patterns/pattern-21.svg" alt="" loading="lazy">
+                    <div class="section-card-foot">
+                        <div>
+                            <h2>Робототехника и инженерия</h2>
+                            <p>17 перечневых олимпиад, 5 олимпиад, 24 конкурса</p>
+                        </div>
+                        <span class="round-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                    </div>
+                </a>
+                <a class="section-card" href="olympiads.html#ai">
+                    <img class="card-art" src="images/patterns/pattern-24.svg" alt="" loading="lazy">
+                    <div class="section-card-foot">
+                        <div>
+                            <h2>AI, Data, ML</h2>
+                            <p>6 перечневых олимпиад, 9 олимпиад, 16 конкурсов</p>
+                        </div>
+                        <span class="round-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="block" aria-labelledby="topics-title">
+            <div class="section-heading">
+                <h2 id="topics-title">Темы</h2>
+            </div>
+            <div class="topic-cloud" data-topics></div>
+        </section>
+
+
+
+
+        <section class="block" aria-labelledby="team-title">
+            <div class="team-band">
+                <div class="team-band-brand">
+                    <span class="brand-logo-switch" aria-hidden="true">
+                        <img class="brand-logo-dark" src="images/brand/logo-dark.png" width="309" height="85" alt="">
+                        <img class="brand-logo-light" src="images/brand/logo-light.png" width="309" height="85" alt="">
+                    </span>
+                    <p>С сентября 2023 года</p>
+                </div>
+                <div class="team-band-copy">
+                    <h2 id="team-title">Статьи пишет команда S.I.T</h2>
+                    <p>Мы команда S.I.T, она же FrogeeSoft. Разрабатываем софт, прошивки и инженерные решения, участвуем в хакатонах и записываем то, чему научились, в статьи.</p>
+                    <p>Хотите поделиться опытом? Напишите статью в <strong>FgSNotes</strong>, нашем Markdown-редакторе, и пришлите файл на frogeesoft.team@gmail.com.</p>
+                    <div class="link-row">
+                        <a href="https://github.com/ArduRadioKot/FgSNotes" target="_blank" rel="noreferrer">Скачать FgSNotes <b>↗</b></a>
+                        <a href="team.html">Участники</a>
+                        <a href="https://t.me/SIT_team" target="_blank" rel="noreferrer">Telegram <b>↗</b></a>
+                        <a href="https://github.com/X200L/SITeducation" target="_blank" rel="noreferrer">GitHub <b>↗</b></a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <div class="social-media">
-        <h2>Мы в социальных сетях</h2>
-        <div class="social-links">
-            <a href="https://t.me/SIT_team" target="_blank" class="social-link">
-                <i class="fab fa-telegram"></i>
-                <span>Telegram</span>
-            </a>
-            <a href="https://github.com/X200L/SITeducation" target="_blank" class="social-link">
-                <i class="fab fa-github"></i>
-                <span>GitHub</span>
-            </a>
-            <a href="mailto:frogeesoft.team@gmail.com" class="social-link">
-                <i class="fas fa-envelope"></i>
-                <span>Email</span>
-            </a>
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="index.html" aria-label="S.I.T Education, на главную">
+                    <span class="brand-logo-switch" aria-hidden="true">
+                        <img class="brand-logo-dark" src="images/brand/logo-dark.png" width="309" height="85" alt="">
+                        <img class="brand-logo-light" src="images/brand/logo-light.png" width="309" height="85" alt="">
+                    </span>
+                </a>
+                <p>Статьи, справочники и курсы команды S.I.T / FrogeeSoft для тех, кто учится программировать и собирать электронику.</p>
+            </div>
+            <div class="footer-col">
+                <h2>Учиться</h2>
+                <ul>
+                    <li><a href="articles.html">Статьи</a></li>
+                    <li><a href="courses.html">Курсы</a></li>
+                    <li><a href="wiki.html">База знаний</a></li>
+                    <li><a href="vimTrainer/index.html">VIM-тренажёр</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h2>Сообщество</h2>
+                <ul>
+                    <li><a href="projects.html">Проекты</a></li>
+                    <li><a href="olympiads.html">Олимпиады и конкурсы</a></li>
+                    <li><a href="team.html">Команда</a></li>
+                    <li><a href="shop.html">Магазин</a></li>
+                    <li><a href="https://github.com/ArduRadioKot/FgSNotes" target="_blank" rel="noreferrer">Писать статьи в FgSNotes <span class="ext">↗</span></a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h2>Связаться</h2>
+                <ul>
+                    <li><a href="https://t.me/SIT_team" target="_blank" rel="noreferrer">Telegram <span class="ext">↗</span></a></li>
+                    <li><a href="https://github.com/X200L/SITeducation" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a></li>
+                    <li><a href="https://youtube.com/@frogeesoft" target="_blank" rel="noreferrer">YouTube <span class="ext">↗</span></a></li>
+                    <li><a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-
-    <footer>
-        <p>© 2025 Все права защищены.</p>
-        <p>
-            Свяжитесь с нами: <a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a> |
-            <a href="https://github.com/X200L/SITeducation" target="_blank">website source</a> |
-            <a href="https://github.com/ArduRadioKot" target="_blank">Author GitHub</a> |
-            <a href="https://t.me/SIT_team" target="_blank">Telegramm</a>
-        </p>
+        <div class="footer-bottom">
+            <span>© <span data-year>2026</span> S.I.T Education</span>
+            <a href="#main">Наверх ↑</a>
+        </div>
     </footer>
 
-    <script src="app.js"></script>
-    <script src="particles.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            new ParticleNetwork();
-        });
-    </script>
+    <script src="sit.js"></script>
 </body>
 </html>

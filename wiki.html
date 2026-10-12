@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <meta name="theme-color" content="#007acc">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>База знаний - S.I.T Education</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#090c0a">
+    <meta name="description" content="База знаний S.I.T Education: краткие справочники по языкам программирования, электронике и инструментам.">
+    <title>База знаний | S.I.T Education</title>
+    <link rel="icon" type="image/png" href="images/brand/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="sit.css">
+    <script src="theme.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
@@ -18,87 +18,139 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="theme.js"></script>
 </head>
 <body class="wiki-page">
-    <canvas id="particles"></canvas>
-    <header>
-        <nav>
-            <div class="logo">
-                <i class="fas fa-microchip"></i>
-                S.I.T Education
-            </div>
-            <div class="nav-links">
-                <a href="index.html">Главная</a>
+    <a class="skip-link" href="#main">Перейти к содержимому</a>
+    <div class="page-noise" aria-hidden="true"></div>
+    <header class="site-header" data-header>
+        <a class="brand" href="index.html" aria-label="S.I.T Education, на главную">
+            <span class="brand-logo-switch" aria-hidden="true">
+                <img class="brand-logo-dark" src="images/brand/logo-dark.png" width="309" height="85" alt="">
+                <img class="brand-logo-light" src="images/brand/logo-light.png" width="309" height="85" alt="">
+            </span>
+            <span class="brand-sep" aria-hidden="true"></span>
+            <span class="brand-edu">S.I.T Education</span>
+        </a>
+        <div class="header-end">
+            <nav class="site-nav" aria-label="Основная навигация">
                 <a href="articles.html">Статьи</a>
-                <a href="news.html">Новости</a>
-                <a href="projects.html">Проекты</a>
-                <a href="hackatons.html">Хакатоны</a>
+                <a href="wiki.html" aria-current="page">База знаний</a>
+                <a href="courses.html">Курсы</a>
+                <a href="olympiads.html">Олимпиады</a>
                 <a href="team.html">Команда</a>
-                <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+                <button class="search-open" type="button" data-search-open aria-label="Поиск по сайту">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+                    <span>Поиск</span>
+                    <kbd aria-hidden="true">K</kbd>
+                </button>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-button search-mobile" type="button" data-search-open aria-label="Поиск по сайту">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+                </button>
+                <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Переключить тему">
+                    <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
+                    <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+                </button>
+                <button class="icon-button menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-label="Открыть меню" aria-controls="mobile-menu">
+                    <span></span><span></span>
+                </button>
             </div>
-        </nav>
+        </div>
     </header>
+    <nav class="mobile-menu" id="mobile-menu" data-mobile-menu aria-hidden="true" aria-label="Меню">
+        <a href="articles.html">Статьи</a>
+        <a href="wiki.html" aria-current="page">База знаний</a>
+        <a href="courses.html">Курсы</a>
+        <a href="olympiads.html">Олимпиады</a>
+        <a href="team.html">Команда</a>
+        <div class="mobile-menu-minor">
+            <a href="projects.html">Проекты</a>
+            <a href="shop.html">Магазин</a>
+        </div>
+    </nav>
+    <dialog class="search-dialog" data-search-dialog aria-label="Поиск по сайту">
+        <label class="search-dialog-field">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+            <span class="visually-hidden">Что найти</span>
+            <input type="search" data-search-input placeholder="Статьи, справочники, разделы" autocomplete="off">
+            <kbd aria-hidden="true">Esc</kbd>
+        </label>
+        <div class="search-results" data-search-results></div>
+    </dialog>
 
-    <main>
-        <div class="container">
-            <h1 class="wiki-title">База знаний</h1>
-            
-            <div class="wiki-search">
-                <input type="text" id="wikiSearch" class="search-input" placeholder="Поиск по базе знаний...">
+    <main id="main" class="page">
+        <div data-view="list">
+            <div class="page-top">
+            <h1>База знаний</h1>
             </div>
 
-            <div class="wiki-layout">
-                <aside class="wiki-sidebar">
-                    <div class="wiki-categories">
-                        <h3>Категории</h3>
-                        <ul id="categoryList">
-                            <!-- Категории будут добавлены динамически -->
-                        </ul>
-                    </div>
-                </aside>
-
-                <div class="wiki-content">
-                    <div id="wikiList" class="wiki-grid">
-                        <div class="loading">
-                            <i class="fas fa-spinner fa-spin"></i>
-                            Загрузка базы знаний...
-                        </div>
+            <div class="content-layout">
+                <aside class="sidebar" id="categoryList" aria-label="Разделы базы знаний"></aside>
+                <div>
+                    <label class="search-bar">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+                        <span class="visually-hidden">Поиск по базе знаний</span>
+                        <input type="search" id="wikiSearch" data-search placeholder="Поиск по названию, описанию или тегу" autocomplete="off">
+                        <kbd aria-hidden="true">/</kbd>
+                    </label>
+                    <div id="wikiList" class="wiki-grid" style="margin-top: 28px">
+                        <div class="loading">Загружаем базу знаний…</div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div data-view="item" hidden></div>
     </main>
 
-    <div class="social-media">
-        <h2>Мы в социальных сетях</h2>
-        <div class="social-links">
-            <a href="https://t.me/SIT_team" target="_blank" class="social-link">
-                <i class="fab fa-telegram"></i>
-                <span>Telegram</span>
-            </a>
-            <a href="https://github.com/X200L/SITeducation" target="_blank" class="social-link">
-                <i class="fab fa-github"></i>
-                <span>GitHub</span>
-            </a>
-            <a href="mailto:frogeesoft.team@gmail.com" class="social-link">
-                <i class="fas fa-envelope"></i>
-                <span>Email</span>
-            </a>
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="index.html" aria-label="S.I.T Education, на главную">
+                    <span class="brand-logo-switch" aria-hidden="true">
+                        <img class="brand-logo-dark" src="images/brand/logo-dark.png" width="309" height="85" alt="">
+                        <img class="brand-logo-light" src="images/brand/logo-light.png" width="309" height="85" alt="">
+                    </span>
+                </a>
+                <p>Статьи, справочники и курсы команды S.I.T / FrogeeSoft для тех, кто учится программировать и собирать электронику.</p>
+            </div>
+            <div class="footer-col">
+                <h2>Учиться</h2>
+                <ul>
+                    <li><a href="articles.html">Статьи</a></li>
+                    <li><a href="courses.html">Курсы</a></li>
+                    <li><a href="wiki.html">База знаний</a></li>
+                    <li><a href="vimTrainer/index.html">VIM-тренажёр</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h2>Сообщество</h2>
+                <ul>
+                    <li><a href="projects.html">Проекты</a></li>
+                    <li><a href="olympiads.html">Олимпиады и конкурсы</a></li>
+                    <li><a href="team.html">Команда</a></li>
+                    <li><a href="shop.html">Магазин</a></li>
+                    <li><a href="https://github.com/ArduRadioKot/FgSNotes" target="_blank" rel="noreferrer">Писать статьи в FgSNotes <span class="ext">↗</span></a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h2>Связаться</h2>
+                <ul>
+                    <li><a href="https://t.me/SIT_team" target="_blank" rel="noreferrer">Telegram <span class="ext">↗</span></a></li>
+                    <li><a href="https://github.com/X200L/SITeducation" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a></li>
+                    <li><a href="https://youtube.com/@frogeesoft" target="_blank" rel="noreferrer">YouTube <span class="ext">↗</span></a></li>
+                    <li><a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-
-    <footer>
-        <p>© 2025 Все права защищены.</p>
-        <p>
-            Свяжитесь с нами: <a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a> |
-            <a href="https://github.com/X200L/SITeducation" target="_blank">website source</a> |
-            <a href="https://github.com/ArduRadioKot" target="_blank">Author GitHub</a> |
-            <a href="https://t.me/SIT_team" target="_blank">Telegramm</a>
-        </p>
+        <div class="footer-bottom">
+            <span>© <span data-year>2026</span> S.I.T Education</span>
+            <a href="#main">Наверх ↑</a>
+        </div>
     </footer>
 
+    <script src="sit.js"></script>
     <script src="wiki.js"></script>
 </body>
-</html> 
+</html>

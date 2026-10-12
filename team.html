@@ -1,158 +1,193 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#007acc">
-    <title>Команда S.I.T Education</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#090c0a">
+    <meta name="description" content="Команда S.I.T / FrogeeSoft, которая делает S.I.T Education.">
+    <title>Команда | S.I.T Education</title>
+    <link rel="icon" type="image/png" href="images/brand/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="sit.css">
     <script src="theme.js"></script>
 </head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">
-                <i class="fas fa-microchip"></i>
-                S.I.T Education
-            </div>
-            <div class="nav-links">
-                <a href="index.html">Главная</a>
+<body class="team-page">
+    <a class="skip-link" href="#main">Перейти к содержимому</a>
+    <div class="page-noise" aria-hidden="true"></div>
+    <header class="site-header" data-header>
+        <a class="brand" href="index.html" aria-label="S.I.T Education, на главную">
+            <span class="brand-logo-switch" aria-hidden="true">
+                <img class="brand-logo-dark" src="images/brand/logo-dark.png" width="309" height="85" alt="">
+                <img class="brand-logo-light" src="images/brand/logo-light.png" width="309" height="85" alt="">
+            </span>
+            <span class="brand-sep" aria-hidden="true"></span>
+            <span class="brand-edu">S.I.T Education</span>
+        </a>
+        <div class="header-end">
+            <nav class="site-nav" aria-label="Основная навигация">
                 <a href="articles.html">Статьи</a>
-                <a href="team.html" class="active">Команда</a>
-                <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+                <a href="wiki.html">База знаний</a>
+                <a href="courses.html">Курсы</a>
+                <a href="olympiads.html">Олимпиады</a>
+                <a href="team.html" aria-current="page">Команда</a>
+                <button class="search-open" type="button" data-search-open aria-label="Поиск по сайту">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+                    <span>Поиск</span>
+                    <kbd aria-hidden="true">K</kbd>
+                </button>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-button search-mobile" type="button" data-search-open aria-label="Поиск по сайту">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+                </button>
+                <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Переключить тему">
+                    <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
+                    <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+                </button>
+                <button class="icon-button menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-label="Открыть меню" aria-controls="mobile-menu">
+                    <span></span><span></span>
+                </button>
             </div>
-        </nav>
+        </div>
     </header>
+    <nav class="mobile-menu" id="mobile-menu" data-mobile-menu aria-hidden="true" aria-label="Меню">
+        <a href="articles.html">Статьи</a>
+        <a href="wiki.html">База знаний</a>
+        <a href="courses.html">Курсы</a>
+        <a href="olympiads.html">Олимпиады</a>
+        <a href="team.html" aria-current="page">Команда</a>
+        <div class="mobile-menu-minor">
+            <a href="projects.html">Проекты</a>
+            <a href="shop.html">Магазин</a>
+        </div>
+    </nav>
+    <dialog class="search-dialog" data-search-dialog aria-label="Поиск по сайту">
+        <label class="search-dialog-field">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+            <span class="visually-hidden">Что найти</span>
+            <input type="search" data-search-input placeholder="Статьи, справочники, разделы" autocomplete="off">
+            <kbd aria-hidden="true">Esc</kbd>
+        </label>
+        <div class="search-results" data-search-results></div>
+    </dialog>
 
-    <main>
-        <div class="container">
-            <h1 class="team-title">Наша команда</h1>
-            <p class="team-description">Познакомьтесь с людьми, которые делают S.I.T Education возможным</p>
-            
-            <div class="team-grid">
-                <!-- Участник 1 -->
-                <div class="team-member">
-                    <div class="member-photo">
-                        <img src="images/Alex.jpeg" alt="Александр">
-                    </div>
-                    <div class="member-info">
-                        <h2>Александр(ArduRadioKot)</h2>
-                        <p class="member-role">Основатель проекта, Lead Developer, Встраиваемые системы, Дизайнер, Машинное обучение, Fullstack-разработка</p>
-                        <p class="member-bio">
-                            Опытный разработчик с акцентом на встраиваемые системы, машинное обучение и fullstack-разработку.
-                            Участвовал в различных конкурсах и хакатонах, 
-                            включая финал в конкурсе разработчиков игр ВК и участие в хакатоне Дано в Москве. Победитель больших вызавов 2025.
-                            Имею опыт создания электронных устройств и анализа данных. Увлекаюсь музыкой, играю на нескольких инструментах. 
-                            Люблю хороший дизайн.
-                        </p>
-                        <div class="member-links">
-                            <a href="https://github.com/ArduRadioKot" target="_blank" class="social-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="mailto:frogeesoft.team@gmail.com" class="social-link">
-                                <i class="fas fa-envelope"></i> Email (Александр)
-                            </a>
-                            <!-- <a href="https://t.me/SIT_team" class="social-link">
-                                <i class="fas fa-paper-plane"></i> Telegramm
-                            </a> -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Участник 2 -->
-                <div class="team-member">
-                    <div class="member-photo">
-                        <img src="images/nick.jpg" alt="Никита">
-                    </div>
-                    <div class="member-info">
-                        <h2>Никита(GigaProgramm)</h2>
-                        <p class="member-role">Сооснователь проекта, Интегральные схемы, Встраиваемые системы, Машинное обучение, Разработка игр</p>
-                        <p class="member-bio">
-                            Опытный разработчик с акцентом на встраиваемые системы и интегральные схемы.
-                            Участвовал в различных конкурсах и хакатонах, 
-                            включая гейм джем от ВК и хакатон Дано в 2025 году в Москве. 
-                            Имею опыт разработки и тестирования электронных устройств,
-                            а также моделирования в CAD-программах, таких как Компас-3D и Fusion 360.</p>
-                        <div class="member-links">
-                            <a href="https://github.com/GigaProgramm" target="_blank" class="social-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="mailto:leonelnessi36@gmail.com" class="social-link">
-                                <i class="fas fa-envelope"></i> Email (Никита)
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Участник 3 -->
-                <div class="team-member">
-                    <div class="member-photo">
-                        <img src="images/art.jpg" alt="Артем">
-                    </div>
-                    <div class="member-info">
-                        <h2>Артем(Eсapist)</h2>
-                        <p class="member-role">Редактор, 3д моделирование Разработка игр</p>
-                        <p class="member-bio">
-                            Начинающий разработчик с акцентом на информационную безопасность. Имею малый опыт с анализом логов и настройкой, защитой сетей</p>
-                        <div class="member-links">
-                            <a href="https://github.com/Escapiistt" target="_blank" class="social-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="mailto:escapismim@gmail.com" class="social-link">
-                                <i class="fas fa-envelope"></i> Email (Артем)
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Участник 4 -->
-                <div class="team-member">
-                    <div class="member-photo">
-                        <img src="images/artem2.jpg" alt="Артем">
-                    </div>
-                    <div class="member-info">
-                        <h2>Артем(disccsz)</h2>
-                        <p class="member-role">Редактор, 3д моделирование, встраиваемые системы, Дизайн </p>
-                        <p class="member-bio">Начинающий embedded-инженер и разработчик информационных систем, графический дизайнер. В основном работаю с микроконтроллерами, одноплатными компьютерами. Занимаются разработкой специализированного программного обеспечения на Python и C++. Увлекаюсь авиацией и пилотированием самолётов. Победитель Больших вызовов и олимпиад по физике.</p>
-                        <div class="member-links">
-                            <a href="https://github.com/disccsz" target="_blank" class="social-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="mailto:disccsz@mail.ru" class="social-link">
-                                <i class="fas fa-envelope"></i> Email (Артем)
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-              
-
-            </div>
+    <main id="main" class="page">
+        <div class="page-top">
+            <h1>Команда</h1>
         </div>
 
-        <div class="container">
-            <h1 class="team-title">Активные участники</h1>
-            <p class="team-description">Наши активные участники, которые помогают развивать проект</p>
-            
-            <div class="team-grid">
-                <!-- Активный участник 1 -->
-                
-
-                
+        <section class="team-group" aria-labelledby="active-title">
+            <div class="section-heading">
+                <h2 id="active-title">Активные участники</h2>
             </div>
-        </div>
+            <div class="team-grid">
+            <article class="team-member">
+                <div class="member-photo"><img src="images/Alex.png" alt="Александр" loading="lazy"></div>
+                <div class="member-info">
+                    <h2>Александр <span class="member-handle">@ArduRadioKot</span></h2>
+                    <p class="member-role">Основатель проекта, Lead Developer, Встраиваемые системы, Дизайнер, Машинное обучение, Fullstack-разработка</p>
+                    <p class="member-bio">Опытный разработчик с акцентом на встраиваемые системы, машинное обучение и fullstack-разработку. Участвовал в различных конкурсах и хакатонах, включая финал в конкурсе разработчиков игр ВК и участие в хакатоне Дано в Москве. Победитель больших вызавов 2025. Имею опыт создания электронных устройств и анализа данных. Увлекаюсь музыкой, играю на нескольких инструментах. Люблю хороший дизайн.</p>
+                    <div class="member-links">
+                        <a href="https://github.com/ArduRadioKot" target="_blank" rel="noreferrer" class="social-link">GitHub <span class="ext">↗</span></a>
+                        <a href="mailto:frogeesoft.team@gmail.com" class="social-link">Email</a>
+                    </div>
+                </div>
+            </article>
+            </div>
+        </section>
+
+        <section class="team-group" aria-labelledby="past-title">
+            <div class="section-heading">
+                <h2 id="past-title">Неактивные участники</h2>
+            </div>
+            <div class="team-grid">
+            <article class="team-member">
+                <div class="member-photo"><img src="images/nick.jpg" alt="Никита" loading="lazy"></div>
+                <div class="member-info">
+                    <h2>Никита <span class="member-handle">@GigaProgramm</span></h2>
+                    <p class="member-role">Сооснователь проекта, Интегральные схемы, Встраиваемые системы, Машинное обучение, Разработка игр</p>
+                    <p class="member-bio">Опытный разработчик с акцентом на встраиваемые системы и интегральные схемы. Участвовал в различных конкурсах и хакатонах, включая гейм джем от ВК и хакатон Дано в 2025 году в Москве. Имею опыт разработки и тестирования электронных устройств, а также моделирования в CAD-программах, таких как Компас-3D и Fusion 360.</p>
+                    <div class="member-links">
+                        <a href="https://github.com/GigaProgramm" target="_blank" rel="noreferrer" class="social-link">GitHub <span class="ext">↗</span></a>
+                        <a href="mailto:leonelnessi36@gmail.com" class="social-link">Email</a>
+                    </div>
+                </div>
+            </article>
+            <article class="team-member">
+                <div class="member-photo"><img src="images/art.jpg" alt="Артем" loading="lazy"></div>
+                <div class="member-info">
+                    <h2>Артем <span class="member-handle">@Eсapist</span></h2>
+                    <p class="member-role">Редактор, 3д моделирование Разработка игр</p>
+                    <p class="member-bio">Начинающий разработчик с акцентом на информационную безопасность. Имею малый опыт с анализом логов и настройкой, защитой сетей</p>
+                    <div class="member-links">
+                        <a href="https://github.com/Escapiistt" target="_blank" rel="noreferrer" class="social-link">GitHub <span class="ext">↗</span></a>
+                        <a href="mailto:escapismim@gmail.com" class="social-link">Email</a>
+                    </div>
+                </div>
+            </article>
+            <article class="team-member">
+                <div class="member-photo"><img src="images/artem2.jpg" alt="Артем" loading="lazy"></div>
+                <div class="member-info">
+                    <h2>Артем <span class="member-handle">@disccsz</span></h2>
+                    <p class="member-role">Редактор, 3д моделирование, встраиваемые системы, Дизайн</p>
+                    <p class="member-bio">Начинающий embedded-инженер и разработчик информационных систем, графический дизайнер. В основном работаю с микроконтроллерами, одноплатными компьютерами. Занимаются разработкой специализированного программного обеспечения на Python и C++. Увлекаюсь авиацией и пилотированием самолётов. Победитель Больших вызовов и олимпиад по физике.</p>
+                    <div class="member-links">
+                        <a href="https://github.com/disccsz" target="_blank" rel="noreferrer" class="social-link">GitHub <span class="ext">↗</span></a>
+                        <a href="mailto:disccsz@mail.ru" class="social-link">Email</a>
+                    </div>
+                </div>
+            </article>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <p>© 2025 Все права защищены.</p>
-        <p>
-            Свяжитесь с нами: <a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a> |
-            <a href="https://github.com/X200L/SITeducation" target="_blank">website source</a> |
-            <a href="https://t.me/SIT_team" target="_blank">Telegramm</a>
-        </p>
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="index.html" aria-label="S.I.T Education, на главную">
+                    <span class="brand-logo-switch" aria-hidden="true">
+                        <img class="brand-logo-dark" src="images/brand/logo-dark.png" width="309" height="85" alt="">
+                        <img class="brand-logo-light" src="images/brand/logo-light.png" width="309" height="85" alt="">
+                    </span>
+                </a>
+                <p>Статьи, справочники и курсы команды S.I.T / FrogeeSoft для тех, кто учится программировать и собирать электронику.</p>
+            </div>
+            <div class="footer-col">
+                <h2>Учиться</h2>
+                <ul>
+                    <li><a href="articles.html">Статьи</a></li>
+                    <li><a href="courses.html">Курсы</a></li>
+                    <li><a href="wiki.html">База знаний</a></li>
+                    <li><a href="vimTrainer/index.html">VIM-тренажёр</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h2>Сообщество</h2>
+                <ul>
+                    <li><a href="projects.html">Проекты</a></li>
+                    <li><a href="olympiads.html">Олимпиады и конкурсы</a></li>
+                    <li><a href="team.html">Команда</a></li>
+                    <li><a href="shop.html">Магазин</a></li>
+                    <li><a href="https://github.com/ArduRadioKot/FgSNotes" target="_blank" rel="noreferrer">Писать статьи в FgSNotes <span class="ext">↗</span></a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h2>Связаться</h2>
+                <ul>
+                    <li><a href="https://t.me/SIT_team" target="_blank" rel="noreferrer">Telegram <span class="ext">↗</span></a></li>
+                    <li><a href="https://github.com/X200L/SITeducation" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a></li>
+                    <li><a href="https://youtube.com/@frogeesoft" target="_blank" rel="noreferrer">YouTube <span class="ext">↗</span></a></li>
+                    <li><a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span data-year>2026</span> S.I.T Education</span>
+            <a href="#main">Наверх ↑</a>
+        </div>
     </footer>
+
+    <script src="sit.js"></script>
 </body>
-</html> 
+</html>

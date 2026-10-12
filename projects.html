@@ -1,47 +1,90 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#007acc">
+    <meta name="theme-color" content="#090c0a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Проекты - S.I.T Education</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Проекты | S.I.T Education</title>
+    <link rel="icon" type="image/png" href="images/brand/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="sit.css">
     <script src="theme.js"></script>
 </head>
 <body class="projects-page">
-    <header>
-        <nav>
-            <div class="logo">
-                <i class="fas fa-microchip"></i>
-                S.I.T Education
-            </div>
-            <div class="nav-links">
-                <a hef="index.html">Главная</a>
+    <a class="skip-link" href="#main">Перейти к содержимому</a>
+    <div class="page-noise" aria-hidden="true"></div>
+    <header class="site-header" data-header>
+        <a class="brand" href="index.html" aria-label="S.I.T Education, на главную">
+            <span class="brand-logo-switch" aria-hidden="true">
+                <img class="brand-logo-dark" src="images/brand/logo-dark.png" width="309" height="85" alt="">
+                <img class="brand-logo-light" src="images/brand/logo-light.png" width="309" height="85" alt="">
+            </span>
+            <span class="brand-sep" aria-hidden="true"></span>
+            <span class="brand-edu">S.I.T Education</span>
+        </a>
+        <div class="header-end">
+            <nav class="site-nav" aria-label="Основная навигация">
                 <a href="articles.html">Статьи</a>
-                <a href="projects.html" class="active">Проекты</a>
+                <a href="wiki.html">База знаний</a>
+                <a href="courses.html">Курсы</a>
+                <a href="olympiads.html">Олимпиады</a>
                 <a href="team.html">Команда</a>
-                <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+                <button class="search-open" type="button" data-search-open aria-label="Поиск по сайту">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+                    <span>Поиск</span>
+                    <kbd aria-hidden="true">K</kbd>
+                </button>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-button search-mobile" type="button" data-search-open aria-label="Поиск по сайту">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+                </button>
+                <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Переключить тему">
+                    <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
+                    <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+                </button>
+                <button class="icon-button menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-label="Открыть меню" aria-controls="mobile-menu">
+                    <span></span><span></span>
+                </button>
             </div>
-        </nav>
+        </div>
     </header>
+    <nav class="mobile-menu" id="mobile-menu" data-mobile-menu aria-hidden="true" aria-label="Меню">
+        <a href="articles.html">Статьи</a>
+        <a href="wiki.html">База знаний</a>
+        <a href="courses.html">Курсы</a>
+        <a href="olympiads.html">Олимпиады</a>
+        <a href="team.html">Команда</a>
+        <div class="mobile-menu-minor">
+            <a href="projects.html" aria-current="page">Проекты</a>
+            <a href="shop.html">Магазин</a>
+        </div>
+    </nav>
+    <dialog class="search-dialog" data-search-dialog aria-label="Поиск по сайту">
+        <label class="search-dialog-field">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+            <span class="visually-hidden">Что найти</span>
+            <input type="search" data-search-input placeholder="Статьи, справочники, разделы" autocomplete="off">
+            <kbd aria-hidden="true">Esc</kbd>
+        </label>
+        <div class="search-results" data-search-results></div>
+    </dialog>
 
-    <main>
-        <div class="hero-section">
-            <h1>Наши проекты</h1>
-            <p class="hero-subtitle">Исследования, разработки и достижения команды S.I.T Education</p>
+    <main id="main" class="page">
+        <div class="page-top">
+            <h1>Проекты</h1>
         </div>
 
-        <div class="container">
-            <div class="projects-grid">
+        <div class="projects-grid">
                 <!-- Проект 1 -->
                 <div class="project-card">
                     <div class="project-image">
                         <img src="projectImages/mainPBDA.png" alt="PBDA">
                         <div class="project-status completed">
-                            <i class="fas fa-check-circle"></i> Завершён
+                            Завершён
                         </div>
                     </div>
                     <div class="project-content">
@@ -56,11 +99,9 @@
                             <span class="tech-tag">bigdata</span>
                             <span class="tech-tag">dataanalysis</span>
                         </div>
-                        <p class="project-author"><i class="fas fa-user"></i> Автор: Александр</p>
+                        <p class="project-author">Автор: Александр</p>
                         <div class="project-links">
-                            <a href="https://github.com/ArduRadioKot/PBDA" class="project-link">
-                                <i class="fas fa-code-branch"></i> GitHub
-                            </a>
+                            <a href="https://github.com/ArduRadioKot/PBDA" class="project-link" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a>
                             
                         </div>
                     </div>
@@ -70,7 +111,7 @@
                     <div class="project-image">
                         <img src="projectImages/lcs.png" alt="Education Platform">
                         <div class="project-status in-progress">
-                            <i class="fas fa-clock"></i> В разработке
+                            В разработке
                         </div>
                     </div>
                     <div class="project-content">
@@ -83,11 +124,9 @@
                             <span class="tech-tag">Logic</span>
                             <span class="tech-tag">Embeded</span>
                         </div>
-                        <p class="project-author"><i class="fas fa-user"></i> Автор: Александр</p>
+                        <p class="project-author">Автор: Александр</p>
                         <div class="project-links">
-                            <a href="https://github.com/ArduRadioKot/LogicCircuitSimulator" class="project-link">
-                                <i class="fas fa-code-branch"></i> GitHub
-                            </a>
+                            <a href="https://github.com/ArduRadioKot/LogicCircuitSimulator" class="project-link" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a>
                             
                         </div>
                     </div>
@@ -97,7 +136,7 @@
                     <div class="project-image">
                         <img src="projectImages/FGsDrones2.png" alt="Education Platform">
                         <div class="project-status active">
-                            <i class="fas fa-star"></i> Активный
+                            Активный
                         </div>
                     </div>
                     <div class="project-content">
@@ -111,14 +150,10 @@
                             <span class="tech-tag">drones</span>
                             <span class="tech-tag">esp32</span>
                         </div>
-                        <p class="project-author"><i class="fas fa-user"></i> Авторы: Александр, Никита</p>
+                        <p class="project-author">Авторы: Александр, Никита</p>
                         <div class="project-links">
-                            <a href="https://github.com/ArduRadioKot/FgSdrones" class="project-link">
-                                <i class="fas fa-code-branch"></i> GitHub
-                            </a>
-                            <a href="arduradiokot.github.io/FgSdrones/" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> website
-                            </a>
+                            <a href="https://github.com/ArduRadioKot/FgSdrones" class="project-link" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a>
+                            <a href="https://arduradiokot.github.io/FgSdrones/" class="project-link" target="_blank" rel="noreferrer">website <span class="ext">↗</span></a>
                         </div>
                     </div>
                 </div>
@@ -127,7 +162,7 @@
                     <div class="project-image">
                         <img src="projectImages/YAtopology.png " alt="Education Platform">
                         <div class="project-status completed">
-                            <i class="fas fa-check-circle"></i> Завершён
+                            Завершён
                         </div>
                     </div>
                     <div class="project-content">
@@ -141,14 +176,10 @@
                             <span class="tech-tag">js</span>
                             <span class="tech-tag">Python</span>
                         </div>
-                        <p class="project-author"><i class="fas fa-user"></i> Авторы: Александр, Артем, Тарас, Софья</p>
+                        <p class="project-author">Авторы: Александр, Артем, Тарас, Софья</p>
                         <div class="project-links">
-                            <a href="https://github.com/X200L/MarketLog" class="project-link">
-                                <i class="fas fa-code-branch"></i> GitHub
-                            </a>
-                            <a href="https://x200l.github.io/MarketLog/" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Landing
-                            </a>
+                            <a href="https://github.com/X200L/MarketLog" class="project-link" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a>
+                            <a href="https://x200l.github.io/MarketLog/" class="project-link" target="_blank" rel="noreferrer">Landing <span class="ext">↗</span></a>
                         </div>
                     </div>
                 </div>
@@ -157,7 +188,7 @@
                     <div class="project-image">
                         <img src="projectImages/FGSN.png" alt="Education Platform">
                         <div class="project-status active">
-                            <i class="fas fa-star"></i> Активный
+                            Активный
                         </div>
                     </div>
                     <div class="project-content">
@@ -170,14 +201,10 @@
                             <span class="tech-tag">Frontend</span>
                             <span class="tech-tag">javascritpt</span>
                         </div>
-                        <p class="project-author"><i class="fas fa-user"></i> Автор: Александр</p>
+                        <p class="project-author">Автор: Александр</p>
                         <div class="project-links">
-                            <a href="https://github.com/ArduRadioKot/FgSNotes" class="project-link">
-                                <i class="fas fa-code-branch"></i> GitHub
-                            </a>
-                            <a href="https://arduradiokot.github.io/FgSNotes/" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Сайт
-                            </a>
+                            <a href="https://github.com/ArduRadioKot/FgSNotes" class="project-link" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a>
+                            <a href="https://arduradiokot.github.io/FgSNotes/" class="project-link" target="_blank" rel="noreferrer">Сайт <span class="ext">↗</span></a>
                         </div>
                     </div>
                 </div>
@@ -187,7 +214,7 @@
                     <div class="project-image">
                         <img src="projectImages/mops.jpeg" alt="Education Platform">
                         <div class="project-status completed">
-                            <i class="fas fa-check-circle"></i> Завершён
+                            Завершён
                         </div>
                     </div>
                     <div class="project-content">
@@ -200,14 +227,12 @@
                             <span class="tech-tag">yolo8</span>
                             <span class="tech-tag">React</span>
                         </div>
-                        <p class="project-author"><i class="fas fa-user"></i> Автор: Александр, Тимофей, Мария, Никита, Давид</p>
+                        <p class="project-author">Автор: Александр, Тимофей, Мария, Никита, Давид</p>
                         <div class="project-links">
                             <a href="" class="project-link">
-                                <i class="fas fa-code-branch"></i> GitHub
+                                GitHub
                             </a>
-                            <a href="https://github.com/ArduRadioKot/Geoscan_MOPS" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Сайт
-                            </a>
+                            <a href="https://github.com/ArduRadioKot/Geoscan_MOPS" class="project-link" target="_blank" rel="noreferrer">Сайт <span class="ext">↗</span></a>
                         </div>
                     </div>
                 </div>
@@ -217,7 +242,7 @@
                     <div class="project-image">
                         <img src="projectImages/Flama.png" alt="Education Platform">
                         <div class="project-status active">
-                            <i class="fas fa-star"></i> Активный
+                            Активный
                         </div>
                     </div>
                     <div class="project-content">
@@ -230,14 +255,10 @@
                             <span class="tech-tag">Frontend</span>
                             <span class="tech-tag">javascritpt</span>
                         </div>
-                        <p class="project-author"><i class="fas fa-user"></i> Автор: Александр</p>
+                        <p class="project-author">Автор: Александр</p>
                         <div class="project-links">
-                            <a href="https://github.com/ArduRadioKot/Fllama" class="project-link">
-                                <i class="fas fa-code-branch"></i> GitHub
-                            </a>
-                            <a href="https://arduradiokot.github.io/Fllama/" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Сайт
-                            </a>
+                            <a href="https://github.com/ArduRadioKot/Fllama" class="project-link" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a>
+                            <a href="https://arduradiokot.github.io/Fllama/" class="project-link" target="_blank" rel="noreferrer">Сайт <span class="ext">↗</span></a>
                         </div>
                     </div>
                 </div>
@@ -247,7 +268,7 @@
                     <div class="project-image">
                         <img src="projectImages/mainEduc.png" alt="Education Platform">
                         <div class="project-status in-progress">
-                            <i class="fas fa-clock"></i> В разработке
+                            В разработке
                         </div>
                     </div>
                     <div class="project-content">
@@ -261,14 +282,10 @@
                             <span class="tech-tag">js</span>
                             <span class="tech-tag">web</span>
                         </div>
-                        <p class="project-author"><i class="fas fa-user"></i> Автор: Александр</p>
+                        <p class="project-author">Автор: Александр</p>
                         <div class="project-links">
-                            <a href="https://github.com/X200L/SITeducation" class="project-link">
-                                <i class="fas fa-code-branch"></i> GitHub
-                            </a>
-                            <a href="https://x200l.github.io/SITeducation/" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Демо
-                            </a>
+                            <a href="https://github.com/X200L/SITeducation" class="project-link" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a>
+                            <a href="https://x200l.github.io/SITeducation/" class="project-link" target="_blank" rel="noreferrer">Демо <span class="ext">↗</span></a>
                         </div>
                     </div>
                 </div>
@@ -278,7 +295,7 @@
                     <div class="project-image">
                         <img src="projectImages/alfa.png" alt="Education Platform">
                         <div class="project-status completed">
-                            <i class="fas fa-check-circle"></i> Завершён
+                            Завершён
                         </div>
                     </div>
                     <div class="project-content">
@@ -299,11 +316,9 @@
                             <span class="tech-tag">js</span>
                             <span class="tech-tag">FullStack</span>
                         </div>
-                        <p class="project-author"><i class="fas fa-user"></i> Авторы: Александр, Ангелина, Анна, Арина</p>
+                        <p class="project-author">Авторы: Александр, Ангелина, Анна, Арина</p>
                         <div class="project-links">
-                            <a href="https://github.com/X200L/Gelya_crutaya" class="project-link">
-                                <i class="fas fa-code-branch"></i> GitHub
-                            </a>
+                            <a href="https://github.com/X200L/Gelya_crutaya" class="project-link" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a>
                         </div>
                     </div>
                 </div>
@@ -315,7 +330,7 @@
                     <div class="project-image">
                         <img src="projectImages/ingtransport.png" alt="INGT">
                         <div class="project-status completed">
-                            <i class="fas fa-check-circle"></i> Завершён
+                            Завершён
                         </div>
                     </div>
                     <div class="project-content">
@@ -329,11 +344,9 @@
                             <span class="tech-tag">bigdata</span>
                             <span class="tech-tag">AI</span>
                         </div>
-                        <p class="project-author"><i class="fas fa-user"></i> Авторы: Александр, Никита</p>
+                        <p class="project-author">Авторы: Александр, Никита</p>
                         <div class="project-links">
-                            <a href="https://github.com/ArduRadioKot/ingT" class="project-link">
-                                <i class="fas fa-code-branch"></i> GitHub
-                            </a>
+                            <a href="https://github.com/ArduRadioKot/ingT" class="project-link" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a>
                             
                         </div>
                     </div>
@@ -343,7 +356,7 @@
                     <div class="project-image">
                         <img src="projectImages/mainTemp.png" alt="Education Platform">
                         <div class="project-status completed">
-                            <i class="fas fa-check-circle"></i> Завершён
+                            Завершён
                         </div>
                     </div>
                     <div class="project-content">
@@ -356,11 +369,9 @@
                             <span class="tech-tag">IOT</span>
                             <span class="tech-tag">esp8266</span>
                         </div>
-                        ><p class="project-author"><i class="fas fa-user"></i> Автор: Александр</p>
+                        ><p class="project-author">Автор: Александр</p>
                         <div class="project-links">
-                            <a href="https://github.com/ArduRadioKot/Temperature-sensor/tree/main" class="project-link">
-                                <i class="fas fa-code-branch"></i> GitHub
-                            </a>
+                            <a href="https://github.com/ArduRadioKot/Temperature-sensor/tree/main" class="project-link" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a>
                             
                         </div>
                     </div>
@@ -370,7 +381,7 @@
                     <div class="project-image">
                         <img src="projectImages/Edutok.png" alt="Education Platform">
                         <div class="project-status active">
-                            <i class="fas fa-star"></i> Активный
+                            Активный
                         </div>
                     </div>
                     <div class="project-content">
@@ -383,14 +394,10 @@
                             <span class="tech-tag">Frontend</span>
                             <span class="tech-tag">javascritpt</span>
                         </div>
-                        <p class="project-author"><i class="fas fa-user"></i> Автор: Александр</p>
+                        <p class="project-author">Автор: Александр</p>
                         <div class="project-links">
-                            <a href="https://github.com/ArduRadioKot/EduTok" class="project-link">
-                                <i class="fas fa-code-branch"></i> GitHub
-                            </a>
-                            <a href="https://arduradiokot.github.io/EduTok/" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> App
-                            </a>
+                            <a href="https://github.com/ArduRadioKot/EduTok" class="project-link" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a>
+                            <a href="https://arduradiokot.github.io/EduTok/" class="project-link" target="_blank" rel="noreferrer">App <span class="ext">↗</span></a>
                         </div>
                     </div>
                 </div>
@@ -399,7 +406,7 @@
                     <div class="project-image">
                         <img src="projectImages/F-Do.png" alt="Education Platform">
                         <div class="project-status active">
-                            <i class="fas fa-star"></i> Активный
+                            Активный
                         </div>
                     </div>
                     <div class="project-content">
@@ -412,11 +419,9 @@
                             <span class="tech-tag">IOS</span>
                             <span class="tech-tag">SwiftUI</span>
                         </div>
-                        <p class="project-author"><i class="fas fa-user"></i> Автор: Александр</p>
+                        <p class="project-author">Автор: Александр</p>
                         <div class="project-links">
-                            <a href="https://github.com/ArduRadioKot/F-doAPP" class="project-link">
-                                <i class="fas fa-code-branch"></i> GitHub
-                            </a>
+                            <a href="https://github.com/ArduRadioKot/F-doAPP" class="project-link" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a>
                             
                         </div>
                     </div>
@@ -426,7 +431,7 @@
                     <div class="project-image">
                         <img src="projectImages/mainFPC.png" alt="Education Platform">
                         <div class="project-status in-progress">
-                            <i class="fas fa-clock"></i> В разработке
+                            В разработке
                         </div>
                     </div>
                     <div class="project-content">
@@ -439,11 +444,9 @@
                             <span class="tech-tag">FcalcOS</span>
                             <span class="tech-tag">Arduino</span>
                         </div>
-                        <p class="project-author"><i class="fas fa-user"></i> Автор: Александр</p>
+                        <p class="project-author">Автор: Александр</p>
                         <div class="project-links">
-                            <a href="https://github.com/ArduRadioKot/Frogee-Programmable-calculator" class="project-link">
-                                <i class="fas fa-code-branch"></i> GitHub
-                            </a>
+                            <a href="https://github.com/ArduRadioKot/Frogee-Programmable-calculator" class="project-link" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a>
                             
                         </div>
                     </div>
@@ -453,7 +456,7 @@
                     <div class="project-image">
                         <img src="projectImages/main" alt="BikeTripComputer">
                         <div class="project-status in-progress">
-                            <i class="fas fa-clock"></i> В разработке
+                            В разработке
                         </div>
                     </div>
                     <div class="project-content">
@@ -466,11 +469,9 @@
                             <span class="tech-tag">stm32</span>
                             <span class="tech-tag">GPS</span>
                         </div>
-                        <p class="project-author"><i class="fas fa-user"></i> Автор: Александр</p>
+                        <p class="project-author">Автор: Александр</p>
                         <div class="project-links">
-                            <a href="https://github.com/ArduRadioKot/BikeTripComputer" class="project-link">
-                                <i class="fas fa-code-branch"></i> GitHub
-                            </a>
+                            <a href="https://github.com/ArduRadioKot/BikeTripComputer" class="project-link" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a>
                             
                         </div>
                     </div>
@@ -480,7 +481,7 @@
                     <div class="project-image">
                         <img src="projectImages/mainAsmos.png" alt="Smart Home">
                         <div class="project-status in-progress">
-                            <i class="fas fa-clock"></i> В разработке
+                            В разработке
                         </div>
                     </div>
                     <div class="project-content">
@@ -495,13 +496,11 @@
                             <span class="tech-tag">Arduino</span>
                             <span class="tech-tag">esp32</span>
                         </div>
-                        <p class="project-author"><i class="fas fa-user"></i> Автор: Никита</p>
+                        <p class="project-author">Автор: Никита</p>
                         <div class="project-links">
-                            <a href="https://github.com/GigaProgramm/AsmOS" class="project-link">
-                                <i class="fas fa-code-branch"></i> GitHub
-                            </a>
+                            <a href="https://github.com/GigaProgramm/AsmOS" class="project-link" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a>
                             <a href="#" class="project-link">
-                                <i class="fas fa-tasks"></i> Задачи
+                                Задачи
                             </a>
                         </div>
                     </div>
@@ -511,7 +510,7 @@
                     <div class="project-image">
                         <img src="projectImages/mainTeka.png" alt="Education Platform">
                         <div class="project-status active">
-                            <i class="fas fa-star"></i> Активный
+                            Активный
                         </div>
                     </div>
                     <div class="project-content">
@@ -524,12 +523,10 @@
                             <span class="tech-tag">Game dev</span>
                             <span class="tech-tag">Game jam</span>
                         </div>
-                        <p class="project-author"><i class="fas fa-user"></i> Автор: Александр, Никита</p>
+                        <p class="project-author">Автор: Александр, Никита</p>
                         <div class="project-links">
                            
-                            <a href="https://sit-team.itch.io/ipateca" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Itch IO
-                            </a>
+                            <a href="https://sit-team.itch.io/ipateca" class="project-link" target="_blank" rel="noreferrer">Itch IO <span class="ext">↗</span></a>
                         </div>
                     </div>
                 </div>
@@ -537,7 +534,7 @@
                     <div class="project-image">
                         <img src="projectImages/gen.png" alt="gen">
                         <div class="project-status active">
-                            <i class="fas fa-star"></i> Активный
+                            Активный
                         </div>
                     </div>
                     <div class="project-content">
@@ -550,12 +547,10 @@
                             <span class="tech-tag">Game dev</span>
                             <span class="tech-tag">Game jam</span>
                         </div>
-                        <p class="project-author"><i class="fas fa-user"></i> Автор: Александр, Никита</p>
+                        <p class="project-author">Автор: Александр, Никита</p>
                         <div class="project-links">
                            
-                            <a href="https://sit-team.itch.io/gennadiy-vs-capitalisti" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Itch IO
-                            </a>
+                            <a href="https://sit-team.itch.io/gennadiy-vs-capitalisti" class="project-link" target="_blank" rel="noreferrer">Itch IO <span class="ext">↗</span></a>
                         </div>
                     </div>
                 </div>
@@ -564,7 +559,7 @@
                     <div class="project-image">
                         <img src="projectImages/" alt="Education Platform">
                         <div class="project-status in-progress">
-                            <i class="fas fa-clock"></i> В разработке
+                            В разработке
                         </div>
                     </div>
                     <div class="project-content">
@@ -577,11 +572,9 @@
                             <span class="tech-tag">M5 cardputer</span>
                             <span class="tech-tag">Programms</span>
                         </div>
-                        <p class="project-author"><i class="fas fa-user"></i> Автор: Александр</p>
+                        <p class="project-author">Автор: Александр</p>
                         <div class="project-links">
-                            <a href="https://github.com/ArduRadioKot/m5Cardputer-microhydra-games" class="project-link">
-                                <i class="fas fa-code-branch"></i> GitHub
-                            </a>
+                            <a href="https://github.com/ArduRadioKot/m5Cardputer-microhydra-games" class="project-link" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a>
                         
                         </div>
                     </div>
@@ -589,16 +582,54 @@
                 
                 
             </div>
-        </div>
     </main>
 
-    <footer>
-        <p>© 2025 Все права защищены.</p>
-        <p>
-            Свяжитесь с нами: <a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a> |
-            <a href="https://github.com/X200L/SITeducation" target="_blank">website source</a> |
-            <a href="https://t.me/SIT_team" target="_blank">Telegramm</a>
-        </p>
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="index.html" aria-label="S.I.T Education, на главную">
+                    <span class="brand-logo-switch" aria-hidden="true">
+                        <img class="brand-logo-dark" src="images/brand/logo-dark.png" width="309" height="85" alt="">
+                        <img class="brand-logo-light" src="images/brand/logo-light.png" width="309" height="85" alt="">
+                    </span>
+                </a>
+                <p>Статьи, справочники и курсы команды S.I.T / FrogeeSoft для тех, кто учится программировать и собирать электронику.</p>
+            </div>
+            <div class="footer-col">
+                <h2>Учиться</h2>
+                <ul>
+                    <li><a href="articles.html">Статьи</a></li>
+                    <li><a href="courses.html">Курсы</a></li>
+                    <li><a href="wiki.html">База знаний</a></li>
+                    <li><a href="vimTrainer/index.html">VIM-тренажёр</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h2>Сообщество</h2>
+                <ul>
+                    <li><a href="projects.html">Проекты</a></li>
+                    <li><a href="olympiads.html">Олимпиады и конкурсы</a></li>
+                    <li><a href="team.html">Команда</a></li>
+                    <li><a href="shop.html">Магазин</a></li>
+                    <li><a href="https://github.com/ArduRadioKot/FgSNotes" target="_blank" rel="noreferrer">Писать статьи в FgSNotes <span class="ext">↗</span></a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h2>Связаться</h2>
+                <ul>
+                    <li><a href="https://t.me/SIT_team" target="_blank" rel="noreferrer">Telegram <span class="ext">↗</span></a></li>
+                    <li><a href="https://github.com/X200L/SITeducation" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a></li>
+                    <li><a href="https://youtube.com/@frogeesoft" target="_blank" rel="noreferrer">YouTube <span class="ext">↗</span></a></li>
+                    <li><a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span data-year>2026</span> S.I.T Education</span>
+            <a href="#main">Наверх ↑</a>
+        </div>
     </footer>
+
+    <script src="sit.js"></script>
 </body>
 </html> 

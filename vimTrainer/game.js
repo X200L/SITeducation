@@ -405,15 +405,15 @@
                 return false;
             };
             content.forEach((line, rowIndex) => {
-                html += `<div class="flex"><span class="line-number w-10">${rowIndex + 1}</span><span class="flex-1">`;
+                html += `<div class="vim-line"><span class="vim-ln">${rowIndex + 1}</span><span class="vim-text">`;
                 for (let colIndex = 0; colIndex < line.length; colIndex++) {
                     const char = line[colIndex];
                     const safeChar = escapeHtml(char);
                     if (rowIndex === cursor.row && colIndex === cursor.col && mode === 'NORMAL') {
-                        html += `<span class="cursor">${safeChar}</span>`;
+                        html += `<span class="vim-cursor">${safeChar}</span>`;
                     } else {
                         if (lastSearchQuery && isInMatch(rowIndex, colIndex)) {
-                            html += `<span class="bg-yellow-800/60">${safeChar}</span>`;
+                            html += `<span class="vim-match">${safeChar}</span>`;
                         } else {
                             html += safeChar;
                         }
@@ -421,9 +421,9 @@
                 }
                 if (rowIndex === cursor.row && (cursor.col === line.length || line.length === 0)) {
                      if (mode === 'NORMAL') {
-                        html += `<span class="cursor">&nbsp;</span>`;
+                        html += `<span class="vim-cursor">&nbsp;</span>`;
                      } else {
-                        html += `<span class="inline-block w-px h-6 bg-yellow-400 animate-pulse -mb-1"></span>`;
+                        html += `<span class="vim-caret"></span>`;
                      }
                 }
                 html += `</span></div>`;
@@ -443,7 +443,7 @@
                 text += ` ${dir}${lastSearchQuery} ${current}/${total}`;
             }
             statusBar.textContent = text;
-            statusBar.className = `status-bar px-2 py-1 rounded-md text-sm ${mode === 'NORMAL' ? 'bg-yellow-400 text-gray-900' : 'bg-green-400 text-gray-900'}`;
+            statusBar.className = `status-bar ${mode === 'NORMAL' ? 'is-normal' : 'is-insert'}`;
         }
 
         // --- BADGES ---
@@ -459,12 +459,12 @@
                 return;
             }
             badgeSection.classList.remove('hidden');
-            badgeCount.textContent = `(${earned.length} получено)`;
+            badgeCount.textContent = `получено: ${earned.length}`;
             earned.forEach((key) => {
                 const def = badgeDefs[key];
                 if (!def) return;
                 const el = document.createElement('div');
-                el.className = 'badge-card bg-blue-900/70 border border-blue-700 text-blue-100 px-4 py-2 rounded-lg text-sm flex items-center gap-2 transition-transform';
+                el.className = 'vim-badge';
                 el.title = def.title;
                 el.innerHTML = `<span>${def.emoji}</span><span>${def.label}</span>`;
                 badgeBar.appendChild(el);
@@ -522,20 +522,21 @@
                 });
                 if (matchedItems.length === 0) return;
                 const section = document.createElement('div');
-                section.innerHTML = `<div class="text-blue-300 font-bold mb-2">${group.category}</div>`;
+                section.className = 'vim-cheat-group';
+                section.innerHTML = `<h4>${group.category}</h4>`;
                 const list = document.createElement('div');
-                list.className = 'grid grid-cols-1 gap-2';
+                list.className = 'vim-cheat-list';
                 matchedItems.forEach(it => {
                     const tried = practicedCommands.has(it.id);
                     const card = document.createElement('button');
-                    card.className = `text-left bg-gray-900 border ${tried ? 'border-green-600' : 'border-gray-700'} hover:border-yellow-500 rounded-md p-3 flex items-center justify-between`;
+                    card.className = `vim-cheat-card${tried ? ' is-tried' : ''}`;
                     card.innerHTML = `
                         <div>
-                            <div class="text-yellow-300 font-mono">${it.key}</div>
-                            <div class="text-gray-300 text-sm">${it.desc}</div>
-                            <div class="text-gray-500 text-xs">${it.example}</div>
+                            <code>${it.key}</code>
+                            <div class="d">${it.desc}</div>
+                            <div class="e">${it.example}</div>
                         </div>
-                        <div class="text-xs ${tried ? 'text-green-400' : 'text-blue-400'}">${tried ? 'Изучено' : 'Практика'}</div>
+                        <span class="state">${tried ? 'Изучено' : 'Попробовать'}</span>
                     `;
                     card.addEventListener('click', () => startCheatPractice(it));
                     list.appendChild(card);
@@ -831,14 +832,10 @@
             levelSelectionContainer.innerHTML = ''; // Clear existing buttons
             levels.forEach((level, index) => {
                 const button = document.createElement('button');
-                button.textContent = `${index + 1}`;
+                button.type = 'button';
                 button.dataset.level = index;
-                button.className = `w-8 h-8 flex items-center justify-center rounded-md transition-colors font-bold`;
-                if (index === currentLevel) {
-                    button.classList.add('bg-yellow-400', 'text-gray-900');
-                } else {
-                    button.classList.add('bg-gray-700', 'text-gray-300', 'hover:bg-gray-600');
-                }
+                button.className = `sidebar-item lesson-link${index === currentLevel ? ' active' : ''}`;
+                button.innerHTML = `<span class="lesson-link-num">${index + 1}</span><span class="lesson-link-title">${escapeHtml(level.name)}</span>`;
                 levelSelectionContainer.appendChild(button);
             });
         }
@@ -851,7 +848,11 @@
             const level = levels[currentLevel];
             content = [...level.initialContent];
             instructionsEl.textContent = level.instructions;
-            levelIndicator.textContent = `Level: ${currentLevel + 1} / ${levels.length}`;
+            levelIndicator.textContent = `Уровень ${currentLevel + 1} из ${levels.length}`;
+            const levelTitle = document.getElementById('level-title');
+            if (levelTitle) levelTitle.textContent = level.name;
+            const levelBar = document.getElementById('level-progress');
+            if (levelBar) levelBar.style.width = `${((currentLevel + 1) / levels.length) * 100}%`;
             level.setup();
             mode = 'NORMAL';
             commandHistory = '';
@@ -1329,8 +1330,9 @@
         });
 
         levelSelectionContainer.addEventListener('click', (e) => {
-            if (e.target.tagName === 'BUTTON') {
-                const levelIndex = parseInt(e.target.dataset.level, 10);
+            const levelButton = e.target.closest('button[data-level]');
+            if (levelButton) {
+                const levelIndex = parseInt(levelButton.dataset.level, 10);
                 if (levelIndex !== currentLevel) {
                     loadLevel(levelIndex);
                 }

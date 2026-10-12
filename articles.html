@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <meta name="theme-color" content="#007acc">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Статьи - S.I.T Education</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Статьи S.I.T Education: туториалы и разборы по программированию, Arduino и электронике.">
+    <meta name="theme-color" content="#090c0a">
+    <title>Статьи | S.I.T Education</title>
+    <link rel="icon" type="image/png" href="images/brand/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="sit.css">
+    <script src="theme.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
@@ -18,190 +18,145 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
-    <script src="theme.js"></script>
 </head>
 <body class="articles-page">
-    <header>
-        <nav>
-            <div class="logo">
-                <i class="fas fa-microchip"></i>
-                S.I.T Education
-            </div>
-            <div class="nav-links">
-                <a href="index.html">Главная</a>
-                <a href="articles.html" class="active">Статьи</a>
-                <a href="new.html">Написать статью</a>
-                <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-        <div class="container">
-            <div class="search-container">
-                <div class="search-wrapper">
-                    <input type="text" id="searchInput" placeholder="Поиск по статьям..." class="search-input">
-                    <button id="tagsButton" class="tags-button">Теги</button>
-                </div>
-                <div id="selectedTags" class="selected-tags">
-                    <!-- Выбранные теги будут отображаться здесь -->
-                </div>
-            </div>
-
-            <!-- Модальное окно для тегов -->
-            <div id="tagsModal" class="modal">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2>Теги</h2>
-                        <span class="close-modal">&times;</span>
-                    </div>
-                    <div class="modal-body">
-                        <div class="tags-list">
-                            <!-- Теги будут добавляться динамически -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="articles">
-                <!-- Статьи будут добавляться здесь динамически -->
+    <a class="skip-link" href="#main">Перейти к содержимому</a>
+    <div class="page-noise" aria-hidden="true"></div>
+    <header class="site-header" data-header>
+        <a class="brand" href="index.html" aria-label="S.I.T Education, на главную">
+            <span class="brand-logo-switch" aria-hidden="true">
+                <img class="brand-logo-dark" src="images/brand/logo-dark.png" width="309" height="85" alt="">
+                <img class="brand-logo-light" src="images/brand/logo-light.png" width="309" height="85" alt="">
+            </span>
+            <span class="brand-sep" aria-hidden="true"></span>
+            <span class="brand-edu">S.I.T Education</span>
+        </a>
+        <div class="header-end">
+            <nav class="site-nav" aria-label="Основная навигация">
+                <a href="articles.html" aria-current="page">Статьи</a>
+                <a href="wiki.html">База знаний</a>
+                <a href="courses.html">Курсы</a>
+                <a href="olympiads.html">Олимпиады</a>
+                <a href="team.html">Команда</a>
+                <button class="search-open" type="button" data-search-open aria-label="Поиск по сайту">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+                    <span>Поиск</span>
+                    <kbd aria-hidden="true">K</kbd>
+                </button>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-button search-mobile" type="button" data-search-open aria-label="Поиск по сайту">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+                </button>
+                <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Переключить тему">
+                    <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
+                    <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+                </button>
+                <button class="icon-button menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-label="Открыть меню" aria-controls="mobile-menu">
+                    <span></span><span></span>
+                </button>
             </div>
         </div>
+    </header>
+    <nav class="mobile-menu" id="mobile-menu" data-mobile-menu aria-hidden="true" aria-label="Меню">
+        <a href="articles.html" aria-current="page">Статьи</a>
+        <a href="wiki.html">База знаний</a>
+        <a href="courses.html">Курсы</a>
+        <a href="olympiads.html">Олимпиады</a>
+        <a href="team.html">Команда</a>
+        <div class="mobile-menu-minor">
+            <a href="projects.html">Проекты</a>
+            <a href="shop.html">Магазин</a>
+        </div>
+    </nav>
+    <dialog class="search-dialog" data-search-dialog aria-label="Поиск по сайту">
+        <label class="search-dialog-field">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+            <span class="visually-hidden">Что найти</span>
+            <input type="search" data-search-input placeholder="Статьи, справочники, разделы" autocomplete="off">
+            <kbd aria-hidden="true">Esc</kbd>
+        </label>
+        <div class="search-results" data-search-results></div>
+    </dialog>
+
+    <main id="main" class="page">
+        <div data-view="list">
+            <div class="page-top">
+            <h1>Статьи</h1>
+            </div>
+
+            <div class="content-layout">
+                <aside class="sidebar" data-topics-sidebar aria-label="Темы статей"></aside>
+                <div>
+                    <label class="search-bar">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+                        <span class="visually-hidden">Поиск по статьям</span>
+                        <input type="search" id="searchInput" data-search placeholder="Поиск по названию, описанию или теме" autocomplete="off">
+                        <kbd aria-hidden="true">/</kbd>
+                    </label>
+                    <p class="list-status" data-list-status aria-live="polite"></p>
+                    <div class="entries" data-articles-list>
+                        <div class="loading">Загружаем статьи…</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-view="article" hidden></div>
     </main>
 
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="index.html" aria-label="S.I.T Education, на главную">
+                    <span class="brand-logo-switch" aria-hidden="true">
+                        <img class="brand-logo-dark" src="images/brand/logo-dark.png" width="309" height="85" alt="">
+                        <img class="brand-logo-light" src="images/brand/logo-light.png" width="309" height="85" alt="">
+                    </span>
+                </a>
+                <p>Статьи, справочники и курсы команды S.I.T / FrogeeSoft для тех, кто учится программировать и собирать электронику.</p>
+            </div>
+            <div class="footer-col">
+                <h2>Учиться</h2>
+                <ul>
+                    <li><a href="articles.html">Статьи</a></li>
+                    <li><a href="courses.html">Курсы</a></li>
+                    <li><a href="wiki.html">База знаний</a></li>
+                    <li><a href="vimTrainer/index.html">VIM-тренажёр</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h2>Сообщество</h2>
+                <ul>
+                    <li><a href="projects.html">Проекты</a></li>
+                    <li><a href="olympiads.html">Олимпиады и конкурсы</a></li>
+                    <li><a href="team.html">Команда</a></li>
+                    <li><a href="shop.html">Магазин</a></li>
+                    <li><a href="https://github.com/ArduRadioKot/FgSNotes" target="_blank" rel="noreferrer">Писать статьи в FgSNotes <span class="ext">↗</span></a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h2>Связаться</h2>
+                <ul>
+                    <li><a href="https://t.me/SIT_team" target="_blank" rel="noreferrer">Telegram <span class="ext">↗</span></a></li>
+                    <li><a href="https://github.com/X200L/SITeducation" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a></li>
+                    <li><a href="https://youtube.com/@frogeesoft" target="_blank" rel="noreferrer">YouTube <span class="ext">↗</span></a></li>
+                    <li><a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span data-year>2026</span> S.I.T Education</span>
+            <a href="#main">Наверх ↑</a>
+        </div>
+    </footer>
+
+    <script src="sit.js"></script>
     <script src="app.js"></script>
     <script>
-        // Get the article ID from the URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const articleId = urlParams.get('article');
-        const isRandom = urlParams.get('random') === 'true';
-
-        // Модальное окно для тегов
-        const modal = document.getElementById('tagsModal');
-        const tagsButton = document.getElementById('tagsButton');
-        const closeModal = document.querySelector('.close-modal');
-        const tagsList = document.querySelector('.tags-list');
-        const selectedTagsContainer = document.getElementById('selectedTags');
-        let activeTags = new Set();
-
-        // Функция для получения уникальных тегов
-        function getUniqueTags() {
-            const allTags = articlesInfo.flatMap(article => article.tags);
-            return [...new Set(allTags)].sort();
-        }
-
-        // Функция для отображения выбранных тегов
-        function renderSelectedTags() {
-            selectedTagsContainer.innerHTML = Array.from(activeTags).map(tag => `
-                <span class="selected-tag">
-                    ${tag}
-                    <button class="remove-tag" data-tag="${tag}">&times;</button>
-                </span>
-            `).join('');
-
-            // Добавляем обработчики для кнопок удаления тегов
-            document.querySelectorAll('.remove-tag').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const tag = e.target.dataset.tag;
-                    activeTags.delete(tag);
-                    renderSelectedTags();
-                    updateSearchWithTags(document.getElementById('searchInput').value, Array.from(activeTags));
-                    
-                    // Обновляем состояние тега в модальном окне
-                    const modalTag = document.querySelector(`.modal-tag[data-tag="${tag}"]`);
-                    if (modalTag) {
-                        modalTag.classList.remove('active');
-                    }
-                });
-            });
-        }
-
-        // Функция для отображения тегов в модальном окне
-        function renderTagsInModal() {
-            const uniqueTags = getUniqueTags();
-            tagsList.innerHTML = uniqueTags.map(tag => `
-                <span class="tag modal-tag ${activeTags.has(tag) ? 'active' : ''}" data-tag="${tag}">${tag}</span>
-            `).join('');
-
-            // Добавляем обработчики для тегов
-            document.querySelectorAll('.modal-tag').forEach(tag => {
-                tag.addEventListener('click', () => {
-                    const tagName = tag.dataset.tag;
-                    if (activeTags.has(tagName)) {
-                        activeTags.delete(tagName);
-                        tag.classList.remove('active');
-                    } else {
-                        activeTags.add(tagName);
-                        tag.classList.add('active');
-                    }
-                    
-                    renderSelectedTags();
-                    const searchInput = document.getElementById('searchInput');
-                    updateSearchWithTags(searchInput.value, Array.from(activeTags));
-                });
-            });
-        }
-
-        // Функция обновления поиска с учетом тегов
-        function updateSearchWithTags(query, activeTags) {
-            let filteredArticles = searchArticles(query);
-            
-            if (activeTags.length > 0) {
-                filteredArticles = filteredArticles.filter(article =>
-                    activeTags.every(tag => article.tags.includes(tag))
-                );
-            }
-
-            renderFilteredArticles(filteredArticles);
-        }
-
-        // Открытие модального окна
-        tagsButton.onclick = function() {
-            renderTagsInModal();
-            modal.style.display = "block";
-        }
-
-        // Закрытие модального окна
-        closeModal.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // Function to load and display a random article
-        async function loadRandomArticle() {
-            try {
-                const response = await fetch('articles.json');
-                if (!response.ok) {
-                    throw new Error('Failed to load articles');
-                }
-                const data = await response.json();
-                const articles = data.articles;
-                if (articles && articles.length > 0) {
-                    const randomIndex = Math.floor(Math.random() * articles.length);
-                    const randomArticle = articles[randomIndex];
-                    // Show the random article directly
-                    showFullArticle(randomArticle.id);
-                } else {
-                    console.error('No articles found');
-                }
-            } catch (error) {
-                console.error('Error loading random article:', error);
-            }
-        }
-
-        // If random parameter is present, load a random article
-        if (isRandom) {
-            loadRandomArticle();
-        }
-        // If an article ID is present, show the full article
-        else if (articleId) {
-            showFullArticle(parseInt(articleId));
-        }
+        sitLoadArticles().then((list) => {
+            document.querySelectorAll('[data-article-count]').forEach((el) => { el.textContent = list.length; });
+        });
     </script>
 </body>
-</html> 
+</html>

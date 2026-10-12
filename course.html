@@ -6,225 +6,76 @@
     <meta name="theme-color" content="#007acc">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Frontend Learning App</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Курс Frontend | S.I.T Education</title>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="theme.js"></script>
-    <style>
-        :root {
-            --primary: #2ecc71;
-            --secondary: #3498db;
-            --background: #f8f9fa;
-            --text: #2c3e50;
-            --card-bg: #ffffff;
-            --border: #dee2e6;
-        }
-
-        .dark-theme {
-            --background: #1a1a1a;
-            --text: #e9ecef;
-            --card-bg: #2d2d2d;
-            --border: #495057;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', sans-serif;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        bbody {
-            background: var(--background);
-            color: var(--text);
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Навигация */
-        .navbar {
-            background: var(--card-bg);
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            position: relative;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1rem;
-            list-style: none;
-            overflow-x: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary) var(--background);
-        }
-
-        ..nav-links::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .nav-links::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 4px;
-        }
-
-        .nav-links::-webkit-scrollbar-track {
-            background: var(--background);
-        }
-
-        .nav-link {
-            cursor: pointer;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            white-space: nowrap;
-        }
-
-        .nav-link.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .next-lesson-btn {
-            background: var(--secondary);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-top: 1rem;
-            display: block;
-            width: 100%;
-            text-align: center;
-        }
-
-        .next-lesson-btn:hover {
-            opacity: 0.9;
-        }
-
-        /* Урок */
-        .lesson {
-            display: none;
-            margin-bottom: 3rem;
-        }
-
-        .lesson.active {
-            display: block;
-        }
-
-        .section {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            margin-bottom: 1.5rem;
-        }
-
-        .code-example {
-            background: var(--background);
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            font-family: 'Courier New', monospace;
-            white-space: pre-wrap;
-        }
-
-        .quiz-question {
-            margin-bottom: 1rem;
-        }
-
-        .quiz-question label {
-            display: block;
-            margin: 0.5rem 0;
-        }
-
-        .practice-area textarea {
-            width: 100%;
-            height: 150px;
-            padding: 1rem;
-            border: 2px solid var(--primary);
-            border-radius: 8px;
-            background: var(--background);
-            color: var(--text);
-            margin: 1rem 0;
-        }
-
-        button {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        button:hover {
-            opacity: 0.9;
-        }
-
-        /* Темная тема */
-        .theme-toggle {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            padding: 1rem;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            cursor: pointer;
-        }
-
-        .header {
-            text-align: center;
-            padding: 40px 0;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border-radius: 15px;
-            margin-bottom: 30px;
-        }
-
-        /* Мобильная версия */
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 0.5rem;
-            }
-
-            .nav-link {
-                font-size: 0.9rem;
-            }
-
-            .theme-toggle {
-                bottom: 1rem;
-                right: 1rem;
-            }
-        }
-    </style>
+    <link rel="icon" type="image/png" href="images/brand/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="sit.css">
 </head>
-<body>
+<body class="course-body course-pending" data-course-title="Frontend-разработка" data-course-lead="Основы веба: HTML, CSS и первые шаги в JavaScript. В середине курса вы соберёте собственное портфолио.">
 
     <canvas id="particles"></canvas>
     
-    <header>
-        <nav>
-            <div class="logo">
-                <i class="fas fa-microchip"></i>
-                S.I.T Education
+    <a class="skip-link" href="#main">Перейти к содержимому</a>
+    <div class="page-noise" aria-hidden="true"></div>
+    <header class="site-header" data-header>
+        <a class="brand" href="index.html" aria-label="S.I.T Education, на главную">
+            <span class="brand-logo-switch" aria-hidden="true">
+                <img class="brand-logo-dark" src="images/brand/logo-dark.png" width="309" height="85" alt="">
+                <img class="brand-logo-light" src="images/brand/logo-light.png" width="309" height="85" alt="">
+            </span>
+            <span class="brand-sep" aria-hidden="true"></span>
+            <span class="brand-edu">S.I.T Education</span>
+        </a>
+        <div class="header-end">
+            <nav class="site-nav" aria-label="Основная навигация">
+                <a href="articles.html">Статьи</a>
+                <a href="wiki.html">База знаний</a>
+                <a href="courses.html" aria-current="page">Курсы</a>
+                <a href="olympiads.html">Олимпиады</a>
+                <a href="team.html">Команда</a>
+                <button class="search-open" type="button" data-search-open aria-label="Поиск по сайту">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+                    <span>Поиск</span>
+                    <kbd aria-hidden="true">K</kbd>
+                </button>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-button search-mobile" type="button" data-search-open aria-label="Поиск по сайту">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+                </button>
+                <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Переключить тему">
+                    <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
+                    <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+                </button>
+                <button class="icon-button menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-label="Открыть меню" aria-controls="mobile-menu">
+                    <span></span><span></span>
+                </button>
             </div>
-            <div class="nav-links">
-                <a href="index.html">Главная</a>
-                <a href="new.html">Написать статью</a>
-                <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
-            </div>
-        </nav>
+        </div>
     </header>
+    <nav class="mobile-menu" id="mobile-menu" data-mobile-menu aria-hidden="true" aria-label="Меню">
+        <a href="articles.html">Статьи</a>
+        <a href="wiki.html">База знаний</a>
+        <a href="courses.html" aria-current="page">Курсы</a>
+        <a href="olympiads.html">Олимпиады</a>
+        <a href="team.html">Команда</a>
+        <div class="mobile-menu-minor">
+            <a href="projects.html">Проекты</a>
+            <a href="shop.html">Магазин</a>
+        </div>
+    </nav>
+    <dialog class="search-dialog" data-search-dialog aria-label="Поиск по сайту">
+        <label class="search-dialog-field">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+            <span class="visually-hidden">Что найти</span>
+            <input type="search" data-search-input placeholder="Статьи, справочники, разделы" autocomplete="off">
+            <kbd aria-hidden="true">Esc</kbd>
+        </label>
+        <div class="search-results" data-search-results></div>
+    </dialog>
     <main>
     <div class="container">
         <!-- Навигация -->
@@ -1605,9 +1456,51 @@
                             <p>Некоторая дополнительная информация.</p>
                         </aside>
             
-                        <footer>
-                            <p>© 2023 Все права защищены.</p>
-                        </footer>
+                        <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="index.html" aria-label="S.I.T Education, на главную">
+                    <span class="brand-logo-switch" aria-hidden="true">
+                        <img class="brand-logo-dark" src="images/brand/logo-dark.png" width="309" height="85" alt="">
+                        <img class="brand-logo-light" src="images/brand/logo-light.png" width="309" height="85" alt="">
+                    </span>
+                </a>
+                <p>Статьи, справочники и курсы команды S.I.T / FrogeeSoft для тех, кто учится программировать и собирать электронику.</p>
+            </div>
+            <div class="footer-col">
+                <h2>Учиться</h2>
+                <ul>
+                    <li><a href="articles.html">Статьи</a></li>
+                    <li><a href="courses.html">Курсы</a></li>
+                    <li><a href="wiki.html">База знаний</a></li>
+                    <li><a href="vimTrainer/index.html">VIM-тренажёр</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h2>Сообщество</h2>
+                <ul>
+                    <li><a href="projects.html">Проекты</a></li>
+                    <li><a href="olympiads.html">Олимпиады и конкурсы</a></li>
+                    <li><a href="team.html">Команда</a></li>
+                    <li><a href="shop.html">Магазин</a></li>
+                    <li><a href="https://github.com/ArduRadioKot/FgSNotes" target="_blank" rel="noreferrer">Писать статьи в FgSNotes <span class="ext">↗</span></a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h2>Связаться</h2>
+                <ul>
+                    <li><a href="https://t.me/SIT_team" target="_blank" rel="noreferrer">Telegram <span class="ext">↗</span></a></li>
+                    <li><a href="https://github.com/X200L/SITeducation" target="_blank" rel="noreferrer">GitHub <span class="ext">↗</span></a></li>
+                    <li><a href="https://youtube.com/@frogeesoft" target="_blank" rel="noreferrer">YouTube <span class="ext">↗</span></a></li>
+                    <li><a href="mailto:frogeesoft.team@gmail.com">frogeesoft.team@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span data-year>2026</span> S.I.T Education</span>
+            <a href="#main">Наверх ↑</a>
+        </div>
+    </footer>
                     </p>
             
                     <h2>Преимущества семантической верстки</h2>
@@ -3930,7 +3823,7 @@ img {
 
     <button class="next-lesson-btn" onclick="nextLesson()">Следующий урок</button>
 <!-- Переключатель темы -->
-<button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+
 </div>
 
 <script>
@@ -4030,16 +3923,11 @@ function runPractice(btn) {
     const code = textarea.value;
     previewSection.innerHTML = code;
 }
-        // Переключение темы
-        function toggleTheme() {
-            document.body.classList.toggle('dark-theme');
-            localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
-        }
-
-        // Инициализация темы
+        // Тема общая для сайта (theme.js); класс dark-theme держим в синхроне для стилей курса
         function initTheme() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            if (savedTheme === 'dark') document.body.classList.add('dark-theme');
+            const sync = () => document.body.classList.toggle('dark-theme', document.documentElement.getAttribute('data-theme') === 'dark');
+            sync();
+            document.addEventListener('theme-changed', sync);
         }
 
         // Загрузка 
@@ -4064,6 +3952,8 @@ function runPractice(btn) {
             });
         }
     </script>
+    <script src="sit.js"></script>
+    <script src="course.js"></script>
 </body>
 </html>
 </html>
