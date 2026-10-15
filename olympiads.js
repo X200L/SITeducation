@@ -34,7 +34,7 @@
         const items = direction.items
             .map((item, i) => ({ ...item, n: i + 1 }))
             .filter((item) => state.type === 'all' || item.type === state.type)
-            .filter((item) => !q || `${item.name} ${item.sub || ''} ${item.site}`.toLowerCase().includes(q));
+            .filter((item) => !q || `${item.name} ${item.sub || ''} ${item.site} ${item.note || ''}`.toLowerCase().includes(q));
 
         switcher.querySelectorAll('[data-direction]').forEach((b) => {
             const on = b.dataset.direction === direction.id;
@@ -65,8 +65,8 @@
                     ${rows.map((item) => `
                         <a class="olymp-row" href="${href(item.site)}" target="_blank" rel="noreferrer">
                             <span class="olymp-n">${String(item.n).padStart(2, '0')}</span>
-                            <span class="olymp-name"><strong>${sitEscape(item.name)}</strong>${item.sub ? ` <span>${sitEscape(item.sub)}</span>` : ''}</span>
-                            <span class="olymp-type is-${item.type}">${TYPE_LABEL[item.type]}</span>
+                            <span class="olymp-name"><strong>${sitEscape(item.name)}</strong>${item.sub ? ` <span>${sitEscape(item.sub)}</span>` : ''}${item.note ? `<small class="olymp-note">${sitEscape(item.note)}</small>` : ''}</span>
+                            <span class="olymp-type is-${item.type}"${item.level ? ` title="Уровень ${item.level} по перечню РСОШ"` : ''}>${TYPE_LABEL[item.type]}${item.level ? ` ${item.level}` : ''}</span>
                             <span class="olymp-site">${siteLabel(item.site)} <span class="ext">↗</span></span>
                         </a>`).join('')}
                 </section>`;
@@ -89,7 +89,12 @@
         state.type = b.dataset.type;
         render();
     });
-    search.addEventListener('input', () => {
+    // Переход по ссылке #robotics / #ai / #programming на этой же странице
+    window.addEventListener('hashchange', () => {
+        const id = location.hash.slice(1);
+        if (data && data.directions.some((d) => d.id === id)) setDirection(id, false);
+    });
+        search.addEventListener('input', () => {
         state.query = search.value;
         render();
     });
@@ -109,6 +114,8 @@
                 if (hit && !hash) state.direction = hit.id;
             }
             updated.textContent = `Сезон ${data.season}, список обновлён ${sitFormatDate(data.updated)}`;
+            const source = document.querySelector('[data-source]');
+            if (source && data.source) source.textContent = `Перечневые олимпиады и их уровни сверены с документом: ${data.source}.`;
             render();
         })
         .catch(() => {

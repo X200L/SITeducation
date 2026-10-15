@@ -3598,3 +3598,48 @@ body.legacy footer.site-footer {
         gap: 10px 16px;
     }
 }
+
+/* Олимпиады: заметка под названием и три направления на главной */
+.olymp-note {
+    display: block;
+    margin-top: 3px;
+    color: #d9a441;
+    font-size: 0.8rem;
+}
+
+html[data-theme="light"] .olymp-note {
+    color: #9a6a08;
+}
+
+.direction-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.segmented {
+    flex-wrap: wrap;
+}
+
+@media (max-width: 1000px) {
+    .direction-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 820px) {
+    /* Три направления: кнопки переносятся и растягиваются, а не вылезают за экран */
+    .segmented {
+        display: flex;
+        flex-wrap: wrap;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .segmented button {
+        flex: 1 1 auto;
+        white-space: nowrap;
+    }
+
+    .olymp-controls > * {
+        min-width: 0;
+    }
+}

@@ -1,95 +1,720 @@
 {
     "season": "2026/27",
-    "updated": "2026-10-02",
+    "updated": "2026-10-15",
     "directions": [
         {
             "id": "robotics",
             "title": "Робототехника и инженерия",
             "items": [
-                { "type": "rsosh", "name": "НТО", "sub": "Интеллектуальные робототехнические системы", "site": "ntcontest.ru" },
-                { "type": "rsosh", "name": "НТО", "sub": "Автономные транспортные системы", "site": "ntcontest.ru" },
-                { "type": "rsosh", "name": "НТО", "sub": "Беспилотные авиационные системы", "site": "ntcontest.ru" },
-                { "type": "rsosh", "name": "НТО", "sub": "Летающая робототехника", "site": "ntcontest.ru" },
-                { "type": "rsosh", "name": "Олимпиада «Шаг в будущее»", "sub": "инженерное дело", "site": "olymp.bmstu.ru" },
-                { "type": "rsosh", "name": "Московская олимпиада школьников по робототехнике", "site": "mos-robotics.olimpiada.ru" },
-                { "type": "rsosh", "name": "Международная олимпиада Иннополиса", "sub": "робототехника", "site": "dovuz.innopolis.university" },
-                { "type": "rsosh", "name": "Олимпиада школьников «Ломоносов»", "sub": "робототехника", "site": "olymp.msu.ru" },
-                { "type": "rsosh", "name": "ТехноКубок", "site": "techno-cup.ru" },
-                { "type": "rsosh", "name": "Многопрофильная инженерная олимпиада «Звезда»", "site": "zv.susu.ru" },
-                { "type": "rsosh", "name": "Инженерная олимпиада школьников", "site": "olymp.mephi.ru" },
-                { "type": "rsosh", "name": "Олимпиада школьников «Физтех»", "sub": "инженерное дело", "site": "olymp-online.mipt.ru" },
-                { "type": "rsosh", "name": "Олимпиада школьников «Физтех»", "sub": "научно-технический профиль", "site": "olymp-online.mipt.ru" },
-                { "type": "rsosh", "name": "«Надежда энергетики»", "site": "energy-hope.ru" },
-                { "type": "rsosh", "name": "Отраслевая олимпиада школьников «Газпром»", "sub": "инженерное дело", "site": "olympiad.gazprom.ru" },
-                { "type": "rsosh", "name": "Олимпиада СПбГУ «Инженерные системы»", "site": "olympiada.spbu.ru" },
-                { "type": "rsosh", "name": "Московская предпрофессиональная олимпиада", "site": "predprof.olimpiada.ru" },
-                { "type": "olymp", "name": "Олимпиада школьников «Робофест»", "site": "robofest.phys.msu.ru" },
-                { "type": "olymp", "name": "Всероссийский конкурс научных работ школьников «Юниор»", "sub": "инженерные науки", "site": "olymp.mephi.ru/junior" },
-                { "type": "olymp", "name": "Оборонно-техническая олимпиада", "site": "pro.voenmeh.ru/oto" },
-                { "type": "olymp", "name": "Российская робототехническая олимпиада (РРО)", "site": "rrosport.ru" },
-                { "type": "olymp", "name": "Олимпиада ТРИК", "site": "trikset.com" },
-                { "type": "contest", "name": "CASE-IN", "sub": "Школьная лига, Осенний кубок", "site": "10case-in.ru/school_league" },
-                { "type": "contest", "name": "Лига Инженеров", "site": "firstrobotics.ru" },
-                { "type": "contest", "name": "Кубок РТК", "site": "cup.rtc.ru" },
-                { "type": "contest", "name": "Кубок РТК", "sub": "Высшая лига", "site": "cup.rtc.ru" },
-                { "type": "contest", "name": "«Высший пилотаж»", "sub": "технические и инженерные науки", "site": "pilotazh.hse.ru" },
-                { "type": "contest", "name": "«Инженерные кадры России» (ИКаР)", "site": "икар.рф" },
-                { "type": "contest", "name": "РобоФинист 2026", "site": "robofinist.ru/event" },
-                { "type": "contest", "name": "RoboCup Russia Open", "site": "robocuprussiaopen.ru/events" },
-                { "type": "contest", "name": "Всероссийский фестиваль робототехники «РОБОСИТИ»", "site": "robocity.info" },
-                { "type": "contest", "name": "Международные соревнования «ДЕТалька»", "site": "detalka-fest.ru" },
-                { "type": "contest", "name": "Всероссийский конкурс по робототехнике «Hello, Pioneer!»", "site": "geoscan.education" },
-                { "type": "contest", "name": "Международный конкурс «Большие вызовы»", "site": "bigchallenges.ru/konkurs" },
-                { "type": "contest", "name": "«Вектор в будущее»", "site": "dovuz.sfu-kras.ru" },
-                { "type": "contest", "name": "«Дежурный по планете»", "site": "spacecontest.ru" },
-                { "type": "contest", "name": "Инженериада УГМК", "site": "eduugmk.com/nashi-proekty" },
-                { "type": "contest", "name": "Балтийский научно-инженерный конкурс", "site": "baltkonkurs.ru" },
-                { "type": "contest", "name": "Фестиваль робототехники ФКН НИУ ВШЭ", "site": "cs.hse.ru/roboticsfestival" },
-                { "type": "contest", "name": "Всероссийский научно-технический конкурс «ИнтЭРА»", "site": "интэра.рф" },
-                { "type": "contest", "name": "НПК «ВОЕНМЕХ: первый шаг в науку»", "site": "pro.voenmeh.ru/npk" },
-                { "type": "contest", "name": "Всероссийский инженерный конкурс (ВИК)", "site": "vikrf.ru" },
-                { "type": "contest", "name": "AtomSkills", "site": "atomskills.ru" },
-                { "type": "contest", "name": "«Миелофонд-2026»", "site": "миелофонд.рф" },
-                { "type": "contest", "name": "Международный фестиваль «ТехноСтрелка»", "site": "tehnostrelka52.ru" },
-                { "type": "contest", "name": "«Развитие инженерной мысли: от прошлого в будущее»", "site": "dpo.sibstrin.ru/info" }
+                {
+                    "type": "rsosh",
+                    "name": "Многопрофильная инженерная олимпиада «Звезда»",
+                    "sub": "техника и технологии",
+                    "level": "I",
+                    "site": "zv.susu.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Инженерная олимпиада школьников",
+                    "sub": "физика",
+                    "level": "I",
+                    "site": "olymp.mephi.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "НТО",
+                    "sub": "Интеллектуальные робототехнические системы",
+                    "level": "II",
+                    "site": "ntcontest.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "НТО",
+                    "sub": "Автономные транспортные системы",
+                    "level": "II",
+                    "site": "ntcontest.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "НТО",
+                    "sub": "Технологии беспроводной связи",
+                    "level": "II",
+                    "site": "ntcontest.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Олимпиада «Шаг в будущее»",
+                    "sub": "инженерное дело",
+                    "level": "II",
+                    "site": "olymp.bmstu.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Московская олимпиада школьников",
+                    "sub": "робототехника",
+                    "level": "II",
+                    "site": "мош.цпм.рф"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Олимпиада школьников «Ломоносов»",
+                    "sub": "робототехника",
+                    "level": "II",
+                    "site": "olymp.msu.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Олимпиада школьников «Ломоносов»",
+                    "sub": "космонавтика",
+                    "level": "II",
+                    "site": "olymp.msu.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Олимпиада школьников «Ломоносов»",
+                    "sub": "высокие технологии",
+                    "level": "II",
+                    "site": "olymp.msu.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Олимпиада школьников «Физтех»",
+                    "sub": "инженерное дело",
+                    "level": "II",
+                    "site": "olymp-online.mipt.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Олимпиада школьников «Физтех»",
+                    "sub": "научно-технический профиль",
+                    "level": "II",
+                    "site": "olymp-online.mipt.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Всероссийская олимпиада школьников «Высшая проба»",
+                    "sub": "инженерные науки",
+                    "level": "II",
+                    "site": "olymp.hse.ru/mmo"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "НТО",
+                    "sub": "Беспилотные авиационные системы",
+                    "level": "III",
+                    "site": "ntcontest.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "НТО",
+                    "sub": "Летающая робототехника",
+                    "level": "III",
+                    "site": "ntcontest.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "НТО",
+                    "sub": "Спутниковые и аэрокосмические системы",
+                    "level": "III",
+                    "site": "ntcontest.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "НТО",
+                    "sub": "Интеллектуальные энергетические системы",
+                    "level": "III",
+                    "site": "ntcontest.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Международная олимпиада Иннополиса",
+                    "sub": "робототехника",
+                    "level": "III",
+                    "site": "dovuz.innopolis.university/innopolis-open"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Олимпиада «Шаг в будущее»",
+                    "sub": "компьютерное моделирование и графика",
+                    "level": "III",
+                    "site": "olymp.bmstu.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "«Надежда энергетики»",
+                    "sub": "физика",
+                    "level": "III",
+                    "site": "energy-hope.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Отраслевая олимпиада школьников «Газпром»",
+                    "sub": "инженерное дело",
+                    "level": "III",
+                    "site": "olympiad.gazprom.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Олимпиада СПбГУ «Инженерные системы»",
+                    "level": "III",
+                    "site": "olympiada.spbu.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Московская олимпиада школьников",
+                    "sub": "предпрофессиональная",
+                    "level": "III",
+                    "site": "predprof.olimpiada.ru"
+                },
+                {
+                    "type": "olymp",
+                    "name": "Всероссийская олимпиада школьников (ВсОШ)",
+                    "sub": "информатика, профиль «Робототехника»",
+                    "site": "vos.olimpiada.ru",
+                    "note": "этапы в Москве; в других регионах олимпиаду проводит региональный оператор"
+                },
+                {
+                    "type": "olymp",
+                    "name": "Олимпиада школьников «Робофест»",
+                    "site": "robofest.phys.msu.ru"
+                },
+                {
+                    "type": "olymp",
+                    "name": "Всероссийский конкурс научных работ школьников «Юниор»",
+                    "sub": "инженерные науки",
+                    "site": "olymp.mephi.ru/junior"
+                },
+                {
+                    "type": "olymp",
+                    "name": "Оборонно-техническая олимпиада",
+                    "site": "pro.voenmeh.ru/oto"
+                },
+                {
+                    "type": "olymp",
+                    "name": "Российская робототехническая олимпиада (РРО)",
+                    "site": "rrosport.ru"
+                },
+                {
+                    "type": "olymp",
+                    "name": "Олимпиада ТРИК",
+                    "site": "trikset.com"
+                },
+                {
+                    "type": "contest",
+                    "name": "CASE-IN",
+                    "sub": "Школьная лига, Осенний кубок",
+                    "site": "10case-in.ru/school_league"
+                },
+                {
+                    "type": "contest",
+                    "name": "Лига Инженеров",
+                    "site": "firstrobotics.ru"
+                },
+                {
+                    "type": "contest",
+                    "name": "Кубок РТК",
+                    "site": "cup.rtc.ru"
+                },
+                {
+                    "type": "contest",
+                    "name": "Кубок РТК",
+                    "sub": "Высшая лига",
+                    "site": "cup.rtc.ru"
+                },
+                {
+                    "type": "contest",
+                    "name": "«Высший пилотаж»",
+                    "sub": "технические и инженерные науки",
+                    "site": "pilotazh.hse.ru"
+                },
+                {
+                    "type": "contest",
+                    "name": "«Инженерные кадры России» (ИКаР)",
+                    "site": "икар.рф"
+                },
+                {
+                    "type": "contest",
+                    "name": "РобоФинист 2026",
+                    "site": "robofinist.ru/event"
+                },
+                {
+                    "type": "contest",
+                    "name": "RoboCup Russia Open",
+                    "site": "robocuprussiaopen.ru/events"
+                },
+                {
+                    "type": "contest",
+                    "name": "Всероссийский фестиваль робототехники «РОБОСИТИ»",
+                    "site": "robocity.info"
+                },
+                {
+                    "type": "contest",
+                    "name": "Международные соревнования «ДЕТалька»",
+                    "site": "detalka-fest.ru"
+                },
+                {
+                    "type": "contest",
+                    "name": "Всероссийский конкурс по робототехнике «Hello, Pioneer!»",
+                    "site": "geoscan.education"
+                },
+                {
+                    "type": "contest",
+                    "name": "Международный конкурс «Большие вызовы»",
+                    "site": "bigchallenges.ru/konkurs"
+                },
+                {
+                    "type": "contest",
+                    "name": "«Вектор в будущее»",
+                    "site": "dovuz.sfu-kras.ru"
+                },
+                {
+                    "type": "contest",
+                    "name": "«Дежурный по планете»",
+                    "site": "spacecontest.ru"
+                },
+                {
+                    "type": "contest",
+                    "name": "Инженериада УГМК",
+                    "site": "eduugmk.com/nashi-proekty"
+                },
+                {
+                    "type": "contest",
+                    "name": "Балтийский научно-инженерный конкурс",
+                    "site": "baltkonkurs.ru"
+                },
+                {
+                    "type": "contest",
+                    "name": "Фестиваль робототехники ФКН НИУ ВШЭ",
+                    "site": "cs.hse.ru/roboticsfestival"
+                },
+                {
+                    "type": "contest",
+                    "name": "Всероссийский научно-технический конкурс «ИнтЭРА»",
+                    "site": "интэра.рф"
+                },
+                {
+                    "type": "contest",
+                    "name": "НПК «ВОЕНМЕХ: первый шаг в науку»",
+                    "site": "pro.voenmeh.ru/npk"
+                },
+                {
+                    "type": "contest",
+                    "name": "Всероссийский инженерный конкурс (ВИК)",
+                    "site": "vikrf.ru"
+                },
+                {
+                    "type": "contest",
+                    "name": "AtomSkills",
+                    "site": "atomskills.ru"
+                },
+                {
+                    "type": "contest",
+                    "name": "«Миелофонд-2026»",
+                    "site": "миелофонд.рф"
+                },
+                {
+                    "type": "contest",
+                    "name": "Международный фестиваль «ТехноСтрелка»",
+                    "site": "tehnostrelka52.ru"
+                },
+                {
+                    "type": "contest",
+                    "name": "«Развитие инженерной мысли: от прошлого в будущее»",
+                    "site": "dpo.sibstrin.ru/info"
+                }
             ]
         },
         {
             "id": "ai",
             "title": "AI, Data, ML",
             "items": [
-                { "type": "rsosh", "name": "Всероссийская олимпиада по искусственному интеллекту", "site": "ai.edu.gov.ru" },
-                { "type": "rsosh", "name": "НТО", "sub": "Искусственный интеллект", "site": "ntcontest.ru/tracks" },
-                { "type": "rsosh", "name": "НТО", "sub": "Большие данные и машинное обучение", "site": "ntcontest.ru/tracks" },
-                { "type": "rsosh", "name": "НТО", "sub": "Анализ космических снимков и геопространственных данных", "site": "ntcontest.ru" },
-                { "type": "rsosh", "name": "Международная олимпиада Иннополиса", "sub": "искусственный интеллект", "site": "dovuz.innopolis.university" },
-                { "type": "rsosh", "name": "Олимпиада СПбГУ", "sub": "«Математическое моделирование и искусственный интеллект»", "site": "olympiada.spbu.ru" },
-                { "type": "olymp", "name": "Национальная олимпиада по анализу данных DANO / «Высшая проба»", "site": "dano.hse.ru" },
-                { "type": "olymp", "name": "НТО", "sub": "Анализ данных и принятие решений", "site": "ntcontest.ru/tracks" },
-                { "type": "olymp", "name": "НТО Junior", "sub": "Технологии и искусственный интеллект", "site": "junior.ntcontest.ru" },
-                { "type": "olymp", "name": "Международная цифровая олимпиада «Волга-IT»", "sub": "ИИ и анализ данных", "site": "volga-it.org" },
-                { "type": "olymp", "name": "Олимпиада «ТехноОлимп»", "sub": "ИИ и информационные технологии", "site": "techno-olimpiada.spbu.ru" },
-                { "type": "olymp", "name": "NEOAI", "sub": "Northern Eurasia Olympiad in Artificial Intelligence", "site": "cu.ru/olympiad" },
-                { "type": "olymp", "name": "Олимпиада по искусственному интеллекту им. А. А. Маркова", "site": "letovo.ru" },
-                { "type": "olymp", "name": "AIDAO", "sub": "Artificial Intelligence and Data Analysis Olympiad", "site": "education.yandex.ru/aidao-ru" },
-                { "type": "olymp", "name": "Открытая международная студенческая интернет-олимпиада «Статистика и анализ данных»", "site": "olymp.i-exam.ru" },
-                { "type": "contest", "name": "Yandex Cup", "sub": "Аналитика", "site": "yandex.ru/cup" },
-                { "type": "contest", "name": "Yandex Cup", "sub": "Машинное обучение", "site": "yandex.ru/cup" },
-                { "type": "contest", "name": "SWE MERA Challenge", "site": "ods.ai/competitions" },
-                { "type": "contest", "name": "AI Challenge 2026", "site": "aiijc.com" },
-                { "type": "contest", "name": "Всероссийский хакатон «Идея Фикс»", "site": "sferum.ru/hackathon_2026" },
-                { "type": "contest", "name": "Международный конкурс «Большие вызовы»", "sub": "большие данные и ИИ", "site": "bigchallenges.ru/bigdata" },
-                { "type": "contest", "name": "Конкурсный отбор в программу «Алгоритмы и анализ данных»", "site": "sochisirius.ru/obuchenie" },
-                { "type": "contest", "name": "Всероссийский школьный конкурс по статистике «Тренд»", "site": "statkonkurs.ru" },
-                { "type": "contest", "name": "E-CUP Students 2026", "site": "e-cup-ozon.ru" },
-                { "type": "contest", "name": "Data Fusion Contest 2026", "site": "ods.ai/hubs" },
-                { "type": "contest", "name": "AvitoTech ML CUP 2026", "site": "ods.ai/competitions" },
-                { "type": "contest", "name": "Yandex ML Challenge 2026", "site": "yandex.ru/youngcon" },
-                { "type": "contest", "name": "Junior ML Contest 2026", "site": "ai.itmo.ru/junior_ml_contest" },
-                { "type": "contest", "name": "Data Fusion Awards", "sub": "AI / исследовательские работы", "site": "awards.data-fusion.ru/ai" },
-                { "type": "contest", "name": "Конкурс научно-технических проектов «Большая разведка. Школьный трек»", "site": "bigintelligence.ru" },
-                { "type": "contest", "name": "UMIRHack", "site": "hackathon.rsue.ru" }
+                {
+                    "type": "rsosh",
+                    "name": "Всероссийская олимпиада по искусственному интеллекту",
+                    "site": "ai.edu.gov.ru",
+                    "level": "II"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "НТО",
+                    "sub": "Искусственный интеллект",
+                    "site": "ntcontest.ru/tracks",
+                    "level": "II"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "НТО",
+                    "sub": "Анализ космических снимков и геопространственных данных",
+                    "site": "ntcontest.ru",
+                    "level": "II"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "НТО",
+                    "sub": "Большие данные и машинное обучение",
+                    "site": "ntcontest.ru/tracks",
+                    "level": "III"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Международная олимпиада Иннополиса",
+                    "sub": "искусственный интеллект",
+                    "site": "dovuz.innopolis.university/innopolis-open",
+                    "level": "III"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Олимпиада СПбГУ",
+                    "sub": "«Математическое моделирование и искусственный интеллект»",
+                    "site": "olympiada.spbu.ru",
+                    "level": "III"
+                },
+                {
+                    "type": "olymp",
+                    "name": "Всероссийская олимпиада школьников (ВсОШ)",
+                    "sub": "информатика, профиль «Искусственный интеллект»",
+                    "site": "vos.olimpiada.ru",
+                    "note": "этапы в Москве; в других регионах олимпиаду проводит региональный оператор"
+                },
+                {
+                    "type": "olymp",
+                    "name": "Национальная олимпиада по анализу данных DANO / «Высшая проба»",
+                    "site": "dano.hse.ru"
+                },
+                {
+                    "type": "olymp",
+                    "name": "НТО",
+                    "sub": "Анализ данных и принятие решений",
+                    "site": "ntcontest.ru/tracks"
+                },
+                {
+                    "type": "olymp",
+                    "name": "НТО Junior",
+                    "sub": "Технологии и искусственный интеллект",
+                    "site": "junior.ntcontest.ru"
+                },
+                {
+                    "type": "olymp",
+                    "name": "Международная цифровая олимпиада «Волга-IT»",
+                    "sub": "ИИ и анализ данных",
+                    "site": "volga-it.org"
+                },
+                {
+                    "type": "olymp",
+                    "name": "Олимпиада «ТехноОлимп»",
+                    "sub": "ИИ и информационные технологии",
+                    "site": "techno-olimpiada.spbu.ru"
+                },
+                {
+                    "type": "olymp",
+                    "name": "NEOAI",
+                    "sub": "Northern Eurasia Olympiad in Artificial Intelligence",
+                    "site": "cu.ru/olympiad"
+                },
+                {
+                    "type": "olymp",
+                    "name": "Олимпиада по искусственному интеллекту им. А. А. Маркова",
+                    "site": "letovo.ru"
+                },
+                {
+                    "type": "olymp",
+                    "name": "AIDAO",
+                    "sub": "Artificial Intelligence and Data Analysis Olympiad",
+                    "site": "education.yandex.ru/aidao-ru"
+                },
+                {
+                    "type": "olymp",
+                    "name": "Открытая международная студенческая интернет-олимпиада «Статистика и анализ данных»",
+                    "site": "olymp.i-exam.ru"
+                },
+                {
+                    "type": "contest",
+                    "name": "Yandex Cup",
+                    "sub": "Аналитика",
+                    "site": "yandex.ru/cup",
+                    "note": "в 2026 году не проводится, перенесён на 2027"
+                },
+                {
+                    "type": "contest",
+                    "name": "Yandex Cup",
+                    "sub": "Машинное обучение",
+                    "site": "yandex.ru/cup",
+                    "note": "в 2026 году не проводится, перенесён на 2027"
+                },
+                {
+                    "type": "contest",
+                    "name": "SWE MERA Challenge",
+                    "site": "ods.ai/competitions"
+                },
+                {
+                    "type": "contest",
+                    "name": "AI Challenge 2026",
+                    "site": "aiijc.com"
+                },
+                {
+                    "type": "contest",
+                    "name": "Всероссийский хакатон «Идея Фикс»",
+                    "site": "sferum.ru/hackathon_2026"
+                },
+                {
+                    "type": "contest",
+                    "name": "Международный конкурс «Большие вызовы»",
+                    "sub": "большие данные и ИИ",
+                    "site": "bigchallenges.ru/bigdata"
+                },
+                {
+                    "type": "contest",
+                    "name": "Конкурсный отбор в программу «Алгоритмы и анализ данных»",
+                    "site": "sochisirius.ru/obuchenie"
+                },
+                {
+                    "type": "contest",
+                    "name": "Всероссийский школьный конкурс по статистике «Тренд»",
+                    "site": "statkonkurs.ru"
+                },
+                {
+                    "type": "contest",
+                    "name": "E-CUP Students 2026",
+                    "site": "e-cup-ozon.ru"
+                },
+                {
+                    "type": "contest",
+                    "name": "Data Fusion Contest 2026",
+                    "site": "ods.ai/hubs"
+                },
+                {
+                    "type": "contest",
+                    "name": "AvitoTech ML CUP 2026",
+                    "site": "ods.ai/competitions"
+                },
+                {
+                    "type": "contest",
+                    "name": "Yandex ML Challenge 2026",
+                    "site": "yandex.ru/youngcon"
+                },
+                {
+                    "type": "contest",
+                    "name": "Junior ML Contest 2026",
+                    "site": "ai.itmo.ru/junior_ml_contest"
+                },
+                {
+                    "type": "contest",
+                    "name": "Data Fusion Awards",
+                    "sub": "AI / исследовательские работы",
+                    "site": "awards.data-fusion.ru/ai"
+                },
+                {
+                    "type": "contest",
+                    "name": "Конкурс научно-технических проектов «Большая разведка. Школьный трек»",
+                    "site": "bigintelligence.ru"
+                },
+                {
+                    "type": "contest",
+                    "name": "UMIRHack",
+                    "site": "hackathon.rsue.ru"
+                }
+            ]
+        },
+        {
+            "id": "programming",
+            "title": "Программирование",
+            "items": [
+                {
+                    "type": "rsosh",
+                    "name": "Московская олимпиада школьников",
+                    "sub": "информатика",
+                    "level": "I",
+                    "site": "мош.цпм.рф"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Открытая олимпиада школьников по программированию",
+                    "level": "I",
+                    "site": "olympiads.ru/zaoch"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Олимпиада школьников по информатике и программированию",
+                    "sub": "ИТМО",
+                    "level": "I",
+                    "site": "nerc.itmo.ru/school"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Открытая олимпиада школьников",
+                    "sub": "ИТМО, информатика",
+                    "level": "I",
+                    "site": "olymp.itmo.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Олимпиада по программированию «ТехноКубок»",
+                    "level": "I",
+                    "site": "techno-cup.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Всероссийская олимпиада школьников «Высшая проба»",
+                    "sub": "информатика",
+                    "level": "I",
+                    "site": "olymp.hse.ru/mmo"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Всесибирская открытая олимпиада школьников",
+                    "sub": "информатика",
+                    "level": "I",
+                    "site": "sesc.nsu.ru/olymp-vsesib"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Отраслевая физико-математическая олимпиада «Росатом»",
+                    "sub": "информатика",
+                    "level": "I",
+                    "site": "olymp.mephi.ru/rosatom/about"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Олимпиада СПбГУ",
+                    "sub": "информатика",
+                    "level": "I",
+                    "site": "olympiada.spbu.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Всероссийская олимпиада школьников «Высшая проба»",
+                    "sub": "промышленное программирование",
+                    "level": "II",
+                    "site": "olymp.hse.ru/mmo"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Олимпиада школьников «Физтех»",
+                    "sub": "информатика и программирование",
+                    "level": "II",
+                    "site": "olymp-online.mipt.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Международная олимпиада Иннополиса",
+                    "sub": "информатика",
+                    "level": "II",
+                    "site": "dovuz.innopolis.university/innopolis-open"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Международная олимпиада Иннополиса",
+                    "sub": "информационная безопасность",
+                    "level": "II",
+                    "site": "dovuz.innopolis.university/innopolis-open"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Олимпиада УрФУ «Изумруд»",
+                    "sub": "информатика",
+                    "level": "II",
+                    "site": "dovuz.urfu.ru/olymps/izumrud"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Олимпиада школьников «Гранит науки»",
+                    "sub": "информатика",
+                    "level": "II",
+                    "site": "ogn.spmi.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Олимпиада школьников «Ломоносов»",
+                    "sub": "информатика",
+                    "level": "II",
+                    "site": "olymp.msu.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Олимпиада имени И. Я. Верченко",
+                    "sub": "компьютерная безопасность",
+                    "level": "II",
+                    "site": "v-olymp.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "НТО",
+                    "sub": "Автоматизация бизнес-процессов",
+                    "level": "II",
+                    "site": "ntcontest.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "НТО",
+                    "sub": "Информационная безопасность",
+                    "level": "III",
+                    "site": "ntcontest.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "НТО",
+                    "sub": "Разработка мобильных приложений",
+                    "level": "III",
+                    "site": "ntcontest.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "НТО",
+                    "sub": "Программная инженерия в финансовых технологиях",
+                    "level": "III",
+                    "site": "ntcontest.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "НТО",
+                    "sub": "Виртуальная реальность: разработка игр, VR и AR",
+                    "level": "III",
+                    "site": "ntcontest.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Олимпиада «Шаг в будущее»",
+                    "sub": "информатика",
+                    "level": "III",
+                    "site": "olymp.bmstu.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Отраслевая олимпиада школьников «Газпром»",
+                    "sub": "информационные и коммуникационные технологии",
+                    "level": "III",
+                    "site": "olympiad.gazprom.ru"
+                },
+                {
+                    "type": "rsosh",
+                    "name": "Университетская олимпиада школьников «Бельчонок»",
+                    "sub": "информатика",
+                    "level": "III",
+                    "site": "dovuz.sfu-kras.ru/abiturientu-sfu/olimpiady/belchonok"
+                },
+                {
+                    "type": "olymp",
+                    "name": "Всероссийская олимпиада школьников (ВсОШ)",
+                    "sub": "информатика, профиль «Программирование»",
+                    "site": "vos.olimpiada.ru",
+                    "note": "этапы в Москве; в других регионах олимпиаду проводит региональный оператор"
+                },
+                {
+                    "type": "olymp",
+                    "name": "Всероссийская олимпиада школьников (ВсОШ)",
+                    "sub": "информатика, профиль «Информационная безопасность»",
+                    "site": "vos.olimpiada.ru",
+                    "note": "этапы в Москве; в других регионах олимпиаду проводит региональный оператор"
+                },
+                {
+                    "type": "contest",
+                    "name": "Yandex Cup",
+                    "sub": "Алгоритм, категория «Юниоры» 14–17 лет",
+                    "site": "yandex.ru/cup",
+                    "note": "в 2026 году не проводится, перенесён на 2027"
+                }
             ]
         }
-    ]
+    ],
+    "source": "Перечень олимпиад школьников на 2026/27 учебный год, приказ Минобрнауки России № 521 от 31.08.2026"
 }
